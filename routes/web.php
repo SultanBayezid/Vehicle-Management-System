@@ -9,6 +9,10 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\TripController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +41,9 @@ Route::resource('income', IncomeController::class);
 Route::resource('accounts', AccountController::class);
 Route::resource('contacts','ContactController');
 Route::resource('payment_methods', PaymentMethodController::class);
+Route::resource('expense',ExpenseController::class);
+Route::resource('trips',TripController::class);
+
+//Transfer Controller
+Route::get('transfer/create', 'App\Http\Controllers\TransferController@create')->name('transfer.create');
+Route::post('transfer/store', 'App\Http\Controllers\TransferController@store')->name('transfer.store');

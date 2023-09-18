@@ -1,7 +1,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="#"> <i class="fas fa-rocket"></i> Omniverse </a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -74,7 +74,7 @@
                                    
                                 </nav>
                             </div>
-                            <a class="nav-link" href="{{route('vehicles.index')}}">
+                            <a class="nav-link" href="{{route('trips.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-car-side"></i></div>
                                 Trips
                             </a>
@@ -86,26 +86,27 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Accounts
+                                    <div class="sb-nav-link-icon"><i class="fas fa-angle-right"></i></div>    Accounts
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{{route('accounts.index')}}">Accounts</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="{{route('accounts.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                Accounts</a>
+                                            <a class="nav-link" href="{{route('chart_of_accounts.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                Income/Expense Types</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Transactions
+                                    <div class="sb-nav-link-icon"><i class="fas fa-angle-right"></i></div>     Transactions
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{{route('income.index')}}">Income/Deposit</a>
-                                            <a class="nav-link" href="404.html">Expense</a>
-                                            <a class="nav-link" href="500.html">Transfer</a>
-                                            <a class="nav-link" href="{{route('chart_of_accounts.index')}}">Income/Expense Types</a>
+                                            <a class="nav-link" href="{{route('income.index')}}"><div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div> Income/Deposit</a>
+                                            <a class="nav-link" href="{{route('expense.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div> Expense</a>
+                                            <a class="nav-link" href="{{route('transfer.create')}}"> <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div> Transfer</a>
+
                                         </nav>
                                     </div>
                                 </nav>
