@@ -10,7 +10,7 @@ class DriverController extends Controller
     public function index()
     {
         $drivers = Driver::all();
-        return view('backend.drivers.index', compact('drivers'));
+        return view('backend.drivers.list', compact('drivers'));
     }
 
     public function create()

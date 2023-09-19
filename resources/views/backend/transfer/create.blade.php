@@ -1,14 +1,19 @@
 @extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
+        <h1 class="display-4">{{ _lang('Add New Transfer') }}</h1>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Transactions</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ _lang('Add New Transfer') }}</li>
+            </ol>
+        </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="header-title">{{ _lang('Add New Transfer') }}</h4>
-            </div>
-
-            <div class="card-body">
+    <div class="card-body">
                 <form method="post" class="validate" autocomplete="off" action="{{ route('transfer.store') }}"
                     enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -70,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 clear">
+                        <div class="col-md-12 clear">
                             <div class="form-group">
                                 <label class="control-label">{{ _lang('Note') }}</label>
                                 <textarea class="form-control" name="note">{{ old('note') }}</textarea>
@@ -79,14 +84,14 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg"><i class="ti-save"></i>
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-file"></i>
                                     {{ _lang('Make Transfer') }}</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
     </div>
+</div>
 </div>
 @endsection

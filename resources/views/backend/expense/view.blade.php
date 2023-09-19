@@ -1,12 +1,21 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
+        <h1 class="display-4">{{ _lang('View Expense') }}</h1>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item">Accounting</li>
+                <li class="breadcrumb-item">{{ ('Transactions') }}</li>
+                <li class="breadcrumb-item"><a href="{{route('expense.index')}}">Expense</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ _lang('View Expense') }}</li>
+            </ol>
+        </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-default">
-            <div class="card-header">{{ _lang('View Expense') }}</div>
-
-            <div class="card-body">
+    <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
                         <td>{{ _lang('Trans Date') }}</td>
@@ -56,7 +65,6 @@
                     </tr>
                 </table>
             </div>
-        </div>
     </div>
 </div>
 @endsection

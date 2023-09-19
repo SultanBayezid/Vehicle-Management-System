@@ -693,7 +693,7 @@ if (!function_exists('time_from_seconds')) {
 
 if (!function_exists('current_day_income')) {
     function current_day_income() {
-        $company_id = company_id();
+        
         $date       = date("Y-m-d");
 
         $query = DB::select("SELECT IFNULL(SUM(amount),0) as total FROM transactions
@@ -704,7 +704,7 @@ if (!function_exists('current_day_income')) {
 
 if (!function_exists('current_day_expense')) {
     function current_day_expense() {
-        $company_id = company_id();
+        
         $date       = date("Y-m-d");
 
         $query = DB::select("SELECT IFNULL(SUM(amount),0) as total FROM transactions
@@ -715,13 +715,12 @@ if (!function_exists('current_day_expense')) {
 
 if (!function_exists('current_month_income')) {
     function current_month_income() {
-        $company_id = company_id();
+        
         $month      = date('m');
         $year       = date('Y');
 
-        $monthly_income = \App\Transaction::selectRaw("IFNULL(SUM(amount),0) as total")
+        $monthly_income = \App\Models\Transaction::selectRaw("IFNULL(SUM(amount),0) as total")
             ->where("dr_cr", "cr")
-            ->where("company_id", $company_id)
             ->whereMonth("trans_date", $month)
             ->whereYear("trans_date", $year)
             ->first()->total;
@@ -731,13 +730,12 @@ if (!function_exists('current_month_income')) {
 
 if (!function_exists('current_month_expense')) {
     function current_month_expense() {
-        $company_id = company_id();
+        
         $month      = date('m');
         $year       = date('Y');
 
-        $monthly_expense = \App\Transaction::selectRaw("IFNULL(SUM(amount),0) as total")
+        $monthly_expense = \App\Models\Transaction::selectRaw("IFNULL(SUM(amount),0) as total")
             ->where("dr_cr", "dr")
-            ->where("company_id", $company_id)
             ->whereMonth("trans_date", $month)
             ->whereYear("trans_date", $year)
             ->first()->total;
@@ -831,7 +829,7 @@ if (!function_exists('increment_quotation_number')) {
 
 if (!function_exists('update_stock')) {
     function update_stock($product_id) {
-        $company_id = company_id();
+        
 
         $purchase   = DB::table('purchase_order_items')->where('product_id', $product_id)
             ->where('company_id', $company_id)

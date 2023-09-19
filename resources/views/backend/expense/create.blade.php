@@ -1,12 +1,33 @@
 @extends('backend.layouts.header')
 
 @section('content')
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Expense Create</h1>
+        </div>
+        <div class="col-md-6 text-md-right mt-3">
+            <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
+                href="{{ route('expense.create') }}">
+                <i class="fas fa-plus"></i> {{ ('Add New') }}
+            </a>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Accounting</li>
+            <li class="breadcrumb-item active" aria-current="page">Transactions</li>
+            <li class="breadcrumb-item"><a href="{{route('expense.index')}}">Expense </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Expense Create</li>
+
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-default">
-            <div class="card-header header-title">{{ _lang('Add Expense') }}</div>
-
-            <div class="card-body">
+    <div class="card-body">
                 <form method="post" class="validate" autocomplete="off" action="{{ route('expense.store') }}"
                     enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -22,9 +43,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <a href="{{ route('accounts.create') }}" data-reload="false"
-                                    data-title="{{ _lang('Create Account') }}" class="ajax-modal-2 select2-add"><i
-                                        class="ti-plus"></i> {{ _lang('Add New') }}</a>
+                           
                                 <label class="control-label">{{ _lang('Account') }}</label>
                                 <select class="form-control select2-ajax" data-value="id" data-display="account_title"
                                     data-table="accounts" data-where="1" name="account_id" id="account_id" required>
@@ -38,9 +57,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <a href="{{ route('chart_of_accounts.create') }}" data-reload="false"
-                                    data-title="{{ _lang('Add Income/Expense Type') }}"
-                                    class="ajax-modal-2 select2-add"><i class="ti-plus"></i> {{ _lang('Add New') }}</a>
+                               
                                 <label class="control-label">{{ _lang('Expense Type') }}</label>
                                 <select class="form-control select2-ajax" data-value="id" data-display="name"
                                     data-table="chart_of_accounts" data-where="4" name="chart_id" required>
@@ -61,9 +78,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <a href="{{ route('contacts.create') }}" data-reload="false"
-                                    data-title="{{ _lang('Add Client') }}" class="ajax-modal-2 select2-add"><i
-                                        class="ti-plus"></i> {{ _lang('Add New') }}</a>
+                              
                                 <label class="control-label">{{ _lang('Payee') }}</label>
                                 <select class="form-control select2-ajax" data-value="id" data-display="contact_name"
                                     data-table="contacts" data-where="1" name="payer_payee_id">
@@ -76,9 +91,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <a href="{{ route('payment_methods.create') }}" data-reload="false"
-                                    data-title="{{ _lang('Add Payment Method') }}" class="ajax-modal-2 select2-add"><i
-                                        class="ti-plus"></i> {{ _lang('Add New') }}</a>
+                             
                                 <label class="control-label">{{ _lang('Payment Method') }}</label>
                                 <select class="form-control select2-ajax" data-value="id" data-display="name"
                                     data-table="payment_methods" data-where="1" name="payment_method_id" required>
@@ -103,7 +116,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 clear">
+                        <div class="col-md-12 clear">
                             <div class="form-group">
                                 <label class="control-label">{{ _lang('Note') }}</label>
                                 <textarea class="form-control" name="note">{{ old('note') }}</textarea>
@@ -112,14 +125,14 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg"><i class="ti-save"></i>
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="ti-save"></i>
                                     {{ _lang('Save Changes') }}</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
     </div>
+</div>
 </div>
 @endsection

@@ -1,12 +1,19 @@
 @extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
+        <h1 class="display-4">{{ ('Update Income/Expense Type') }}</h1>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('chart_of_accounts.index')}}">Income|Deposit</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update Income</li>
+            </ol>
+        </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-default">
-            <div class="card-header header-title">{{ ('Update Income/Expense Type') }}</div>
-
-            <div class="card-body">
+    <div class="card-body">
                 <div class="col-md-6">
                     <form method="post" class="validate" autocomplete="off"
                         action="{{ action('App\Http\Controllers\ChartOfAccountController@update', $chartofaccount) }}" enctype="multipart/form-data">
@@ -34,7 +41,7 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg"><i class="ti-save"></i>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-file"></i>
                                         {{ ('Update') }}</button>
                                 </div>
                             </div>
@@ -42,7 +49,7 @@
                     </form>
                 </div>
             </div>
-        </div>
     </div>
+</div>
 </div>
 @endsection

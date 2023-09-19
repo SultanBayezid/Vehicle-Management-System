@@ -1,13 +1,20 @@
 @extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
+        <h1 class="display-4">Trip Create</h1>
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('trips.index')}}">Trips</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Trip Create</li>
+            </ol>
+        </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="header-title">{{ ('Add New Income') }}</h4>
-            </div>
+ 
+ 
 
             <div class="card-body">
             <form action="{{ route('trips.store') }}" method="POST">
@@ -91,7 +98,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                 <label for="trip_date">Trip Date:</label>
-                <input type="date" name="trip_date" class="form-control">
+                <input type="date" name="trip_date" class="form-control" required>
             </div>
             </div>
                 <div class="col-md-4">
@@ -124,7 +131,8 @@
             <button type="submit" class="btn btn-primary">Create Trip</button>
         </form>
             </div>
-        </div>
+    
     </div>
+</div>
 </div>
 @endsection

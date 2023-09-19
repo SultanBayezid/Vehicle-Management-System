@@ -119,27 +119,26 @@
     border-color: #d9dfe3;
 }
 </style>
-<div class="container-fluid px-4">
-                        <h1 class="mt-4">Trip Details</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Drivers</li>
-                            <li  class="breadcrumb-item">
-                            <a href="{{ route('drivers.create') }}" class="btn btn-primary">Create New Driver</a>
+<div class="container">
+        <h1 class="display-4">Trip Details</h1>
 
-                            </li>
-                        </ol>
-                    
-                        <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('trips.index')}}">Trips</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Trip Details</li>
+            </ol>
+        </nav>
    <div class="col-md-12">
       <div class="invoice">
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
             <span class="pull-right hidden-print">
-            <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
-            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
-            </span>
-            Company Name, Inc
+            <a href="#" class="btn btn-sm btn-white m-b-10 p-l-5" data-toggle="modal" data-target="#exampleModal2"><i class="fas fa-money-check-alt text-success fa-fw fa-lg"></i> Add Trip Payment</a>
+            <a href="#" class="btn btn-sm btn-white m-b-10 p-l-5" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-money-check-alt text-danger fa-fw fa-lg"></i> Add Trip Expense</a>
+      
          </div>
+
          <!-- end invoice-company -->
          <!-- begin invoice-header -->
          <div class="invoice-header">
@@ -189,9 +188,9 @@
                   <tbody>
                      <tr>
                         <td>
-                           <span class="text-inverse">{{$trip->customer->contact_name}}</span><br>
-                           <small><i class="fas fa-phone"></i> {{$trip->customer->contact_phone}}  &nbsp;&nbsp;<i class="fas fa-	fas fa-map-marker-alt"></i> {{$trip->customer->address}}</small>
-                        </td>
+                           <span class="text-inverse">Name: {{$trip->customer->contact_name}}</span><br>
+                           <small>Phone:  {{$trip->customer->contact_phone}} </small> <br>
+                           <small>Address: {{$trip->customer->address}}</small></td>
                         <td class="text-center">{{$trip->pickup_location}}</td>
                         <td class="text-center">{{$trip->dropoff_location}}</td>
                         <!-- <td class="text-right">$2,500.00</td> -->
@@ -217,10 +216,72 @@
                         <small>FARE</small>
                         <span class="text-inverse">{{$trip->fare_amount}} TK</span>
                      </div>
+                     
                   </div>
+                  <div style="font-size:14px;"> 
+               <table id="expense-table" class="table table-bordered">
+               <th>{{ _lang('Date') }}</th>
+  
+                            <th>{{ _lang('Payment Method') }}</th>
+                            <th class="text-right">{{ _lang('Amount') }}</th>
+
+                     <tbody>
+                     @php
+                            $totalpayment = 0;
+                     @endphp
+                        @foreach($payments as $payment)
+                     <tr>
+                     <td> <a href="{{ action('App\Http\Controllers\IncomeController@show', $payment->id) }}" >{{$payment->trans_date }}</a></td>
+                    
+
+                <td>{{ $payment->payment_method->name ?? '' }}</td>
+                <td>{{ decimalPlace($payment->amount, $currency) }}</td>
+
+                     </tr>
+                     @php
+            $totalpayment += $payment->amount;
+        @endphp
+                     @endforeach
+                     </tbody>
+                   
+                
+                   
+                  </table>
+               </div>
+               <small></small> <span class="f-w-600" style="float: right;margin-right:10px">{{ decimalPlace($totalpayment, $currency) }}</span>
                </div>
                <div class="invoice-price-right">
-                  <small>EXPENSE</small> <span class="f-w-600">$4508.00</span>
+                  <small>EXPENSE</small> <br>
+               <div style="font-size:14px;"> 
+               <table id="expense-table" class="table table-bordered">
+               <th>{{ _lang('Date') }}</th>
+  
+                            <th>{{ _lang('Payment Method') }}</th>
+                            <th class="text-right">{{ _lang('Amount') }}</th>
+
+                     <tbody>
+                     @php
+                            $totalExpenseAmount = 0;
+                     @endphp
+                        @foreach($expenses as $expense)
+                     <tr>
+                     <td><a href="{{ action('App\Http\Controllers\ExpenseController@show', $expense->id) }}" >{{$expense->trans_date }}</a></td>
+
+                <td>{{ $expense->payment_method->name ?? '' }}</td>
+                <td>{{ decimalPlace($expense->amount, $currency) }}</td>
+
+                     </tr>
+                     @php
+            $totalExpenseAmount += $expense->amount;
+        @endphp
+                     @endforeach
+                     </tbody>
+                   
+                
+                   
+                  </table>
+               </div>
+               <small></small> <span class="f-w-600">{{ decimalPlace($totalExpenseAmount, $currency) }}</span>
                </div>
             </div>
             <!-- end invoice-price -->
@@ -237,6 +298,233 @@
 </div>
                     </div>
 
+<!-- Modal content  -->
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title mt-0">Add Expense</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="alert alert-danger d-none m-3"></div>
+    <div class="alert alert-primary d-none m-3"></div>
+    <div class="modal-body overflow-hidden">
+    <form method="post" class="ajax-submit" autocomplete="off" action="{{route('trip_expense.create_payment')}}"
+    enctype="multipart/form-data">
+    {{ csrf_field() }}
+
+    <div class="col-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                 
+                    <label class="control-label">{{ _lang('Account') }}</label>
+                    <select class="form-control select2-ajax" data-value="id" data-display="account_title"
+                        data-table="accounts" data-where="1" name="account_id" id="account_id" required>
+                        <option value="">{{ _lang('Select One') }}</option>
+                        {{ create_option("accounts", "id", "account_title", old('account_id')) }}
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                  
+                    <label class="control-label">{{ _lang('Expense Type') }}</label>
+                    <select class="form-control select2-ajax" data-value="id" data-display="name"
+                        data-table="chart_of_accounts" data-where="4" name="chart_id" required>
+                        <option value="">{{ _lang('Select One') }}</option>
+                        {{ create_option("chart_of_accounts", "id", "name", old('chart_id'), array("type=" => "expense")) }}
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">{{ _lang('Trip Fare') }} (<b><span
+                                class="account_currency">{{ currency() }}</span></b>)</label>
+                    <input type="text" class="form-control float-field"
+                        value="{{$trip->fare_amount}}" id="pending_amount" readOnly="true">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">{{ _lang('Amount') }}</label>
+                    <input type="text" class="form-control float-field" name="amount" value="{{ old('amount') }}"
+                        required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                   
+                    <label class="control-label">{{ _lang('Payment Method') }}</label>
+                    <select class="form-control select2-ajax" data-value="id" data-display="name"
+                        data-table="payment_methods" data-where="1" name="payment_method_id" required>
+                        <option value="">{{ _lang('Select One') }}</option>
+                        {{ create_option("payment_methods", "id", "name", old('payment_method_id')) }}
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">{{ _lang('Reference') }}</label>
+                    <input type="text" class="form-control" name="reference" value="{{ old('reference') }}">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">{{ _lang('Attachment') }}</label>
+                    <input type="file" class="form-control dropify" name="attachment">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">{{ _lang('Note') }}</label>
+                    <textarea class="form-control" name="note">{{ old('note') }}</textarea>
+                </div>
+            </div>
+
+            <input type="hidden" name="invoice_id" value="{{ $trip->id}}">
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-file"></i>
+                        {{ _lang('Make Payment') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+<!-- model payment  -->
+
+@php
+$pending = $trip->fare_amount - $totalpayment;
+@endphp
+             
+             
+<!-- Modal content  -->
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title mt-0">Add Expense</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="alert alert-danger d-none m-3"></div>
+    <div class="alert alert-primary d-none m-3"></div>
+    <div class="modal-body overflow-hidden">
+    <form method="post" class="ajax-submit" autocomplete="off" action="{{ route('trip_income.create_payment') }}"
+    enctype="multipart/form-data">
+    {{ csrf_field() }}
+
+    <div class="row p-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Credit Account') }}</label>
+                <select class="form-control select2" name="account_id" required>
+                    <option value="">{{ _lang('Select One') }}</option>
+                    {{ create_option("accounts", "id", "account_title", old('account_id')) }}
+
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Income Type') }}</label>
+                <select class="form-control select2" name="chart_id" required>
+                    <option value="">{{ _lang('Select One') }}</option>
+                    {{ create_option("chart_of_accounts", "id", "name", old('chart_id'), array("type=" => "income")) }}
+
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Pending Amount')." ".currency() }}</label>
+                <input type="text" class="form-control float-field"
+                    value="{{ $pending }}" readOnly="true">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Amount')." ".currency() }}</label>
+                <input type="text" class="form-control float-field" name="amount" value="{{ old('amount') }}" required>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Payment Method') }}</label>
+                <select class="form-control select2" name="payment_method_id" required>
+                    <option value="">{{ _lang('Select One') }}</option>
+                    {{ create_option("payment_methods", "id", "name", old('payment_method_id')) }}
+
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Reference') }}</label>
+                <input type="text" class="form-control" name="reference" value="{{ old('reference') }}">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Attachment') }}</label>
+                <input type="file" class="form-control dropify" name="attachment">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">{{ _lang('Note') }}</label>
+                <textarea class="form-control" name="note">{{ old('note') }}</textarea>
+            </div>
+        </div>
+
+        <input type="hidden" name="invoice_id" value="{{ $trip->id }}">
+        <input type="hidden" name="client_id" value="{{ $trip->customer_id }}">
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-file"></i> {{ _lang('Add Expense') }}</button>
+            </div>
+        </div>
+    </div>
+</form>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 @endsection

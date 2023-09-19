@@ -164,7 +164,7 @@ class ExpenseController extends Controller {
     public function show(Request $request, $id) {
         $transaction = Transaction::find($id);
         if (!$request->ajax()) {
-            return view('backend.accounting.expense.view', compact('transaction', 'id'));
+            return view('backend.expense.view', compact('transaction', 'id'));
         } else {
             return view('backend.accounting.expense.modal.view', compact('transaction', 'id'));
         }
@@ -181,7 +181,7 @@ class ExpenseController extends Controller {
         $transaction = Transaction::find($id);
 
         if (!$request->ajax()) {
-            return view('backend.accounting.expense.edit', compact('transaction', 'id'));
+            return view('backend.expense.edit', compact('transaction', 'id'));
         } else {
             return view('backend.accounting.expense.modal.edit', compact('transaction', 'id'));
         }
@@ -223,7 +223,7 @@ class ExpenseController extends Controller {
             $file->move(public_path() . "/uploads/transactions/", $attachment);
         }
 
-        $transaction                    = Transaction::where("id", $id)->where("company_id", company_id())->first();
+        $transaction                    = Transaction::where("id", $id)->first();
         $transaction->trans_date        = $request->input('trans_date');
         $transaction->account_id        = $request->input('account_id');
         $transaction->chart_id          = $request->input('chart_id');

@@ -1,29 +1,36 @@
 @extends('backend.layouts.header')
 
 @section('content')
-<div class="container-fluid px-4">
-                        <h1 class="mt-4">trips</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">trips</li>
-                            <li  class="breadcrumb-item">
-                            <a href="{{ route('trips.create') }}" class="btn btn-primary">Create New Driver</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Trips</h1>
+        </div>
+        <div class="col-md-6 text-md-right mt-3">
+            <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
+                href="{{ route('trips.create') }}">
+                <i class="fas fa-plus"></i> {{ ('Add New') }}
+            </a>
+        </div>
+    </div>
 
-                            </li>
-                        </ol>
-                    
-                        <div class="card mb-4">
-                            <!-- <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div> -->
-                            <div class="card-body">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Trips</li>
+        </ol>
+    </nav>
+
+
+
+    <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
                                             <th>Customer</th>
                                             <th>Driver</th>
-                                            <th>Vehicle</th>=
+                                            <th>Vehicle</th>
                                             <th>Pickup Location</th>
                                             <th>Dropoff Location</th>
                                             <th>Fare</th>
@@ -53,15 +60,18 @@
                                             <td>{{$trip->dropoff_location }}</td>
                                             <td>{{$trip->fare_amount }}</td>
                                      
-                                            <td>
-                <a href="{{ route('trips.show', $trip->id) }}" class="btn btn-info btn-sm">View</a>
-                <a href="{{ route('trips.edit', $trip->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')">Delete</button>
-                </form>
-            </td>
+                                        <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="{{ route('trips.show', $trip->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('trips.edit', $trip->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
+                                        <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                            </div>
+                                    
+                                          </td>
                                         </tr>
                                         @endforeach
                                        
@@ -69,8 +79,10 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
+                    
+                  
+</div>
+               
 
 
 

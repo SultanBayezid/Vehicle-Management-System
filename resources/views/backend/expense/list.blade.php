@@ -1,18 +1,33 @@
 @extends('backend.layouts.header')
 
 @section('content')
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Expense</h1>
+        </div>
+        <div class="col-md-6 text-md-right mt-3">
+            <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
+                href="{{ route('expense.create') }}">
+                <i class="fas fa-plus"></i> {{ ('Add New') }}
+            </a>
+        </div>
+    </div>
 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Accounting</li>
+            <li class="breadcrumb-item active" aria-current="page">Transactions</li>
+            <li class="breadcrumb-item active" aria-current="page">Expense</li>
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <span class="header-title">{{ _lang('List Expense') }}</span>
-                <a class="btn btn-primary btn-sm ml-auto ajax-modal" data-title="{{ _lang('Add Expense') }}"
-                    href="{{ route('expense.create') }}"><i class="ti-plus"></i> {{ _lang('Add New') }}</a>
-            </div>
-
-            <div class="card-body">
-                <table id="expense-table" class="table table-bordered">
+        
+          <div class="card-body">
+          <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>{{ _lang('Date') }}</th>
@@ -37,20 +52,20 @@
                 <td>
                     @if(isset($transaction->income_type->name))
                     <form action="{{ action('App\Http\Controllers\ExpenseController@destroy', $transaction->id) }}" class="text-center" method="post">
-                        <a href="{{ action('App\Http\Controllers\ExpenseController@edit', $transaction->id) }}" data-title="{{ _lang('Update Income') }}" class="btn btn-warning btn-sm ajax-modal"><i class="ti-pencil-alt"></i></a>
-                        <a href="{{ action('App\Http\Controllers\ExpenseController@show', $transaction->id) }}" data-title="{{ _lang('View Income') }}" class="btn btn-info btn-sm ajax-modal"><i class="ti-eye"></i></a>
+                    <div class="btn-group" role="group" aria-label="Basic example">           <a href="{{ action('App\Http\Controllers\ExpenseController@edit', $transaction->id) }}" data-title="{{ _lang('Update Income') }}" class="btn btn-warning btn-sm ajax-modal"><i class="fas fa-pen"></i></a>
+                        <a href="{{ action('App\Http\Controllers\ExpenseController@show', $transaction->id) }}" data-title="{{ _lang('View Income') }}" class="btn btn-info btn-sm ajax-modal"><i class="fas fa-eye"></i></a>
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn btn-danger btn-sm btn-remove" type="submit"><i class="ti-trash"></i></button>
-                    </form>
+                        <button class="btn btn-danger btn-sm btn-remove" type="submit"><i class="fas fa-trash"></i></button>
+                        </div>   </form>
                     @else
                     <form action="{{ action('App\Http\Controllers\ExpenseController@destroy', $transaction->id) }}" class="text-center" method="post">
-                        <a href="#" data-title="{{ _lang('Update Income') }}" class="btn btn-warning btn-sm ajax-modal" disabled><i class="ti-pencil-alt"></i></a>
-                        <a href="{{ action('App\Http\Controllers\ExpenseController@show', $transaction->id) }}" data-title="{{ _lang('View Income') }}" class="btn btn-info btn-sm ajax-modal"><i class="ti-eye"></i></a>
+                    <div class="btn-group" role="group" aria-label="Basic example">         <a href="#" data-title="{{ _lang('Update Income') }}" class="btn btn-warning btn-sm ajax-modal" disabled><i class="fas fa-pen"></i></a>
+                        <a href="{{ action('App\Http\Controllers\ExpenseController@show', $transaction->id) }}" data-title="{{ _lang('View Income') }}" class="btn btn-info btn-sm ajax-modal"><i class="fas fa-eye"></i></a>
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn btn-danger btn-sm btn-remove" type="submit"><i class="ti-trash"></i></button>
-                    </form>
+                        <button class="btn btn-danger btn-sm btn-remove" type="submit"><i class="fas fa-trash"></i></button>
+                        </div> </form>
                     @endif
                 </td>
             </tr>
@@ -61,6 +76,7 @@
         </div>
     </div>
 </div>
+
 
 @endsection
 

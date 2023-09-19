@@ -1,7 +1,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="#"> <i class="fas fa-rocket"></i> Omniverse </a>
+            <a class="navbar-brand ps-3" href="{{route('home')}}"> <i class="fas fa-rocket"></i> Omniverse </a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -36,7 +36,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="{{route('home')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -49,11 +49,11 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html"> <div class="sb-nav-link-icon"><i class="fas fa-id-badge"></i></div>
+                                    <a class="nav-link" href="{{route('drivers.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-id-badge"></i></div>
                                 Drivers</a>
-                                <a class="nav-link" href="layout-static.html"> <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
+                                <a class="nav-link" href="#"> <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
                                 Customers</a>
-                                <a class="nav-link" href="layout-static.html"> <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
+                                <a class="nav-link" href="#"> <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
                                 Agents</a>
                                     
                                 </nav>
@@ -65,11 +65,11 @@
                             </a>
                             <div class="collapse" id="vehiclesLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html"> <div class="sb-nav-link-icon"><i class="fas fa-car-alt"></i></div>
+                                    <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-car-alt"></i></div>
                                 Cars</a>
-                                <a class="nav-link" href="layout-static.html"> <div class="sb-nav-link-icon"><i class="fas fa-car-crash"></i></div>
+                                <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-car-crash"></i></div>
                                 Make</a>
-                                <a class="nav-link" href="layout-static.html"> <div class="sb-nav-link-icon"><i class="fas fa-shuttle-van"></i></div>
+                                <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-shuttle-van"></i></div>
                                 Models</a>
                                    
                                 </nav>

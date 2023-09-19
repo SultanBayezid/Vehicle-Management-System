@@ -1,32 +1,38 @@
 @extends('backend.layouts.header')
 
 @section('content')
-<div class="container-fluid px-4">
-                        <h1 class="mt-4">Vehicles</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Vehicles</li>
-                        </ol>
-                    
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Vehicle Create</h1>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
+
+            <li class="breadcrumb-item active"  aria-current="page">Vehicle Create</li>
+        </ol>
+    </nav>
                       
-                        <div class="card mb-4">
-                            <!-- <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div> -->
+                      
                             <div class="card-body">
                             <form method="POST" action="{{ route('vehicles.store') }}">
                             @csrf
                             <!-- Row 1 -->
                             <div class="row mb-3">
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="name" name="name" >
-                                </div>
-                                <div class="col-md-4">
+                                </div> -->
+                                <div class="col-md-6">
                                     <label for="make" class="form-label">Make</label>
                                     <input type="text" class="form-control" id="make" name="make" >
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="model" class="form-label">Model</label>
                                     <input type="text" class="form-control" id="model" name="model" >
                                 </div>
@@ -113,7 +119,7 @@
                         </form>
                             </div>
                         </div>
-                    </div>
+                   
 
 
 

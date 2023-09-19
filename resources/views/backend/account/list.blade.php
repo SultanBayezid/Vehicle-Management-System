@@ -1,18 +1,34 @@
 @extends('backend.layouts.header')
 
 @section('content')
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Accounts</h1>
+        </div>
+        <div class="col-md-6 text-md-right mt-3">
+            <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
+                href="{{ route('accounts.create') }}">
+                <i class="fas fa-plus"></i> {{ ('Add New') }}
+            </a>
+        </div>
+    </div>
 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Accounting</li>
+            <li class="breadcrumb-item active" aria-current="page">Accounts</li>
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-				<h4 class="header-title">{{ _lang('List Account') }}</h4>
-                <a class="btn btn-primary btn-sm ml-auto ajax-modal" data-title="{{ _lang('Add Account') }}"
-                    href="{{route('accounts.create')}}"><i class="ti-plus"></i> {{ _lang('Add New') }}</a>
-            </div>
+
+    
 
             <div class="card-body">
-                <table class="table table-bordered data-table">
+            <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>{{ _lang('Account Title') }}</th>
@@ -36,14 +52,14 @@
                                 <form action="{{ action('App\Http\Controllers\AccountController@destroy', $account->id) }}" method="post">
                                     <a href="{{ action('App\Http\Controllers\AccountController@edit', $account->id) }}"
                                         data-title="{{ _lang('Update Account') }}"
-                                        class="btn btn-warning btn-sm ajax-modal"><i class="ti-pencil-alt"></i></a>
+                                        class="btn btn-warning btn-sm ajax-modal"><i class="fas fa-pen"></i></a>
                                     <a href="{{ action('App\Http\Controllers\AccountController@show', $account->id) }}"
                                         data-title="{{ _lang('View Account') }}"
-                                        class="btn btn-primary btn-sm ajax-modal"><i class="ti-eye"></i></a>
+                                        class="btn btn-primary btn-sm ajax-modal"><i class="fas fa-eye"></i></a>
                                     {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button class="btn btn-danger btn-sm btn-remove"
-                                        type="submit"><i class="ti-trash"></i></button>
+                                        type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -54,5 +70,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

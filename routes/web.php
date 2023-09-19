@@ -24,26 +24,30 @@ use App\Http\Controllers\TripController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
+Route::middleware(['auth'])->group(function () {
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
-Route::resource('vehicles', VehicleController::class);
-Route::resource('drivers', DriverController::class);
-Route::resource('chart_of_accounts', ChartOfAccountController::class);
-Route::resource('income', IncomeController::class);
-Route::resource('accounts', AccountController::class);
-Route::resource('contacts','ContactController');
-Route::resource('payment_methods', PaymentMethodController::class);
-Route::resource('expense',ExpenseController::class);
-Route::resource('trips',TripController::class);
-
-//Transfer Controller
-Route::get('transfer/create', 'App\Http\Controllers\TransferController@create')->name('transfer.create');
-Route::post('transfer/store', 'App\Http\Controllers\TransferController@store')->name('transfer.store');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+    Route::resource('vehicles', VehicleController::class);
+    Route::resource('drivers', DriverController::class);
+    Route::resource('chart_of_accounts', ChartOfAccountController::class);
+    Route::resource('income', IncomeController::class);
+    Route::resource('accounts', AccountController::class);
+    Route::resource('contacts','ContactController');
+    Route::resource('payment_methods', PaymentMethodController::class);
+    Route::resource('expense',ExpenseController::class);
+    
+    //Transfer Controller
+    Route::get('transfer/create', 'App\Http\Controllers\TransferController@create')->name('transfer.create');
+    Route::post('transfer/store', 'App\Http\Controllers\TransferController@store')->name('transfer.store');
+    
+    Route::match(['get', 'post'],'trip_expense/store_payment/{id?}','App\Http\Controllers\TripController@store_payment')->name('trip_expense.create_payment');
+    Route::match(['get', 'post'],'trip_income/store_payment/{invoice_id?}','App\Http\Controllers\TripController@store_payment_income')->name('trip_income.create_payment');
+    
+    Route::resource('trips',TripController::class);
+    
+});

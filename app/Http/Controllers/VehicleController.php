@@ -13,7 +13,7 @@ class VehicleController extends Controller
         $vehicles = Vehicle::all();
 
         // Return the view with the list of vehicles
-        return view('backend.vehicles.index', compact('vehicles'));
+        return view('backend.vehicles.list', compact('vehicles'));
     }
 
     public function create()

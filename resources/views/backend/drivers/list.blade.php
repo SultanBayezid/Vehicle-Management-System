@@ -1,21 +1,27 @@
 @extends('backend.layouts.header')
 
 @section('content')
-<div class="container-fluid px-4">
-                        <h1 class="mt-4">Drivers</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Drivers</li>
-                            <li  class="breadcrumb-item">
-                            <a href="{{ route('drivers.create') }}" class="btn btn-primary">Create New Driver</a>
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Drivers</h1>
+        </div>
+        <div class="col-md-6 text-md-right mt-3">
+            <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
+                href="{{ route('drivers.create') }}">
+                <i class="fas fa-plus"></i> {{ ('Add New') }}
+            </a>
+        </div>
+    </div>
 
-                            </li>
-                        </ol>
-                    
-                        <div class="card mb-4">
-                            <!-- <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div> -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">People</li>
+            <li class="breadcrumb-item active" aria-current="page">Drivers</li>
+        </ol>
+    </nav>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
@@ -64,7 +70,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+            
 
 
 

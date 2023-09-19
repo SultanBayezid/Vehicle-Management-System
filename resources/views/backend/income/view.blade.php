@@ -1,12 +1,22 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
+        <h1 class="display-4">Income Details</h1>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item active"  aria-current="page">Accounts</li>
+                <li class="breadcrumb-item active"  aria-current="page">Transactions</li>
+                <li class="breadcrumb-item"><a href="{{route('income.index')}}">Income/Deposit</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Income Details</li>
+            </ol>
+        </nav>
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="header-title">{{ _lang('Income Details') }}</h4>
-            </div>
+      
+     
 
             <div class="card-body">
                 <table class="table table-bordered">
@@ -43,7 +53,7 @@
                         <td>{{ _lang('Attachment') }}</td>
                         <td>
                             @if($transaction->attachment != "")
-                            <a href="{{ asset('public/uploads/transactions/'.$transaction->attachment) }}"
+                            <a href="{{ asset('uploads/transactions/'.$transaction->attachment) }}"
                                 target="_blank" class="btn btn-primary">{{ _lang('View Attachment') }}</a>
                             @else
                             <label class="label label-warning">
@@ -58,7 +68,8 @@
                     </tr>
                 </table>
             </div>
-        </div>
+       
     </div>
+</div>
 </div>
 @endsection
