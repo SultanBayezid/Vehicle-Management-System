@@ -109,8 +109,28 @@
 
                                         </nav>
                                     </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth2" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        <div class="sb-nav-link-icon"><i class="fas fa-angle-right"></i></div> Reports
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion2Pages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="{{ route('reports.account_statement') }}">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                                Account Statement
+                                            </a>
+                                            <a class="nav-link" href="{{ route('chart_of_accounts.index') }}">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                                Income Report
+                                            </a>
+                                        </nav>
+                                    </div>
                                 </nav>
                             </div>
+                          
+                              
+                          
+
                             <a class="nav-link" href="{{route('vehicles.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
                                 Reports

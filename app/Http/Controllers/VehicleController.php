@@ -59,7 +59,7 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
 
         // Return the view with the vehicle details
-        return view('vehicles.show', compact('vehicle'));
+        return view('backend.vehicles.view', compact('vehicle'));
     }
 
     public function edit($id)
@@ -68,13 +68,14 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
 
         // Show the form to edit the vehicle
-        return view('vehicles.edit', compact('vehicle'));
+        return view('backend.vehicles.edit', compact('vehicle'));
     }
 
     public function update(Request $request, $id)
     {
         // Validate the request data
         $validatedData = $request->validate([
+            'name' => 'nullable|string|max:255',
             'make' => 'required|string|max:255',
             'model' => 'required|string|max:255',
             'year' => 'required|integer',

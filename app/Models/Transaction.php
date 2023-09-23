@@ -39,8 +39,9 @@ class Transaction extends Model
     }
 
     public function getTransDateAttribute($value)
-    {
-		$date_format = get_date_format();
-        return \Carbon\Carbon::parse($value)->format("$date_format");
-    }
+{
+    $date_format = get_date_format();
+    return \Carbon\Carbon::parse($value)->format($date_format);
+}
+
 }

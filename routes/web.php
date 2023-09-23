@@ -49,5 +49,16 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     Route::match(['get', 'post'],'trip_income/store_payment/{invoice_id?}','App\Http\Controllers\TripController@store_payment_income')->name('trip_income.create_payment');
     
     Route::resource('trips',TripController::class);
+
+
+
+    //Report Controller
+			Route::match(['get', 'post'],'reports/account_statement/{view?}', 'App\Http\Controllers\ReportController@account_statement')->name('reports.account_statement');
+			Route::match(['get', 'post'],'reports/income_report/{view?}', 'App\Http\Controllers\ReportController@income_report')->name('reports.income_report');
+			Route::match(['get', 'post'],'reports/expense_report/{view?}', 'App\Http\Controllers\ReportController@expense_report')->name('reports.expense_report');
+			Route::match(['get', 'post'],'reports/transfer_report/{view?}', 'App\Http\Controllers\ReportController@transfer_report')->name('reports.transfer_report');
+			Route::match(['get', 'post'],'reports/income_vs_expense/{view?}', 'App\Http\Controllers\ReportController@income_vs_expense')->name('reports.income_vs_expense');
+			Route::match(['get', 'post'],'reports/report_by_payer/{view?}', 'App\Http\Controllers\ReportController@report_by_payer')->name('reports.report_by_payer');
+			Route::match(['get', 'post'],'reports/report_by_payee/{view?}', 'App\Http\Controllers\ReportController@report_by_payee')->name('reports.report_by_payee');
     
 });

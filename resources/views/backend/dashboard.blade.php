@@ -12,6 +12,7 @@ $vehicles = App\Models\Vehicle::All();
 $vehiclescount = $vehicles->count();
 $tripCount = $tripsall->count();
 @endphp
+@php $currency = currency(); @endphp
         <!-- Widgets -->
         <div class="col-lg-3 col-md-6">
             <div class="card shadow mb-4">
@@ -38,7 +39,7 @@ $tripCount = $tripsall->count();
                         </div>
                         <div class="col-9 text-right">
                             <div class="h5 mb-0 font-weight-bold text-gray-800">Revenue</div>
-                            <div class="h3 mb-0 font-weight-bold text-gray-800">৳{{current_month_income()}}</div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">{{currency()}}{{current_month_income()}}</div>
                         </div>
                     </div>
                 </div>
@@ -54,7 +55,7 @@ $tripCount = $tripsall->count();
                         </div>
                         <div class="col-9 text-right">
                             <div class="h5 mb-0 font-weight-bold text-gray-800">Expenses</div>
-                            <div class="h3 mb-0 font-weight-bold text-gray-800">৳{{current_month_expense() }}</div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">{{currency()}}{{current_month_expense() }}</div>
                 
                         </div>
                     </div>
@@ -146,6 +147,34 @@ $tripCount = $tripsall->count();
                 </div>
             </div>
         </div>
+        <div class="col-xl-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="header-title">{{ _lang('Financial Account Balance') }}</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>{{ _lang('A/C') }}</th>
+                            <th>{{ _lang('A/C Number') }}</th>
+                            <th class="text-right">{{ _lang('Balance') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(get_financial_balance() as $account)
+                        <tr id="row_{{ $account->id }}">
+                            <td class='account_title'>{{ $account->account_title }}</td>
+                            <td class='account_number'>{{ $account->account_number }}</td>
+                            <td class='opening_balance text-right'>{{ decimalPlace($account->balance, $currency) }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     </div>
 </div>
 @endsection

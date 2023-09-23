@@ -24,15 +24,15 @@
                             @csrf
                             <!-- Row 1 -->
                             <div class="row mb-3">
-                                <!-- <div class="col-md-4">
+                                <div class="col-md-4">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="name" name="name" >
-                                </div> -->
-                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-4">
                                     <label for="make" class="form-label">Make</label>
                                     <input type="text" class="form-control" id="make" name="make" >
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="model" class="form-label">Model</label>
                                     <input type="text" class="form-control" id="model" name="model" >
                                 </div>

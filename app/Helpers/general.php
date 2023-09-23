@@ -473,6 +473,9 @@ if (!function_exists('money_format_2')) {
         $decimal_sep   = get_option('decimal_sep', '.');
         $thousand_sep  = get_option('thousand_sep', ',');
 
+        // Convert $floatcurr to a float if it's a string
+        $floatcurr = is_numeric($floatcurr) ? (float)$floatcurr : 0.0;
+
         return number_format($floatcurr, $decimal_place, $decimal_sep, $thousand_sep);
     }
 }
@@ -924,11 +927,11 @@ if (!function_exists('currency')) {
 
 if (!function_exists('get_date_format')) {
     function get_date_format() {
-        $date_format = Cache::get('date_format');
+        $date_format = cache('date_format');
 
-        if ($date_format == '') {
-            $date_format = get_option('date_format','Y-m-d');
-            \Cache::put('date_format', $date_format);
+        if (!$date_format) {
+            $date_format = get_option('date_format', 'Y-m-d');
+            cache(['date_format' => $date_format], now()->addHours(24)); // Cache for 24 hours
         }
 
         return $date_format;
@@ -939,13 +942,11 @@ if (!function_exists('get_time_format')) {
     function get_time_format() {
         $time_format = Cache::get('time_format');
 
-        if ($time_format == '') {
+        if ($time_format === null) {
             $time_format = get_option('time_format');
             \Cache::put('time_format', $time_format);
         }
 
-        $time_format = $time_format == 24 ? 'H:i' : 'h:i A';
-
-        return $time_format;
+        return $time_format == 24 ? 'H:i' : 'h:i A';
     }
 }
