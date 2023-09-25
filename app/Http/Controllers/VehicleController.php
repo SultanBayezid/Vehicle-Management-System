@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehicle;
+use App\Models\Service;
+use App\Models\Issue;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -56,10 +58,12 @@ class VehicleController extends Controller
     public function show($id)
     {
         // Find the vehicle by its ID
-        $vehicle = Vehicle::findOrFail($id);
+        $data['services'] = Service::where('vehicle_id', $id)->get();
+        $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        $data['vehicle'] = Vehicle::findOrFail($id);
 
         // Return the view with the vehicle details
-        return view('backend.vehicles.view', compact('vehicle'));
+        return view('backend.vehicles.view', $data);
     }
 
     public function edit($id)
@@ -111,4 +115,20 @@ class VehicleController extends Controller
         // Redirect to the index page with a success message
         return redirect()->route('vehicles.index')->with('success', 'Vehicle deleted successfully');
     }
+
+    public function VehicleService($id){
+        $data['services'] = Service::where('vehicle_id', $id)->get();
+        $data['vehicle'] = Vehicle::findOrFail($id);
+        $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        return view('backend.vehicles.services.list', $data);
+    }
+    public function VehicleIssue($id){
+        $data['services'] = Service::where('vehicle_id', $id)->get();
+        $data['vehicle'] = Vehicle::findOrFail($id);
+        $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        return view('backend.vehicles.issues.list', $data);
+    }
+    
+
+    
 }

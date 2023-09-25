@@ -8,7 +8,7 @@
             <h1 class="display-4">Drivers</h1>
         </div>
         <div class="col-md-6 text-md-right mt-3">
-            <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
+            <a class="btn btn-primary btn-sm mtop" data-title="{{ ('Add Income') }}"
                 href="{{ route('drivers.create') }}">
                 <i class="fas fa-plus"></i> {{ ('Add New') }}
             </a>
@@ -22,7 +22,7 @@
             <li class="breadcrumb-item active" aria-current="page">Drivers</li>
         </ol>
     </nav>
-                            <div class="card-body">
+    <div class="card"> <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
@@ -69,6 +69,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
                         </div>
             
 

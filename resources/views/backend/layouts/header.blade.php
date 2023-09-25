@@ -22,6 +22,22 @@
 
     border-radius: 0px !important;
 }
+.report-header {
+    text-align: center;
+    padding: 10px 0px;
+}
+.mtop{
+    margin-top:32px !important;
+}
+.nav-tabs {
+    --bs-nav-tabs-border-width: 0px !important;
+
+}
+.borderright{
+
+    border-right: 1px solid #495057;
+}
+
    </style>
    
     </head>

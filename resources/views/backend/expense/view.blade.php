@@ -50,7 +50,7 @@
                         <td>{{ _lang('Attachment') }}</td>
                         <td>
                             @if($transaction->attachment != "")
-                            <a href="{{ asset('public/uploads/transactions/'.$transaction->attachment) }}"
+                            <a href="{{ asset('uploads/transactions/'.$transaction->attachment) }}"
                                 target="_blank" class="btn btn-primary btn-sm">{{ _lang('View Attachment') }}</a>
                             @else
                             <label class="label label-warning">

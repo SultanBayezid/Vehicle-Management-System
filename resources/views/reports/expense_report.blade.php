@@ -1,13 +1,24 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">{{ _lang('Expense Report') }}</h1>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reports</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Expense Report') }}</li>
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="header-title">{{ _lang('Expense Report') }}</h4>
-            </div>
-
             <div class="card-body">
 
                 <div class="report-params">
@@ -18,16 +29,16 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Start Date') }}</label>
-                                    <input type="text" class="form-control datepicker" name="date1" id="date1"
-                                        value="{{ isset($date1) ? $date1 : old('date1') }}" readOnly="true" required>
+                                    <input type="date" class="form-control datepicker" name="date1" id="date1"
+                                        value="{{ isset($date1) ? $date1 : old('date1') }}" required>
                                 </div>
                             </div>
 
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('End Date') }}</label>
-                                    <input type="text" class="form-control datepicker" name="date2" id="date2"
-                                        value="{{ isset($date2) ? $date2 : old('date2') }}" readOnly="true" required>
+                                    <input type="date" class="form-control datepicker" name="date2" id="date2"
+                                        value="{{ isset($date2) ? $date2 : old('date2') }}"  required>
                                 </div>
                             </div>
 
@@ -37,7 +48,8 @@
                                     <select class="form-control auto-select" name="account"
                                         data-selected="{{ isset($account) ? $account : old('account') }}">
                                         <option value="">{{ _lang('All Account') }}</option>
-                                        {{ create_option('accounts','id','account_title','',array('company_id=' => company_id())) }}
+                                        {{ create_option('accounts', 'id', 'account_title', '', array()) }}
+
                                     </select>
                                 </div>
                             </div>
@@ -48,12 +60,13 @@
                                     <select class="form-control auto-select select2" name="category"
                                         data-selected="{{ isset($category) ? $category : old('category') }}">
                                         <option value="">{{ _lang('All Category') }}</option>
-                                        {{ create_option("chart_of_accounts","id","name","",array("type="=>"income","AND company_id="=>company_id())) }}
+                                        {{ create_option("chart_of_accounts", "id", "name", "", array("type=" => "income")) }}
+
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-2 mtop">
                                 <button type="submit" class="btn btn-primary btn-sm">{{ _lang('View Report') }}</button>
                             </div>
                         </div>
@@ -96,6 +109,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

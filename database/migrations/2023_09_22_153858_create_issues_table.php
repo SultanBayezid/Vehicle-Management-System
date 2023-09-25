@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('VehicleId');
-            $table->bigInteger('AssigneeUserId')->nullable();
-            $table->string('desc')->nullable();
+            $table->bigInteger('vehicle_id');
+            $table->bigInteger('driver_id')->nullable();
+            $table->string('summary')->nullable();
+            $table->string('description')->nullable();
             $table->string('priority')->nullable();
             $table->string('image')->nullable();
-            $table->date('DueDate')->nullable();
-            $table->date('reportDate')->nullable();
+            $table->date('due_date')->nullable();
+            $table->date('report_date')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

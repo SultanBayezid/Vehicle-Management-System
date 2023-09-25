@@ -16,7 +16,7 @@
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#!">Settings</a></li>
+            <li><a class="dropdown-item" href="{{route('services.index')}}">services</a></li>
             <li><a class="dropdown-item" href="#!">Activity Log</a></li>
             <li><hr class="dropdown-divider" /></li>
             <li>
@@ -49,13 +49,12 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('drivers.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-id-badge"></i></div>
+                                
+                                <a class="nav-link" href="{{route('contacts.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
+                                {{ ('Contacts') }}</a>
+                         
+                                <a class="nav-link" href="{{route('drivers.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-id-badge"></i></div>
                                 Drivers</a>
-                                <a class="nav-link" href="#"> <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
-                                Customers</a>
-                                <a class="nav-link" href="#"> <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
-                                Agents</a>
-                                    
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#vehiclesLayouts" aria-expanded="false" aria-controls="vehiclesLayouts">
@@ -95,6 +94,8 @@
                                 Accounts</a>
                                             <a class="nav-link" href="{{route('chart_of_accounts.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
                                 Income/Expense Types</a>
+                                <a class="nav-link" href="{{route('payment_methods.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                Payment Mode</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -119,10 +120,32 @@
                                                 <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
                                                 Account Statement
                                             </a>
-                                            <a class="nav-link" href="{{ route('chart_of_accounts.index') }}">
+                                            <a class="nav-link" href="{{ route('reports.income_report') }}">
                                                 <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
                                                 Income Report
                                             </a>
+                                            <a class="nav-link" href="{{ route('reports.expense_report') }}">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                                Expense Report
+                                            </a>
+                                            <a class="nav-link" href="{{ route('reports.transfer_report') }}">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                                Transfer Report
+                                            </a>
+
+                                            <a class="nav-link" href="{{ route('reports.income_vs_expense') }}">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                                Income VS Expense
+                                            </a>
+                                            <a class="nav-link" href="{{ route('reports.report_by_payer') }}">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                                Report by Payer
+                                            </a>
+                                            <a class="nav-link" href="{{ route('reports.report_by_payee') }}">
+                                                <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
+                                                Report by Payee
+                                            </a>
+                                            
                                         </nav>
                                     </div>
                                 </nav>

@@ -7,25 +7,18 @@
         <div class="col-md-6">
             <h1 class="display-4">{{ _lang('Account Statement') }}</h1>
         </div>
-        <div class="col-md-6 text-md-right mt-3">
-            <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
-                href="{{ route('drivers.create') }}">
-                <i class="fas fa-plus"></i> {{ ('Add New') }}
-            </a>
-        </div>
     </div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">People</li>
-            <li class="breadcrumb-item"><a href="{{route('drivers.index')}}">Drivers</a></li>
-
+            <li class="breadcrumb-item active" aria-current="page">Reports</li>
             <li class="breadcrumb-item active" aria-current="page">{{ _lang('Account Statement') }}</li>
         </ol>
     </nav>
 <div class="row">
     <div class="col-md-12">
+    <div class="card">
     <div class="card-body">
                 <div class="report-params">
                     <form class="validate" method="post" action="{{ route('reports.account_statement','view') }}">
@@ -69,7 +62,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-2 mtop">
                                 <button type="submit" class="btn btn-primary btn-sm">{{ _lang('View Report') }}</button>
                             </div>
                         </div>
@@ -123,6 +116,7 @@
                         @endif
                     </tbody>
                 </table>
+            </div>
             </div>
 </div>
 </div>

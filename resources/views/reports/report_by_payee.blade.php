@@ -1,18 +1,24 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
-<style>
-.btn {
-    margin-bottom: 2px !important;
-}
-</style>
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">{{ _lang('Report By Payee') }}</h1>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reports</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Report By Payee') }}</li>
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-md-12">
         <div class="card panel-default">
-            <div class="card-header">
-                <h4 class="header-title">{{ _lang('Report By Payee') }}</h4>
-            </div>
-
             <div class="card-body">
 
                 <div class="report-params">
@@ -23,16 +29,16 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('Start Date') }}</label>
-                                    <input type="text" class="form-control datepicker" name="date1" id="date1"
-                                        value="{{ isset($date1) ? $date1 : old('date1') }}" readOnly="true" required>
+                                    <input type="date" class="form-control datepicker" name="date1" id="date1"
+                                        value="{{ isset($date1) ? $date1 : old('date1') }}"  required>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">{{ _lang('End Date') }}</label>
-                                    <input type="text" class="form-control datepicker" name="date2" id="date2"
-                                        value="{{ isset($date2) ? $date2 : old('date2') }}" readOnly="true" required>
+                                    <input type="date" class="form-control datepicker" name="date2" id="date2"
+                                        value="{{ isset($date2) ? $date2 : old('date2') }}"  required>
                                 </div>
                             </div>
 
@@ -41,12 +47,13 @@
                                     <label class="control-label">{{ _lang('Payer') }}</label>
                                     <select class="form-control select2" name="payee_id">
                                         <option value="">{{ _lang('Select One') }}</option>
-                                        {{ create_option("contacts","id","contact_name",isset($payer_id) ? $payer_id : "",array("company_id="=>company_id())) }}
+                                        {{ create_option("contacts", "id", "contact_name", isset($payee_id) ? $payee_id : "") }}
+
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-3 mtop">
                                 <button type="submit"
                                     class="btn btn-primary btn-smk">{{ _lang('View Report') }}</button>
                             </div>
@@ -92,5 +99,6 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 @endsection

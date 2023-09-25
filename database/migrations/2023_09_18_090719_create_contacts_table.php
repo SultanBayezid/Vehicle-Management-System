@@ -16,20 +16,20 @@ return new class extends Migration
 			$table->string('profile_type',20);
 			$table->string('company_name',50)->nullable();
 			$table->string('contact_name',50);
-			$table->string('contact_email',100)->nullable();
+			$table->string('contact_email',100);
 			$table->string('contact_phone',20)->nullable();
 			$table->string('country',50)->nullable();
 			$table->string('city',50)->nullable();
 			$table->string('state',50)->nullable();
 			$table->string('zip',20)->nullable();
 			$table->text('address')->nullable();
+			$table->string('facebook')->nullable();
+			$table->string('twitter')->nullable();
+			$table->string('linkedin')->nullable();
 			$table->text('remarks')->nullable();
 			$table->string('contact_image')->nullable();
-            $table->string('emergency_contact')->nullable();
-            $table->string('emergency_phone')->nullable();
             $table->bigInteger('group_id');
-            $table->string('license_number')->nullable();
-            $table->date('license_expiry_date')->nullable();
+            $table->bigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

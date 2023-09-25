@@ -32,12 +32,21 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+    Route::get('vehicle/services/list/{id}', 'App\Http\Controllers\VehicleController@VehicleService')->name('vehicle_services');
+    Route::get('vehicle/issues/list/{id}', 'App\Http\Controllers\VehicleController@VehicleIssue')->name('vehicle_issues');
     Route::resource('vehicles', VehicleController::class);
     Route::resource('drivers', DriverController::class);
     Route::resource('chart_of_accounts', ChartOfAccountController::class);
     Route::resource('income', IncomeController::class);
     Route::resource('accounts', AccountController::class);
-    Route::resource('contacts','ContactController');
+    	//Contact Controller
+			Route::get('contacts/get_table_data','App\Http\Controllers\ContactController@get_table_data');
+			Route::post('contacts/send_email/{id}','App\Http\Controllers\ContactController@send_email')->name('contacts.send_email');
+			Route::resource('contacts','App\Http\Controllers\ContactController');
+			Route::resource('issues','App\Http\Controllers\IssueController');
+            Route::get('/fetch-issues-by-vehicle/{vehicleId}', 'ServiceController@fetchIssuesByVehicle');
+			Route::resource('services','App\Http\Controllers\ServiceController');
+            
     Route::resource('payment_methods', PaymentMethodController::class);
     Route::resource('expense',ExpenseController::class);
     
