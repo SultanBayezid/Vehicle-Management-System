@@ -1,25 +1,14 @@
-@extends('backend.layouts.header')
-
-@section('content')
-<div class="container">
-        <h1 class="display-4">Service Details</h1>
-
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                <li class="breadcrumb-item active"  aria-current="page">Accounts</li>
-                <li class="breadcrumb-item active"  aria-current="page">Transactions</li>
-                <li class="breadcrumb-item"><a href="{{route('services.index')}}">services</a></li>
-                <li class="breadcrumb-item active" aria-current="page">service Details</li>
-            </ol>
-        </nav>
-<div class="row">
-    <div class="col-md-12">
-      
-     
-
-            <div class="card-body">
-                <table class="table table-bordered">
+<div class="modal fade" id="showModal{{$service->id}}" tabindex="-1" role="dialog" aria-labelledby="showModalLabel{{$service->id}}" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showModalLabel{{$service->id}}">Service Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <table class="table table-bordered">
                     <tr>
                         <td>{{ _lang('Vehicle') }}</td>
                         <td>{{$service->vehicle->name}}</td>
@@ -70,8 +59,7 @@
                     </tr>
                 </table>
             </div>
-       
+
+        </div>
     </div>
 </div>
-</div>
-@endsection

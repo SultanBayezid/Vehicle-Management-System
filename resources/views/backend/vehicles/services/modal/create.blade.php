@@ -40,7 +40,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Select any issues that were resolved as part of this service') }}</label> <br>
-                                            @foreach($service->issues as $issue)
+                                            @foreach($issues as $issue)
                                                 <input type="checkbox" name="issues[]" value="{{ $issue->id }}" >
                                                 {{ $issue->summary }}
                                             </label><br>

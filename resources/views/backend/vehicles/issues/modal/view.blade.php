@@ -1,25 +1,14 @@
-@extends('backend.layouts.header')
-
-@section('content')
-<div class="container">
-        <h1 class="display-4">Issue Details</h1>
-
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                <li class="breadcrumb-item active"  aria-current="page">Accounts</li>
-                <li class="breadcrumb-item active"  aria-current="page">Transactions</li>
-                <li class="breadcrumb-item"><a href="{{route('issues.index')}}">Issues</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
-            </ol>
-        </nav>
-<div class="row">
-    <div class="col-md-12">
-      
-     
-
-            <div class="card-body">
-                <table class="table table-bordered">
+<div class="modal fade" id="showModal{{$issue->id}}" tabindex="-1" role="dialog" aria-labelledby="showModalLabel{{$issue->id}}" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showModalLabel{{$issue->id}}">Issue Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <table class="table table-bordered">
                     <tr>
                         <td>{{ _lang('Vehicle') }}</td>
                         <td>{{$issue->vehicle->name}}</td>
@@ -71,8 +60,7 @@
                     </tr>
                 </table>
             </div>
-       
+
+        </div>
     </div>
 </div>
-</div>
-@endsection
