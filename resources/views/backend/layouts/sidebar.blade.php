@@ -65,11 +65,13 @@
                             <div class="collapse" id="vehiclesLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-car-alt"></i></div>
-                                Cars</a>
-                                <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-car-crash"></i></div>
-                                Make</a>
-                                <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-shuttle-van"></i></div>
-                                Models</a>
+                                Vehicle List</a>
+                                <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fa fa-wrench"></i></div>
+                                Services</a>
+                                <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-tools"></i></div>
+                                Issues</a>
+                                <a class="nav-link" href="{{route('vehicles.index')}}"> <div class="sb-nav-link-icon"><i class="fas fa-gas-pump"></i></div>
+                                Fuels History</a>
                                    
                                 </nav>
                             </div>
