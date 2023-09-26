@@ -34,6 +34,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
     Route::get('vehicle/services/list/{id}', 'App\Http\Controllers\VehicleController@VehicleService')->name('vehicle_services');
     Route::get('vehicle/issues/list/{id}', 'App\Http\Controllers\VehicleController@VehicleIssue')->name('vehicle_issues');
+    Route::get('vehicle/fuel/list/{id}', 'App\Http\Controllers\VehicleController@VehicleFuels')->name('vehicle_fuels');
     Route::resource('vehicles', VehicleController::class);
     Route::resource('drivers', DriverController::class);
     Route::resource('chart_of_accounts', ChartOfAccountController::class);
@@ -46,6 +47,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 			Route::resource('issues','App\Http\Controllers\IssueController');
             Route::get('/fetch-issues-by-vehicle/{vehicleId}', 'ServiceController@fetchIssuesByVehicle');
 			Route::resource('services','App\Http\Controllers\ServiceController');
+            
+			Route::resource('fuels','App\Http\Controllers\FuelController');
+
             
     Route::resource('payment_methods', PaymentMethodController::class);
     Route::resource('expense',ExpenseController::class);

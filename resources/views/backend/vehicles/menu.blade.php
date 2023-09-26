@@ -18,6 +18,12 @@
               </a>
           </li>
           <li class="nav-item">
+              <a class="nav-link {{ request()->routeIs('vehicle_fuels') ? 'active' : '' }}"
+                href="{{ route('vehicle_fuels', $vehicle->id) }}">
+                  <i class="ti-pencil-alt"></i> {{ _lang('Fuel History') }}
+              </a>
+          </li>
+          <li class="nav-item">
               <a class="nav-link {{ request()->routeIs('vehicles.edit') ? 'active' : '' }}"
                 href="{{ route('vehicles.edit', $vehicle->id) }}">
                   <i class="ti-pencil-alt"></i> {{ _lang('Edit') }}

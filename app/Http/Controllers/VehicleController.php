@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vehicle;
 use App\Models\Service;
 use App\Models\Issue;
+use App\Models\Fuel;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -61,6 +62,8 @@ class VehicleController extends Controller
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
+        $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
+
 
         // Return the view with the vehicle details
         return view('backend.vehicles.view', $data);
@@ -120,15 +123,26 @@ class VehicleController extends Controller
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
+
         return view('backend.vehicles.services.list', $data);
     }
     public function VehicleIssue($id){
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
+
         return view('backend.vehicles.issues.list', $data);
     }
     
-
+    public function VehicleFuels($id){
+        $data['services'] = Service::where('vehicle_id', $id)->get();
+        $data['vehicle'] = Vehicle::findOrFail($id);
+        $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
+        return view('backend.vehicles.fuels.list', $data);
+    }
+    
     
 }
