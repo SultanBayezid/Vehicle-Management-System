@@ -149,11 +149,12 @@ $tripCount = $tripsall->count();
         </div>
         <div class="col-xl-12">
         <div class="card mb-4">
-            <div class="card-header">
-                <h4 class="header-title">{{ _lang('Financial Account Balance') }}</h4>
-            </div>
+            <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">{{_lang('Financial Account Balance')}}</h6>
+                </div>
+
             <div class="card-body">
-                <table class="table table-bordered">
+            <table class="table table-bordered" id="datatablesSimple" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>{{ _lang('A/C') }}</th>

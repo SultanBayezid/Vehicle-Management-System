@@ -6,6 +6,7 @@ use App\Models\Vehicle;
 use App\Models\Service;
 use App\Models\Issue;
 use App\Models\Fuel;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -142,6 +143,15 @@ class VehicleController extends Controller
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
         $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
         return view('backend.vehicles.fuels.list', $data);
+    }
+
+    public function VehicleTrip($id){
+        $data['services'] = Service::where('vehicle_id', $id)->get();
+        $data['vehicle'] = Vehicle::findOrFail($id);
+        $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
+        $data['trips'] = Trip::where('vehicle_id', $id)->get();
+        return view('backend.vehicles.trips.list', $data);
     }
     
     

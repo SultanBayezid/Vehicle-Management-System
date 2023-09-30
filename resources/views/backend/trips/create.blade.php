@@ -50,7 +50,7 @@
                         <select class="form-control select2-ajax" data-value="id" data-display="make"
                                     data-table="vehicles" data-where="1" name="vehicle_id">
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("vehicles", "id", "make", old('vehicle_id')) }}
+                                    {{ create_option("vehicles", "id", "name", old('vehicle_id')) }}
 
                                 </select>
                     </div>

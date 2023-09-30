@@ -35,6 +35,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     Route::get('vehicle/services/list/{id}', 'App\Http\Controllers\VehicleController@VehicleService')->name('vehicle_services');
     Route::get('vehicle/issues/list/{id}', 'App\Http\Controllers\VehicleController@VehicleIssue')->name('vehicle_issues');
     Route::get('vehicle/fuel/list/{id}', 'App\Http\Controllers\VehicleController@VehicleFuels')->name('vehicle_fuels');
+    Route::get('vehicle/trip/list/{id}', 'App\Http\Controllers\VehicleController@VehicleTrip')->name('vehicle_trips');
     Route::resource('vehicles', VehicleController::class);
     Route::resource('drivers', DriverController::class);
     Route::resource('chart_of_accounts', ChartOfAccountController::class);
@@ -63,6 +64,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     
     Route::resource('trips',TripController::class);
 
+
+    //Company Settings Controller
+			Route::post('company/upload_logo', 'App\Http\Controllers\CompanySettingController@upload_logo')->name('company.change_logo');
+			Route::resource('settings','App\Http\Controllers\CompanySettingController');
 
 
     //Report Controller

@@ -60,7 +60,7 @@
                                     <select class="form-control auto-select select2" name="category"
                                         data-selected="{{ isset($category) ? $category : old('category') }}">
                                         <option value="">{{ _lang('All Category') }}</option>
-                                        {{ create_option("chart_of_accounts", "id", "name", "", array("type=" => "income")) }}
+                                        {{ create_option("chart_of_accounts", "id", "name", "", array("type=" => "expense")) }}
 
                                     </select>
                                 </div>

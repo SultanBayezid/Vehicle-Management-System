@@ -97,8 +97,10 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="purchase_price" class="form-label">Purchase Price</label>
-                                    <input type="number" class="form-control" id="purchase_price"  value="{{$vehicle->purchase_price}}"  name="purchase_price" >
-                                </div>
+                                    <input type="text" class="form-control" id="purchase_price"  value=" {{ number_format($vehicle->purchase_price, 2)}}"  name="purchase_price" >
+                               <p>
+                            
+                               </p> </div>
                                 <div class="col-md-4">
                                     <label for="last_service_date" class="form-label">Last Service Date</label>
                                     <input type="date" class="form-control" id="last_service_date"  value="{{$vehicle->last_service_date}}"  name="last_service_date">
@@ -108,7 +110,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <label for="odometer_reading" class="form-label">Odometer Reading</label>
-                                    <input type="number" class="form-control" id="odometer_reading"  value="{{$vehicle->odometer_reading}}"  name="odometer_reading">
+                                    <input type="text" class="form-control" id="odometer_reading"  value="{{number_format($vehicle->odometer_reading)}}"  name="odometer_reading">
                                 </div>
                                 <!-- Add additional rows and fields as needed -->
 
