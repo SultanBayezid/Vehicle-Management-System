@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
           $table->id();
-        $table->string('name')->nullable();
+        $table->string('name');
         $table->string('make');
         $table->string('model');
-        $table->year('year');
+        $table->year('year')->nullable();
         $table->string('vin')->nullable();
-        $table->string('color');
+        $table->string('color')->nullable();
         $table->unsignedInteger('mileage')->nullable();
         $table->string('license_plate')->nullable();
         $table->string('engine_number')->nullable();
