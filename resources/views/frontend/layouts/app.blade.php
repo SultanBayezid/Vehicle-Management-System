@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/css/splide.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/slimselect.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css" integrity="sha512-QfDd74mlg8afgSqm3Vq2Q65e9b3xMhJB4GZ9OcHDVy1hZ6pqBJPWWnMsKDXM7NINoKqJANNGBuVRIpIJ5dogfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 	<!-- Favicons -->
@@ -21,6 +22,11 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="Dmitry Volkov">
 	<title>Waydex – Car rental HTML Template</title>
+	<style>
+		.mr2 {
+    margin-left: 10px;
+}
+	</style>
 
 </head>
 <body>
@@ -31,59 +37,41 @@
 				<div class="col-12">
 					<div class="header__content">
 						<div class="header__logo">
-                            Ominiverse Dynamaics
-							<a href="index-2.html">
-								<img src="img/logo.svg" alt="">
+                            
+							<a href="/">
+							<span> <i class="fas fa-car"></i> </span> Ominiverse Dynamaics
 							</a>
 						</div>
 
 						<div class="header__menu">
 							<ul class="header__nav">
+							<li class="header__nav-item">
+									<a href="/" class="header__nav-link">Home</a>
+								</li>
+				
 								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Home <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
+									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cars <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
 
 									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="index-2.html">Home style 1</a></li>
-										<li><a href="index2.html">Home style 2</a></li>
+										<li><a href="cars.html">Cars for Rent</a></li>
+										<li><a href="cars2.html">Cars for Sale</a></li>
+
 									</ul>
 								</li>
+				
 								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Explore cars <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
+									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solutions <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
 
 									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="cars.html">Explore one</a></li>
-										<li><a href="cars2.html">Explore two</a></li>
-										<li><a href="cars3.html">Explore three</a></li>
-										<li><a href="car.html">Car details</a></li>
+										<li><a href="about.html">Vehicle Managemenet</a></li>
+										<li><a href="account.html">Fuel Station Integration</a></li>
+					
 									</ul>
 								</li>
 								<li class="header__nav-item">
 									<a href="faq.html" class="header__nav-link">Help center</a>
 								</li>
-								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
-
-									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="about.html">About us</a></li>
-										<li><a href="account.html">Account</a></li>
-										<li><a href="blog.html">Blog style 1</a></li>
-										<li><a href="blog2.html">Blog style 2</a></li>
-										<li><a href="article.html">Article</a></li>
-										<li><a href="pricing.html">Pricing plans</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-									</ul>
-								</li>
-								<li class="header__nav-item">
-									<a class="header__nav-link header__nav-link--menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,10a2,2,0,1,0,2,2A2,2,0,0,0,12,10ZM5,10a2,2,0,1,0,2,2A2,2,0,0,0,5,10Zm14,0a2,2,0,1,0,2,2A2,2,0,0,0,19,10Z"/></svg></a>
-
-									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="signin.html">Sign in</a></li>
-										<li><a href="signup.html">Sign up</a></li>
-										<li><a href="forgot.html">Forgot password</a></li>
-										<li><a href="404.html">404 Page</a></li>
-										<li><a href="privacy.html">Privacy policy</a></li>
-									</ul>
-								</li>
+							
 							</ul>
 						</div>
 
@@ -105,12 +93,49 @@
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z"/></svg>
 								</a>
 
+								
+								<!-- Display dropdown menu for account options -->
 								<ul class="dropdown-menu header__profile-menu">
-									<li><a href="account.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z"/></svg> <span>My account</span></a></li>
-									<li><a href="account.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9,12H7a1,1,0,0,0,0,2H9a1,1,0,0,0,0-2ZM8,10h4a1,1,0,0,0,0-2H8a1,1,0,0,0,0,2Zm1,6H7a1,1,0,0,0,0,2H9a1,1,0,0,0,0-2Zm12-4H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Zm-6.44-2.83a.76.76,0,0,0-.18-.09.6.6,0,0,0-.19-.06,1,1,0,0,0-.9.27A1.05,1.05,0,0,0,12,17a1,1,0,0,0,.07.38,1.19,1.19,0,0,0,.22.33,1.15,1.15,0,0,0,.33.21.94.94,0,0,0,.76,0,1.15,1.15,0,0,0,.33-.21A1,1,0,0,0,14,17a1.05,1.05,0,0,0-.29-.71A1.58,1.58,0,0,0,13.56,16.17Zm.14-3.88a1,1,0,0,0-1.62.33A1,1,0,0,0,13,14a1,1,0,0,0,1-1,1,1,0,0,0-.08-.38A.91.91,0,0,0,13.7,12.29Z"/></svg> <span>Billing</span></a></li>
-									<li><a href="account.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.9,12.66a1,1,0,0,1,0-1.32L21.18,9.9a1,1,0,0,0,.12-1.17l-2-3.46a1,1,0,0,0-1.07-.48l-1.88.38a1,1,0,0,1-1.15-.66l-.61-1.83A1,1,0,0,0,13.64,2h-4a1,1,0,0,0-1,.68L8.08,4.51a1,1,0,0,1-1.15.66L5,4.79A1,1,0,0,0,4,5.27L2,8.73A1,1,0,0,0,2.1,9.9l1.27,1.44a1,1,0,0,1,0,1.32L2.1,14.1A1,1,0,0,0,2,15.27l2,3.46a1,1,0,0,0,1.07.48l1.88-.38a1,1,0,0,1,1.15.66l.61,1.83a1,1,0,0,0,1,.68h4a1,1,0,0,0,.95-.68l.61-1.83a1,1,0,0,1,1.15-.66l1.88.38a1,1,0,0,0,1.07-.48l2-3.46a1,1,0,0,0-.12-1.17ZM18.41,14l.8.9-1.28,2.22-1.18-.24a3,3,0,0,0-3.45,2L12.92,20H10.36L10,18.86a3,3,0,0,0-3.45-2l-1.18.24L4.07,14.89l.8-.9a3,3,0,0,0,0-4l-.8-.9L5.35,6.89l1.18.24a3,3,0,0,0,3.45-2L10.36,4h2.56l.38,1.14a3,3,0,0,0,3.45,2l1.18-.24,1.28,2.22-.8.9A3,3,0,0,0,18.41,14ZM11.64,8a4,4,0,1,0,4,4A4,4,0,0,0,11.64,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,11.64,14Z"/></svg> <span>Settings</span></a></li>
-									<li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z"/></svg> <span>Sign out</span></a></li>
-								</ul>
+    @if (auth()->check())
+        @if (auth()->user()->user_type == 'user')
+            <!-- Display Admin options -->
+            <li>
+                <strong>{{ auth()->user()->name }}</strong>
+            </li>
+            <li><a href="{{'home'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">Dashboard</span></a></li>
+
+        @elseif (auth()->user()->user_type == 'client')
+            <!-- Display Client options -->
+            <li>
+                <strong>{{ auth()->user()->name }}</strong>
+            </li>
+            <li><a href="#"><i class="fas fa-user-alt fa-lg text-primary"></i> <span class="mr2">My Account</span></a></li>
+            <li><a href="#"><i class="fas fa-fas fa-poll-h fa-lg text-primary"></i> <span class="mr2">Billing</span></a></li>
+            <li><a href="#"><i class="fas fa-cogs fa-lg text-primary"></i> <span class="mr2">Settings</span></a></li>
+        @else
+            <!-- Unknown user type, display default options -->
+            <li>
+                <strong>{{ auth()->user()->name }}</strong>
+            </li>
+        @endif
+        <!-- Common logout option for all users -->
+        <li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt fa-lg text-primary"></i>
+                    <span class="mr2">Sign out</span>
+                </a>
+            </form>
+        </li>
+    @else
+        <!-- Display login and registration options for guests -->
+        <li><a href="{{ route('login') }}"><i class="fas fa-lock fa-lg text-primary"></i> <span class="mr2">Sign In</span></a></li>
+        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus fa-lg text-primary"></i> <span class="mr2">Register</span></a></li>
+    @endif
+</ul>
+
+
 							</div>
 						</div>
 
@@ -128,6 +153,16 @@
 
 	<!-- main content -->
 	<main class="main">
+		
+    @if(session('error'))
+	<div class="container">
+				<div class="row">
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        </div>
+        </div>
+    @endif
         @yield('content')
 			<!-- end news -->
 	</main>
@@ -146,13 +181,13 @@
 
 					<div class="footer__lang">
 						<a class="footer__lang-btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="img/flags/uk.svg" alt="">
+							<img src="{{asset('frontend/img/flags/uk.svg')}}" alt="">
 							<span>English</span>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg>
 						</a>
 
 						<ul class="dropdown-menu footer__lang-dropdown">
-							<li><a href="#"><img src="img/flags/spain.svg" alt=""><span>Spanish</span></a></li>
+							<li><a href="#"><img src="{{asset('frontend/img/flags/spain.svg')}}" alt=""><span>Spanish</span></a></li>
 							<li><a href="#"><img src="img/flags/france.svg" alt=""><span>French</span></a></li>
 							<li><a href="#"><img src="img/flags/china.svg" alt=""><span>Chinese</span></a></li>
 						</ul>
@@ -223,7 +258,7 @@
 							<a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm-.41,2-5.88,5.88a1,1,0,0,1-1.42,0L5.41,6ZM20,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7.41l5.88,5.88a3,3,0,0,0,4.24,0L20,7.41Z"/></svg></a>
 						</div>
 
-						<small class="footer__copyright">© Waydex, 2022—2023. Created by <a href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a>.</small>
+						<small class="footer__copyright">© Omniverse Dynamics, 2024. </small>
 					</div>
 				</div>
 			</div>

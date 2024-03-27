@@ -17,11 +17,25 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+	protected $fillable = [
+        'name', 'email', 'password', 'user_type', 'status', 'profile_picture',
     ];
+    
+    public function client(){
+		return $this->hasMany('App\Models\Contact','user_id');
+	}
+	
+
+    public function role(){
+        return $this->belongsTo('App\Models\Role','role_id')->withDefault();
+    }
+	
+
+
+  
+
+	
+
 
     /**
      * The attributes that should be hidden for serialization.

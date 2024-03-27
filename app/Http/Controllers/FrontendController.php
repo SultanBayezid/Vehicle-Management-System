@@ -12,4 +12,12 @@ class FrontendController extends Controller
         $data['vehicles'] = Vehicle::All();
         return view('frontend.home', $data);
     }
+
+    public function singleCar($id){
+
+        $data['vehicle'] = Vehicle::findOrfail($id);
+        return view('frontend.vehicles.show', $data);
+
+
+    }
 }

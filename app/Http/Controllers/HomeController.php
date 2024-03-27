@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard');
+        if (Auth::check()) {
+            if (auth()->user()->user_type == 'client') {
+                return redirect('/');
+            } else {
+                return view('backend.dashboard');
+            }
+        }
+        // Redirect to login page if user not authenticated
+        return redirect()->route('login');
     }
 }

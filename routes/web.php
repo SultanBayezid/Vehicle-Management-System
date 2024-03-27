@@ -28,10 +28,19 @@ use App\Http\Controllers\FrontendController;
 
 
 
-Route::get('/', 'App\Http\Controllers\FrontendController@index');
-Auth::routes();
-Route::middleware(['auth'])->group(function () {
+    Route::get('/', 'App\Http\Controllers\FrontendController@index');
 
+
+
+// Clinet Register 
+
+Route::post('/client_signup', 'App\Http\Controllers\Auth\RegisterController@client_signup')->name('client_signup');
+
+
+Route::get('/vehicle/show/{id}', [FrontendController::class, 'singleCar'])->name('single.vehicle');
+Auth::routes();
+
+    Route::group(['middleware' => ['company']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
     Route::get('vehicle/services/list/{id}', 'App\Http\Controllers\VehicleController@VehicleService')->name('vehicle_services');

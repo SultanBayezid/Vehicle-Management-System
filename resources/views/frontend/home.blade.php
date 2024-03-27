@@ -8,13 +8,12 @@
 			<!-- home bg -->
 			<div class="home__bg"></div>
 			<!-- end home bg -->
-
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
 						<div class="home__content">
-							<h1 class="home__title">The easy way to <br>takeover a lease</h1>
-							<p class="home__text">Live in New York, New Jerset and Connecticut!</p>
+							<h1 class="home__title">Manage, rent, sell <br> cars  all in one <br> convenient platform. </h1>
+							<p class="home__text">Omniverse not only streamlines vehicle management but also facilitates <br> car booking, rentals, and sales, providing a comprehensive solution <br> for your automotive needs. </p>
 
 							<form class="home__search" action="#">
 								<div class="home__group">
@@ -130,7 +129,7 @@
 							</div>
 						</div>
 						<div class="car__title">
-							<h3 class="car__name"><a href="car.html">{{$vehicle->name }}</a></h3>
+							<h3 class="car__name"><a href="{{route('single.vehicle', $vehicle->id)}}">{{$vehicle->name }}</a></h3>
 							<span class="car__year">{{$vehicle->year}}</span>
 						</div>
 						<ul class="car__list">

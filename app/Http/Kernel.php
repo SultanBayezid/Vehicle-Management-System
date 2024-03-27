@@ -43,6 +43,17 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+			  'admin' => [ // Create a group for admin middleware
+        \App\Http\Middleware\Admin::class,
+		],
+		
+		'company' => [ // Create a group for company middleware
+			\App\Http\Middleware\Company::class,
+		],
+		
+		'client' => [ // Create a group for client middleware
+			\App\Http\Middleware\Client::class,
+		],
     ];
 
     /**
