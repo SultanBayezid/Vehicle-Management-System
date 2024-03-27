@@ -11,6 +11,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\TripController;
+use App\Http\Controllers\FrontendController;
+
 
 
 /*
@@ -26,9 +28,9 @@ use App\Http\Controllers\TripController;
 
 
 
+Route::get('/', 'App\Http\Controllers\FrontendController@index');
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');

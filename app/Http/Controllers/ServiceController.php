@@ -53,6 +53,8 @@ class ServiceController extends Controller
         // Associate issues with the service (if checkboxes were used)
         $selectedIssues = $request->input('issues', []);
         $service->issues()->sync($selectedIssues);
+        
+        Issue::whereIn('id', $selectedIssues)->update(['status' => 2]);
 
         // Redirect to the service details page or the index page
         return redirect()->back();

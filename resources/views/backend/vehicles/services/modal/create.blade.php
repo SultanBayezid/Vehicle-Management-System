@@ -41,10 +41,12 @@
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Select any issues that were resolved as part of this service') }}</label> <br>
                                             @foreach($issues as $issue)
-                                                <input type="checkbox" name="issues[]" value="{{ $issue->id }}" >
-                                                {{ $issue->summary }}
-                                            </label><br>
-                                        @endforeach
+                                                @if($issue->status == 1)
+                                                    <input type="checkbox" name="issues[]" value="{{ $issue->id }}">
+                                                    {{ $issue->summary }}<br>
+                                                @endif
+                                            @endforeach
+
                                         </div>
                                     </div>
 
