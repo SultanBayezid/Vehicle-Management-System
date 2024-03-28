@@ -13,6 +13,12 @@ class FrontendController extends Controller
         return view('frontend.home', $data);
     }
 
+
+    public function rent()
+    {
+        $data['vehicles'] = Vehicle::All();
+        return view('frontend.vehicles.list', $data);
+    }
     public function singleCar($id){
 
         $data['vehicle'] = Vehicle::findOrfail($id);

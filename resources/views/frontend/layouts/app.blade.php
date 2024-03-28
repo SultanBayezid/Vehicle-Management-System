@@ -18,10 +18,10 @@
 	<link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
 	<link rel="apple-touch-icon" href="icon/favicon-32x32.png">
 
-	<meta name="description" content="Car rental HTML Template">
+	<meta name="description" content=" Ominiverse Dynamaics">
 	<meta name="keywords" content="">
-	<meta name="author" content="Dmitry Volkov">
-	<title>Waydex – Car rental HTML Template</title>
+	<meta name="author" content="Ominiverse Dynamaics">
+	<title> Ominiverse Dynamaics</title>
 	<style>
 		.mr2 {
     margin-left: 10px;
@@ -45,52 +45,43 @@
 
 						<div class="header__menu">
 							<ul class="header__nav">
-							<li class="header__nav-item">
-									<a href="/" class="header__nav-link">Home</a>
-								</li>
-				
-								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cars <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
-
-									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="cars.html">Cars for Rent</a></li>
-										<li><a href="cars2.html">Cars for Sale</a></li>
-
-									</ul>
-								</li>
-				
-								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Solutions <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
-
-									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="about.html">Vehicle Managemenet</a></li>
-										<li><a href="account.html">Fuel Station Integration</a></li>
 					
+								<li class="header__nav-item">
+									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">FEATURES <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
+
+									<ul class="dropdown-menu header__nav-menu">
+										<li><a href="/fleet-management">FLEET MANAGEMENT</a></li>
+										<li><a href="/trip-management">TRIP MANAGEMENT</a></li>
+										<li><a href="/financial-management">FINANCIAL MANAGEMENT</a></li>
+										<li><a href="/contact-management">CONTACT MANAGEMENT</a></li>
+
 									</ul>
 								</li>
 								<li class="header__nav-item">
-									<a href="faq.html" class="header__nav-link">Help center</a>
+									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SERVICES <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
+
+									<ul class="dropdown-menu header__nav-menu">
+										<li><a href="{{route('rent')}}">RENT A CAR</a></li>
+						
+
+									</ul>
+								</li>
+							
+					
+					
+								<li class="header__nav-item">
+									<a href="faq.html" class="header__nav-link">HELP CENTER</a>
 								</li>
 							
 							</ul>
 						</div>
 
 						<div class="header__actions">
-							<div class="header__phone">
-								<a href="tel:88002345678">8 800 234 56 78</a>
-								<span>Mom - Sat: 9:00 am - 6:00 pm</span>
-							</div>
-
-							<div class="header__action">
-								<a class="header__action-btn" href="cars.html">
-									<span>Explore cars</span>
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62,13.08a.9.9,0,0,0-.54.54,1,1,0,0,0,1.3,1.3,1.15,1.15,0,0,0,.33-.21,1.15,1.15,0,0,0,.21-.33A.84.84,0,0,0,8,14a1.05,1.05,0,0,0-.29-.71A1,1,0,0,0,6.62,13.08Zm13.14-4L18.4,5.05a3,3,0,0,0-2.84-2H8.44A3,3,0,0,0,5.6,5.05L4.24,9.11A3,3,0,0,0,2,12v4a3,3,0,0,0,2,2.82V20a1,1,0,0,0,2,0V19H18v1a1,1,0,0,0,2,0V18.82A3,3,0,0,0,22,16V12A3,3,0,0,0,19.76,9.11ZM7.49,5.68A1,1,0,0,1,8.44,5h7.12a1,1,0,0,1,1,.68L17.61,9H6.39ZM20,16a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H19a1,1,0,0,1,1,1Zm-3.38-2.92a.9.9,0,0,0-.54.54,1,1,0,0,0,1.3,1.3.9.9,0,0,0,.54-.54A.84.84,0,0,0,18,14a1.05,1.05,0,0,0-.29-.71A1,1,0,0,0,16.62,13.08ZM13,13H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z"/></svg>
-								</a>
-							</div>
+					
 
 							<div class="header__action">
 								<a class="header__profile-btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z"/></svg>
+									<i class="fas fa-user"></i>
 								</a>
 
 								
@@ -130,8 +121,8 @@
         </li>
     @else
         <!-- Display login and registration options for guests -->
-        <li><a href="{{ route('login') }}"><i class="fas fa-lock fa-lg text-primary"></i> <span class="mr2">Sign In</span></a></li>
-        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus fa-lg text-primary"></i> <span class="mr2">Register</span></a></li>
+        <li><a href="{{ route('login') }}"><i class="fas fa-lock text-primary"></i> <span class="mr2">Sign In</span></a></li>
+        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus  text-primary"></i> <span class="mr2">Register</span></a></li>
     @endif
 </ul>
 

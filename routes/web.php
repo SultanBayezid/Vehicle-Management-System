@@ -29,6 +29,20 @@ use App\Http\Controllers\FrontendController;
 
 
     Route::get('/', 'App\Http\Controllers\FrontendController@index');
+    Route::get('/fleet-management', function () {
+        return view('frontend.features.fleet-management');
+    });
+    Route::get('/trip-management', function () {
+        return view('frontend.features.trip-management');
+    });
+    Route::get('/financial-management', function () {
+        return view('frontend.features.financial-management');
+    });
+    Route::get('/contact-management', function () {
+        return view('frontend.features.contact-management');
+    });
+
+    Route::get('/rent', 'App\Http\Controllers\FrontendController@rent')->name('rent');
 
 
 
