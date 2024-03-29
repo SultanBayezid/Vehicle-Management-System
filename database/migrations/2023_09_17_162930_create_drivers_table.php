@@ -30,6 +30,7 @@ return new class extends Migration
         $table->string('nid')->nullable();
         $table->string('passport')->nullable();
         $table->string('photo')->nullable();
+        $table->bigInteger('company_id');
         $table->timestamps();
         });
     }

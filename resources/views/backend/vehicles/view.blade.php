@@ -81,6 +81,10 @@
                                 <td>{{ _lang('Purchase Date') }}</td>
                                 <td>{{$vehicle->purchase_date}}</td>
                             </tr>
+                            <tr>
+                                <td>{{ _lang('Assigned Driver') }}</td>
+                                <td>{{$vehicle->driver->name ?? ''}}</td>
+                            </tr>
                             </tr>
             
                     

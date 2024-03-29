@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
             $table->BigInteger('customer_id');
-            $table->BigInteger('driver_id');
+            $table->BigInteger('driver_id')->nullable();
             $table->BigInteger('vehicle_id');
             $table->string('pickup_location');
             $table->string('dropoff_location')->nullable();
@@ -23,7 +23,9 @@ return new class extends Migration
             $table->time('departure_time')->nullable();
             $table->time('arrival_time')->nullable();
             $table->integer('distance_km')->nullable();
+            $table->integer('status');
             $table->text('trip_notes')->nullable();
+            $table->bigInteger('company_id');
             $table->timestamps();
         });
     }

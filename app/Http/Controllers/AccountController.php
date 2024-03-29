@@ -61,6 +61,8 @@ class AccountController extends Controller {
         $account->account_number  = $request->input('account_number');
         $account->opening_balance = $request->input('opening_balance');
         $account->note            = $request->input('note');
+		$account->company_id = company_id();
+
 
         $account->save();
 

@@ -53,8 +53,8 @@
                                         @foreach($trips as $trip)
                                         <tr>
                                             <td>{{$trip->trip_date }}</td>
-                                            <td>{{$trip->customer->contact_name }}</td>
-                                            <td>{{$trip->driver->name }}</td>
+                                            <td>{{$trip->customer->contact_name ?? '' }}</td>
+                                            <td>{{$trip->driver->name ?? '' }}</td>
                                             <td>{{$trip->vehicle->make }}</td>
                                             <td>{{$trip->pickup_location }}</td>
                                             <td>{{$trip->dropoff_location }}</td>

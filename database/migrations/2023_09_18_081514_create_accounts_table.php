@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('account_number',50)->nullable();
             $table->decimal('opening_balance',10,2);
             $table->text('note')->nullable();
+            $table->bigInteger('company_id');
             $table->timestamps();
         });
     }

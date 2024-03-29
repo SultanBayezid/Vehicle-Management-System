@@ -200,7 +200,16 @@
         </span>
         @enderror
     </div>
-    <!-- Add additional rows and fields as needed -->
+    <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">{{ _lang('Assign Driver') }}</label>
+                                <select class="form-control select2" name="driver_id" required>
+                                    <option value="">{{ _lang('Select One') }}</option>
+                                    {{ create_option("drivers", "id", "name", old('driver_id')) }}
+
+                                </select>
+                            </div>
+                        </div>
 </div>
 
 

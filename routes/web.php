@@ -44,6 +44,11 @@ use App\Http\Controllers\FrontendController;
 
     Route::get('/rent', 'App\Http\Controllers\FrontendController@rent')->name('rent');
 
+    Route::get('/book/{vehicle_id}/{user_id}', 'App\Http\Controllers\FrontendController@bookingStep1')->name('book');
+    Route::post('/book/step2', 'App\Http\Controllers\FrontendController@bookingStep2')->name('book.step2');
+    Route::get('/book/step3', 'App\Http\Controllers\FrontendController@bookingStep3')->name('book.step3');
+
+
 
 
 // Clinet Register 

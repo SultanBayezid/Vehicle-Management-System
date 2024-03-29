@@ -16,7 +16,7 @@ class VehicleController extends Controller
 
 
         // Retrieve all vehicles from the database
-        $vehicles = Vehicle::where('company_id', company_id())->paginate(10);
+        $vehicles = Vehicle::where('company_id', company_id())->get();
 
         // Return the view with the list of vehicles
         return view('backend.vehicles.list', compact('vehicles'));

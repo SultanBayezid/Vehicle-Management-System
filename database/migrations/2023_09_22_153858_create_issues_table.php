@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('due_date')->nullable();
             $table->date('report_date')->nullable();
             $table->integer('status')->nullable();
+            $table->bigInteger('company_id');
             $table->timestamps();
         });
     }

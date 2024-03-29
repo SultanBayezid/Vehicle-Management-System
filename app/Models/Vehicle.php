@@ -28,4 +28,9 @@ class Vehicle extends Model
         'last_service_date',
         'odometer_reading',
     ];
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }

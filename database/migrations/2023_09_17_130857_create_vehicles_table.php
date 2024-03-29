@@ -30,6 +30,7 @@ return new class extends Migration
         $table->unsignedFloat('purchase_price')->nullable();
         $table->date('last_service_date')->nullable();
         $table->unsignedInteger('odometer_reading')->nullable();
+        $table->bigInteger('driver_id');
         $table->bigInteger('company_id');
         $table->timestamps();
         });

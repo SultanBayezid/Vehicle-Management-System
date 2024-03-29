@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('odometer')->nullable();
             $table->string('document')->nullable();
             $table->text('note')->nullable();
+            $table->bigInteger('company_id');
+
             $table->timestamps();
         });
 
