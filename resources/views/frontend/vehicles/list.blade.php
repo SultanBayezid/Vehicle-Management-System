@@ -122,6 +122,7 @@
 				<!-- content -->
 				<div class="col-12 col-xl-9 order-xl-2">
 					<div class="row">
+						@foreach($vehicles as $vehicle)
 						<!-- car -->
 						<div class="col-12 col-md-6">
 							<div class="car">
@@ -129,13 +130,13 @@
                                 <img src="{{asset('frontend/img/cars/1-1.jpg')}}" alt="">
 								</div>
 								<div class="car__title">
-									<h3 class="car__name"><a href="car.html">Toyota RAV4</a></h3>
-									<span class="car__year">2021</span>
+									<h3 class="car__name"><a href="{{route('single.vehicle', $vehicle->id)}}">{{$vehicle->name}}</a></h3>
+									<span class="car__year">{{$vehicle->year}}</span>
 								</div>
 								<ul class="car__list">
 									<li>
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.3,12.22A4.92,4.92,0,0,0,14,8.5a5,5,0,0,0-10,0,4.92,4.92,0,0,0,1.7,3.72A8,8,0,0,0,1,19.5a1,1,0,0,0,2,0,6,6,0,0,1,12,0,1,1,0,0,0,2,0A8,8,0,0,0,12.3,12.22ZM9,11.5a3,3,0,1,1,3-3A3,3,0,0,1,9,11.5Zm9.74.32A5,5,0,0,0,15,3.5a1,1,0,0,0,0,2,3,3,0,0,1,3,3,3,3,0,0,1-1.5,2.59,1,1,0,0,0-.5.84,1,1,0,0,0,.45.86l.39.26.13.07a7,7,0,0,1,4,6.38,1,1,0,0,0,2,0A9,9,0,0,0,18.74,11.82Z"/></svg>
-										<span>4 People</span>
+										<span>{{$vehicle->seating_capacity}} People</span>
 									</li>
 									<li>
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.54,6.29,19,4.75,17.59,3.34a1,1,0,0,0-1.42,1.42l1,1-.83,2.49a3,3,0,0,0,.73,3.07l2.95,3V19a1,1,0,0,1-2,0V17a3,3,0,0,0-3-3H14V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3h6a3,3,0,0,0,3-3V16h1a1,1,0,0,1,1,1v2a3,3,0,0,0,6,0V9.83A5,5,0,0,0,20.54,6.29ZM12,19a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V12h8Zm0-9H4V5A1,1,0,0,1,5,4h6a1,1,0,0,1,1,1Zm8,1.42L18.46,9.88a1,1,0,0,1-.24-1l.51-1.54.39.4A3,3,0,0,1,20,9.83Z"/></svg>
@@ -152,12 +153,13 @@
 								</ul>
 								<div class="car__footer">
 									<span class="car__price">$440 <sub>/ month</sub></span>
-									<button class="car__favorite" type="button" aria-label="Add to favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z"/></svg></button>
-									<a href="car.html" class="car__more"><span>Rent now</span></a>
+								
+									<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>View Details</span></a>
 								</div>
 							</div>
 						</div>
 						<!-- end car -->
+						@endforeach
 
 						<!-- car -->
 						<div class="col-12 col-md-6">

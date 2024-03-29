@@ -100,8 +100,8 @@
             <li>
                 <strong>{{ auth()->user()->name }}</strong>
             </li>
-            <li><a href="#"><i class="fas fa-user-alt fa-lg text-primary"></i> <span class="mr2">My Account</span></a></li>
-            <li><a href="#"><i class="fas fa-fas fa-poll-h fa-lg text-primary"></i> <span class="mr2">Billing</span></a></li>
+            <li><a href="{{route('client.profile')}}"><i class="fas fa-user-alt fa-lg text-primary"></i> <span class="mr2">My Profile</span></a></li>
+            <li><a href="{{route('trip.list')}}"><i class="fas fa-fas fa-poll-h fa-lg text-primary"></i> <span class="mr2">My Trips</span></a></li>
             <li><a href="#"><i class="fas fa-cogs fa-lg text-primary"></i> <span class="mr2">Settings</span></a></li>
         @else
             <!-- Unknown user type, display default options -->

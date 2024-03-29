@@ -51,6 +51,7 @@ use App\Http\Controllers\ClientController;
 
     Route::group(['prefix' => 'clients', 'middleware' => ['client']], function(){
         route::get('trip/list', [ClientController::class, 'triplist'])->name('trip.list');
+        route::get('/profile', [ClientController::class, 'profile'])->name('client.profile');
 
     
     
