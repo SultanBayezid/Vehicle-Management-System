@@ -62,6 +62,7 @@ class ChartOfAccountController extends Controller
         $chartofaccount= new ChartOfAccount();
 	    $chartofaccount->name = $request->input('name');
 		$chartofaccount->type = $request->input('type');
+		$chartofaccount->company_id = company_id();
 	
         $chartofaccount->save();
         

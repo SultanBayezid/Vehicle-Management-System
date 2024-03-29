@@ -135,7 +135,7 @@ $tripCount = $tripsall->count();
                                     <td><a href="{{route('trips.show', $trip->id)}}">{{$trip->trip_date}}</a></td>
                                     <td>{{$trip->pickup_location}}</td>
                                     <td>{{$trip->dropoff_location}}</td>
-                                    <td>{{$trip->driver->name}}</td>
+                                    <td>{{$trip->driver->name ?? ''}}</td>
                                     <td>{{$trip->vehicle->name}}</td>
                                     <td><span class="badge badge-success">Active</span></td>
                                 </tr>

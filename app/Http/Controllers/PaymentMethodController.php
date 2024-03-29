@@ -54,7 +54,7 @@ class PaymentMethodController extends Controller {
 
         $paymentmethod             = new PaymentMethod();
         $paymentmethod->name       = $request->input('name');
-
+        $paymentmethod->company_id       = company_id();
         $paymentmethod->save();
 
         if (!$request->ajax()) {

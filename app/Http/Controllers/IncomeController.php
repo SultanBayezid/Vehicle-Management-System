@@ -136,6 +136,7 @@ class IncomeController extends Controller {
         $transaction->reference         = $request->input('reference');
         $transaction->note              = $request->input('note');
         $transaction->attachment        = $attachment;
+        $transaction->company_id        = company_id();
 
         $transaction->save();
 

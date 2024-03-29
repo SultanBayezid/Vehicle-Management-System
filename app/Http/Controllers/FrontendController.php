@@ -7,6 +7,7 @@ use App\Models\Vehicle;
 use App\Models\User;
 use App\Models\Driver;
 use Auth;
+use App\Models\Contact;
 use App\Models\Trip;
 use App\Models\Transaction;
 use Validator;
@@ -87,11 +88,49 @@ class FrontendController extends Controller
 public function bookingStep3()
 {
     // Retrieve the trip details from the session
-    $tripDetails = Session::get('trip');
-    return $tripDetails;
+    $tripData = Session::get('trip');
 
-    // Pass the trip details to the confirmed page view
-    return view('confirmed', ['tripDetails' => $tripDetails]);
+    // Find the user and vehicle
+    $user = User::find($tripData['customer_id']);
+    $vehicle = Vehicle::find($tripData['vehicle_id']);
+
+    // Check if a contact exists for the user
+    $contact = Contact::where('user_id', $tripData['customer_id'])->first();
+    if (!$contact) {
+        // If contact does not exist, create a new one
+        $contact = new Contact();
+        $contact->profile_type = 'Individual';
+        $contact->contact_name = $user->name;
+        $contact->contact_email = $user->email;
+        $contact->user_id = $user->id;
+        $contact->group_id = 1;
+        $contact->company_id = $vehicle->company_id;
+        $contact->save();
+    }
+
+    // Create a new trip instance
+    $trip = new Trip();
+
+    // Set trip data
+    $trip->customer_id = $contact->id; // Use contact ID as customer ID
+    $trip->driver_id = $tripData['driver_id'];
+    $trip->vehicle_id = $tripData['vehicle_id'];
+    $trip->pickup_location = $tripData['pickup_location'];
+    $trip->dropoff_location = $tripData['dropoff_location'];
+    $trip->fare_amount = $tripData['fare_amount'];
+    $trip->trip_date = $tripData['trip_date'];
+    $trip->departure_time = $tripData['departure_time'];
+    $trip->arrival_time = $tripData['arrival_time'];
+    $trip->distance_km = $tripData['distance_km'];
+    $trip->trip_notes = $tripData['trip_notes'];
+    $trip->company_id = $vehicle->company_id;
+    $trip->status = 0; // Set status to pending
+
+    // Save the trip to the database
+    $trip->save();
+
+    return redirect()->route('trip.list')->with('success', 'Your booking has been submitted and is waiting for approval.');
 }
+
     
 }

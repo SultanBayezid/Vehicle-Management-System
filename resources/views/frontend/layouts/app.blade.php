@@ -145,15 +145,25 @@
 	<!-- main content -->
 	<main class="main">
 		
-    @if(session('error'))
-	<div class="container">
-				<div class="row">
-        <div class="alert alert-danger">
-            {{ session('error') }}
+	@if(session('success'))
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
         </div>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
         </div>
-        </div>
-    @endif
+    </div>
+@endif
         @yield('content')
 			<!-- end news -->
 	</main>
