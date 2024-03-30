@@ -23,4 +23,11 @@ class ClientController extends Controller
         $user = User::find(Auth()->user()->id);
         return view('frontend.clients.profile', compact('user'));
     }
+
+    public function upload(Request $request){
+   
+   
+           // Return the file path or any response
+           return response()->json(['message' => 'Files uploaded successfully!']);
+    }
 }

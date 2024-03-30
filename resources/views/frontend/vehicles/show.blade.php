@@ -51,18 +51,12 @@
 						</div>
 
 						<ul id="thumbnails" class="thumbnails">
+						@foreach($vehicle->images as $image)
 							<li class="thumbnail">
 								<img src="img/cars/1-1.jpg" alt="">
 							</li>
-							<li class="thumbnail">
-								<img src="img/cars/1-2.jpg" alt="">
-							</li>
-							<li class="thumbnail">
-								<img src="img/cars/1-3.jpg" alt="">
-							</li>
-							<li class="thumbnail">
-								<img src="img/cars/1-4.jpg" alt="">
-							</li>
+							@endforeach
+				
 						</ul>
 					</div>
 				</div>

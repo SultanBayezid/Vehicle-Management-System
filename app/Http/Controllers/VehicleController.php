@@ -6,6 +6,7 @@ use App\Models\Vehicle;
 use App\Models\Service;
 use App\Models\Issue;
 use App\Models\Fuel;
+use App\Models\Image;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,7 @@ class VehicleController extends Controller
 
     public function store(Request $request)
     {
-    //    dd($request->all());
+
         $request->validate([
             'name' => 'required|string|max:255',
             'make' => 'required|string|max:255',
@@ -38,6 +39,8 @@ class VehicleController extends Controller
             'year' => 'nullable|integer',
             
         ]);
+
+        
     $vehicle = new Vehicle();
     $vehicle->name = $request->name;
     $vehicle->make = $request->make;
@@ -56,8 +59,28 @@ class VehicleController extends Controller
     $vehicle->purchase_price = $request->purchase_price;
     $vehicle->last_service_date = $request->last_service_date;
     $vehicle->odometer_reading = $request->odometer_reading;
+    $vehicle->driver_id =  $request->driver_id;
     $vehicle->company_id = company_id();
     $vehicle->save();
+
+    if ($request->hasFile('files')) {
+        $files = $request->file('files');
+        foreach ($files as $file) {
+            // Generate a unique file name to prevent conflicts
+            $fileName = uniqid() . '_' . $file->getClientOriginalName();
+            
+            // Store each file in the public/uploads/vehicle folder
+            $file->move(public_path('uploads/vehicle'), $fileName);
+            
+            // Create a new image record and associate it with the vehicle
+            $image = new Image();
+            $image->path = 'uploads/vehicle/' . $fileName;
+            $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
+            $image->save();
+            
+          
+        }
+    }
 
         // Redirect to the index page with a success message
         return redirect()->route('vehicles.index')->with('success', 'Vehicle added successfully');

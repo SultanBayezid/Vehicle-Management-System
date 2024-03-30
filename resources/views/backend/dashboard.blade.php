@@ -136,7 +136,7 @@ $tripCount = $tripsall->count();
                                     <td>{{$trip->pickup_location}}</td>
                                     <td>{{$trip->dropoff_location}}</td>
                                     <td>{{$trip->driver->name ?? ''}}</td>
-                                    <td>{{$trip->vehicle->name}}</td>
+                                    <td>{{$trip->vehicle->name ?? ''}}</td>
                                     <td><span class="badge badge-success">Active</span></td>
                                 </tr>
                                 @endforeach

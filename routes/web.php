@@ -57,6 +57,7 @@ use App\Http\Controllers\ClientController;
     
     });
 
+    Route::post('upload/images', 'App\Http\Controllers\ClientController@upload')->name('upload.images');
 
 // Clinet Register 
 

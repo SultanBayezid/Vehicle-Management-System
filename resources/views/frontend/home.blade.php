@@ -15,7 +15,7 @@
 							<h1 class="home__title">Manage, rent, sell <br> cars  all in one <br> convenient platform. </h1>
 							<p class="home__text">Omniverse not only streamlines vehicle management but also facilitates <br> car booking, rentals, and sales, providing a comprehensive solution <br> for your automotive needs. </p>
 
-							<form class="home__search" action="#">
+							<!-- <form class="home__search" action="#">
 								<div class="home__group">
 									<label for="search1">Car, model, or brand</label>
 									<input type="text" name="search1" id="search1" placeholder="What car are you looking for?">
@@ -32,7 +32,7 @@
 								</div>
 								
 								<button type="button"><span>Search</span></button>
-							</form>
+							</form> -->
 						</div>
 					</div>
 				</div>
@@ -116,15 +116,12 @@
 
 							<div class="splide__track">
 								<ul class="splide__list">
+									@foreach($vehicle->images as $image)
 									<li class="splide__slide">
-										<img src="img/cars/1-1.jpg" alt="">
+										<img src="{{ asset($image->path) }}" alt="Vehicle Image">
 									</li>
-									<li class="splide__slide">
-										<img src="img/cars/1-2.jpg" alt="">
-									</li>
-									<li class="splide__slide">
-										<img src="img/cars/1-3.jpg" alt="">
-									</li>
+									@endforeach
+								
 								</ul>
 							</div>
 						</div>
