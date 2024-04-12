@@ -1,0 +1,79 @@
+@extends('backend.layouts.header')
+
+@section('content')
+<!-- jQuery -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Blog Create</h1>
+        </div>
+
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+        
+            <li class="breadcrumb-item"><a href="{{route('blogs.index')}}">Blogs</a></li>
+
+            <li class="breadcrumb-item active" aria-current="page">Blog Create</li>
+        </ol>
+    </nav>
+            
+                            <div class="card-body">
+                            <form action="{{ route('blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+    @method('PUT')
+
+            <div class="container">
+    <div class="row">
+        <!-- Column 1 -->
+        <div class="col-md-12">
+            <!-- Row 1 -->
+            <div class="form-group">
+                <label for="name">Title</label>
+                <input type="text" name="title" id="name" value="{{$blog->title}}" class="form-control" required>
+            </div>
+ 
+        </div>
+        
+        <!-- Column 2 -->
+        <div class="col-md-12">
+            <!-- Row 2 -->
+            <div class="form-group">
+                <label for="postal_code">Content</label>
+                <textarea name="content" id="" cols="30" rows="10" class="form-control">{{$blog->content}}</textarea>
+            </div>
+            
+ 
+        </div>
+        
+        <!-- Column 3 -->
+        <div class="col-md-12">
+            <!-- Row 3 -->
+
+            
+            <!-- Photo Upload -->
+            <div class="form-group">
+                <label for="photo">Photo:</label>
+                @if ($blog->image)
+        <img src="{{ asset('/uploads/blogs/' . $blog->image) }}" alt="Blog Image" width="100">
+    @else
+        No Image Available
+    @endif
+                <input type="file" name="image" id="photo" class="form-control-file">
+            </div>
+        </div>
+    </div>
+</div>
+
+            <button type="submit" class="btn btn-primary">Update Blog</button>
+        </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+@endsection

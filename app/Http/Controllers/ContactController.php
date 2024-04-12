@@ -22,7 +22,7 @@ class ContactController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $contacts = Contact::All();
+        $contacts = Contact::where('company_id', company_id())->get();
         return view('backend.contacts.contact.list', compact('contacts'));
     }
 
@@ -84,6 +84,7 @@ class ContactController extends Controller {
             'state'         => 'nullable|max:50',
             'zip'           => 'nullable|max:20',
             'contact_image' => 'nullable|image||max:5120',
+            'group_id' 		=> 'required',
             'name'          => 'required_if:client_login,1|max:191', //User Login Attribute
             'email'         => 'required_if:client_login,1|email|unique:users|max:191', //User Login Attribute
             'password'      => 'required_if:client_login,1|max:20|min:6|confirmed', //User Login Attribute
@@ -95,13 +96,9 @@ class ContactController extends Controller {
         ]);
 
         if ($validator->fails()) {
-            if ($request->ajax()) {
-                return response()->json(['result' => 'error', 'message' => $validator->errors()->all()]);
-            } else {
-                return redirect()->route('contacts.create')
-                    ->withErrors($validator)
-                    ->withInput();
-            }
+            return redirect()->route('contacts.create')
+            ->withErrors($validator)
+            ->withInput();
         }
 
         $contact_image = "avatar.png";
@@ -141,7 +138,8 @@ class ContactController extends Controller {
         if ($request->client_login == 1) {
             $contact->user_id = $user->id;
         }
-        $contact->group_id      =1;
+        $contact->group_id = $request->input('group_id');
+		$contact->company_id = company_id();
         $contact->contact_image = $contact_image;
 
         $contact->save();

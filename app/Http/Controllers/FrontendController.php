@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Vehicle;
 use App\Models\User;
 use App\Models\Driver;
+use App\Models\Blog;
 use Auth;
 use App\Models\Contact;
 use App\Models\Trip;
@@ -17,6 +18,7 @@ class FrontendController extends Controller
     public function index()
     {
         $data['vehicles'] = Vehicle::All();
+        $data['blogs'] = Blog::All();
         return view('frontend.home', $data);
     }
 

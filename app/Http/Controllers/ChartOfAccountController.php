@@ -17,7 +17,8 @@ class ChartOfAccountController extends Controller
      */
     public function index()
     {
-        $chartofaccounts = ChartOfAccount::orderBy("id","desc")->get();
+        $chartofaccounts = ChartOfAccount::where("company_id",company_id())
+        ->orderBy("id","desc")->get();
         return view('backend.chart_of_account.list',compact('chartofaccounts'));
     }
 

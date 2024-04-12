@@ -7,7 +7,7 @@
 				<!-- breadcrumb -->
 				<div class="col-12">
 					<ul class="breadcrumbs">
-						<li class="breadcrumbs__item"><a href="index-2.html">Home</a></li>
+						<li class="breadcrumbs__item"><a href="/">Home</a></li>
 						<li class="breadcrumbs__item breadcrumbs__item">Services</li>
 						<li class="breadcrumbs__item breadcrumbs__item--active">Rent A Car</li>
 					</ul>
@@ -19,7 +19,7 @@
 					<div class="main__title main__title--page">
 						<h1>Rent A Car</h1>
                         <p>
-                        In addition to the business modules designed to meet the specific needs of different sectors of activity, DIGIPARC offers a set of modules which are essential for any fleet manager, regardless of the size of the fleet or the sector of activity of the organization.
+						Discover the perfect vehicle for your journey from our extensive collection of available cars. Whether you're planning a weekend getaway or a business trip, we have a range of options to suit your needs. Browse our selection below and find your ideal ride for your next adventure.
                         </p>
 
 						 

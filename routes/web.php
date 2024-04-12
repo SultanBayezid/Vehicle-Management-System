@@ -13,6 +13,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\BlogController;
 
 
 
@@ -32,16 +33,19 @@ use App\Http\Controllers\ClientController;
     Route::get('/', 'App\Http\Controllers\FrontendController@index');
     Route::get('/fleet-management', function () {
         return view('frontend.features.fleet-management');
-    });
+    })->name('fleet-management');
+    
     Route::get('/trip-management', function () {
         return view('frontend.features.trip-management');
-    });
+    })->name('trip-management');
+
     Route::get('/financial-management', function () {
         return view('frontend.features.financial-management');
-    });
-    Route::get('/contact-management', function () {
-        return view('frontend.features.contact-management');
-    });
+    })->name('financial-management');
+    
+ Route::get('/contact-management', function () {
+    return view('frontend.features.contact-management');
+})->name('contact-management');
 
     Route::get('/rent', 'App\Http\Controllers\FrontendController@rent')->name('rent');
 
@@ -66,16 +70,19 @@ Route::post('/client_signup', 'App\Http\Controllers\Auth\RegisterController@clie
 
 Route::get('/vehicle/show/{id}', [FrontendController::class, 'singleCar'])->name('single.vehicle');
 Auth::routes();
+Route::group(['middleware' => ['auth','verified']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+});
 
     Route::group(['middleware' => ['company']], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
     Route::get('vehicle/services/list/{id}', 'App\Http\Controllers\VehicleController@VehicleService')->name('vehicle_services');
     Route::get('vehicle/issues/list/{id}', 'App\Http\Controllers\VehicleController@VehicleIssue')->name('vehicle_issues');
     Route::get('vehicle/fuel/list/{id}', 'App\Http\Controllers\VehicleController@VehicleFuels')->name('vehicle_fuels');
     Route::get('vehicle/trip/list/{id}', 'App\Http\Controllers\VehicleController@VehicleTrip')->name('vehicle_trips');
     Route::resource('vehicles', VehicleController::class);
     Route::resource('drivers', DriverController::class);
+
     Route::resource('chart_of_accounts', ChartOfAccountController::class);
     Route::resource('income', IncomeController::class);
     Route::resource('accounts', AccountController::class);
@@ -88,6 +95,8 @@ Auth::routes();
 			Route::resource('services','App\Http\Controllers\ServiceController');
             
 			Route::resource('fuels','App\Http\Controllers\FuelController');
+			Route::resource('contact_groups','App\Http\Controllers\ContactGroupController');
+
 
             
     Route::resource('payment_methods', PaymentMethodController::class);
@@ -105,7 +114,7 @@ Auth::routes();
 
     //Company Settings Controller
 			Route::post('company/upload_logo', 'App\Http\Controllers\CompanySettingController@upload_logo')->name('company.change_logo');
-			Route::resource('settings','App\Http\Controllers\CompanySettingController');
+			Route::resource('settings','App\Http\Controllers\CompanySettingsController');
 
 
     //Report Controller
@@ -118,3 +127,6 @@ Auth::routes();
 			Route::match(['get', 'post'],'reports/report_by_payee/{view?}', 'App\Http\Controllers\ReportController@report_by_payee')->name('reports.report_by_payee');
     
 });
+
+
+Route::resource('blogs', BlogController::class);

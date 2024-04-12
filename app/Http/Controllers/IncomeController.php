@@ -22,6 +22,7 @@ class IncomeController extends Controller {
             ->with("payer")
             ->with("payment_method")
             ->select('transactions.*')
+            ->where("transactions.company_id",company_id())
             ->where("transactions.dr_cr", "cr")
             ->orderBy("transactions.id", "desc")
             ->get();
@@ -236,6 +237,7 @@ class IncomeController extends Controller {
         if ($request->hasfile('attachment')) {
             $transaction->attachment = $attachment;
         }
+        $transaction->company_id = company_id();
 
         $transaction->save();
 

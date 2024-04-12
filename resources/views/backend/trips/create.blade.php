@@ -6,7 +6,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{route('trips.index')}}">Trips</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Trip Create</li>
             </ol>

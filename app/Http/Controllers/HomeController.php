@@ -24,11 +24,17 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            if (auth()->user()->user_type == 'client') {
-                return redirect('/');
-            } else {
-                return view('backend.dashboard');
+            $type = Auth::user()->user_type;
+            if( $type  == 'admin' ){
+                return view('backend.dashboard-admin'); 
             }
+        }else if( $type  == 'user' ){
+            return view('backend.dashboard');
+        	}
+
+        else if($type  == 'staff' ){
+
+            return view('backend.dashboard-user');
         }
         // Redirect to login page if user not authenticated
         return redirect()->route('login');

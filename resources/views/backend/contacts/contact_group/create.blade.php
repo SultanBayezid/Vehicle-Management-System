@@ -1,12 +1,30 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
 <div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-				<h4 class="header-title">{{ _lang('Add Contact Group') }}</h4>
-			</div>
+        <div class="col-md-6">
+            <h1 class="display-4">{{ _lang('Contact List') }}</h1>
+        </div>
+        <div class="col-md-6 text-md-right mt-3">
+            <a class="btn btn-primary btn-sm mtop" data-title="{{ _lang('Add Contact Group') }}"
+                href="{{ route('contact_groups.create') }}">
+                <i class="fas fa-plus"></i> {{ _lang('Add New') }}
+            </a>
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">People</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Contact Group') }}</li>
+        </ol>
+    </nav>
+<div class="row">
+    <div class="col-md-12">
+ 
+       
 
             <div class="card-body">
                 <form method="post" class="validate" autocomplete="off" action="{{ route('contact_groups.store') }}"
@@ -35,7 +53,8 @@
                     </div>
                 </form>
             </div>
-        </div>
+     
     </div>
+</div>
 </div>
 @endsection

@@ -1,17 +1,30 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
+<div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">{{ _lang('Contact List') }}</h1>
+        </div>
+        <div class="col-md-6 text-md-right mt-3">
+            <a class="btn btn-primary btn-sm mtop" data-title="{{ _lang('Add Contact Group') }}"
+                href="{{ route('contact_groups.create') }}">
+                <i class="fas fa-plus"></i> {{ _lang('Add New') }}
+            </a>
+        </div>
+    </div>
 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">People</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Contact List') }}</li>
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h4 class="header-title">{{ _lang('Contact Group List') }}</h4>
-                <a class="btn btn-primary btn-sm ml-auto ajax-modal" data-title="{{ _lang('Add Contact Group') }}"
-                    href="{{ route('contact_groups.create') }}"><i class="ti-plus"></i>
-                    {{ _lang('Add New') }}</a>
-            </div>
-
+  
+    
             <div class="card-body">
                 <table class="table table-bordered data-table">
                     <thead>
@@ -27,18 +40,18 @@
                             <td class='group'>{{ $contactgroup->name }}</td>
                             <td class='note'>{{ $contactgroup->note }}</td>
                             <td class="text-center">
-                                <form action="{{action('ContactGroupController@destroy', $contactgroup['id'])}}"
+                                <form action="{{route('contact_groups.destroy', $contactgroup['id'])}}"
                                     method="post">
-                                    <a href="{{action('ContactGroupController@edit', $contactgroup['id'])}}"
+                                    <a href="{{route('contact_groups.edit', $contactgroup['id'])}}"
                                         data-title="{{ _lang('Update Contact Group') }}"
-                                        class="btn btn-warning btn-sm ajax-modal"><i class="ti-pencil-alt"></i></a>
-                                    <a href="{{action('ContactGroupController@show', $contactgroup['id'])}}"
+                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="{{route('contact_groups.show', $contactgroup['id'])}}"
                                         data-title="{{ _lang('View Contact Group') }}"
-                                        class="btn btn-primary btn-sm ajax-modal"><i class="ti-eye"></i></a>
+                                        class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
                                     {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button class="btn btn-danger btn-sm btn-remove"
-                                        type="submit"><i class="ti-trash"></i></button>
+                                        type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -46,8 +59,9 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+   
     </div>
+</div>
 </div>
 
 @endsection

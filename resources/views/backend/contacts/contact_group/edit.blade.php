@@ -1,15 +1,27 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
+<div class="container">
 <div class="row">
-    <div class="col-md-6">
-        <div class="card">
-			<div class="card-header">
-				<h4 class="header-title">{{ _lang('Update Contact Group') }}</h4>
-			</div>
+        <div class="col-md-6">
+            <h1 class="display-4">{{ _lang('Update Contact Group') }}</h1>
+        </div>
+   
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">People</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Update Contact Group') }}</li>
+        </ol>
+    </nav>
+<div class="row">
+    <div class="col-md-12">
+	
             <div class="card-body">
                 <form method="post" class="validate" autocomplete="off"
-                    action="{{ action('ContactGroupController@update', $id) }}" enctype="multipart/form-data">
+                    action="{{ route('contact_groups.update', $id) }}" enctype="multipart/form-data">
                     {{ csrf_field()}}
                     <input name="_method" type="hidden" value="PATCH">
 
@@ -35,8 +47,8 @@
                     </div>
                 </form>
             </div>
-        </div>
     </div>
+</div>
 </div>
 
 @endsection

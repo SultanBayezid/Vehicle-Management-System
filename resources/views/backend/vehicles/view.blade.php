@@ -6,7 +6,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
                 <li class="breadcrumb-item "  aria-current="page">{{$vehicle->name}}</li>
                 <li class="breadcrumb-item active">{{ _lang('Overview') }}</li>

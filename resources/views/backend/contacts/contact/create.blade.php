@@ -11,7 +11,7 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Reports</li>
             <li class="breadcrumb-item active" aria-current="page">{{ _lang('Add New Contact') }}</li>
         </ol>
@@ -49,16 +49,26 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">{{ _lang('Contact Name') }}</label>
-                                <input type="text" class="form-control" name="contact_name"
+                                <input type="text" class="form-control form-control @error('contact_name') is-invalid @enderror" name="contact_name"
                                     value="{{ old('contact_name') }}" required>
+                                    @error('contact_name')
+      <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+      </span>
+  @enderror
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">{{ _lang('Contact Email') }}</label>
-                                <input type="text" class="form-control" name="contact_email"
+                                <input type="text" class="form-control form-control @error('contact_email') is-invalid @enderror" name="contact_email"
                                     value="{{ old('contact_email') }}" required>
+                                    @error('contact_email')
+      <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+      </span>
+  @enderror
                             </div>
                         </div>
 
@@ -82,11 +92,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label">{{ _lang('Group') }}</label>
-                                <select class="form-control select2" name="group_id">
+                                <select class="form-control select2  form-control @error('group_id') is-invalid @enderror" name="group_id">
                                     <option value="">{{ _lang('- Select Group -') }}</option>
                                     {{ create_option("contact_groups", "id", "name", old('group_id')) }}
 
                                 </select>
+                                @error('group_id')
+      <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+      </span>
+  @enderror
                             </div>
                         </div>
 

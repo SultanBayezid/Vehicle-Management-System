@@ -110,42 +110,42 @@ if (!function_exists('get_initials')) {
     }
 }
 
-if (!function_exists('create_option')) {
-    function create_option($table, $value, $display, $selected = '', $where = NULL) {
-        $options   = '';
-        $condition = '';
-        if ($where != NULL) {
-            $condition .= "WHERE ";
-            foreach ($where as $key => $v) {
-                $condition .= $key . "'" . $v . "' ";
-            }
-        }
-
-        if (is_array($display)) {
-            $display_array = $display;
-            $display       = $display_array[0];
-            $display1      = $display_array[1];
-        }
-
-        $query = DB::select("SELECT * FROM $table $condition");
-        foreach ($query as $d) {
-            if ($selected != '' && $selected == $d->$value) {
-                if (!isset($display_array)) {
-                    $options .= "<option value='" . $d->$value . "' selected='true'>" . ucwords($d->$display) . "</option>";
-                } else {
-                    $options .= "<option value='" . $d->$value . "' selected='true'>" . ucwords($d->$display . ' - ' . $d->$display1) . "</option>";
-                }
-            } else {
-                if (!isset($display_array)) {
-                    $options .= "<option value='" . $d->$value . "'>" . ucwords($d->$display) . "</option>";
-                } else {
-                    $options .= "<option value='" . $d->$value . "'>" . ucwords($d->$display . ' - ' . $d->$display1) . "</option>";
-                }
-            }
-        }
-
-        echo $options;
-    }
+if ( ! function_exists('create_option')){
+	function create_option($table,$value,$display,$selected="",$where=NULL){
+		$options = '';
+		$condition = '';
+		if($where != NULL){
+			$condition .= "WHERE ";
+			foreach( $where as $key => $v ){
+				$condition.=$key."'".$v."' ";
+			}
+		}
+        
+		if (is_array($display)){
+		   $display_array =  $display;
+		   $display =  $display_array[0];
+		   $display1 =  $display_array[1];
+		}
+		
+		$query = DB::select("SELECT * FROM $table $condition");
+		foreach($query as $d){
+			if( $selected!="" && $selected == $d->$value ){   
+				if(! isset($display_array)){
+					$options.="<option value='".$d->$value."' selected='true'>".ucwords($d->$display)."</option>";
+			    }else{
+					$options.="<option value='".$d->$value."' selected='true'>".ucwords($d->$display.' - '.$d->$display1)."</option>";
+				}
+			}else{
+				if(! isset($display_array)){
+					$options.="<option value='".$d->$value."'>".ucwords($d->$display)."</option>";
+			    }else{
+					$options.="<option value='".$d->$value."'>".ucwords($d->$display.' - '.$d->$display1)."</option>";
+				}
+			} 
+		}
+		
+		echo $options;
+	}
 }
 
 if (!function_exists('object_to_string')) {
@@ -749,13 +749,13 @@ if (!function_exists('current_month_expense')) {
 if (!function_exists('get_financial_balance')) {
 
     function get_financial_balance() {
-        $result = DB::select("SELECT b.*, ((SELECT IFNULL(opening_balance, 0)
-            FROM accounts WHERE id = b.id) + 
-            (SELECT IFNULL(SUM(amount), 0) 
-            FROM transactions WHERE dr_cr = 'cr' AND account_id = b.id) - 
-            (SELECT IFNULL(SUM(amount), 0) 
-            FROM transactions WHERE dr_cr = 'dr' AND account_id = b.id)) as balance
-            FROM accounts as b");
+        $company_id = company_id();
+ 
+        $result = DB::select("SELECT b.*,((SELECT IFNULL(opening_balance,0) 
+        FROM accounts WHERE id = b.id)+(SELECT IFNULL(SUM(amount),0) 
+        FROM transactions WHERE dr_cr = 'cr' AND account_id = b.id))-(SELECT IFNULL(SUM(amount),0) 
+        FROM transactions WHERE dr_cr = 'dr' AND account_id = b.id) as balance 
+        FROM accounts as b WHERE b.company_id='$company_id'");
         return $result;
     }
 

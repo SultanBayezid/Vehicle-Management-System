@@ -17,7 +17,7 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Accounting</li>
             <li class="breadcrumb-item active" aria-current="page">Transactions</li>
             <li class="breadcrumb-item"><a href="{{route('expense.index')}}">Expense </a></li>
@@ -48,7 +48,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="account_title"
                                     data-table="accounts" data-where="1" name="account_id" id="account_id" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("accounts", "id", "account_title", old('account_id')) }}
+                                    {{ create_option("accounts","id","account_title",old('account_id'),array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>
@@ -62,7 +62,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="name"
                                     data-table="chart_of_accounts" data-where="4" name="chart_id" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("chart_of_accounts", "id", "name", old('chart_id'), ["type=" => "expense"]) }}
+                                    {{ create_option("chart_of_accounts","id","name",old('chart_id'),array("type="=>"expense","AND company_id="=>company_id())) }}
 
                                 </select>
                             </div>
@@ -83,7 +83,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="contact_name"
                                     data-table="contacts" data-where="1" name="payer_payee_id">
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("contacts", "id", "contact_name", old('payer_payee_id')) }}
+                                    {{ create_option("contacts","id","contact_name",old('payer_payee_id'),array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>
@@ -96,7 +96,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="name"
                                     data-table="payment_methods" data-where="1" name="payment_method_id" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("payment_methods", "id", "name", old('payment_method_id')) }}
+                                    {{ create_option("payment_methods","id","name",old('payment_method_id'),array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>

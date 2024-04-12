@@ -17,7 +17,7 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Accounting</li>
             <li class="breadcrumb-item"><a href="{{route('accounts.index')}}">Accounts</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ _lang('Update Account') }}</li>

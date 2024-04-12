@@ -6,7 +6,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                 <li class="breadcrumb-item">Accounting</li>
                 <li class="breadcrumb-item">{{ ('Transactions') }}</li>
                 <li class="breadcrumb-item"><a href="{{route('expense.index')}}">Expense</a></li>

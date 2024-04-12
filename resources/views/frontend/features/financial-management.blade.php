@@ -6,7 +6,7 @@
 				<!-- breadcrumb -->
 				<div class="col-12">
 					<ul class="breadcrumbs">
-						<li class="breadcrumbs__item"><a href="index-2.html">Home</a></li>
+						<li class="breadcrumbs__item"><a href="/">Home</a></li>
 						<li class="breadcrumbs__item breadcrumbs__item">Features</li>
 						<li class="breadcrumbs__item breadcrumbs__item--active">Financial Management</li>
 					</ul>
@@ -18,7 +18,7 @@
 					<div class="main__title main__title--page">
 						<h1>Financial Management</h1>
                         <p>
-                        In addition to the business modules designed to meet the specific needs of different sectors of activity, DIGIPARC offers a set of modules which are essential for any fleet manager, regardless of the size of the fleet or the sector of activity of the organization.
+						Simplify Your Finances with Omniverse Dynamics with  user-friendly Financial Management module designed to streamline your accounting tasks and optimize your financial operations.
                         </p>
 
 						 
@@ -54,43 +54,39 @@
 			</div>
 
 			<div class="row">
-				<div class="col-12 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-6">
 					<div class="feature">
 						<span class="feature__icon">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22,11.05c0-.11,0-.22,0-.33l-.09-.6-.09-.39c0-.17-.08-.34-.13-.51s-.08-.27-.13-.4a2.17,2.17,0,0,1-.07-.24s0,0,0-.05a10.1,10.1,0,0,0-5.9-5.9s0,0-.05,0l-.23-.07-.42-.13c-.15,0-.31-.08-.46-.12l-.46-.1-.46-.07c-.16,0-.31,0-.48-.06s-.35,0-.52,0L12,2l-.39,0c-.17,0-.35,0-.52,0s-.32,0-.48.06l-.46.07-.46.1c-.15,0-.31.07-.46.12l-.42.13-.23.07s0,0-.05,0a10.1,10.1,0,0,0-5.9,5.9s0,0,0,.05a2.17,2.17,0,0,1-.07.24c0,.13-.09.26-.13.4s-.09.34-.13.51l-.09.39-.09.6c0,.11,0,.22,0,.33,0,.31,0,.63,0,.95s0,.64,0,.95c0,.11,0,.22,0,.33l.09.6.09.39c0,.17.08.34.13.51s.08.27.13.4a2.17,2.17,0,0,1,.07.24.43.43,0,0,1,0,.07,10,10,0,0,0,5.89,5.88s0,0,.05,0l.24.07.4.13.51.13.39.09.6.09.33,0c.31,0,.63.05.95.05s.64,0,.95-.05l.33,0,.6-.09.39-.09.51-.13.4-.13.24-.07s0,0,.05,0a10,10,0,0,0,5.89-5.88.43.43,0,0,1,0-.07c0-.08.05-.16.07-.24s.09-.26.13-.4.09-.34.13-.51l.09-.39.09-.6c0-.11,0-.22,0-.33,0-.31.05-.63.05-.95S22,11.36,22,11.05Zm-6.3-6.16a8,8,0,0,1,3.46,3.46l-2.86,1a5.14,5.14,0,0,0-1.64-1.64Zm-5.36-.7c.21-.05.41-.08.61-.11l.24,0a8.24,8.24,0,0,1,1.72,0l.24,0c.2,0,.4.06.61.11h.06l-1,2.86A4.49,4.49,0,0,0,12,7a4.4,4.4,0,0,0-.73.06l-1-2.86Zm-1.94.7,1,2.86A5.14,5.14,0,0,0,7.75,9.39l-2.86-1A8,8,0,0,1,8.35,4.89ZM4.19,13.71a4.17,4.17,0,0,1-.1-.6c0-.09,0-.17,0-.25a7.42,7.42,0,0,1,0-1.72c0-.08,0-.16,0-.25a4.17,4.17,0,0,1,.1-.6s0,0,0-.06l2.86,1a4.47,4.47,0,0,0,0,1.46l-2.86,1S4.19,13.73,4.19,13.71Zm4.16,5.4a8,8,0,0,1-3.46-3.46l2.86-1a5.14,5.14,0,0,0,1.64,1.64Zm5.36.7c-.21.05-.41.08-.61.11l-.24,0a8.24,8.24,0,0,1-1.72,0l-.24,0c-.2,0-.4-.06-.61-.11h-.06l1-2.86a4.47,4.47,0,0,0,1.46,0l1,2.86Zm-.67-5h0c-.17.06-.34.1-.5.14a2.73,2.73,0,0,1-1,0c-.16,0-.33-.08-.5-.14h0A3,3,0,0,1,9.2,13v0a3.23,3.23,0,0,1-.14-.51,2.63,2.63,0,0,1,0-1A3.23,3.23,0,0,1,9.19,11v0A3,3,0,0,1,11,9.2h0c.17-.06.34-.1.5-.14a2.73,2.73,0,0,1,1,0c.16,0,.33.08.5.14h0A3,3,0,0,1,14.8,11v0a3.23,3.23,0,0,1,.14.51,2.63,2.63,0,0,1,0,1,3.23,3.23,0,0,1-.14.51v0A3,3,0,0,1,13,14.8Zm2.61,4.31-1-2.86a5.14,5.14,0,0,0,1.64-1.64l2.86,1A8,8,0,0,1,15.65,19.11ZM20,12.86c0,.08,0,.16,0,.25a4.17,4.17,0,0,1-.1.6s0,0,0,.06l-2.86-1a4.47,4.47,0,0,0,0-1.46l2.86-1s0,0,0,.06a4.17,4.17,0,0,1,.1.6c0,.09,0,.17,0,.25a7.42,7.42,0,0,1,0,1.72Z"/></svg>
-						</span>
-						<h3 class="feature__title">Support on the road</h3>
-						<p class="feature__text">We've got you covered with 24/7 support on the road. No matter where you are, we'll be there to help you out.</p>
+						<i class="fas fa-money-check-alt"></i>	</span>
+						<h3 class="feature__title">Track Your Income and Expenses</h3>
+						<p class="feature__text">Keep track of your trip income and expenses effortlessly with Omniverse Dynamics. Record income from customer bookings and track expenses such as fuel costs, driver fees, and maintenance expenses. This helps you understand your profitability and make informed financial decisions.</p>
 					</div>
 				</div>
 				
-				<div class="col-12 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-6">
 					<div class="feature">
 						<span class="feature__icon feature__icon--pink">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11,9h4a1,1,0,0,0,0-2H13V6a1,1,0,0,0-2,0V7a3,3,0,0,0,0,6h2a1,1,0,0,1,0,2H9a1,1,0,0,0,0,2h2v1a1,1,0,0,0,2,0V17a3,3,0,0,0,0-6H11a1,1,0,0,1,0-2Zm1-8A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z"/></svg>
-						</span>
-						<h3 class="feature__title">Affordable prices</h3>
-						<p class="feature__text">Our prices are competitive and affordable. We strive to provide the best value for your money.</p>
+						<i class="fas fa-wrench"></i>	</span>
+						<h3 class="feature__title">Manage Service Costs</h3>
+						<p class="feature__text">Efficiently manage service costs with Omniverse Dynamics' tracking feature. Record expenses related to vehicle maintenance, repairs, and other services, and categorize them for easy tracking and analysis. This helps you manage your budget effectively and ensure the reliability of your fleet.</p>
 					</div>
 				</div>
 
-				<div class="col-12 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-6">
 					<div class="feature">
 						<span class="feature__icon feature__icon--purple">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.5,20h-6a1,1,0,0,1-1-1V5a1,1,0,0,1,1-1h5V7a3,3,0,0,0,3,3h3v5a1,1,0,0,0,2,0V9s0,0,0-.06a1.31,1.31,0,0,0-.06-.27l0-.09a1.07,1.07,0,0,0-.19-.28h0l-6-6h0a1.07,1.07,0,0,0-.28-.19.29.29,0,0,0-.1,0A1.1,1.1,0,0,0,11.56,2H5.5a3,3,0,0,0-3,3V19a3,3,0,0,0,3,3h6a1,1,0,0,0,0-2Zm1-14.59L15.09,8H13.5a1,1,0,0,1-1-1ZM7.5,14h6a1,1,0,0,0,0-2h-6a1,1,0,0,0,0,2Zm4,2h-4a1,1,0,0,0,0,2h4a1,1,0,0,0,0-2Zm-4-6h1a1,1,0,0,0,0-2h-1a1,1,0,0,0,0,2Zm13.71,6.29a1,1,0,0,0-1.42,0l-3.29,3.3-1.29-1.3a1,1,0,0,0-1.42,1.42l2,2a1,1,0,0,0,1.42,0l4-4A1,1,0,0,0,21.21,16.29Z"/></svg>
-						</span>
-						<h3 class="feature__title">Minimum of bureaucracy</h3>
-						<p class="feature__text">We know your time is valuable. That's why we've simplified the rental process and eliminated unnecessary bureaucracy.</p>
+						<i class="fas fa-file-invoice-dollar"></i>	</span>
+						<h3 class="feature__title">Track Payments</h3>
+						<p class="feature__text">Stay on top of your payments with Omniverse Dynamics' payment tracking tools. Track payments received from customers, manage outstanding invoices, and send payment reminders effortlessly. This helps you manage your cash flow effectively and improve your financial performance.</p>
 					</div>
 				</div>
 
-				<div class="col-12 col-md-6 col-xl-3">
+				<div class="col-12 col-md-6 col-xl-6">
 					<div class="feature feature--last">
 						<span class="feature__icon feature__icon--green">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.63,3.65a1,1,0,0,0-.84-.2,8,8,0,0,1-6.22-1.27,1,1,0,0,0-1.14,0A8,8,0,0,1,5.21,3.45a1,1,0,0,0-.84.2A1,1,0,0,0,4,4.43v7.45a9,9,0,0,0,3.77,7.33l3.65,2.6a1,1,0,0,0,1.16,0l3.65-2.6A9,9,0,0,0,20,11.88V4.43A1,1,0,0,0,19.63,3.65ZM18,11.88a7,7,0,0,1-2.93,5.7L12,19.77,8.93,17.58A7,7,0,0,1,6,11.88V5.58a10,10,0,0,0,6-1.39,10,10,0,0,0,6,1.39Z"/></svg>
-						</span>
-						<h3 class="feature__title">Full insurance</h3>
-						<p class="feature__text">Drive with peace of mind knowing that our rental cars come with full insurance coverage. You are safe with us.</p>
+						<i class="fas fa-chart-line"></i></span>
+						<h3 class="feature__title">Comprehensive Reporting</h3>
+						<p class="feature__text">Omniverse Dynamics empowers you with robust reporting tools that provide valuable insights into your financial performance. Our platform offers a comprehensive range of reporting features, allowing you to analyze your income, expenses, and overall financial health with ease.</p>
 					</div>
 				</div>
 			</div>

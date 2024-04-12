@@ -1,7 +1,21 @@
 @extends('backend.layouts.header')
 
 @section('content')
-<h4 class="page-title">{{ _lang('Company Settings') }}</h4>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">{{ _lang('Settings') }}</h1>
+        </div>
+
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Settings') }}</li>
+        </ol>
+    </nav>
+
 <div class="row">
     <div class="col-sm-3">
         <ul class="nav flex-column nav-tabs settings-tab" role="tablist">
@@ -25,7 +39,7 @@
 
                     <div class="card-body">
                         <form method="post" class="settings-submit params-card" autocomplete="off"
-                            action="{{ route('company.change_settings', 'store') }}" enctype="multipart/form-data">
+                            action="{{ route('settings.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -124,7 +138,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post" class="settings-submit params-card" autocomplete="off"
-                            action="{{ route('company.change_settings', 'store') }}" enctype="multipart/form-data">
+                            action="{{ route('settings.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -194,7 +208,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post" class="settings-submit params-card" autocomplete="off"
-                            action="{{ route('company.change_settings', 'store') }}" enctype="multipart/form-data">
+                            action="{{ route('settings.store') }}" enctype="multipart/form-data">
 
                             @csrf
 
@@ -328,7 +342,7 @@
                     <div class="card-header"><span class="header-title">{{ _lang('Logo Upload') }}</span></div>
                     <div class="card-body">
                         <form method="post" class="settings-submit params-card" autocomplete="off"
-                            action="{{ route('company.change_logo') }}" enctype="multipart/form-data">
+                            action="{{ route('settings.store') }}" enctype="multipart/form-data">
 
                             @csrf
 
@@ -356,6 +370,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     @endsection
