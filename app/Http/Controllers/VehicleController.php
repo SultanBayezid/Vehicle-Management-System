@@ -9,6 +9,7 @@ use App\Models\Fuel;
 use App\Models\Image;
 use App\Models\CarBrand;
 use App\Models\CarModel;
+use App\Models\FuelType;
 use App\Models\Trip;
 use DB;
 use Illuminate\Http\Request;
@@ -20,91 +21,82 @@ class VehicleController extends Controller
 
    
         $vehicles = Vehicle::where('company_id', company_id())->get();
-
+      
         // Return the view with the list of vehicles
         return view('backend.vehicles.list', compact('vehicles'));
     }
 
     public function create()
     {
-        // Show the form to create a new vehicle
-        return view('backend.vehicles.create');
+        $fuelTypes = FuelType::all();
+        return view('backend.vehicles.create' ,compact('fuelTypes'));
     }
 
     public function store(Request $request)
     {
-
-        $validatedData =   $request->validate([
+        $validatedData = $request->validate([
             'brand_id' => 'required|exists:car_brands,id',
             'model_id' => 'required|exists:car_models,id',
-            'year' => 'nullable|integer|min:1900|max:'.(date('Y')+1), // Assuming vehicles cannot be from the future
-            'vin' => 'nullable|unique:vehicles',
-            'color' => 'nullable',
-            'body_type_id' => 'nullable|exists:car_body_types,id',
-            'license_plate' => 'nullable|unique:vehicles',
-            'seating_capacity' => 'nullable|integer|min:1',
-            'weight' => 'nullable|integer|min:1',
-            'horsepower' => 'nullable|integer|min:1',
-            'purchase_date' => 'nullable|date',
-            'purchase_price' => 'nullable|numeric|min:0',
-            'odometer_reading' => 'nullable|integer|min:0',
-            'supplier_name' => 'nullable',
-            'supplier_phone' => 'nullable',
-            'price_per_km' => 'nullable|numeric|min:0',
-            'price_per_day' => 'nullable|numeric|min:0',
-            'driver_id' => 'nullable|exists:drivers,id',
-            'status' => 'nullable|integer|in:0,1',
-            
+         
         ]);
-
-        
+    
         $vehicle = new Vehicle();
         $vehicle->brand_id = $validatedData['brand_id'];
         $vehicle->model_id = $validatedData['model_id'];
-        $vehicle->year = $validatedData['year'];
-        $vehicle->vin = $validatedData['vin'];
-        $vehicle->color = $validatedData['color'];
-        $vehicle->body_type_id = $validatedData['body_type_id'];
-        $vehicle->license_plate = $validatedData['license_plate'];
-        $vehicle->engine_number = $request->input('engine_number');
-        $vehicle->chassis_number = $request->input('chassis_number');
-        $vehicle->seating_capacity = $validatedData['seating_capacity'];
-        $vehicle->weight = $validatedData['weight'];
-        $vehicle->horsepower = $validatedData['horsepower'];
-        $vehicle->purchase_date = $validatedData['purchase_date'];
-        $vehicle->purchase_price = $validatedData['purchase_price'];
-        $vehicle->odometer_reading = $validatedData['odometer_reading'];
-        $vehicle->supplier_name = $validatedData['supplier_name'];
-        $vehicle->supplier_phone = $validatedData['supplier_phone'];
-        $vehicle->purchase_note = $request->input('purchase_note');
-        $vehicle->price_per_km = $validatedData['price_per_km'];
-        $vehicle->price_per_day = $validatedData['price_per_day'];
-        $vehicle->driver_id = $validatedData['driver_id'];
+        $vehicle->manufacture_year = $request->manufacture_year;
+        $vehicle->register_year = $request->register_year;
+        $vehicle->transmission_id = $request->transmission_id;
+        $vehicle->body_type_id = $request->body_type_id;
+        $vehicle->mileage = $request->mileage;
+        $vehicle->in_color = $request->in_color;
+        $vehicle->ex_color = $request->ex_color;
+        $vehicle->drive_type_id = $request->drive_type_id;
+        $vehicle->license_plate = $request->license_plate;
+        $vehicle->engine_number = $request->engine_number;
+        $vehicle->chassis_number = $request->chassis_number;
+        $vehicle->seating_capacity = $request->seating_capacity;
+        $vehicle->weight = $request->weight;
+        $vehicle->engine_capacity = $request->engine_capacity;
+        $vehicle->purchase_date = $request->purchase_date;
+        $vehicle->purchase_price = $request->purchase_price;
+        $vehicle->supplier_name = $request->supplier_name;
+        $vehicle->supplier_phone = $request->supplier_phone;
+        $vehicle->purchase_note = $request->purchase_note;
+        $vehicle->price_per_km = $request->price_per_km;
+        $vehicle->price_per_day = $request->price_per_day;
+        $vehicle->driver_id = $request->driver_id;
+        $vehicle->description = $request->description;
         $vehicle->company_id = company_id();
-        $vehicle->status = $validatedData['status'] ?? 0;
+        $vehicle->status = $request->status ?? 0;
         $vehicle->save();
-    if ($request->hasFile('files')) {
-        $files = $request->file('files');
-        foreach ($files as $file) {
-            // Generate a unique file name to prevent conflicts
-            $fileName = uniqid() . '_' . $file->getClientOriginalName();
-            
-            // Store each file in the public/uploads/vehicle folder
-            $file->move(public_path('uploads/vehicle'), $fileName);
-            
-            // Create a new image record and associate it with the vehicle
-            $image = new Image();
-            $image->path = 'uploads/vehicle/' . $fileName;
-            $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
-            $image->save();
-            
-          
-        }
-    }
 
-        // Redirect to the index page with a success message
-        return redirect()->route('vehicles.index')->with('success', 'Vehicle added successfully');
+         // Attach fuel types
+    if ($request->filled('fuel_types')) {
+        $vehicle->fuelTypes()->attach($request->input('fuel_types'));
     }
+    
+        if ($request->hasFile('files')) {
+            $files = $request->file('files');
+            foreach ($files as $file) {
+                // Generate a unique file name to prevent conflicts
+                $fileName = uniqid() . '_' . $file->getClientOriginalName();
+    
+                // Store each file in the public/uploads/vehicle folder
+                $file->move(public_path('uploads/vehicle'), $fileName);
+    
+                // Create a new image record and associate it with the vehicle
+                $image = new Image();
+                $image->path = 'uploads/vehicle/' . $fileName;
+                $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
+                $image->save();
+            }
+        }
+            // Redirect to the index page with a success message
+            return redirect()->route('vehicles.index')->with('success', 'Vehicle added successfully');
+    }
+    
+
+  
 
     public function show($id)
     {
@@ -123,47 +115,82 @@ class VehicleController extends Controller
     {
         // Find the vehicle by its ID
         $vehicle = Vehicle::findOrFail($id);
-
+        $fuelTypes = FuelType::all();
         // Show the form to edit the vehicle
-        return view('backend.vehicles.edit', compact('vehicle'));
+        return view('backend.vehicles.edit', compact('vehicle', 'fuelTypes'));
+      
+        
     }
 
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'make' => 'required|string|max:255',
-            'model' => 'required|string|max:255',
-            'year' => 'nullable|integer',
-            // Add validation rules for other fields if needed
+        $validatedData = $request->validate([
+            'brand_id' => 'required|exists:car_brands,id',
+            'model_id' => 'required|exists:car_models,id',
         ]);
     
- 
-        $vehicle = Vehicle::findOrFail($vehicle->id);
-        $vehicle->name = $request->name;
-        $vehicle->make = $request->make;
-        $vehicle->model = $request->model;
-        $vehicle->year = $request->year;
-        $vehicle->vin = $request->vin;
-        $vehicle->color = $request->color;
+        $vehicle = Vehicle::findOrFail($id);
+        $vehicle->brand_id = $validatedData['brand_id'];
+        $vehicle->model_id = $validatedData['model_id'];
+        $vehicle->manufacture_year = $request->manufacture_year;
+        $vehicle->register_year = $request->register_year;
+        $vehicle->transmission_id = $request->transmission_id;
+        $vehicle->body_type_id = $request->body_type_id;
         $vehicle->mileage = $request->mileage;
+        $vehicle->in_color = $request->in_color;
+        $vehicle->ex_color = $request->ex_color;
+        $vehicle->drive_type_id = $request->drive_type_id;
         $vehicle->license_plate = $request->license_plate;
         $vehicle->engine_number = $request->engine_number;
         $vehicle->chassis_number = $request->chassis_number;
         $vehicle->seating_capacity = $request->seating_capacity;
         $vehicle->weight = $request->weight;
-        $vehicle->horsepower = $request->horsepower;
+        $vehicle->engine_capacity = $request->engine_capacity;
         $vehicle->purchase_date = $request->purchase_date;
         $vehicle->purchase_price = $request->purchase_price;
-        $vehicle->last_service_date = $request->last_service_date;
-        $vehicle->odometer_reading = $request->odometer_reading;
+        $vehicle->supplier_name = $request->supplier_name;
+        $vehicle->supplier_phone = $request->supplier_phone;
+        $vehicle->purchase_note = $request->purchase_note;
+        $vehicle->price_per_km = $request->price_per_km;
+        $vehicle->price_per_day = $request->price_per_day;
+        $vehicle->driver_id = $request->driver_id;
+        $vehicle->description = $request->description;
+        $vehicle->status = $request->status ?? 0;
         $vehicle->company_id = company_id();
-        $vehicle->save();
 
+        $vehicle->save();
+    
+        // Sync fuel types
+        if ($request->filled('fuel_types')) {
+            $vehicle->fuelTypes()->sync($request->input('fuel_types'));
+        } else {
+            $vehicle->fuelTypes()->detach(); // Remove all fuel types if none are selected
+        }
+    
+     
+    
+        // Upload and attach new images
+        if ($request->hasFile('files')) {
+            $files = $request->file('files');
+            foreach ($files as $file) {
+                // Generate a unique file name to prevent conflicts
+                $fileName = uniqid() . '_' . $file->getClientOriginalName();
+    
+                // Store each file in the public/uploads/vehicle folder
+                $file->move(public_path('uploads/vehicle'), $fileName);
+    
+                // Create a new image record and associate it with the vehicle
+                $image = new Image();
+                $image->path = 'uploads/vehicle/' . $fileName;
+                $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
+                $image->save();
+            }
+        }
+    
         // Redirect to the index page with a success message
         return redirect()->route('vehicles.index')->with('success', 'Vehicle updated successfully');
     }
-
+    
     public function destroy($id)
     {
         // Find the vehicle by its ID and delete it
@@ -217,5 +244,29 @@ class VehicleController extends Controller
     return response()->json($models);
 }
     
+
+  
+public function imageDelete($id){
+
+    $image = Image::findOrFail($id);
+
+    // Get the image path before deleting the record
+    $imagePath = $image->path;
+
+    // Delete the image from the database
+    $image->delete();
+
+    // Remove the image file from the storage
+    if ($imagePath) {
+        $filePath = public_path($imagePath); // Assuming the path is relative to the public directory
+        if(file_exists($filePath)) {
+            unlink($filePath); // Delete the file from the filesystem
+        }
+    }
+
+
+    return redirect()->back();
+
+}
     
 }

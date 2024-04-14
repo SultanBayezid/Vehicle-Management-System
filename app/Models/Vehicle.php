@@ -54,4 +54,19 @@ class Vehicle extends Model
     {
         return $this->belongsTo(CarBodyType::class, 'body_type_id');
     }
+
+    public function fuelTypes()
+{
+    return $this->belongsToMany(FuelType::class, 'vehicle_fuel_type', 'vehicle_id', 'fuel_type_id');
+}
+
+public function myear()
+{
+    return $this->belongsTo(Year::class, 'manufacture_year');
+}
+public function ryear()
+{
+    return $this->belongsTo(Year::class, 'register_year');
+}
+
 }

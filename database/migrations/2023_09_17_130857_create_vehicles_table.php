@@ -15,32 +15,35 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('model_id');
-            $table->year('year')->nullable();
-            $table->string('vin')->unique()->nullable();
-            $table->string('color')->nullable();
+            $table->unsignedSmallInteger('manufacture_year')->nullable();
+            $table->unsignedSmallInteger('register_year')->nullable();
+            $table->unsignedBigInteger('transmission_id')->nullable();
             $table->unsignedBigInteger('body_type_id')->nullable();
+            $table->unsignedBigInteger('drive_type_id')->nullable();
+            $table->unsignedBigInteger('driver_id')->nullable();
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('mileage')->nullable();
+            $table->string('in_color')->nullable();
+            $table->string('ex_color')->nullable();
             $table->string('license_plate')->unique()->nullable();
             $table->string('engine_number')->nullable();
             $table->string('chassis_number')->nullable();
             $table->unsignedSmallInteger('seating_capacity')->nullable();
             $table->unsignedSmallInteger('weight')->nullable();
-            $table->unsignedSmallInteger('horsepower')->nullable();
+            $table->unsignedSmallInteger('engine_capacity')->nullable();
             $table->date('purchase_date')->nullable();
             $table->unsignedDecimal('purchase_price', 10, 2)->nullable();
-            $table->unsignedBigInteger('odometer_reading')->nullable();
             $table->string('supplier_name')->nullable();
             $table->string('supplier_phone')->nullable();
             $table->text('purchase_note')->nullable();
+            $table->text('description')->nullable();
             $table->unsignedDecimal('price_per_km', 8, 2)->nullable();
             $table->unsignedDecimal('price_per_day', 8, 2)->nullable();
-            $table->unsignedBigInteger('driver_id')->nullable();
             $table->tinyInteger('status')->default(0);
-            $table->bigInteger('company_id');
             $table->timestamps();
-
-         
         });
     }
+    
 
     /**
      * Reverse the migrations.

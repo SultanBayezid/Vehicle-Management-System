@@ -93,7 +93,7 @@
             <li>
                 <strong>{{ auth()->user()->name }}</strong>
             </li>
-            <li><a href="{{'home'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">Dashboard</span></a></li>
+            <li><a href="{{'dashboard'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">Dashboard</span></a></li>
 
         @elseif (auth()->user()->user_type == 'client')
             <!-- Display Client options -->

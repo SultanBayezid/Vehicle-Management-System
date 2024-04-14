@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanySettingsSeeder::class);
         $this->call(SettingsSeeder::class);
         $this->call(UsersSeeder::class);
+        $this->call(FuelTypesSeeder::class);
+        $this->call(TransmissionSeeder::class);
+        $this->call(DriveTypesTableSeeder::class);
+        $this->call(YearsTableSeeder::class);
         
 
     }

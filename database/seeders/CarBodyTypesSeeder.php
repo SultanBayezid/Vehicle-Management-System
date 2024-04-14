@@ -21,12 +21,22 @@ class CarBodyTypesSeeder extends Seeder
             ['name' => 'Coupe/Sports'],
             ['name' => 'SUV / 4x4'],
             ['name' => 'MPV'],
+            ['name' => 'Pickup Truck'],
+            ['name' => 'Van'],
+            ['name' => 'Roadster'],
+            ['name' => 'Crossover'],
+            ['name' => 'Limousine'],
+            ['name' => 'Microcar'],
+            ['name' => 'Minivan'],
+            ['name' => 'Electric Vehicle (EV)'],
+            ['name' => 'Hybrid'],
             // Add more seed data as needed
         ];
-
+    
         // Insert seed data into the car_body_types table
         foreach ($data as $bodyType) {
             CarBodyType::create($bodyType);
         }
     }
+    
 }

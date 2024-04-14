@@ -39,14 +39,21 @@
                             
                             </tr>
                             <tr>
-                                <td>{{ _lang('Year') }}</td>
-                                <td>{{$vehicle->year}}</td>
+                                <td>{{ _lang('Manufacture Year') }}</td>
+                                <td>{{$vehicle->myear->year ?? ''}}</td>
                             </tr>
                             <tr>
-                                <td>{{ _lang('Color') }}</td>
-                                <td>{{$vehicle->color}}</td>
+                                <td>{{ _lang('Register Year') }}</td>
+                                <td>{{$vehicle->ryear->year ?? ''}}</td>
                             </tr>
-
+                            <tr>
+                                <td>{{ _lang('Interior color') }}</td>
+                                <td>{{$vehicle->in_color}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ _lang('Exterior color') }}</td>
+                                <td>{{$vehicle->ex_color}}</td>
+                            </tr>
                             <tr>
                                 <td>{{ _lang('License Plate') }}</td>
                                 <td>{{$vehicle->license_plate}}</td>
@@ -71,12 +78,16 @@
                             </tr>
                             </tr>
                             <tr>
-                                <td>{{ _lang('Horsepower') }}</td>
-                                <td>{{$vehicle->horsepower}}</td>
+                                <td>{{ _lang('Engine Capacity') }}</td>
+                                <td>{{$vehicle->engine_capacity}}</td>
                             </tr>
                             <tr>
                                 <td>{{ _lang('Purchase Date') }}</td>
                                 <td>{{$vehicle->purchase_date}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ _lang('Purchase Price') }}</td>
+                                <td>{{currency()}}{{$vehicle->purchase_price}}</td>
                             </tr>
                             <tr>
                                 <td>{{ _lang('Assigned Driver') }}</td>

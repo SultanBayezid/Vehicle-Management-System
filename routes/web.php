@@ -81,6 +81,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('vehicle/issues/list/{id}', 'App\Http\Controllers\VehicleController@VehicleIssue')->name('vehicle_issues');
     Route::get('vehicle/fuel/list/{id}', 'App\Http\Controllers\VehicleController@VehicleFuels')->name('vehicle_fuels');
     Route::get('vehicle/trip/list/{id}', 'App\Http\Controllers\VehicleController@VehicleTrip')->name('vehicle_trips');
+    Route::get('vehicle/image/delete/{id}', 'App\Http\Controllers\VehicleController@imageDelete')->name('vehicle_image_delete');
     Route::resource('vehicles', VehicleController::class);
     Route::resource('drivers', DriverController::class);
 

@@ -48,8 +48,15 @@
                                             <td>{{$vehicle->brand->name ?? '' }}</td>
                                             <td>{{$vehicle->model->name ?? '' }}</td>
             
-                                            <td>{{$vehicle->year }}</td>
-                                            <td>{{$vehicle->color }}</td>
+                                            <td>{{$vehicle->myear->year ?? '' }}</td>
+                                            <td>
+                                                @if($vehicle->status == 0)
+                                                    <span class="badge badge-secondary">Inactive</span>
+                                                @else
+                                                    <span class="badge badge-success">Active</span>
+                                                @endif
+                                            </td>
+
                                             <td>
                                             <div class="btn-group" role="group" aria-label="Basic example"> 
                 <a href="{{ route('vehicles.show', $vehicle->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
