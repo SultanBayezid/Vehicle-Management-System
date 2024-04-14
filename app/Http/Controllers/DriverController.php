@@ -9,7 +9,7 @@ class DriverController extends Controller
 {
     public function index()
     {
-        $drivers = Driver::where('compnay_id', company_id())->get();
+        $drivers = Driver::where('company_id', company_id())->get();
         return view('backend.drivers.list', compact('drivers'));
     }
 

@@ -27,6 +27,7 @@ class Vehicle extends Model
         'purchase_price',
         'last_service_date',
         'odometer_reading',
+        'body_type_id',
     ];
 
     public function driver()
@@ -37,5 +38,20 @@ class Vehicle extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(CarBrand::class);
+    }
+    public function model()
+    {
+        return $this->belongsTo(CarModel::class);
+    }
+
+   
+    public function carBodyType()
+    {
+        return $this->belongsTo(CarBodyType::class, 'body_type_id');
     }
 }

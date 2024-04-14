@@ -26,8 +26,7 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Make</th>
+                                            <th>Brand</th>
                                             <th>Model</th>
                                             <th>Year</th>
                                             <th>Color</th>
@@ -36,8 +35,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>Name</th>
-                                            <th>Make</th>
+                                        <th>Brand</th>
                                             <th>Model</th>
                                             <th>Year</th>
                                             <th>Color</th>
@@ -47,9 +45,9 @@
                                     <tbody>
                                         @foreach($vehicles as $vehicle)
                                         <tr>
-                                            <td>{{$vehicle->name }}</td>
-                                            <td>{{$vehicle->make }}</td>
-                                            <td>{{$vehicle->model }}</td>
+                                            <td>{{$vehicle->brand->name ?? '' }}</td>
+                                            <td>{{$vehicle->model->name ?? '' }}</td>
+            
                                             <td>{{$vehicle->year }}</td>
                                             <td>{{$vehicle->color }}</td>
                                             <td>

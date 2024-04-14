@@ -29,16 +29,13 @@
                             <div id="general-info" class="tab-pane active">
                             <table id="datatablesSimple">
                             <tr>
-                                <td>{{ _lang('Name') }}</td>
-                                <td>{{$vehicle->name}}</td>
+                                <td>{{ _lang('Brand') }}</td>
+                                <td>{{$vehicle->brand->name ?? '' }}</td>
                             </tr>
-                            <tr>
-                                <td>{{ _lang('Make') }}</td>
-                                <td>{{$vehicle->make}}</td>
-                            </tr>
+                    
                             <tr>
                                 <td>{{ _lang('Model') }}</td>
-                                <td>{{$vehicle->model}}</td>
+                                <td>{{$vehicle->model->name ?? '' }}</td>
                             
                             </tr>
                             <tr>

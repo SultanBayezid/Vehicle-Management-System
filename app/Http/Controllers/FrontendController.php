@@ -9,6 +9,7 @@ use App\Models\Driver;
 use App\Models\Blog;
 use Auth;
 use App\Models\Contact;
+use App\Models\CarBodyType;
 use App\Models\Trip;
 use App\Models\Transaction;
 use Validator;
@@ -17,6 +18,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
+
+
         $data['vehicles'] = Vehicle::All();
         $data['blogs'] = Blog::All();
         return view('frontend.home', $data);

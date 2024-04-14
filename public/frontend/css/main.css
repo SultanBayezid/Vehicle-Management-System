@@ -5930,3 +5930,7 @@ body::-webkit-scrollbar-thumb {
   transition: 0.5s ease;
   transition-property: color, background-color, border-color, box-shadow, transform, margin-top, height;
 }
+
+.blue {
+  color:#0048d8 !important;
+}
