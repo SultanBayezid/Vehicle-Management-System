@@ -151,7 +151,7 @@
 
 				<!-- car -->
 				@foreach($vehicles as $vehicle )
-
+				<!-- car -->
 				<div class="col-12 col-md-6 col-xl-4">
 					<div class="car">
 						<div class="splide splide--card car__slider">
@@ -162,22 +162,30 @@
 
 							<div class="splide__track">
 								<ul class="splide__list">
-								@foreach($vehicle->images as $image)
+									@foreach($vehicle->images as $image)
 									<li class="splide__slide">
-										<img src="{{ asset($image->path) }}" alt="Vehicle Image">
+										<img src="{{ asset($image->path) }}" alt="Vehicle Image" style=" width: 100%;
+    margin: 0 auto;
+    display: flex;
+    height: 220px;
+    border-radius: 6px 6px 0 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    transition: .3s linear;">
 									</li>
 									@endforeach
+								
 								</ul>
 							</div>
-
-							
 						</div>
 						<div class="car__title">
 							<h3 class="car__name"><a href="{{route('single.vehicle', $vehicle->id)}}">{{$vehicle->brand->name ?? '' }} {{$vehicle->model->name ?? '' }}</a></h3>
 							<span class="car__year">{{$vehicle->myear->year ?? '' }}</span>
 						</div>
 						<ul class="car__list">
-						<li>
+							<li>
 								<i class="fas fa-male  blue"></i><span>&nbsp; {{$vehicle->seating_capacity}} Persons</span>
 							</li>
 							<li>
@@ -206,7 +214,8 @@
 					</div>
 				</div>
 				<!-- end car -->
-				@endforeach
+
+                @endforeach
 
 
 			

@@ -124,7 +124,16 @@
 								<ul class="splide__list">
 									@foreach($vehicle->images as $image)
 									<li class="splide__slide">
-										<img src="{{ asset($image->path) }}" alt="Vehicle Image">
+										<img src="{{ asset($image->path) }}" alt="Vehicle Image" style=" width: 100%;
+    margin: 0 auto;
+    display: flex;
+    height: 220px;
+    border-radius: 6px 6px 0 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    transition: .3s linear;">
 									</li>
 									@endforeach
 								

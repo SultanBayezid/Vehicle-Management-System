@@ -103,7 +103,7 @@
         </div>
         <div class="col-md-4">
             <label for="mileage" class="form-label">{{ _lang('Mileage') }}</label>
-            <input type="text" class="form-control @error('mileage') is-invalid @enderror" id="mileage" name="mileage" value="{{ old('mileage') }}">
+            <input type="number" class="form-control @error('mileage') is-invalid @enderror" id="mileage" name="mileage" value="{{ old('mileage') }}">
             @error('mileage')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
