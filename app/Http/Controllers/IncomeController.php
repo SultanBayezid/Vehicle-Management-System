@@ -163,7 +163,8 @@ class IncomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $id) {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where("id",$id)
+        ->where("company_id",company_id())->first();
         if (!$request->ajax()) {
             return view('backend.income.view', compact('transaction', 'id'));
         } else {
@@ -179,7 +180,8 @@ class IncomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id) {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where("id",$id)
+        ->where("company_id",company_id())->first();
         if (!$request->ajax()) {
             return view('backend.income.edit', compact('transaction', 'id'));
         } else {
@@ -257,8 +259,9 @@ class IncomeController extends Controller {
     }
 
     public function calendar() {
-        $transactions = Transaction::where("type", "income")
-            ->orderBy("id", "desc")->get();
+        $transactions = Transaction::where("company_id",company_id())
+		                            ->where("type","income")
+									->orderBy("id","desc")->get();
         return view('backend.income.calendar', compact('transactions'));
     }
 
@@ -269,7 +272,7 @@ class IncomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where("id",$id)->where("company_id",company_id());
         $transaction->delete();
         return back()->with('success', _lang('Removed Sucessfully'));
     }

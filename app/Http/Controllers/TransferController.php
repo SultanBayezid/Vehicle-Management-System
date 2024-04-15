@@ -58,6 +58,7 @@ class TransferController extends Controller {
         $transaction->payment_method_id = $request->input('payment_method_id');
         $transaction->reference         = $request->input('reference');
         $transaction->note              = $request->input('note');
+        $transaction->company_id = company_id();
 
         $transaction->save();
 
@@ -72,7 +73,7 @@ class TransferController extends Controller {
         $transaction->payment_method_id = $request->input('payment_method_id');
         $transaction->reference         = $request->input('reference');
         $transaction->note              = $request->input('note');
-
+		$transaction->company_id = company_id();
         $transaction->save();
 
         if (!$request->ajax()) {

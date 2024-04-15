@@ -34,6 +34,7 @@ class FrontendController extends Controller
     public function singleCar($id){
 
         $data['vehicle'] = Vehicle::findOrfail($id);
+        $data['vehicles'] = Vehicle::All();
         return view('frontend.vehicles.show', $data);
 
 

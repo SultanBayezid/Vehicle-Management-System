@@ -21,6 +21,7 @@ class ExpenseController extends Controller {
         ->with("payee")
         ->with("payment_method")
         ->select('transactions.*')
+        ->where("transactions.company_id",company_id())
         ->where("transactions.dr_cr", "dr")
         ->orderBy("transactions.id", "desc")
             ->get();
@@ -137,6 +138,7 @@ class ExpenseController extends Controller {
         $transaction->reference         = $request->input('reference');
         $transaction->note              = $request->input('note');
         $transaction->attachment        = $attachment;
+        $transaction->company_id = company_id();
 
         $transaction->save();
         //Set Related Data
@@ -162,7 +164,8 @@ class ExpenseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $id) {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where("id",$id)
+								  ->where("company_id",company_id())->first();
         if (!$request->ajax()) {
             return view('backend.expense.view', compact('transaction', 'id'));
         } else {
@@ -178,7 +181,8 @@ class ExpenseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id) {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where("id",$id)
+								  ->where("company_id",company_id())->first();
 
         if (!$request->ajax()) {
             return view('backend.expense.edit', compact('transaction', 'id'));
@@ -237,6 +241,7 @@ class ExpenseController extends Controller {
         if ($request->hasfile('attachment')) {
             $transaction->attachment = $attachment;
         }
+        $transaction->company_id = company_id();
 
         $transaction->save();
         //Set Related Data
@@ -256,8 +261,9 @@ class ExpenseController extends Controller {
     }
 
     public function calendar() {
-        $transactions = Transaction::where("type", "expense")
-            ->orderBy("id", "desc")->get();
+        $transactions = Transaction::where("company_id",company_id())
+        ->where("type","expense")
+        ->orderBy("id","desc")->get();
         return view('backend.accounting.expense.calendar', compact('transactions'));
     }
 
@@ -268,7 +274,7 @@ class ExpenseController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::where("id",$id)->where("company_id",company_id());
         $transaction->delete();
         return back()->with('success', _lang('Removed Sucessfully'));
     }

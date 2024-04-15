@@ -85,7 +85,7 @@ class ChartOfAccountController extends Controller
     public function edit(Request $request,$id)
     {
         $chartofaccount = ChartOfAccount::where("id",$id)
-										->first();
+        ->where("company_id",company_id())->first();
 		if(! $request->ajax()){
 		   return view('backend.chart_of_account.edit',compact('chartofaccount','id'));
 		}else{
@@ -122,6 +122,7 @@ class ChartOfAccountController extends Controller
 		$chartofaccount = ChartOfAccount::where("id",$id)->first();
 		$chartofaccount->name = $request->input('name');
 		$chartofaccount->type = $request->input('type');
+		$chartofaccount->company_id = company_id();
 	
         $chartofaccount->save();
 		
@@ -141,7 +142,7 @@ class ChartOfAccountController extends Controller
      */
     public function destroy($id)
     {
-        $chartofaccount = ChartOfAccount::where("id",$id);
+        $chartofaccount = ChartOfAccount::where("id",$id)->where("company_id",company_id());
         $chartofaccount->delete();
         return redirect('chart_of_accounts')->with('success',('Removed Sucessfully'));
     }

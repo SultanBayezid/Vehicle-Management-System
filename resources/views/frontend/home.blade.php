@@ -133,26 +133,34 @@
 						</div>
 						<div class="car__title">
 							<h3 class="car__name"><a href="{{route('single.vehicle', $vehicle->id)}}">{{$vehicle->brand->name ?? '' }} {{$vehicle->model->name ?? '' }}</a></h3>
-							<span class="car__year">{{$vehicle->year ?? '' }}</span>
+							<span class="car__year">{{$vehicle->myear->year ?? '' }}</span>
 						</div>
 						<ul class="car__list">
 							<li>
-								<i class="fas fa-male fa-lg blue"></i><span>&nbsp; {{$vehicle->seating_capacity}}</span>
+								<i class="fas fa-male  blue"></i><span>&nbsp; {{$vehicle->seating_capacity}} Persons</span>
 							</li>
 							<li>
-								<i class="fas fa-car fa-lg fa-lg blue"></i><span>&nbsp; {{$vehicle->carBodyType->name ?? ''}}</span>
+								<i class="fas fa-car fa-lg  blue"></i><span>&nbsp; {{$vehicle->carBodyType->name ?? ''}}</span>
 							</li>
 							<li>
-								<i class="fas fa-gas-pump fa-lg blue"></i><span>&nbsp; Gas</span>
+								<i class="fas fa-gas-pump  blue"></i><span> @if($vehicle->fuelTypes->count() > 0)
+									<ul>&nbsp;
+										@foreach($vehicle->fuelTypes as $fuelType)
+											{{ $fuelType->name }} &nbsp;
+										@endforeach
+									</ul>
+								@else
+								&nbsp; Gas
+								@endif</span>
 							</li>
 							<li>
-								<i class="fas fa-cogs fa-lg blue"></i><span>&nbsp; {{$vehicle->horsepower ?? ''}}</span>
+								<i class="fas fa-cogs  blue"></i><span>&nbsp; {{$vehicle->engine_capacity ?? ''}} CC</span>
 							</li>
 						</ul>
 						<div class="car__footer">
 							<span class="car__price">{{currency()}} {{$vehicle->price_per_km ?? ''}} <sub>/ km</sub></span>
-							<button class="car__favorite " type="button" aria-label="Add to favorite"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z"/></svg></button>
-							<a href="car.html" class="car__more"><span>Rent now</span></a>
+						
+							<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>View Details</span></a>
 						</div>
 					</div>
 				</div>
