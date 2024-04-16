@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use App\Models\Issue;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -23,7 +24,8 @@ class ServiceController extends Controller
     public function create()
     { 
         $issues = Issue::where('company_id', company_id())->get();
-        return view('backend.services.create',compact('issues')); //
+        $vehicles = Vehicle::where('company_id', company_id())->get();
+        return view('backend.services.create',compact('issues', 'vehicles')); //
     }
 
     /**
@@ -31,6 +33,9 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        
+        
+        // dd($request->all());
         // Validate the input for the service
         $validatedData = $request->validate([
             'vehicle_id' => 'required',
@@ -58,7 +63,7 @@ class ServiceController extends Controller
         Issue::whereIn('id', $selectedIssues)->update(['status' => 2]);
 
         // Redirect to the service details page or the index page
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Service Created Successfully');
 
     }
 
@@ -76,9 +81,11 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        $vehicles = Vehicle::where('company_id', company_id())->get();
+        return view('backend.services.edit', compact('service', 'id', 'vehicles'));
     }
 
     /**
@@ -95,6 +102,18 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         //
+    }
+
+    public function getVehicleIssues($id)
+    {
+        // Find the vehicle by its ID
+        $vehicle = Vehicle::findOrFail($id);
+
+        // Get the issues associated with the vehicle
+        $issues = $vehicle->issues()->where('status', 1)->get();
+
+        // Return the issues as JSON response
+        return response()->json($issues);
     }
 
 }

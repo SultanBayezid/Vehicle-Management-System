@@ -30,7 +30,7 @@
                                     <div class="sb-nav-link-icon"><i class="fas fa-car-alt"></i></div>
                                     Vehicle List
                                 </a>
-                                <a class="nav-link" href="{{ route('vehicles.index') }}">
+                                <a class="nav-link" href="{{ route('services.index') }}">
                                     <div class="sb-nav-link-icon"><i class="fa fa-wrench"></i></div>
                                     Services
                                 </a>

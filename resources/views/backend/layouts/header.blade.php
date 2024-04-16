@@ -47,6 +47,25 @@
     @include('backend.layouts.sidebar')
 
     <main>
+    @if(session('success'))
+    <div class="container">
+        <div class="row mt-2">
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        </div>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="container">
+        <div class="row mt-2">
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        </div>
+    </div>
+@endif
         @yield('content') <!-- Content from other views will be inserted here -->
     </main>
 

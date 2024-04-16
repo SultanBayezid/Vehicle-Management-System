@@ -94,6 +94,8 @@ Route::group(['middleware' => ['auth','verified']], function () {
 			Route::resource('contacts','App\Http\Controllers\ContactController');
 			Route::resource('issues','App\Http\Controllers\IssueController');
             Route::get('/fetch-issues-by-vehicle/{vehicleId}', 'ServiceController@fetchIssuesByVehicle');
+            Route::get('/get-vehicle-issues/{id}', 'App\Http\Controllers\ServiceController@getVehicleIssues')->name('get.vehicle.issues');
+
 			Route::resource('services','App\Http\Controllers\ServiceController');
             
 			Route::resource('fuels','App\Http\Controllers\FuelController');

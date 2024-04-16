@@ -28,10 +28,12 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Vehicle') }}</label>
-                                            <select class="form-control " data-value="id" data-display="vehicle_id" data-table="vehicles" data-where="1" name="vehicle_id" id="vehicle_id" required>
-                                            <option value="">{{ ('Select One') }}</option>
-                                            {{ create_option("vehicles", "id", "name", old('vehicle_id')) }}
-                                        </select>
+                                            <select class="form-control" data-value="id" data-display="vehicle_id" data-table="vehicles" data-where="1" name="vehicle_id" id="vehicle_id" required>
+                                                <option value="">{{ __('Select One') }}</option>
+                                                @foreach($vehicles as $vehicle)
+                                                <option value="{{$vehicle->id}}">{{$vehicle->brand->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -44,7 +46,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Odometer') }}</label>
-                                            <input type="text" class="form-control" name="odometer" value="{{ old('odometer') }}" >
+                                            <input type="number" class="form-control" name="odometer" value="{{ old('odometer') }}" >
                                         </div>
                                     </div>
                                 </div>
@@ -52,12 +54,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">{{ _lang('Select any issues that were resolved as part of this service') }}</label> <br>
-                                            @foreach($issues as $issue)
-                                                <input type="checkbox" name="issues[]" value="{{ $issue->id }}" >
-                                                {{ $issue->summary }}
-                                            </label><br>
-                                        @endforeach
+                                           
+                                            <div id="vehicleIssues"></div>
+
                                         </div>
                                     </div>
 
@@ -89,6 +88,35 @@
                         </div>
                    
 
+
+                        <script>
+    document.getElementById('vehicle_id').addEventListener('change', function() {
+        var vehicleId = this.value;
+        fetch('/get-vehicle-issues/' + vehicleId)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    var issuesHtml = '<p>Select any issues that were resolved as part of this service:</p>';
+                    issuesHtml += '<ul style="list-style: none; padding-left: 0;">';
+                    data.forEach(issue => {
+                        issuesHtml += '<li style="margin-bottom: 5px;">';
+                        issuesHtml += '<label style="display: flex; align-items: center;">';
+                        issuesHtml += '<input type="checkbox" name="issues[]" value="' + issue.id + '" style="margin-right: 5px;">';
+                        issuesHtml += issue.summary;
+                        issuesHtml += '</label>';
+                        issuesHtml += '</li>';
+                    });
+                    issuesHtml += '</ul>';
+                } else {
+                    var issuesHtml = '<p>No issues found for this vehicle.</p>';
+                }
+                document.getElementById('vehicleIssues').innerHTML = issuesHtml;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
 
 
 @endsection
