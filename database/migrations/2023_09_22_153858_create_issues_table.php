@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('vehicle_id');
             $table->bigInteger('driver_id')->nullable();
             $table->string('summary')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('priority')->nullable();
             $table->string('image')->nullable();
             $table->date('due_date')->nullable();

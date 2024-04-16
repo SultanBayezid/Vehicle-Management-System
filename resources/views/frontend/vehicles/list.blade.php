@@ -139,7 +139,7 @@
 										<img src="{{ asset($image->path) }}" alt="Vehicle Image" style=" width: 100%;
     margin: 0 auto;
     display: flex;
-    height: 220px;
+    height: 250px;
     border-radius: 6px 6px 0 0;
     -o-object-fit: cover;
     object-fit: cover;

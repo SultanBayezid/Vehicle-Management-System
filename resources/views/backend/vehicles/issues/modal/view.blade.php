@@ -11,7 +11,7 @@
             <table class="table table-bordered">
                     <tr>
                         <td>{{ _lang('Vehicle') }}</td>
-                        <td>{{$issue->vehicle->name}}</td>
+                        <td>{{$issue->vehicle->brand->name ?? ''}} {{$issue->vehicle->model->name ?? ''}} {{$issue->vehicle->myear->year ?? ''}}</td>
                     </tr>
                     <tr>
                         <td>{{ _lang('Assignee') }}</td>

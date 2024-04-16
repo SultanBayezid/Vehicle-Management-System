@@ -62,6 +62,7 @@ class IssueController extends Controller
         $issue->due_date = $request->due_date;
         $issue->report_date = now();
         $issue->status = 1;
+        $issue->company_id = company_id();
         $issue->image        = $attachment;
         $issue->save();
         return redirect()->back();

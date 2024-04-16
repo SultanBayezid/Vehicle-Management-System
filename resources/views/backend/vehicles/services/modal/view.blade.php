@@ -11,7 +11,7 @@
             <table class="table table-bordered">
                     <tr>
                         <td>{{ _lang('Vehicle') }}</td>
-                        <td>{{$service->vehicle->name}}</td>
+                        <td>{{$issue->vehicle->brand->name ?? ''}} {{$issue->vehicle->model->name ?? ''}} {{$issue->vehicle->myear->year ?? ''}}</td>
                     </tr>
                     <tr>
                         <td>{{ _lang('Completion Date') }}</td>
@@ -46,7 +46,7 @@
                         </td>
                         <td>
                         @foreach($service->issues as $issue)
-                                <li>{{ $issue->summary }} 
+                                <li class="list-group-item">{{ $issue->summary }} 
                                      @if ($issue->status == 1)
                                         <span class="badge badge-warning">Pending</span>
                                     @elseif ($issue->status == 2)

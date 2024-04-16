@@ -72,7 +72,7 @@
            <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">{{ _lang('Register Year') }}</label>
-                <select class="form-control" name="register_year" id="register_year" required>
+                <select class="form-control" name="register_year" id="register_year">
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
                     {{ create_option("years", "id", "year", old('register_year')) }}

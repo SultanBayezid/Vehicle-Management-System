@@ -13,7 +13,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::All();
+        $services = Service::where('company_id', company_id())->get();
         return view('backend.services.list', compact('services'));
     }
     
@@ -22,7 +22,7 @@ class ServiceController extends Controller
      */
     public function create()
     { 
-        $issues = Issue::All();
+        $issues = Issue::where('company_id', company_id())->get();
         return view('backend.services.create',compact('issues')); //
     }
 
@@ -49,6 +49,7 @@ class ServiceController extends Controller
         $service->note = $request->note;
         $service->odometer = $request->odometer;
         $service->document = $attachment;
+        $service->company_id = company_id();
         $service->save();
         // Associate issues with the service (if checkboxes were used)
         $selectedIssues = $request->input('issues', []);

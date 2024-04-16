@@ -37,6 +37,9 @@ class VehicleController extends Controller
         $validatedData = $request->validate([
             'brand_id' => 'required|exists:car_brands,id',
             'model_id' => 'required|exists:car_models,id',
+            'seating_capacity' => 'nullable|integer|max:50', 
+            'engine_capacity' => 'nullable|integer|max:5000', 
+            'weight' => 'nullable|numeric|max:9999',
          
         ]);
     
@@ -127,6 +130,9 @@ class VehicleController extends Controller
         $validatedData = $request->validate([
             'brand_id' => 'required|exists:car_brands,id',
             'model_id' => 'required|exists:car_models,id',
+            'seating_capacity' => 'nullable|integer|max:50', 
+            'engine_capacity' => 'nullable|integer|max:5000', 
+            'weight' => 'nullable|numeric|max:9999',
         ]);
     
         $vehicle = Vehicle::findOrFail($id);

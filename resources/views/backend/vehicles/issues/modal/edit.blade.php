@@ -19,12 +19,9 @@
                                                     <label class="control-label">Vehicle <sup style="color:red">*</sup></label>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <div class="form-group">
-                                                    <select class="form-control " data-value="id" data-display="name" data-table="vehicles" data-where="1" name="vehicle_id" id="vehicle_id" required>
-                                            <option value="">{{ ('Select One') }}</option>
-                                            {{ create_option("vehicles", "id", "name", $issue->vehicle_id) }}
-      
-                                        </select>
+                                                <div class="form-group">
+                                                      <input type="text" value="{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}" class="form-control" readonly>
+                                                    <input type="hidden" name="vehicle_id" value="{{$vehicle->id}}">
                                                     </div>
                                                 </div>
                                             </div>

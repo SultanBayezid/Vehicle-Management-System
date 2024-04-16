@@ -36,9 +36,15 @@
             <tbody> @foreach($services as $service) <tr>
                 <td>{{ $service->completed_date }}</td>
                 <td>{{ $service->note }}</td>
-                <td> @foreach($service->issues as $issue) 
-                  <li>{{ $issue->summary }}</li>
-                   @endforeach 
+                <td>
+                <ul  class="">
+                @foreach($service->issues as $issue) 
+                <li class="list-group-item"><a target="_blank" href="{{route('issues.show', $issue->id)}}">{{ $issue->summary }}</a></li>
+
+                  
+@endforeach 
+</ul>
+
                   </td>
                 <td class="text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">

@@ -58,6 +58,7 @@ class FuelController extends Controller
             $issue->reference = $request->reference;
             $issue->note = $request->note;
             $issue->attachment  = $attachment;
+            $issue->company_id  = company_id();
             $issue->save();
             return redirect()->back();
     }

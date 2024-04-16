@@ -2,7 +2,7 @@
 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel{{$service->id}}">Edit Vehicle</h5>
+                <h5 class="modal-title" id="editModalLabel{{$service->id}}">Edit Service </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,10 +17,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Vehicle') }}</label>
-                                            <select class="form-control " data-value="id" data-display="vehicle_id" data-table="vehicles" data-where="1" name="vehicle_id" id="vehicle_id" required>
-                                            <option value="">{{ ('Select One') }}</option>
-                                            {{ create_option("vehicles", "id", "name", $service->vehicle_id) }}
-                                        </select>
+                                            <input type="text" value="{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}" class="form-control" readonly>
+                                            <input type="hidden" name="vehicle_id" value="{{$vehicle->id}}">
                                         </div>
                                     </div>
 
