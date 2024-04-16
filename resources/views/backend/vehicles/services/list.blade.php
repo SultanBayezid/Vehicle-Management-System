@@ -24,7 +24,7 @@
             <button class="btn btn-primary btn-sm" style="float: right;" data-toggle="modal" data-target="#service">
               <i class="fas fa-plus"></i> Add Service Entry </button>
           </span>
-          <table id="datatablesSimple">
+          <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th>{{ _lang('Completed') }}</th>

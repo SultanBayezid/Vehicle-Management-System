@@ -7,10 +7,9 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item active"  aria-current="page">Accounts</li>
-                <li class="breadcrumb-item active"  aria-current="page">Transactions</li>
-                <li class="breadcrumb-item"><a href="{{route('services.index')}}">services</a></li>
-                <li class="breadcrumb-item active" aria-current="page">service Details</li>
+                <li class="breadcrumb-item"><a href="{{route('services.index')}}">Services</a></li>
+                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $service->vehicle_id)}}">{{$service->vehicle->brand->name}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Service Details</li>
             </ol>
         </nav>
 <div class="row">
@@ -19,10 +18,10 @@
      
 
             <div class="card-body">
-                <table class="table table-bordered">
+            <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <tr>
                         <td>{{ _lang('Vehicle') }}</td>
-                        <td>{{$service->vehicle->name}}</td>
+                        <td>{{$service->vehicle->brand->name}} {{$service->vehicle->model->name}} {{$service->vehicle->myear->year}}</td>
                     </tr>
                     <tr>
                         <td>{{ _lang('Completion Date') }}</td>
@@ -39,7 +38,7 @@
                         <td>
                             @if($service->document != "")
                             <a href="{{ asset('uploads/service/'.$service->document) }}"
-                                target="_blank" class="btn btn-primary">{{ _lang('View Attachment') }}</a>
+                                target="_blank" class="btn btn-primary btn-sm">{{ _lang('View Attachment') }}</a>
                             @else
                             <label class="label label-warning">
                                 <strong>{{ _lang('No Atachment Available !') }}</strong>
@@ -57,14 +56,7 @@
                         </td>
                         <td>
                         @foreach($service->issues as $issue)
-                                <li>{{ $issue->summary }} 
-                                     @if ($issue->status == 1)
-                                        <span class="badge badge-warning">Pending</span>
-                                    @elseif ($issue->status == 2)
-                                        <span class="badge badge-info">Closed</span>
-                                    @elseif ($issue->status == 3)
-                                        <span class="badge badge-success">Resolved</span>
-                                    @endif </li>
+                        <li class="list-group-item"><a target="_blank" href="{{route('issues.show', $issue->id)}}">{{ $issue->summary }}</a></li>
                             @endforeach</td>
                         </td>
                     </tr>

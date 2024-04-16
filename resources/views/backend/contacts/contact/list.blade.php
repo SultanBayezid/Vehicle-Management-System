@@ -26,8 +26,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-body">
-            <table id="datatablesSimple">
+           
+            <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                    
@@ -66,7 +66,10 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+                <div class="pagination justify-content-center">
+     {{ $contacts->links('vendor.pagination.bootstrap-5') }}
+</div>
+            
         </div>
     </div>
 </div>

@@ -24,7 +24,7 @@
 
 
     <div class="card-body">
-                                <table id="datatablesSimple">
+    <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -55,7 +55,7 @@
                                             <td>{{$trip->trip_date }}</td>
                                             <td>{{$trip->customer->contact_name ?? '' }}</td>
                                             <td>{{$trip->driver->name ?? '' }}</td>
-                                            <td>{{$trip->vehicle->make }}</td>
+                                            <td>{{$trip->vehicle->brand->name }} {{$trip->vehicle->model->name }} {{$trip->vehicle->myear->year }}</td>
                                             <td>{{$trip->pickup_location }}</td>
                                             <td>{{$trip->dropoff_location }}</td>
                                             <td>{{$trip->fare_amount }}</td>

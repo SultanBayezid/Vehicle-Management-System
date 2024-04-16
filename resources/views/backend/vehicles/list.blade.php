@@ -23,14 +23,14 @@
     </nav>
 
         <div class="card-body">
-                                <table id="datatablesSimple">
+        <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>Brand</th>
                                             <th>Model</th>
                                             <th>Year</th>
-                                            <th>Color</th>
-                                            <th>Action</th>
+                                            <th>Status</th>
+                                            <th width="12%">Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -38,8 +38,8 @@
                                         <th>Brand</th>
                                             <th>Model</th>
                                             <th>Year</th>
-                                            <th>Color</th>
-                                            <th>Action</th>
+                                            <th>Status</th>
+                                            <th width="12%">Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -73,6 +73,9 @@
                              
                                     </tbody>
                                 </table>
+                                <div class="pagination justify-content-center">
+     {{ $vehicles->links('vendor.pagination.bootstrap-5') }}
+</div>
                             </div>
                  
  </div>

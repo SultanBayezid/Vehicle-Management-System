@@ -31,7 +31,7 @@
                                             <select class="form-control" data-value="id" data-display="vehicle_id" data-table="vehicles" data-where="1" name="vehicle_id" id="vehicle_id" required>
                                                 <option value="">{{ __('Select One') }}</option>
                                                 @foreach($vehicles as $vehicle)
-                                                <option value="{{$vehicle->id}}">{{$vehicle->brand->name}}</option>
+                                                <option value="{{$vehicle->id}}">{{$vehicle->brand->name}} {{$vehicle->model->name}} {{$vehicle->myear->year}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -90,32 +90,32 @@
 
 
                         <script>
-    document.getElementById('vehicle_id').addEventListener('change', function() {
-        var vehicleId = this.value;
-        fetch('/get-vehicle-issues/' + vehicleId)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length > 0) {
-                    var issuesHtml = '<p>Select any issues that were resolved as part of this service:</p>';
-                    issuesHtml += '<ul style="list-style: none; padding-left: 0;">';
-                    data.forEach(issue => {
-                        issuesHtml += '<li style="margin-bottom: 5px;">';
-                        issuesHtml += '<label style="display: flex; align-items: center;">';
-                        issuesHtml += '<input type="checkbox" name="issues[]" value="' + issue.id + '" style="margin-right: 5px;">';
-                        issuesHtml += issue.summary;
-                        issuesHtml += '</label>';
-                        issuesHtml += '</li>';
-                    });
-                    issuesHtml += '</ul>';
-                } else {
-                    var issuesHtml = '<p>No issues found for this vehicle.</p>';
-                }
-                document.getElementById('vehicleIssues').innerHTML = issuesHtml;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    });
+ document.getElementById('vehicle_id').addEventListener('change', function() {
+    var vehicleId = this.value;
+    fetch('/get-vehicle-issues/' + vehicleId)
+        .then(response => response.json())
+        .then(data => {
+            var issuesHtml = ''; // Initialize issuesHtml here
+            if (data.length > 0) {
+                issuesHtml += '<p>Select any issues that were resolved as part of this service:</p>';
+                issuesHtml += '<div class="form-check">'; // Add form-check class here
+                data.forEach(issue => {
+                    issuesHtml += '<label class="form-check-label" style="display: block;">'; // Add form-check-label class here
+                    issuesHtml += '<input type="checkbox" class="form-check-input" name="issues[]" value="' + issue.id + '" style="margin-right: 5px;">';
+                    issuesHtml += issue.summary;
+                    issuesHtml += '</label>';
+                });
+                issuesHtml += '</div>';
+            } else {
+                issuesHtml += '<p>No issues found for this vehicle.</p>';
+            }
+            document.getElementById('vehicleIssues').innerHTML = issuesHtml;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+});
+
 </script>
 
 

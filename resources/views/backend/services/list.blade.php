@@ -18,12 +18,13 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
             <li class="breadcrumb-item active" aria-current="page">Services</li>
         </ol>
     </nav>
 
         <div class="card-body">
-        <table id="datatablesSimple">
+        <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>{{ _lang('Vehicle') }}</th>
@@ -56,13 +57,16 @@
                                     {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button class="btn btn-danger btn-sm btn-remove"
-                                        type="submit"><i class="fas fa-trash"></i></button>
+                                        type="submit" onclick="return confirm('Are you sure you want to delete this Service?')"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pagination justify-content-center">
+     {{ $services->links('vendor.pagination.bootstrap-5') }}
+</div>
                             </div>
                  
  </div>

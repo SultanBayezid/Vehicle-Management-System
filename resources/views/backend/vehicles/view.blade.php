@@ -27,7 +27,7 @@
                         <div class="tab-content">
 
                             <div id="general-info" class="tab-pane active">
-                            <table id="datatablesSimple">
+                            <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                             <tr>
                                 <td>{{ _lang('Brand') }}</td>
                                 <td>{{$vehicle->brand->name ?? '' }}</td>

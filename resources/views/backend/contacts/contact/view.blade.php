@@ -35,14 +35,14 @@
     </div>
 
     <div class="col-md-9 col-sm-8">
-        <div class="card">
+      
 
             <div class="card-body">
 
                 <div class="tab-content">
 
                     <div id="general-info" class="tab-pane active">
-                        <table class="table table-bordered">
+                    <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                             <tr>
                                 <td colspan="2" class="text-center"><img class="thumb-image-md img-thumbnail"
                                         src="{{ asset('uploads/contacts/'.$contact->contact_image) }}"></td>
@@ -202,7 +202,7 @@
                 </div>
                 <!--End TAB-->
             </div>
-        </div>
+       
     </div>
     </div>
 </div>

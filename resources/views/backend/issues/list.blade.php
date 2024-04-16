@@ -18,12 +18,13 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
             <li class="breadcrumb-item active" aria-current="page">Issues</li>
         </ol>
     </nav>
 
         <div class="card-body">
-                                <table id="datatablesSimple">
+                                <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                         <th>Piority</th>
@@ -50,7 +51,7 @@
                                         @foreach($issues as $issue)
                                         <tr>
                                             <td>{{$issue->priority }}</td>
-                                            <td>{{$issue->vehicle->name }}</td>
+                                            <td><a href="{{route('vehicles.show', $issue->vehicle_id)}}">{{$issue->vehicle->brand->name ?? '' }} {{$issue->vehicle->model->name ?? '' }} {{$issue->vehicle->myear->year ?? '' }}</a></td>
                                             <td>{{$issue->driver->name }}</td>
                                             <td>{{$issue->summary }}</td>
                                             <td>{{$issue->report_date }}</td>
@@ -79,6 +80,9 @@
                              
                                     </tbody>
                                 </table>
+                                <div class="pagination justify-content-center">
+     {{ $issues->links('vendor.pagination.bootstrap-5') }}
+</div>
                             </div>
                  
  </div>

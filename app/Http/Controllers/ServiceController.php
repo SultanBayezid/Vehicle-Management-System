@@ -6,7 +6,7 @@ use App\Models\Service;
 use App\Models\Issue;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
-
+use File;
 class ServiceController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::where('company_id', company_id())->get();
+       $services =  Service::where('company_id', company_id())
+        ->latest() // Order by the latest date
+        ->paginate(10); // Paginate with 10 items per page
         return view('backend.services.list', compact('services'));
     }
     
@@ -83,18 +85,62 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::find($id);
+
+        $service = Service::findOrfail($id);
+        $vehicleIssues = Issue::where('vehicle_id', $service->vehicle_id)->where('status', 1)->get();
+        $issues = $vehicleIssues->merge($service->issues);
         $vehicles = Vehicle::where('company_id', company_id())->get();
-        return view('backend.services.edit', compact('service', 'id', 'vehicles'));
+        return view('backend.services.edit', compact('service', 'id', 'vehicles', 'issues'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'vehicle_id' => 'required',
+            // Add other validation rules for service fields as needed
+        ]);
+    
+      
+    
+        $service = Service::findOrFail($id);
+        if ($request->hasFile('document')) {
+            $oldImagePath = public_path("uploads/service/{$service->document}");
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+    
+            $file = $request->file('document');
+            $attachment = time() . $file->getClientOriginalName();
+            $file->move(public_path() . "/uploads/service/", $attachment);
+            $service->document = $attachment;
+        }
+        $service->vehicle_id = $request->vehicle_id;
+        $service->completed_date = $request->completed_date;
+        $service->note = $request->note;
+        $service->odometer = $request->odometer;
+        $service->company_id = company_id();
+        $service->save();
+    
+        // Delete existing associations with issues and update their status
+        $detachedIssues = $service->issues()->pluck('issue_id')->toArray();
+        $service->issues()->detach();
+        Issue::whereIn('id', $detachedIssues)->update(['status' => 1]);
+
+        // Associate issues with the service (if checkboxes were used)
+        $selectedIssues = $request->input('issues', []);
+        $service->issues()->sync($selectedIssues);
+
+        // Update the status of newly associated issues to indicate they are associated with a service
+        Issue::whereIn('id', $selectedIssues)->update(['status' => 2]);
+
+    
+        // Redirect to the service details page or the index page
+        return redirect()->back()->with('success', 'Service Updated Successfully');
     }
+    
 
     /**
      * Remove the specified resource from storage.

@@ -34,11 +34,11 @@
                                     <div class="sb-nav-link-icon"><i class="fa fa-wrench"></i></div>
                                     Services
                                 </a>
-                                <a class="nav-link" href="{{ route('vehicles.index') }}">
+                                <a class="nav-link" href="{{ route('issues.index') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tools"></i></div>
                                     Issues
                                 </a>
-                                <a class="nav-link" href="{{ route('vehicles.index') }}">
+                                <a class="nav-link" href="{{ route('fuels.index') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-gas-pump"></i></div>
                                     Fuels History
                                 </a>

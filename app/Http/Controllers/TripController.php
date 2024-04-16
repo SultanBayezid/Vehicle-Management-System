@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trip;
 use App\Models\Transaction;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -16,7 +17,8 @@ class TripController extends Controller
     }
 
     public function create(){
-        return view('backend.trips.create');
+        $vehicles =  Vehicle::where('company_id', company_id())->get();
+        return view('backend.trips.create', compact('vehicles'));
         
     }
 
@@ -57,6 +59,8 @@ class TripController extends Controller
         $trip->arrival_time = $request->input('arrival_time');
         $trip->distance_km = $request->input('distance_km');
         $trip->trip_notes = $request->input('trip_notes');
+        $trip->status = 1;
+        $trip->company_id = company_id();
     
         // Save the trip to the database
         $trip->save();
@@ -76,7 +80,8 @@ class TripController extends Controller
     }
     public function edit(Request $request, $id){
         $trip = Trip::find($id);
-        return view('backend.trips.edit', compact('trip', 'id'));
+        $vehicles =  Vehicle::where('company_id', company_id())->get();
+        return view('backend.trips.edit', compact('trip', 'id', 'vehicles'));
     }
 
 

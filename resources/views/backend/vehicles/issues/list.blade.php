@@ -28,7 +28,7 @@
     <h1 class="display-6" style="display: inline-block;">Issues</h1>
     <button class="btn btn-primary btn-sm" style="float: right;"  data-toggle="modal" data-target="#issue"><i class="fas fa-plus"></i> Add New Issue</button>
 </span>
-        <table id="datatablesSimple">
+<table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
           <thead>
             <tr>
               <th>Piority</th>

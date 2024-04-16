@@ -12,7 +12,10 @@ class FuelController extends Controller
      */
     public function index()
     {
-        //
+      
+       $fuels = Fuel::where('company_id', company_id()) ->latest() // Order by the latest date
+       ->paginate(10);
+       return view('backend.fuels.list', compact('fuels'));
     }
 
     /**
@@ -20,7 +23,9 @@ class FuelController extends Controller
      */
     public function create()
     {
-        //
+        $vehicles = Vehicle::where('company_id', company_id())-get();
+        $fuels = Fuel::where('company_id', company_id())-get();
+        return view('backend.fuels.list', compact('fuels', 'vehicles'));
     }
 
     /**

@@ -32,9 +32,11 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <select class="form-control " data-value="id" data-display="name" data-table="vehicles" data-where="1" name="vehicle_id" id="vehicle_id" required>
+                                                    <select class="form-control "  name="vehicle_id" id="vehicle_id" required>
                                             <option value="">{{ ('Select One') }}</option>
-                                            {{ create_option("vehicles", "id", "name", old('vehicle_id')) }}
+                                          @foreach($vehicles as $vehicle)
+                                          <option value="{{$vehicle->id}}">{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}</option>
+                                          @endforeach
                                         </select>
                                                     </div>
                                                 </div>

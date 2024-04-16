@@ -22,7 +22,8 @@ class ContactController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $contacts = Contact::where('company_id', company_id())->get();
+        $contacts = Contact::where('company_id', company_id())->orderBy('created_at', 'desc') // Sort by the latest date
+        ->paginate(10); // Paginate with 10 items per page
         return view('backend.contacts.contact.list', compact('contacts'));
     }
 

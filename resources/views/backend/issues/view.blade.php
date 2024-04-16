@@ -7,9 +7,9 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item active"  aria-current="page">Accounts</li>
-                <li class="breadcrumb-item active"  aria-current="page">Transactions</li>
+                <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
                 <li class="breadcrumb-item"><a href="{{route('issues.index')}}">Issues</a></li>
+                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $issue->vehicle_id)}}">{{$issue->vehicle->brand->name}} {{$issue->vehicle->model->name}} {{$issue->vehicle->myear->year}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
             </ol>
         </nav>
@@ -19,10 +19,10 @@
      
 
             <div class="card-body">
-                <table class="table table-bordered">
+            <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <tr>
                         <td>{{ _lang('Vehicle') }}</td>
-                        <td>{{$issue->vehicle->name}}</td>
+                        <td>{{$issue->vehicle->brand->name ?? '' }} {{$issue->vehicle->model->name ?? '' }}</td>
                     </tr>
                     <tr>
                         <td>{{ _lang('Assignee') }}</td>
@@ -57,7 +57,7 @@
                         <td>
                             @if($issue->image != "")
                             <a href="{{ asset('uploads/issue/'.$issue->image) }}"
-                                target="_blank" class="btn btn-primary">{{ _lang('View Attachment') }}</a>
+                                target="_blank" class="btn btn-primary btn-sm">{{ _lang('View Attachment') }}</a>
                             @else
                             <label class="label label-warning">
                                 <strong>{{ _lang('No Atachment Available !') }}</strong>

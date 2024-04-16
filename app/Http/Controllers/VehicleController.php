@@ -20,7 +20,9 @@ class VehicleController extends Controller
     {
 
    
-        $vehicles = Vehicle::where('company_id', company_id())->get();
+        $vehicles = Vehicle::where('company_id', company_id())
+        ->orderBy('created_at', 'desc') // Sort by the latest date
+        ->paginate(10); // Paginate with 10 items per page
       
         // Return the view with the list of vehicles
         return view('backend.vehicles.list', compact('vehicles'));
