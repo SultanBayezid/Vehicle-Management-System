@@ -28,7 +28,7 @@
     <h1 class="display-6" style="display: inline-block;">Fuels</h1>
     <button class="btn btn-primary btn-sm" style="float: right;"  data-toggle="modal" data-target="#fuel"><i class="fas fa-plus"></i> Add Fuel Entry</button>
 </span>
-        <table id="datatablesSimple">
+<table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
           <thead>
             <tr>
               <th>Date</th>
@@ -54,15 +54,33 @@
               <td>{{$fuel->reference }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal{{$fuel->id}}">  <i class="fas fa-pen"></i> </button>
-            @include('backend.vehicles.fuels.modal.edit') 
+                <button class="btn btn-primary btn-sm edit-fuel" 
+data-toggle="modal" 
+data-target="#fueledit" 
+data-date="{{$fuel->date}}"
+data-vehicle-id="{{$fuel->vehicle_id}}"
+data-vehicle-name="{{$fuel->vehicle->brand->name ?? ''}} {{$fuel->vehicle->model->name ?? '' }} {{$fuel->vehicle->myear->year ?? ''}}"
+data-odometer="{{$fuel->odometer}}"
+data-qty="{{$fuel->qty}}"
+data-reference="{{$fuel->reference}}"
+data-note="{{$fuel->note}}">
+<i class="fas fa-pen"></i>
+</button>
 
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#showModal{{$fuel->id}}">
+<button class="btn btn-primary btn-sm view-fuel" 
+data-toggle="modal" 
+data-target="#viewedit" 
+data-date="{{$fuel->date}}"
+data-vehicle-id="{{$fuel->vehicle_id}}"
+data-vehicle-name="{{$fuel->vehicle->brand->name ?? ''}} {{$fuel->vehicle->model->name ?? '' }} {{$fuel->vehicle->myear->year ?? ''}}"
+data-odometer="{{$fuel->odometer}}"
+data-qty="{{$fuel->qty}}"
+data-reference="{{$fuel->reference}}"
+data-note="{{$fuel->note}}">
+<i class="fas fa-pen"></i>
+</button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="">
                 <i class="fas fa-eye"></i></button>
-
-            @include('backend.vehicles.fuels.modal.view') 
-
-
                   <form method="POST" action="{{ route('fuels.destroy', $fuel->id) }}"> @csrf @method('DELETE') <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this vehicle?')">
                       <i class="fas fa-trash"></i>
                     </button>
@@ -80,6 +98,8 @@
 
 </div>
 @include('backend.vehicles.fuels.modal.create') 
+@include('backend.vehicles.fuels.modal.edit') 
+@include('backend.vehicles.fuels.modal.view') 
 
 
 
