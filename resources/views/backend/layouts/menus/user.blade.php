@@ -137,5 +137,9 @@
                         <div class="sb-sidenav-menu-heading">Settings</div>
                         <a class="nav-link" href="{{ route('settings.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                            Settings
+                          Business  Settings
+                        </a>
+                        <a class="nav-link" href="{{ route('staffs.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
+                          Users
                         </a>

@@ -31,6 +31,7 @@ return new class extends Migration
         $table->string('passport')->nullable();
         $table->string('photo')->nullable();
         $table->bigInteger('company_id');
+        $table->bigInteger('user_id');
         $table->timestamps();
         });
     }

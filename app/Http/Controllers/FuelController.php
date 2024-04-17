@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fuel;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Validator;
+Use File;
 class FuelController extends Controller
 {
     /**
@@ -23,9 +25,9 @@ class FuelController extends Controller
      */
     public function create()
     {
-        $vehicles = Vehicle::where('company_id', company_id())-get();
-        $fuels = Fuel::where('company_id', company_id())-get();
-        return view('backend.fuels.list', compact('fuels', 'vehicles'));
+        $vehicles = Vehicle::where('company_id', company_id())->get();
+        $fuels = Fuel::where('company_id', company_id())->get();
+        return view('backend.fuels.create', compact('fuels', 'vehicles'));
     }
 
     /**
@@ -33,21 +35,17 @@ class FuelController extends Controller
      */
     public function store(Request $request)
     {
-               // dd($request->all());
-               $validator = Validator::make($request->all(), [
-                'vehicle_id' => 'required|max:50',
-
+            //    dd($request->all());
+        
+            $validator = $request->validate([
+                'vehicle_id' => 'required|exists:car_brands,id',
+                'date' => 'required',
+         
+             
             ]);
-            if ($validator->fails()) {
-                if($request->ajax()){ 
-                    return response()->json(['result'=>'error','message'=>$validator->errors()->all()]);
-                }else{
-                    return redirect('chart_of_accounts/create')
-                                ->withErrors($validator)
-                                ->withInput();
-                }			
-            }
-    
+           
+
+
             $attachment = "";
             if ($request->hasfile('attachment')) {
                 $file       = $request->file('attachment');
@@ -65,31 +63,64 @@ class FuelController extends Controller
             $issue->attachment  = $attachment;
             $issue->company_id  = company_id();
             $issue->save();
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Fuel History Recorded');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Fuel $fuel)
+    public function show($id)
     {
-        //
+       
+        $fuel = Fuel::findOrfail($id);
+        return view('backend.fuels.view', compact('fuel'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fuel $fuel)
+    public function edit($id)
     {
-        //
+        $vehicles = Vehicle::where('company_id', company_id())->get();
+        $fuel = Fuel::findOrfail($id);
+        return view('backend.fuels.edit', compact('fuel', 'vehicles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fuel $fuel)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = $request->validate([
+            'vehicle_id' => 'required|exists:car_brands,id',
+            'date' => 'required',
+     
+         
+        ]);
+       
+
+         
+        $issue = Fuel::findOrfail($id);
+        if ($request->hasFile('attachment')) {
+            $oldImagePath = public_path("uploads/fuel/{$issue->attachment}");
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+    
+            $file = $request->file('attachment');
+            $attachment = time() . $file->getClientOriginalName();
+            $file->move(public_path() . "/uploads/fuel/", $attachment);
+            $issue->attachment = $attachment;
+        }
+        $issue->vehicle_id = $request->vehicle_id;
+        $issue->date = $request->date;
+        $issue->odometer = $request->odometer;
+        $issue->qty = $request->qty;
+        $issue->reference = $request->reference;
+        $issue->note = $request->note;
+        $issue->company_id  = company_id();
+        $issue->save();
+        return redirect()->back()->with('success', 'Fuel History Recorded');
     }
 
     /**

@@ -77,6 +77,9 @@ Route::group(['middleware' => ['auth','verified']], function () {
 });
 
     Route::group(['middleware' => ['company']], function () {
+			Route::resource('staffs','App\Http\Controllers\StaffController');
+
+
     Route::get('vehicle/services/list/{id}', 'App\Http\Controllers\VehicleController@VehicleService')->name('vehicle_services');
     Route::get('vehicle/issues/list/{id}', 'App\Http\Controllers\VehicleController@VehicleIssue')->name('vehicle_issues');
     Route::get('vehicle/fuel/list/{id}', 'App\Http\Controllers\VehicleController@VehicleFuels')->name('vehicle_fuels');
@@ -134,3 +137,23 @@ Route::group(['middleware' => ['auth','verified']], function () {
 
 
 Route::resource('blogs', BlogController::class);
+
+
+Route::group(['middleware' => ['admin']], function () {
+    //User Controller
+    Route::get('users/type/{user_type}','App\Http\Controllers\UserController@index');
+    Route::resource('users','App\Http\Controllers\UserController');
+    
+    
+});
+
+
+// routes/web.php
+
+Route::get('/driver/login', 'App\Http\Controllers\DriverAuthController@showLoginForm')->name('driver.login');
+Route::post('/driver/login', 'App\Http\Controllers\DriverAuthController@login')->name('driver.login.submit');
+
+Route::middleware('driver')->group(function () {
+    // Your routes that only drivers can access
+});
+

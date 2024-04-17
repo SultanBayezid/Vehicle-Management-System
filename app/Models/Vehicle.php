@@ -69,6 +69,8 @@ public function ryear()
     return $this->belongsTo(Year::class, 'register_year');
 }
 
+
+
 public function issues()
 {
     return $this->hasMany(Issue::class);

@@ -5,104 +5,149 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="display-4">Services</h1>
+            <h1 class="display-4">Fuel History</h1>
         </div>
     </div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('services.index')}}">Services</a></li>
+            <li class="breadcrumb-item"><a href="{{route('fuels.index')}}">Fuel History</a></li>
 
-            <li class="breadcrumb-item active"  aria-current="page">Service Edit</li>
+            <li class="breadcrumb-item active"  aria-current="page">Fuel Update</li>
         </ol>
     </nav>
                       
                       
                             <div class="card-body">
                          
-                            <form action="{{ route('services.update', $service->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">{{ _lang('Vehicle') }}</label>
-                                            <div class="form-group">
-                                                      <input type="text" value="{{$service->vehicle->brand->name ?? ''}} {{$service->vehicle->model->name ?? ''}} {{$service->vehicle->myear->year ?? ''}}" class="form-control" readonly>
-                                                    <input type="hidden" name="vehicle_id" value="{{$service->vehicle_id}}">
+                            <form method="POST" action="{{route('fuels.update', $fuel->id)}}"  enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                    <input name="_method" type="hidden" value="PATCH">
+          <div class="row mb-4 m-3">
+                                        <div class="col-md-12">
+                                            <div class="row mb-2">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Vehicle <sup style="color:red">*</sup></label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                    <select class="form-control "  name="vehicle_id" id="vehicle_id" required>
+                                            <option value="">{{ ('Select One') }}</option>
+                                          @foreach($vehicles as $vehicle)
+                                          <option value="{{$vehicle->id}}" {{$vehicle->id == $fuel->vehicle_id ? 'selected' : ''}}>{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}</option>
+                                          @endforeach
+                                        </select>
                                                     </div>
-                                                
-                                        </div>
-                                    </div>
+                                                </div>
+                                            </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">{{ _lang('Completion Date *') }}</label>
-                                            <input type="date" class="form-control datepicker" name="completed_date" value="{{ $service->completed_date }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">{{ _lang('Odometer') }}</label>
-                                            <input type="number" class="form-control" name="odometer" value="{{ $service->odometer }}" >
-                                        </div>
-                                    </div>
-                                </div>
+                            
+                                            <div class="row mb-2">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Fuel Entry Date *</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                        <input type="date" class="form-control @error('date') is-invalid @enderror" value="{{$fuel->date}}" name="date" required>
+                                                        @error('date')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                       <p> Select any issues that were resolved as part of this service:</p>
-                                            @foreach($issues as $issue)
-    <label>
-    <div class="form-check">
-        <input type="checkbox" class="form-check-input" name="issues[]" value="{{ $issue->id }}" {{ $service->issues->contains('id', $issue->id) ? 'checked' : '' }}>
-        <a target="_blank" href="{{ route('issues.show', $issue->id) }}">{{ $issue->summary }}</a>
-    </label>
-    </div>
-@endforeach
+                                            <div class="row mb-2">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Odometer <sup style="color:red">*</sup></label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                        <input type="number" name="odometer" required="" 
+                                                            placeholder="Odometer" class="form-control" value="{{$fuel->odometer}}" >
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        </div>
-                                    </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Fuel Quantity</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                    <input type="number" name="qty" required="" 
+                                                            placeholder="Fuel Quantity" class="form-control" value="{{$fuel->qty}}">
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                    <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">{{ ('Attachment') }}</label>
-                                          <input type="file" class="form-control " name="document">
-                                          <br>
-
-                                          @if($service->document != "")
-                                        <a href="{{ asset('uploads/service/'.$service->document) }}"
+                                            <div class="row mb-2">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Reference</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                    <input type="text" name="reference" 
+                                                            placeholder="reference" class="form-control" value="{{$fuel->reference}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Attachment</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                    <input type="file" class="form-control" name="attachment"> <br>
+                                                    
+                                          @if($fuel->attachment != "")
+                                        <a href="{{ asset('uploads/fuel/'.$fuel->attachment) }}"
                                             target="_blank" class="btn btn-primary btn-sm">{{ _lang('View Attachment') }}</a>
                                         @else
                                         <label class="label label-warning">
                                             <strong>{{ _lang('No Atachment Available !') }}</strong>
                                         </label>
                                         @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-2">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Note </label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
+                                                    <textarea cols="3" rows="3" name="note" 
+                                                                placeholder="Note" class="form-control" >{{$fuel->note}}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">{{ _lang('Note') }}</label>
-                                            <textarea class="form-control" name="note">{{ $service->note }}</textarea>
+                                    <div class="row mt-4">
+                                        <div class="col-md-3">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                           
+                                                <button type="submit" class="btn btn-primary" style="width: 100px;">
+                                                    <i class="fa fa-save"></i> Upadte
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-lgbtn-sm"><i class="fas fa-file"></i> {{ _lang('Save Changes') }}</button>
-                                    </div>
-                                </div>
-                            </form>
+                       
+  </form>
 
                             </div>
                         </div>
                    
+
+
 
 @endsection

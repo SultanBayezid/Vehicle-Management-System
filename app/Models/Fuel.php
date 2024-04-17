@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Fuel extends Model
 {
     use HasFactory;
+
+    public function vehicle()
+{
+    return $this->belongsTo(Vehicle::class, 'vehicle_id');
+}
+
 }

@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container">
-        <h1 class="display-4">Service Details</h1>
+        <h1 class="display-4">Fuel  Details</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('services.index')}}">Services</a></li>
-                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $service->vehicle_id)}}">{{$service->vehicle->brand->name}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Service Details</li>
+                <li class="breadcrumb-item"><a href="{{route('services.index')}}">Fuel</a></li>
+                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $fuel->vehicle_id)}}">{{$fuel->vehicle->brand->name}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Fuel Details</li>
             </ol>
         </nav>
 <div class="row">
@@ -19,25 +19,37 @@
 
             <div class="card-body">
             <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                    <tr>
+            <tr>
+                        <td>{{ _lang('Date') }}</td>
+                        <td>{{$fuel->date}}</td>
+                    </tr>        
+            
+            <tr>
                         <td>{{ _lang('Vehicle') }}</td>
-                        <td>{{$service->vehicle->brand->name}} {{$service->vehicle->model->name}} {{$service->vehicle->myear->year}}</td>
+                        <td>{{$fuel->vehicle->brand->name}} {{$fuel->vehicle->model->name}} {{$fuel->vehicle->myear->year}}</td>
                     </tr>
-                    <tr>
-                        <td>{{ _lang('Completion Date') }}</td>
-                        <td>{{$service->completed_date}}</td>
-                    </tr>
+     
                     <tr>
                         <td>{{ _lang('Odometer') }}</td>
                     
-                        <td>{{$service->odometer}}</td>
+                        <td>{{$fuel->odometer}}</td>
                     </tr>
 
                     <tr>
-                        <td>{{ _lang('Documents') }}</td>
+                        <td>{{ _lang('Quantity') }}</td>
+                    
+                        <td>{{$fuel->qty}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _lang('Reference') }}</td>
+                    
+                        <td>{{$fuel->reference}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ _lang('Attachement') }}</td>
                         <td>
-                            @if($service->document != "")
-                            <a href="{{ asset('uploads/service/'.$service->document) }}"
+                            @if($fuel->attachment != "")
+                            <a href="{{ asset('uploads/fuel/'.$fuel->attachment) }}"
                                 target="_blank" class="btn btn-primary btn-sm">{{ _lang('View Attachment') }}</a>
                             @else
                             <label class="label label-warning">
@@ -47,18 +59,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>{{ _lang('Description') }}</td>
-                        <td>{{$service->description}}</td>
+                        <td>{{ _lang('Note') }}</td>
+                        <td>{{$fuel->note}}</td>
                     </tr>
-                    <tr>
-                        <td>
-                            Issues
-                        </td>
-                        <td>
-                        @foreach($service->issues as $issue)
-                        <li class="list-group-item"><a target="_blank" href="{{route('issues.show', $issue->id)}}">{{ $issue->summary }}</a></li>
-                            @endforeach</td>
-                        </td>
+                
                     </tr>
                 </table>
             </div>
