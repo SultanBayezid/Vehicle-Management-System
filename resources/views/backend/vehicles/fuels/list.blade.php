@@ -67,7 +67,7 @@ data-note="{{$fuel->note}}">
 <i class="fas fa-pen"></i>
 </button>
 
-<button class="btn btn-primary btn-sm view-fuel" 
+<button class="btn btn-success btn-sm view-fuel" 
 data-toggle="modal" 
 data-target="#viewedit" 
 data-date="{{$fuel->date}}"
@@ -76,11 +76,11 @@ data-vehicle-name="{{$fuel->vehicle->brand->name ?? ''}} {{$fuel->vehicle->model
 data-odometer="{{$fuel->odometer}}"
 data-qty="{{$fuel->qty}}"
 data-reference="{{$fuel->reference}}"
+data-attachment-url="{{ asset('uploads/fuel/'.$fuel->attachment) }}"
 data-note="{{$fuel->note}}">
-<i class="fas fa-pen"></i>
+<i class="fas fa-eye"></i>
 </button>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="">
-                <i class="fas fa-eye"></i></button>
+          
                   <form method="POST" action="{{ route('fuels.destroy', $fuel->id) }}"> @csrf @method('DELETE') <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this vehicle?')">
                       <i class="fas fa-trash"></i>
                     </button>

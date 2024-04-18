@@ -21,7 +21,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="form-group">
-                                                      <input type="text" value="{{$vehicle->name}}" class="form-control" readonly>
+                                                      <input type="text" value="{{$vehicle->brand->name}} {{$vehicle->model->name}} {{$vehicle->myear->year}}" class="form-control" readonly>
                                                     <input type="hidden" name="vehicle_id" value="{{$vehicle->id}}">
                                                     </div>
                                                 </div>
@@ -45,7 +45,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="form-group">
-                                                        <input type="text" name="odometer" required="" 
+                                                        <input type="number" name="odometer" required="" 
                                                             placeholder="Odometer" class="form-control" value="">
                                                     </div>
                                                 </div>
@@ -53,11 +53,11 @@
 
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
-                                                    <label class="control-label">Fuel Quantity</label>
+                                                    <label class="control-label">Fuel Quantity <sup style="color:red">*</sup></label>
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="form-group">
-                                                    <input type="text" name="qty" required="" 
+                                                    <input type="number" name="qty" required="" 
                                                             placeholder="Fuel Quantity" class="form-control" value="">
                                                     </div>
                                                 </div>
@@ -80,14 +80,14 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="form-group">
-                                                    <input type="file" class="form-control" name="attachement">
+                                                    <input type="file" class="form-control" name="attachment">
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="row mb-2">
                                                 <div class="col-md-3">
-                                                    <label class="control-label">Note <sup style="color:red">*</sup></label>
+                                                    <label class="control-label">Note </label>
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="form-group">

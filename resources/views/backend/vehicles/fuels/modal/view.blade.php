@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0">Edit Fuel Entry</h5>
+                <h5 class="modal-title mt-0">View Fuel Entry</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -10,102 +10,57 @@
             <div class="alert alert-danger d-none m-3"></div>
             <div class="alert alert-primary d-none m-3"></div>
             <div class="modal-body overflow-hidden">
-                <form id="editFuelForm" method="POST" action="{{route('fuels.update', $fuel->id)}}"  enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                    <input name="_method" type="hidden" value="PATCH">
-                    <div class="row mb-4 m-3">
-                        <div class="col-md-12">
-                            <div class="row mb-2">
-                                <div class="col-md-3">
-                                    <label class="control-label">Vehicle <sup style="color:red">*</sup></label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        
-                                        <input type="text"  id="editVehicleName" class="form-control" readonly>
-                                        <input type="hidden" id="vehicleId" name="vehicle_id" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-3">
-                                    <label class="control-label">Fuel Entry Date *</label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input type="date" id="editDate" class="form-control" name="date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-3">
-                                    <label class="control-label">Odometer <sup style="color:red">*</sup></label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input type="text" id="editOdometer" name="odometer" required="" placeholder="Odometer" class="form-control" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-3">
-                                    <label class="control-label">Fuel Quantity</label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input type="text" id="editQty" name="qty" required="" placeholder="Fuel Quantity" class="form-control" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-3">
-                                    <label class="control-label">Reference</label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input type="text" id="editReference" name="reference" required="" placeholder="reference" class="form-control" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-3">
-                                    <label class="control-label">Attachment</label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input type="file" id="editAttachment" class="form-control" name="attachment">
+            <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <tr>
+                        <td>{{ _lang('Vehicle') }}</td>
+                        <td><span class="vehicleId"></span></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>{{ _lang('Date') }}</td>
+                        <td><span class="vdate"></span></td>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-3">
-                                    <label class="control-label">Note <sup style="color:red">*</sup></label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <textarea id="editNote" cols="3" rows="3" name="note" placeholder="Note" class="form-control" value=""></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-3">
-                            &nbsp;
-                        </div>
-                        <div class="col-md-9">
-                            <div class="input-group">
-                                <button type="reset" class="btn btn-danger" style="margin-right: 30px; width: 100px;">
-                                    <i class="fa fa-remove"></i> Reset
-                                </button>
-                                <button type="submit" class="btn btn-primary" style="width: 100px;">
-                                    <i class="fa fa-save"></i> Save
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    </tr>
+                    <tr>
+                        <td>{{ _lang('Odometer') }}</td>
+                    
+                        <td><span class="vodometer"></span></td>
+                    </tr>
+                    <tr>
+                        <td>{{ _lang('Qty') }}</td>
+                        <td><span class="vqty"></span></td>
+
+                    </tr>
+
+                    <tr>
+                        <td>{{ _lang('reference') }}</td>
+                        <td><span class="vreference"></span></td>
+
+
+                      
+                    </tr>
+               
+                
+                    <tr>
+                        <td>{{ _lang('Attachement') }}</td>
+                        <td>
+                    
+                        @if($fuel->attachment != "")
+                        <a  target="_blank" class="btn btn-primary btn-sm" id="attachmentLink" href="">{{ _lang('View Attachment') }}</a>
+                            @else
+                            <label class="label label-warning">
+                                <strong>{{ _lang('No Atachment Available !') }}</strong>
+                            </label>
+                            @endif
+                    
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>{{ _lang('Note') }}</td>
+                        <td><span class="vnote"></span></td>
+
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -115,28 +70,29 @@
 
 <script>
     $(document).ready(function(){
-        $('.edit-fuel').click(function(){
-
+        $('.view-fuel').click(function(){
+            var modal = $('#viewedit');
             var date = $(this).data('date');
+            var vehicleId = $(this).data('vehicle-id');
+            var vehicleName = $(this).data('vehicle-name');
             var odometer = $(this).data('odometer');
             var qty = $(this).data('qty');
             var reference = $(this).data('reference');
-            var vehicleId = $(this).data('vehicle-id');
-            var vehicleName = $(this).data('vehicle-name');
             var note = $(this).data('note');
+            var attachment = $(this).data('attachment');
+            var attachmentUrl = $(this).data('attachment-url');
 
-            
-            $('#vehicleId').val(vehicleId);
-            $('#editVehicleName').val(vehicleName); // Populate vehicle name field
-            $('#fueledit input[name="date"]').val(date);
-            $('#fueledit input[name="odometer"]').val(odometer);
-            $('#fueledit input[name="qty"]').val(qty);
-            $('#fueledit input[name="reference"]').val(reference);
-            $('#editNote').val(note);
-
-        
            
-
+            $('.vehicleId').text(vehicleName);
+            $('.vdate').text(date);
+            $('.vodometer').text(odometer);
+            $('.vqty').text(qty);
+            $('.vreference').text(reference);
+            $('.vnote').text(note);
+            $('#attachmentLink').attr('href', attachmentUrl);
+   
+     
         });
     });
 </script>
+
