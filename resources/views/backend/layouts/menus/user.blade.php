@@ -40,7 +40,7 @@
                                 </a>
                                 <a class="nav-link" href="{{ route('fuels.index') }}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-gas-pump"></i></div>
-                                    {{ _lang(' Fuels History') }}     
+                                    {{ _lang('Fuels History') }}     
                                 </a>
                             </nav>
                         </div>
@@ -71,7 +71,7 @@
                                         </a>
                                         <a class="nav-link" href="{{ route('payment_methods.index') }}">
                                             <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
-                                            {{ _lang(' Payment Mode') }}      
+                                            {{ _lang('Payment Mode') }}      
                                         </a>
                                     </nav>
                                 </div>
@@ -104,7 +104,7 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="{{ route('reports.account_statement') }}">
                                             <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
-                                            {{ _lang(' Account Statement') }}   
+                                            {{ _lang('Account Statement') }}   
                                         </a>
                                         <a class="nav-link" href="{{ route('reports.income_report') }}">
                                             <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
@@ -116,11 +116,11 @@
                                         </a>
                                         <a class="nav-link" href="{{ route('reports.transfer_report') }}">
                                             <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
-                                            {{ _lang(' Transfer Report') }}     
+                                            {{ _lang('Transfer Report') }}     
                                         </a>
                                         <a class="nav-link" href="{{ route('reports.income_vs_expense') }}">
                                             <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
-                                            {{ _lang(' Income VS Expense') }}     
+                                            {{ _lang('Income VS Expense') }}     
                                         </a>
                                         <a class="nav-link" href="{{ route('reports.report_by_payer') }}">
                                             <div class="sb-nav-link-icon"><i class="fas fa-angle-double-right"></i></div>
@@ -137,9 +137,9 @@
                         <div class="sb-sidenav-menu-heading">  {{ _lang('Settings') }}    </div>
                         <a class="nav-link" href="{{ route('company.change_settings') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                          Business  Settings
+                            {{ _lang('Settings') }}
                         </a>
                         <a class="nav-link" href="{{ route('staffs.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                          Users
+                            {{ _lang('My Profile') }}
                         </a>

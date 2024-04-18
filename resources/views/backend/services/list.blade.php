@@ -10,7 +10,7 @@
         <div class="col-md-6 text-md-right mt-3">
             <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
                 href="{{ route('services.create') }}">
-                <i class="fas fa-plus"></i> {{ ('Add New') }}
+                <i class="fas fa-plus"></i> {{ _lang('Add New') }}
             </a>
         </div>
     </div>
