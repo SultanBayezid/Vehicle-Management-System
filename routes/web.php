@@ -158,3 +158,19 @@ Route::middleware('driver')->group(function () {
 });
 
 Route::resource('languages','App\Http\Controllers\LanguageController');
+
+
+
+       //Utility Controller
+       Route::match(['get', 'post'], 'administration/general_settings/{store?}', 'App\Http\Controllers\UtilityController@settings')->name('settings.update_settings');
+       Route::post('administration/upload_logo', 'App\Http\Controllers\UtilityController@upload_logo')->name('settings.uplaod_logo');
+       Route::get('administration/database_backup_list', 'App\Http\Controllers\UtilityController@database_backup_list')->name('database_backups.list');
+       Route::get('administration/create_database_backup', 'App\Http\Controllers\UtilityController@create_database_backup')->name('database_backups.create');
+       Route::delete('administration/destroy_database_backup/{id}', 'App\Http\Controllers\UtilityController@destroy_database_backup');
+       Route::get('administration/download_database_backup/{id}', 'App\Http\Controllers\UtilityController@download_database_backup')->name('database_backups.download');
+       Route::post('administration/remove_cache', 'App\Http\Controllers\UtilityController@remove_cache')->name('settings.remove_cache');
+
+       //Email Template
+       Route::resource('email_templates', 'EmailTemplateController')->only([
+           'index', 'create', 'store', 'show', 'edit', 'update', 'destroy',
+       ]);

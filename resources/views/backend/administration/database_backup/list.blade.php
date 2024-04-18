@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
 <h4 class="page-title">{{ _lang('Database Backups') }}</h4>
@@ -26,26 +26,21 @@
                         <tr data-id="row_{{ $databasebackup->id }}">
                             <td class='created_at'>{{ $databasebackup->created_at }}</td>
                             <td class='file'>{{ $databasebackup->file }}</td>
-                            <td class='user_id'>{{ $databasebackup->created_by->name }}</td>
+                            <td class='user_id'>{{ $databasebackup->created_by->name ?? '' }}</td>
 
                             <td class="text-center">
                                 <span class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        {{ _lang('Action') }}
-                                        <i class="fas fa-angle-down"></i>
-                                    </button>
+                              
                                     <form
-                                        action="{{ action('UtilityController@destroy_database_backup', $databasebackup['id']) }}"
+                                        action="{{ action('App\Http\Controllers\UtilityController@destroy_database_backup', $databasebackup['id']) }}"
                                         method="post">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a href="{{ action('UtilityController@download_database_backup', $databasebackup['id']) }}"
+                                        <a href="{{ action('App\Http\Controllers\UtilityController@download_database_backup', $databasebackup['id']) }}"
                                                 class="dropdown-item dropdown-view"><i class="mdi mdi-eye"></i>
                                                 {{ _lang('Download') }}</a>
+                                         
                                             <button class="btn-remove dropdown-item" type="submit"><i
                                                     class="mdi mdi-delete"></i> {{ _lang('Delete') }}</button>
                                         </div>

@@ -18,7 +18,7 @@
                         </a>
 <div class="sb-sidenav-menu-heading">{{ _lang('System Settings') }}</div>
 
-<a class="nav-link" href="">
+<a class="nav-link" href="{{route('settings.update_settings')}}">
     <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
     {{ _lang('General Settings') }}
 </a>
@@ -41,7 +41,7 @@
     {{ _lang('Email Template') }}
 </a>
 
-<a class="nav-link" href="">
+<a class="nav-link" href="{{route('database_backups.list')}}">
     <div class="sb-nav-link-icon"><i class="fas fa-harddrives"></i></div>
     {{ _lang('Database Backup') }}
 </a>

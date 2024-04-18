@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('backend.layouts.header')
 
 @section('content')
 <h4 class="page-title">{{ _lang('General Settings') }}</h4>
@@ -27,7 +27,7 @@
         </ul>
     </div>
 
-    @php $settings = \App\Setting::all(); @endphp
+    @php $settings = \App\Models\Setting::all(); @endphp
 
     <div class="col-sm-9">
         <div class="tab-content">
