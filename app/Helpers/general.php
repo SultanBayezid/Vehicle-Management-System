@@ -9,7 +9,7 @@ if (!function_exists('_lang')) {
         if (file_exists(resource_path() . "/language/$user_language.php")) {
             include resource_path() . "/language/$user_language.php";
         } else {
-            include resource_path() . "/language/english.php"; 
+            include resource_path() . "/language/language.php"; 
         }
 
         if (array_key_exists($string, $language)) {
