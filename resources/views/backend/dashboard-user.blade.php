@@ -7,8 +7,8 @@
     <!-- Content Row -->
     <div class="row">
     @php
-$tripsall = App\Models\Trip::All();
-$vehicles = App\Models\Vehicle::All();
+$tripsall = App\Models\Trip::where('company_id', company_id());
+$vehicles = App\Models\Vehicle::where('company_id', company_id());
 $vehiclescount = $vehicles->count();
 $tripCount = $tripsall->count();
 @endphp

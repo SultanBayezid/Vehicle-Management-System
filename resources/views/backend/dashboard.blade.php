@@ -7,7 +7,7 @@
     <!-- Content Row -->
     <div class="row">
     @php
-$tripsall = App\Models\Trip::All();
+$tripsall = App\Models\Trip::where('company_id', company_id())->count();
 $vehicles = App\Models\Vehicle::All();
 $vehiclescount = $vehicles->count();
 $tripCount = $tripsall->count();
@@ -23,7 +23,7 @@ $tripCount = $tripsall->count();
                         </div>
                         <div class="col-9 text-right">
                             <div class="h5 mb-0 font-weight-bold text-gray-800">Trips</div>
-                            <div class="h3 mb-0 font-weight-bold text-gray-800">{{$tripCount}}</div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">{{$tripsall}}</div>
                         </div>
                     </div>
                 </div>

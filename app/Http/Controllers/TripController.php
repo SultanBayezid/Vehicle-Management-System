@@ -12,7 +12,7 @@ class TripController extends Controller
 {
     public function index(){
 
-        $trips = Trip::All();
+        $trips = Trip::where('company_id', company_id())->get();
         return view('backend.trips.list',compact('trips'));
     }
 

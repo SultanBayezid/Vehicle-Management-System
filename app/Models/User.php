@@ -56,4 +56,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function validUntil()
+    {
+		$date_format = get_date_format();
+        return \Carbon\Carbon::parse($this->valid_to)->format("$date_format");
+    }
 }

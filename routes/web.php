@@ -104,7 +104,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
 			Route::resource('fuels','App\Http\Controllers\FuelController');
 			Route::resource('contact_groups','App\Http\Controllers\ContactGroupController');
 
-
+            
             
     Route::resource('payment_methods', PaymentMethodController::class);
     Route::resource('expense',ExpenseController::class);
@@ -157,3 +157,4 @@ Route::middleware('driver')->group(function () {
     // Your routes that only drivers can access
 });
 
+Route::resource('languages','App\Http\Controllers\LanguageController');

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('status');
             $table->string('language')->nullable();
             $table->integer('company_id')->nullable();
+            $table->date('valid_to')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
