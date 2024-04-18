@@ -770,7 +770,7 @@ $language["NID (National ID)"]="জাতীয় পরিচয় পত্�
 $language["Passport"]="পাসপোর্ট";
 $language["Photo"]="ছবি";
 $language["Create Driver"]="ড্রাইভার তৈরি করুন";
-$language["Revenue"] = "আয়";
-$language["Expenses"] = "ব্যয়";
-
-$language["NID (National ID"]= "জাতীয় পরিচয় পত্র (NID)";
+$language["Revenue"]="আয়";
+$language["Expenses"]="ব্যয়";
+$language["NID (National ID"]="জাতীয় পরিচয় পত্র (NID)";
+$language["Visit Website"]="ওয়েবসাইট";
