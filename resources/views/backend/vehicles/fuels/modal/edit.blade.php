@@ -10,7 +10,7 @@
             <div class="alert alert-danger d-none m-3"></div>
             <div class="alert alert-primary d-none m-3"></div>
             <div class="modal-body overflow-hidden">
-                <form id="editFuelForm" method="POST" action="{{route('fuels.update', $fuel->id)}}"  enctype="multipart/form-data">
+                <form id="editFuelForm" method="POST" action=""  enctype="multipart/form-data">
                                 {{ csrf_field() }}
                     <input name="_method" type="hidden" value="PATCH">
                     <div class="row mb-4 m-3">
@@ -124,7 +124,9 @@
             var vehicleId = $(this).data('vehicle-id');
             var vehicleName = $(this).data('vehicle-name');
             var note = $(this).data('note');
+            var formAction = $(this).data('form-action');
 
+            alert(formAction);
             
             $('#vehicleId').val(vehicleId);
             $('#editVehicleName').val(vehicleName); // Populate vehicle name field
@@ -133,6 +135,8 @@
             $('#fueledit input[name="qty"]').val(qty);
             $('#fueledit input[name="reference"]').val(reference);
             $('#editNote').val(note);
+
+            $('#editFuelForm').attr('action', formAction);
 
         
            

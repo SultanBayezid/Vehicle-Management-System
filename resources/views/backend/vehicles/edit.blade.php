@@ -4,8 +4,8 @@
 <!-- jQuery -->
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h1 class="display-4">{{$vehicle->name}}</h1>
+        <div class="col-md-8">
+            <h1 class="display-4">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</h1>
         </div>
     </div>
 
@@ -14,7 +14,7 @@
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
 
-            <li class="breadcrumb-item active"  aria-current="page">{{$vehicle->name}}</li>
+            <li class="breadcrumb-item active"  aria-current="page">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</li>
         </ol>
     </nav>
                       

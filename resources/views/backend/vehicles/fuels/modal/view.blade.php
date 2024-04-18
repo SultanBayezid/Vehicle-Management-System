@@ -44,14 +44,14 @@
                     <tr>
                         <td>{{ _lang('Attachement') }}</td>
                         <td>
-                    
-                        @if($fuel->attachment != "")
-                        <a  target="_blank" class="btn btn-primary btn-sm" id="attachmentLink" href="">{{ _lang('View Attachment') }}</a>
-                            @else
-                            <label class="label label-warning">
-                                <strong>{{ _lang('No Atachment Available !') }}</strong>
-                            </label>
-                            @endif
+                        @if($fuel->attachment ?? '')
+    <a target="_blank" class="btn btn-primary btn-sm" id="attachmentLink" href="">{{ _lang('View Attachment') }}</a>
+@else
+    <label class="label label-warning">
+        <strong>{{ _lang('No Attachment Available!') }}</strong>
+    </label>
+@endif
+
                     
                     </td>
                     </tr>
