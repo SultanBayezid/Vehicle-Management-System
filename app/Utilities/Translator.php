@@ -12,9 +12,17 @@ class Translator
 
 		$export = "";
 		$dir = new \RecursiveDirectoryIterator(app_path('Http'));
+		$dir1 = new \RecursiveDirectoryIterator(app_path('Imports'));
 		$dir2 = new \RecursiveDirectoryIterator(resource_path('views'));
 		
 		foreach (new \RecursiveIteratorIterator($dir) as $filename => $file) {
+			if(! is_dir($file)){
+			  $export .= file_get_contents($filename);   
+			}
+		}
+		
+			
+		foreach (new \RecursiveIteratorIterator($dir1) as $filename => $file) {
 			if(! is_dir($file)){
 			  $export .= file_get_contents($filename);   
 			}

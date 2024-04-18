@@ -26,20 +26,21 @@
         <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Brand</th>
-                                            <th>Model</th>
-                                            <th>Year</th>
-                                            <th>Status</th>
-                                            <th width="12%">Action</th>
+                                        <th>{{_lang('Brand')}}</th>
+                                        <th>{{_lang('Model')}}</th>
+                                        <th>{{_lang('Manufacture Year')}}</th>
+                                        <th>{{_lang('Status')}}</th>
+                                        <th width="12%">{{_lang('Action')}}</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>Brand</th>
-                                            <th>Model</th>
-                                            <th>Year</th>
-                                            <th>Status</th>
-                                            <th width="12%">Action</th>
+                                        <th>{{_lang('Brand')}}</th>
+                                        <th>{{_lang('Model')}}</th>
+                                        <th>{{_lang('Manufacture Year')}}</th>
+                                        <th>{{_lang('Status')}}</th>
+                                        <th width="12%">{{_lang('Action')}}</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>

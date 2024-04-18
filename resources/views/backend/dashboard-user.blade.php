@@ -15,20 +15,21 @@ $tripCount = $tripsall->count();
 @php $currency = currency(); @endphp
         <!-- Widgets -->
         <div class="col-lg-3 col-md-6">
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-3">
-                            <i class="fas fa-road fa-2x text-primary"></i>
-                        </div>
-                        <div class="col-9 text-right">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Trips</div>
-                            <div class="h3 mb-0 font-weight-bold text-gray-800">{{$tripCount}}</div>
-                        </div>
-                    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fas fa-road fa-2x text-primary"></i>
+                </div>
+                <div class="col-9 text-right">
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ _lang('Trips') }}</div>
+                    <div class="h3 mb-0 font-weight-bold text-gray-800">{{ $tripCount }}</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
 
         <div class="col-lg-3 col-md-6">
             <div class="card shadow mb-4">
@@ -38,7 +39,7 @@ $tripCount = $tripsall->count();
                             <i class="fas fa-chart-bar fa-2x text-success"></i>
                         </div>
                         <div class="col-9 text-right">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Revenue</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ _lang('Revenue') }}</div>
                             <div class="h3 mb-0 font-weight-bold text-gray-800">{{currency()}}{{current_month_income()}}</div>
                         </div>
                     </div>
@@ -54,7 +55,7 @@ $tripCount = $tripsall->count();
                             <i class="fas fa-chart-pie fa-2x text-info"></i>
                         </div>
                         <div class="col-9 text-right">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Expenses</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ _lang('Expenses') }}</div>
                             <div class="h3 mb-0 font-weight-bold text-gray-800">{{currency()}}{{current_month_expense() }}</div>
                 
                         </div>
@@ -71,7 +72,7 @@ $tripCount = $tripsall->count();
                             <i class="fas fa-car fa-2x text-warning"></i>
                         </div>
                         <div class="col-9 text-right">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Vehicles</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ _lang('Vehicles') }}</div>
                             <div class="h3 mb-0 font-weight-bold text-gray-800">{{$vehiclescount}}</div>
                         </div>
                     </div>
@@ -114,7 +115,7 @@ $tripCount = $tripsall->count();
         <div class="col-lg-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Trips</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{{ _lang('Trips') }} </h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

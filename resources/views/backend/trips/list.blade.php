@@ -27,26 +27,28 @@
     <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Customer</th>
-                                            <th>Driver</th>
-                                            <th>Vehicle</th>
-                                            <th>Pickup Location</th>
-                                            <th>Dropoff Location</th>
-                                            <th>Fare</th>
-                                            <th>Action</th>
+                                        <th>{{ _lang('Date') }}</th>
+                                        <th>{{ _lang('Customer') }}</th>
+                                        <th>{{ _lang('Driver') }}</th>
+                                        <th>{{ _lang('Vehicle') }}</th>
+                                        <th>{{ _lang('Pickup Location') }}</th>
+                                        <th>{{ _lang('Dropoff Location') }}</th>
+                                        <th>{{ _lang('Fare') }}</th>
+                                        <th>{{ _lang('Action') }}</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>Date</th>
-                                            <th>Customer</th>
-                                            <th>Driver</th>
-                                            <th>Vehicle</th>
-                                            <th>Pickup Location</th>
-                                            <th>Dropoff Location</th>
-                                            <th>Fare</th>
-                                            <th>Action</th>
+                                        <th>{{ _lang('Date') }}</th>
+                                        <th>{{ _lang('Customer') }}</th>
+                                        <th>{{ _lang('Driver') }}</th>
+                                        <th>{{ _lang('Vehicle') }}</th>
+                                        <th>{{ _lang('Pickup Location') }}</th>
+                                        <th>{{ _lang('Dropoff Location') }}</th>
+                                        <th>{{ _lang('Fare') }}</th>
+                                        <th>{{ _lang('Action') }}</th>
+
                                         </tr>
                                     </tfoot>
                                     <tbody>

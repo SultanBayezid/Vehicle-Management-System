@@ -20,7 +20,8 @@
     <div class="card-body">
     <form method="POST" action="{{ route('vehicles.store') }}" enctype="multipart/form-data">
     @csrf
-    <h4>Basic Information</h4>
+    <h4>{{ _lang('Basic Information') }}
+</h4>
     <!-- Row 1 -->
     <div class="row mb-3">
         <div class="col-md-4">
@@ -66,7 +67,8 @@
     </div>
 
     <!-- Section 2: Vehicle Details -->
-    <h4>Vehicle Details</h4>
+    <h4>{{ _lang('Vehicle Details') }}
+</h4>
     <!-- Row 2 -->
     <div class="row mb-3">
            <div class="col-md-4">
@@ -218,7 +220,8 @@
  
 
     <!-- Section 3: Purchase and Service Information -->
-    <h4>Purchase and Service Information</h4>
+    <h4>{{ _lang('Purchase and Service Information') }}
+</h4>
     <!-- Row 5 -->
     <div class="row mb-3">
         <div class="col-md-4">
@@ -272,7 +275,8 @@
         </div>
     </div>
 
-    <h4>Rental Information</h4>
+    <h4>{{ _lang('Rental Information') }}
+</h4>
     <!-- Row 7 -->
     <div class="row mb-3">
         <div class="col-md-2">

@@ -119,10 +119,10 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::resource('trips',TripController::class);
 
 
-    //Company Settings Controller
-			Route::post('company/upload_logo', 'App\Http\Controllers\CompanySettingController@upload_logo')->name('company.change_logo');
-			Route::resource('settings','App\Http\Controllers\CompanySettingsController');
 
+	//Company Settings Controller
+    Route::post('company/upload_logo', 'App\Http\Controllers\CompanySettingsController@upload_logo')->name('company.change_logo');
+    Route::match(['get', 'post'],'company/general_settings/{store?}', 'App\Http\Controllers\CompanySettingsController@settings')->name('company.change_settings');
 
     //Report Controller
 			Route::match(['get', 'post'],'reports/account_statement/{view?}', 'App\Http\Controllers\ReportController@account_statement')->name('reports.account_statement');

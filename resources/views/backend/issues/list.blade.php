@@ -27,24 +27,26 @@
                                 <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                        <th>Piority</th>
-                                            <th>Vehicle</th>
-                                            <th>Driver</th>
-                                            <th>Summary</th>
-                                            <th>Reported Date</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                        <th>{{_lang('Priority')}}</th>
+                                        <th>{{_lang('Vehicle')}}</th>
+                                        <th>{{_lang('Driver')}}</th>
+                                        <th>{{_lang('Summary')}}</th>
+                                        <th>{{_lang('Reported Date')}}</th>
+                                        <th>{{_lang('Status')}}</th>
+                                        <th>{{_lang('Action')}}</th>
+
                                         </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                           <th>Piority</th>
-                                            <th>Vehicle</th>
-                                            <th>Driver</th>
-                                            <th>Summary</th>
-                                            <th>Reported Date</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                    <th>{{_lang('Priority')}}</th>
+                                    <th>{{_lang('Vehicle')}}</th>
+                                    <th>{{_lang('Driver')}}</th>
+                                    <th>{{_lang('Summary')}}</th>
+                                    <th>{{_lang('Reported Date')}}</th>
+                                    <th>{{_lang('Status')}}</th>
+                                    <th>{{_lang('Action')}}</th>
+
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -71,7 +73,8 @@
                 <form method="POST" action="{{ route('issues.destroy', $issue->id) }}" >
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this vehicle?')"><i class="fas fa-trash"></i></button>
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{_lang('Are you sure you want to delete this vehicle?')}}')"><i class="fas fa-trash"></i></button>
+
                     </div> </form>
             </td>
                                         </tr>

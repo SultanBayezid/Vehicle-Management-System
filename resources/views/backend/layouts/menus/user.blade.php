@@ -135,7 +135,7 @@
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">  {{ _lang('Settings') }}    </div>
-                        <a class="nav-link" href="{{ route('settings.index') }}">
+                        <a class="nav-link" href="{{ route('company.change_settings') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
                           Business  Settings
                         </a>

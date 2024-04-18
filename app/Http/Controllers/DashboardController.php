@@ -18,6 +18,7 @@ class DashboardController extends Controller
     }
     public function index()
     {
+
 		$type = Auth::user()->user_type;
 
 		if( $type  == 'admin' ){

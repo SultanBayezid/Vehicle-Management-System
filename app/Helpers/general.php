@@ -3,16 +3,13 @@
 if (!function_exists('_lang')) {
     function _lang($string = '') {
 
-        $target_lang = get_language();
+        $user_language = get_company_option('language');
 
-        if ($target_lang == '') {
-            $target_lang = "language";
-        }
-
-        if (file_exists(resource_path() . "/language/$target_lang.php")) {
-            include resource_path() . "/language/$target_lang.php";
+      
+        if (file_exists(resource_path() . "/language/$user_language.php")) {
+            include resource_path() . "/language/$user_language.php";
         } else {
-            include resource_path() . "/language/language.php";
+            include resource_path() . "/language/english.php"; 
         }
 
         if (array_key_exists($string, $language)) {
@@ -22,6 +19,7 @@ if (!function_exists('_lang')) {
         }
     }
 }
+
 
 if (!function_exists('_dlang')) {
     function _dlang($string = '') {
@@ -384,12 +382,12 @@ if (!function_exists('update_option')) {
         $data               = array();
         $data['value']      = $value;
         $data['updated_at'] = \Carbon\Carbon::now();
-        if (\App\Setting::where('name', $name)->exists()) {
-            \App\Setting::where('name', $name)->update($data);
+        if (\App\models\Setting::where('name', $name)->exists()) {
+            \App\models\Setting::where('name', $name)->update($data);
         } else {
             $data['name']       = $name;
             $data['created_at'] = \Carbon\Carbon::now();
-            \App\Setting::insert($data);
+            \App\models\Setting::insert($data);
         }
     }
 }
@@ -777,11 +775,11 @@ if (!function_exists('invoice_status')) {
 
 if (!function_exists('create_payment_method')) {
     function create_payment_method($methodName, $company_id) {
-        $payment_method = \App\PaymentMethod::where('name', $methodName)->where("company_id", $company_id);
+        $payment_method = \App\Models\PaymentMethod::where('name', $methodName)->where("company_id", $company_id);
         if ($payment_method->exists()) {
             return $payment_method->first()->id;
         } else {
-            $payment_method             = new \App\PaymentMethod();
+            $payment_method             = new \App\Models\PaymentMethod();
             $payment_method->name       = $methodName;
             $payment_method->company_id = $company_id;
             $payment_method->save();
