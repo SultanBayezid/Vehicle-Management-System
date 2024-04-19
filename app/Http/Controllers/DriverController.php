@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use App\Models\Vehicle;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Hash;
@@ -119,5 +120,11 @@ class DriverController extends Controller
         $driver->delete();
         return redirect()->route('drivers.index')
             ->with('success', 'Driver deleted successfully');
+    }
+
+    public function dVehicle($id){
+
+    $vehicles = Vehicle::where("driver_id", $id)->get();
+    return view('backend.drivers.vehicles.list', compact('id', 'vehicles'));
     }
 }

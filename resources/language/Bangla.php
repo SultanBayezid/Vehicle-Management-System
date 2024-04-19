@@ -782,4 +782,5 @@ $language["Vehicle Create"]="গাড়ী তৈরি করুন";
 $language["Driver Name"]="ড্রাইভারের নাম";
 $language["Driver Phone Number"]="ড্রাইভারের ফোন নম্বর";
 $language["Driver Email"]="ড্রাইভার ইমেল";
-$language["Logged in as:"]="লগ ইন করেছেন :";
+$language["Logged in as:"]="লগ ইন :";
+$language["Passenger"]="যাত্রী";

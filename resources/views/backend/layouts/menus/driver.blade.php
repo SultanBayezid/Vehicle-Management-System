@@ -1,7 +1,7 @@
 
           
               <a class="nav-link {{ request()->routeIs('vehicles.show') ? 'active' : '' }}"
-                href="">
+                href="{{route('driver_vehicles', $id)}}">
                 <div class="sb-nav-link-icon">  <i class="fas fa-rocket"></i></div> {{ _lang('Vehicle Details') }}
               </a>
           
@@ -25,12 +25,12 @@
                 href="">
                 <div class="sb-nav-link-icon">  <i class="fas fa-car"></i> </div>{{ _lang('Trips') }}
               </a>
-          
-          
-              <a class="nav-link {{ request()->routeIs('vehicles.edit') ? 'active' : '' }}"
+              <a class="nav-link {{ request()->routeIs('vehicle_trips') ? 'active' : '' }}"
                 href="">
-                <div class="sb-nav-link-icon">  <i class="far fa-edit"></i></div> {{ _lang('Edit') }}
+                <div class="sb-nav-link-icon">  <i class="fas fa-user"></i> </div>{{ _lang('Passenger') }}
               </a>
+          
+        
       
                   
               

@@ -161,7 +161,7 @@ Route::get('/driver/login', 'App\Http\Controllers\DriverAuthController@showLogin
 Route::post('/driver/login', 'App\Http\Controllers\DriverAuthController@login')->name('driver.login.submit');
 
 Route::middleware('driver')->group(function () {
-    // Your routes that only drivers can access
+    Route::get('driver/vehicles/{id}', 'App\Http\Controllers\DriverController@dVehicle')->name('driver_vehicles');
 });
 
 Route::resource('languages','App\Http\Controllers\LanguageController');
@@ -181,3 +181,7 @@ Route::resource('languages','App\Http\Controllers\LanguageController');
        Route::resource('email_templates', 'EmailTemplateController')->only([
            'index', 'create', 'store', 'show', 'edit', 'update', 'destroy',
        ]);
+
+
+
+       

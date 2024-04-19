@@ -54,6 +54,9 @@ class Kernel extends HttpKernel
 		'client' => [ // Create a group for client middleware
 			\App\Http\Middleware\Client::class,
 		],
+        'driver' => [ // Create a group for client middleware
+			\App\Http\Middleware\Driver::class,
+		],
     ];
 
     /**
