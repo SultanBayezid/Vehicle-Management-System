@@ -135,11 +135,11 @@
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">  {{ _lang('Settings') }}    </div>
+                        <a class="nav-link" href="{{ route('profile.index') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            {{ _lang('My Profile') }}
+                        </a>
                         <a class="nav-link" href="{{ route('company.change_settings') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                            {{ _lang('Settings') }}
-                        </a>
-                        <a class="nav-link" href="{{ route('staffs.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                            {{ _lang('My Profile') }}
+                            {{ _lang('Company Settings') }}
                         </a>

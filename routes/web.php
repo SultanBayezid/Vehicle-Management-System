@@ -74,6 +74,13 @@ Auth::routes();
 Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+           //Profile Controller
+           Route::get('profile', 'App\Http\Controllers\ProfileController@index')->name('profile.index');
+           Route::get('profile/edit', 'App\Http\Controllers\ProfileController@edit')->name('profile.edit');
+           Route::post('profile/update', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+           Route::get('profile/change_password', 'App\Http\Controllers\ProfileController@change_password')->name('profile.change_password');
+           Route::post('profile/update_password', 'App\Http\Controllers\ProfileController@update_password')->name('profile.update_password');
+
 });
 
     Route::group(['middleware' => ['company']], function () {

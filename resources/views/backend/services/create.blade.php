@@ -5,13 +5,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="display-4">Services</h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">Services</h1>
         </div>
     </div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
             <li class="breadcrumb-item"><a href="{{route('services.index')}}">Services</a></li>
 
             <li class="breadcrumb-item active"  aria-current="page">Service Create</li>

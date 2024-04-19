@@ -3,7 +3,7 @@
 
 
 <div class="container">
-  <h1 class="display-4">{{$vehicle->name}}</h1>
+<h1 class="h3 mb-2 pt-3 text-gray-800">{{$vehicle->name}}</h1>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">

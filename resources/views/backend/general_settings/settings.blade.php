@@ -1,7 +1,20 @@
 @extends('backend.layouts.header')
 
 @section('content')
-<h4 class="page-title">{{ _lang('Company Settings') }}</h4>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+		<h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Company Settings') }}</h1>
+
+        </div>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Company Settings') }}</li>
+        </ol>
+    </nav>
 <div class="row">
     <div class="col-sm-3">
         <ul class="nav flex-column nav-tabs settings-tab" role="tablist">
@@ -355,6 +368,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 

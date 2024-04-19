@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="display-4">{{ _lang('Driver Create') }}</h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Driver Create') }}</h1>
         </div>
         <div class="col-md-6 text-md-right mt-3">
             <a class="btn btn-primary btn-sm" data-title="{{ _lang('Add Income') }}"

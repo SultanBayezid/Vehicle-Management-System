@@ -5,15 +5,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="display-4">Vehicle Create</h1>
+        <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Vehicle Create') }} </h1>
         </div>
     </div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('vehicles.index') }}">Vehicles</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Vehicle Create</li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
+            <li class="breadcrumb-item"><a href="{{ route('vehicles.index') }}">{{ _lang('Vehicles') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Vehicle Create') }}</li>
         </ol>
     </nav>
 

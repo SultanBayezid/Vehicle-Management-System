@@ -19,10 +19,24 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="dropdown-item">Logout</button>
-                </form>
+              
+                <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="fas fa-user  text-primary"></i>
+                            {{ _lang('My Profile') }}</a>
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="fas fa-user-edit  text-primary"></i>
+                            {{ _lang('Profile Settings') }}</a>
+                        <a class="dropdown-item" href="{{ route('profile.change_password') }}"><i class="fas fa-key  text-primary"></i> {{ _lang('Change Password') }}</a>
+                        @if(Auth::user()->user_type == 'admin')      
+                        <a class="dropdown-item" href="{{ route('settings.update_settings') }}"><i class="fas fa-cogs  text-primary"></i>{{ _lang('System Settings') }}</a>
+                        @elseif(Auth::user()->user_type == 'user')   
+                        <a class="dropdown-item" href="{{ route('company.change_settings') }}"> <i class="fas fa-cogs  text-primary"></i>  {{ _lang('Company Settings') }}</a>
+                        @endif
+                        <div class="dropdown-divider"></div>
+                     
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item"> <i class="fas fa-sign-out-alt  text-primary"></i>
+ {{ _lang('Logout') }}</button>
+                            </form>
             </li>
         </ul>
     </li>

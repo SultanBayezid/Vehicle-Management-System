@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-        <h1 class="display-4">Issue Details</h1>
+      <h1 class="h3 mb-2 pt-3 text-gray-800">Issue Details</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
                 <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
                 <li class="breadcrumb-item"><a href="{{route('issues.index')}}">Issues</a></li>
                 <li class="breadcrumb-item"><a href="{{route('vehicles.show', $issue->vehicle_id)}}">{{$issue->vehicle->brand->name}} {{$issue->vehicle->model->name}} {{$issue->vehicle->myear->year}}</a></li>
