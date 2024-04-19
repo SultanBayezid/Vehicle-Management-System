@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Hash;
+use Validator;
 class DriverController extends Controller
 {
     public function index()
@@ -21,17 +23,39 @@ class DriverController extends Controller
     public function store(Request $request)
     {
 
-       // Create a new Driver instance
+        $validatedData = $request->validate([
+            'driver_name' => 'required',
+            // Add other validation rules for service fields as needed
+        ]);
+
+        if ($request->client_login == 1) {
+            $validatedLoginData = $request->validate([
+                'name' => 'required',
+                'phone' => 'required|unique:users',
+                'password' => 'required',
+                // Add other validation rules for service fields as needed
+            ]);
+        
+            $user = new User();
+            $user->name = $validatedLoginData['name'];
+            $user->phone = $validatedLoginData['phone'];
+            $user->password = Hash::make($validatedLoginData['password']);
+            $user->user_type = 'driver';
+            $user->status = $request->input('status'); // Assuming status is present in the request
+            $user->company_id = company_id(); // Assuming company_id() function exists and returns the company ID
+            $user->save();
+        }
+    
     $driver = new Driver();
-    $driver->name = $request->input('name');
+    $driver->driver_name = $request->input('driver_name');
     $driver->license_number = $request->input('license_number');
     $driver->license_expiry_date = $request->input('license_expiry_date');
     $driver->address = $request->input('address');
     $driver->city = $request->input('city');
     $driver->state = $request->input('state');
     $driver->postal_code = $request->input('postal_code');
-    $driver->phone_number = $request->input('phone_number');
-    $driver->email = $request->input('email');
+    $driver->driver_phone_number = $request->input('driver_phone_number');
+    $driver->driver_email = $request->input('driver_email');
     $driver->date_of_birth = $request->input('date_of_birth');
     $driver->nationality = $request->input('nationality');
     $driver->emergency_contact = $request->input('emergency_contact');
@@ -40,7 +64,10 @@ class DriverController extends Controller
     $driver->nid = $request->input('nid');
     $driver->passport = $request->input('passport');
     $driver->company_id = company_id(); 
-    $driver->save();;
+    if ($request->client_login == 1) {
+        $driver->user_id = $user->id;
+    }
+    $driver->save();
 
         return redirect()->route('drivers.index')
             ->with('success', 'Driver created successfully');

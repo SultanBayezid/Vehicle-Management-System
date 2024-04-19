@@ -94,7 +94,7 @@
                                 <label class="control-label">{{ _lang('Group') }}</label>
                                 <select class="form-control select2  form-control @error('group_id') is-invalid @enderror" name="group_id">
                                     <option value="">{{ _lang('- Select Group -') }}</option>
-                                    {{ create_option("contact_groups", "id", "name", old('group_id')) }}
+                                    {{ create_option("contact_groups", "id", "name", old('group_id'), array("company_id="=>company_id())) }}
 
                                 </select>
                                 @error('group_id')

@@ -23,27 +23,28 @@
         </ol>
     </nav>
     <div class="card"> <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>License Number</th>
-                                            <th>License Expiry Date</th>
-                                            <th>Phone Number</th>
-                                            <th>Blood Group:</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                        <th>Name</th>
-                                            <th>License Number</th>
-                                            <th>License Expiry Date</th>
-                                            <th>Phone Number</th>
-                                            <th>Blood Group:</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
+    <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>{{ _lang('Name') }}</th>
+                                        <th>{{ _lang('License Number') }}</th>
+                                        <th>{{ _lang('License Expiry Date') }}</th>
+                                        <th>{{ _lang('Phone Number') }}</th>
+                                        <th>{{ _lang('Blood Group') }}:</th>
+                                        <th>{{ _lang('Action') }}</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>{{ _lang('Name') }}</th>
+                                        <th>{{ _lang('License Number') }}</th>
+                                        <th>{{ _lang('License Expiry Date') }}</th>
+                                        <th>{{ _lang('Phone Number') }}</th>
+                                        <th>{{ _lang('Blood Group') }}:</th>
+                                        <th>{{ _lang('Action') }}</th>
+                                    </tr>
+                                </tfoot>
+
                                     <tbody>
                                         @foreach($drivers as $driver)
                                         <tr>

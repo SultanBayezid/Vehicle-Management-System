@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('drivers', function (Blueprint $table) {
-            $table->id();
-        $table->string('name');
+        $table->id();
+        $table->string('driver_name');
         $table->string('license_number');
         $table->date('license_expiry_date');
         $table->string('address')->nullable();
         $table->string('city')->nullable();
         $table->string('state')->nullable();
         $table->string('postal_code')->nullable();
-        $table->string('phone_number')->nullable();
-        $table->string('email')->nullable();
+        $table->string('driver_phone_number')->nullable();
+        $table->string('driver_email')->nullable();
         $table->date('date_of_birth')->nullable();
         $table->string('nationality')->nullable();
         $table->string('emergency_contact')->nullable();
@@ -31,7 +31,7 @@ return new class extends Migration
         $table->string('passport')->nullable();
         $table->string('photo')->nullable();
         $table->bigInteger('company_id');
-        $table->bigInteger('user_id');
+        $table->bigInteger('user_id')->nullable();
         $table->timestamps();
         });
     }

@@ -779,3 +779,7 @@ $language["Fuel Entry Date"]="জ্বালানী এন্ট্রির 
 $language["Fuel Quantity"]="জ্বালানীর পরিমাণ";
 $language["Profile"]="প্রোফাইল";
 $language["Vehicle Create"]="গাড়ী তৈরি করুন";
+$language["Driver Name"]="ড্রাইভারের নাম";
+$language["Driver Phone Number"]="ড্রাইভারের ফোন নম্বর";
+$language["Driver Email"]="ড্রাইভার ইমেল";
+$language["Logged in as:"]="লগ ইন করেছেন :";

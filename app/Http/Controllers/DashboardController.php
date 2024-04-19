@@ -49,6 +49,14 @@ class DashboardController extends Controller
 
 			return view('backend/dashboard-'.$type,$data);
 		}
+		else if($type  == 'driver' ){
+			$company_id = company_id();
+			$data = array();
+ 
+         
+
+			return view('backend/dashboard-'.$type,$data);
+		}
     }
 
 }

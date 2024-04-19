@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
+                    <div class="small">{{_lang('Logged in as:')}}</div>
                     {{ Auth::user()->name ?? '' }}
                 </div>
             </nav>

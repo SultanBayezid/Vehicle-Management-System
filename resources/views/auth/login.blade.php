@@ -12,7 +12,7 @@
         <div class="sign__logo"><span> <i class="fas fa-user fa-lg text-black"></i></span> Log In to Your Account </div>
 
 					<div class="sign__group">
-						<input type="email"  id="email" class="sign__input form-control @error('email') is-invalid @enderror"  name="email" value="{{ old('email') }}" placeholder="Email">
+						<input type="text"  id="email" class="sign__input form-control @error('email') is-invalid @enderror"  name="email" value="{{ old('email') }}" placeholder="Email">
             @error('email')
       <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>

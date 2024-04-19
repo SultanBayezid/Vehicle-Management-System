@@ -28,7 +28,7 @@ return new class extends Migration
 			$table->string('linkedin')->nullable();
 			$table->text('remarks')->nullable();
 			$table->string('contact_image')->nullable();
-            $table->bigInteger('group_id');
+            $table->bigInteger('group_id')->nullable();
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('company_id');
             $table->timestamps();

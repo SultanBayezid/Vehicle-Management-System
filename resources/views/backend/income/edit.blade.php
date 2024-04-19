@@ -35,7 +35,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="account_title"
                                     data-table="accounts" data-where="1" name="account_id" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("accounts", "id", "account_title", $transaction->account_id) }}
+                                    {{ create_option("accounts","id","account_title",$transaction->account_id,array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>
@@ -48,7 +48,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="name"
                                     data-table="chart_of_accounts" data-where="3" name="chart_id" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("chart_of_accounts", "id", "name", $transaction->chart_id, ["type=" => "income"]) }}
+                                    {{ create_option("chart_of_accounts","id","name", $transaction->chart_id, array("type="=>"income","AND company_id="=>company_id())) }}
 
                                 </select>
                             </div>
@@ -69,7 +69,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="contact_name"
                                     data-table="contacts" data-where="1" name="payer_payee_id">
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("contacts", "id", "contact_name", $transaction->payer_payee_id) }}
+                                    {{ create_option("contacts","id","contact_name",$transaction->payer_payee_id,array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>
@@ -82,7 +82,7 @@
                                 <select class="form-control select2-ajax" data-value="id" data-display="name"
                                     data-table="payment_methods" data-where="1" name="payment_method_id" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("payment_methods", "id", "name", $transaction->payment_method_id) }}
+                                    {{ create_option("payment_methods","id","name",$transaction->payment_method_id,array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>

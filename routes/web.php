@@ -31,7 +31,7 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/fetch-models/{brand_id}', 'App\Http\Controllers\VehicleController@fetchModels')->name('fetch_models');
 
-    Route::get('/', 'App\Http\Controllers\FrontendController@index');
+    Route::get('/', 'App\Http\Controllers\FrontendController@index')->name('home');
     Route::get('/fleet-management', function () {
         return view('frontend.features.fleet-management');
     })->name('fleet-management');

@@ -84,7 +84,7 @@ class UserController extends Controller {
         $user->user_type         = $request->input('user_type');
         $user->valid_to          = $request->input('valid_to');
         $user->status            = $request->input('status');
-        $user->mobile_number     = 234234234234;
+        $user->phone     = 234234234234;
         $user->profile_picture   = $profile_picture;
         $user->email_verified_at = date('Y-m-d H:i:s');
         $user->password          = Hash::make($request->password);

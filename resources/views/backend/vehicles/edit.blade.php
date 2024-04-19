@@ -12,7 +12,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
+            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">{{ _lang('Vehicles') }}</a></li>
 
             <li class="breadcrumb-item active"  aria-current="page">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</li>
         </ol>
