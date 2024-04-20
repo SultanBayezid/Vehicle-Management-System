@@ -2,7 +2,7 @@
 
 @section('content')
 <style>
-    .card-title {
+    .title {
     font-weight: 100;
     text-align: center;
 
@@ -43,7 +43,7 @@
         <div class="col-sm-12">
         <div class="card">
             <div class="center p-2">
-                <h5 class="card-title">
+                <h5 class="title">
                     {{ $issue->vehicle->brand->name ?? '' }}
                     {{ $issue->vehicle->model->name ?? '' }}
                     {{ $issue->vehicle->myear->year ?? '' }}
