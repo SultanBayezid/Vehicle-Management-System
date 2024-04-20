@@ -51,7 +51,7 @@
           </tfoot>
           <tbody> @foreach($issues as $issue) <tr>
               <td>{{$issue->priority }}</td>
-              <td>{{$issue->driver->name }}</td>
+              <td>{{$issue->driver->driver_name }}</td>
               <td>{{$issue->summary }}</td>
               <td>{{$issue->report_date }}</td>
               <td>@if ($issue->status == 1) <div class="badge badge-danger">Pending</div> @elseif ($issue->status == 2) <div class="badge badge-warning">Closed</div> @elseif ($issue->status == 3) <div class="badge badge-success">Resolved</div> @else Status: Unknown @endif </td>
