@@ -36,13 +36,12 @@
 .car-block-two .inner-box .content-column .price {
     position: relative;
     display: inline-block;
-    color: #ffffff;
+    color:#333;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 300;
     padding: 3px 15px;
     line-height: 24px;
     margin-top: 12px;
-    background-color: #ff5400;
     font-family: 'Montserrat', sans-serif;
     transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -89,7 +88,6 @@ ul, li {
     line-height: 20px;
     min-height: 40px;
     padding-left: 24px;
-    font-weight: 600;
     padding-right: 12px;
     margin-right: 10px;
     display: inline-block;
@@ -98,7 +96,7 @@ ul, li {
 .car-block-two .inner-box .info-box .car-info li .icon {
     position: absolute;
     line-height: 24px;
-    color: #848484;
+    color: #0048d8;
     font-size: 16px;
     left: 0px;
     top: 50%;
@@ -159,7 +157,7 @@ ul, li {
     <div class="row">
         @foreach($vehicles as $vehicle)
     
-        <div class="car-block-two">
+        <div class="car-block-two text-center">
                         <div class="inner-box">
                         	<div class="row clearfix">
                             	<div class="image-column col-md-4 col-sm-4 col-xs-12">
@@ -167,7 +165,7 @@ ul, li {
                                         <a href="#">
                                             
                                         @if($vehicle->images->isNotEmpty())
-    <img src="{{ asset($vehicle->images->first()->path) }}" alt="Vehicle Image" style="object-fit: cover; width: 270px; height: 170px;">
+    <img src="{{ asset($vehicle->images->first()->path) }}" alt="Vehicle Image" style="object-fit: cover; width: 100%; height: 200px;">
 @endif
 
 
@@ -176,7 +174,7 @@ ul, li {
                                     </div>
                                 </div>
                                 <div class="content-column col-md-8 col-sm-8 col-xs-12">
-                                    <h3><a href="#">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</a></h3>
+                                    <h3>{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</h3>
                                     <div class="price">{{currency()}}{{ $vehicle->price_per_km }}/{{ _lang('KM') }}  |  {{currency()}}{{ $vehicle->price_per_day }}/{{ _lang('Day') }}</div>
                                     <div class="info-box">
                                         <ul class="car-info">
