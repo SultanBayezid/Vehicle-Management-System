@@ -42,7 +42,7 @@
     @foreach($issues as $issue)
         <div class="col-sm-12">
         <div class="card">
-            <div class="center">
+            <div class="center p-2">
                 <h5 class="card-title">
                     {{ $issue->vehicle->brand->name ?? '' }}
                     {{ $issue->vehicle->model->name ?? '' }}
