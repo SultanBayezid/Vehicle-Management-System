@@ -40,38 +40,49 @@
 
     <div class="row">
     @foreach($issues as $issue)
-  <div class="col-sm-12">
-    <div class="card">
-      <div class="card-body center">
-        <h5 class="card-title">{{$issue->vehicle->brand->name ?? '' }} {{$issue->vehicle->model->name ?? '' }} {{$issue->vehicle->myear->year ?? '' }} </h5>
-        @if($issue->priority == 'Low')
-    <span class="badge badge-success badge-sm">{{ $issue->priority }}</span>
-@elseif($issue->priority == 'Medium')
-    <span class="badge badge-warning badge-sm">{{ $issue->priority }}</span>
-@elseif($issue->priority == 'High')
-    <span class="badge badge-danger badge-sm">{{ $issue->priority }}</span>
-@endif
+        <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body center">
+                <h5 class="card-title">
+                    {{ $issue->vehicle->brand->name ?? '' }}
+                    {{ $issue->vehicle->model->name ?? '' }}
+                    {{ $issue->vehicle->myear->year ?? '' }}
+                </h5>
+                    @switch($issue->priority)
+                        @case('Low')
+                            <span class="badge badge-success badge-sm">{{ $issue->priority }}</span>
+                            @break
+                        @case('Medium')
+                            <span class="badge badge-warning badge-sm">{{ $issue->priority }}</span>
+                            @break
+                        @case('High')
+                            <span class="badge badge-danger badge-sm">{{ $issue->priority }}</span>
+                            @break
+                        @default
+                            <span class="badge badge-secondary badge-sm">{{ $issue->priority }}</span>
+                    @endswitch
 
-        <p class="card-text h4 center">{{$issue->summary}}</p>
-        <p class="card-text">{{$issue->description}}</p>
-    <div class="btn-group">
-    <button type="button" class="btn btn-warning btn-sm mr-2" data-toggle="modal" data-target="#editModal{{$issue->id}}">  <i class="fas fa-pen"></i> {{ _lang('Edit') }} </button>
-@include('backend.drivers.issues.modal.edit') 
+            <p class="h4 center">{{ $issue->summary }}</p>
+            <p class="">{{ $issue->description }}</p>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-warning btn-sm mr-2" data-toggle="modal" data-target="#editModal{{ $issue->id }}">
+                    <i class="fas fa-pen"></i> {{ _lang('Edit') }}
+                    </button>
+                    @include('backend.drivers.issues.modal.edit')
 
-      
-        <form action="{{route('driver_issue_delete', $issue->id)}}" method="post">
-                            
-                                    {{ csrf_field() }}
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger btn-sm"
-                                        type="submit" onclick="return confirm('Are you sure you want to delete this Issue?')"><i class="fas fa-trash"></i> {{_lang('Delete')}}</button>
-                                </form>
-    </div>
+                    <form action="{{ route('driver_issue_delete', $issue->id) }}" method="post">
+                    {{ csrf_field() }}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this Issue?')">
+                        <i class="fas fa-trash"></i> {{ _lang('Delete') }}
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    @endforeach
 
-      </div>
-    </div>
-  </div>
-  @endforeach
 
 </div>
 
