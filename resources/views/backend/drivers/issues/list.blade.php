@@ -41,7 +41,7 @@
     <div class="row">
     @foreach($issues as $issue)
         <div class="col-sm-12">
-        <div class="">
+        <div class="border">
             <div class="center p-2">
                 <h5 class="title">
                     {{ $issue->vehicle->brand->name ?? '' }}
