@@ -1,8 +1,13 @@
 
           
+              @php 
+
+               $id = auth()->user()->id;
+              @endphp
+
               <a class="nav-link {{ request()->routeIs('vehicles.show') ? 'active' : '' }}"
                 href="{{route('driver_vehicles', $id)}}">
-                <div class="sb-nav-link-icon">  <i class="fas fa-rocket"></i></div> {{ _lang('Vehicle Details') }}
+                <div class="sb-nav-link-icon">  <i class="fas fa-rocket"></i></div> {{ _lang('Vehicles') }}
               </a>
           
           
@@ -10,7 +15,7 @@
           
           
               <a class="nav-link {{ request()->routeIs('vehicle_issues') ? 'active' : '' }}"
-                href="">
+                href="{{route('driver_issue', $id)}}">
                 <div class="sb-nav-link-icon">   <i class="fas fa-tools"></i></div> {{ _lang('Issues') }}
               </a>
           

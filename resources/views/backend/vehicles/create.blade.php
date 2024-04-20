@@ -302,7 +302,7 @@
                 <label class="control-label">{{ _lang('Assign Driver') }}</label>
                 <select class="form-control select2" name="driver_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
-                    {{ create_option("drivers","id","name",old('driver_id'),array("company_id="=>company_id())) }}
+                    {{ create_option("drivers","id","driver_name",old('driver_id'),array("company_id="=>company_id())) }}
                 </select>
             </div>
         </div>

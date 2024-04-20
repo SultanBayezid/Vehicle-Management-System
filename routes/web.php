@@ -161,7 +161,12 @@ Route::get('/driver/login', 'App\Http\Controllers\DriverAuthController@showLogin
 Route::post('/driver/login', 'App\Http\Controllers\DriverAuthController@login')->name('driver.login.submit');
 
 Route::middleware('driver')->group(function () {
-    Route::get('driver/vehicles/{id}', 'App\Http\Controllers\DriverController@dVehicle')->name('driver_vehicles');
+    Route::get('driver/vehicles/{id?}', 'App\Http\Controllers\DriverController@dVehicle')->name('driver_vehicles');
+    Route::get('driver/issue/{id?}', 'App\Http\Controllers\DriverController@dIssue')->name('driver_issue');
+    Route::post('driver/issue/store', 'App\Http\Controllers\DriverController@dIssueStore')->name('driver_issue_store');
+    Route::PATCH('driver/issue/update/{id}', 'App\Http\Controllers\DriverController@dIssueUpdate')->name('driver_issue_update');
+    Route::delete('driver/issues/delete/{id}', 'App\Http\Controllers\DriverController@dIssueDelete')->name('driver_issue_delete');
+    
 });
 
 Route::resource('languages','App\Http\Controllers\LanguageController');

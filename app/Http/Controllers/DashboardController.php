@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Transaction;
 use App\Models\Invoice;
-use App\Models\Vehicle;
-use App\Models\Driver;
 use DB;
 
 class DashboardController extends Controller
@@ -53,7 +51,8 @@ class DashboardController extends Controller
 		else if($type  == 'driver' ){
 
 
-			$data['$id'] = Auth::user()->id; 
+			$company_id = company_id();
+			$data = array();
 			return view('backend/dashboard-'.$type, $data);
 			
 

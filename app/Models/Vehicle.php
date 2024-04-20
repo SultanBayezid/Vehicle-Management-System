@@ -64,6 +64,11 @@ public function myear()
 {
     return $this->belongsTo(Year::class, 'manufacture_year');
 }
+public function transmission()
+{
+    return $this->belongsTo(Transmission::class, 'transmission_id');
+}
+
 public function ryear()
 {
     return $this->belongsTo(Year::class, 'register_year');

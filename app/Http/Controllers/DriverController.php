@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\User;
+use App\Models\Issue;
+
 use Illuminate\Http\Request;
 use Hash;
 use Validator;
@@ -123,8 +125,102 @@ class DriverController extends Controller
     }
 
     public function dVehicle($id){
+    
+    $driver = Driver::where('user_id', $id)->first();
 
-    $vehicles = Vehicle::where("driver_id", $id)->get();
-    return view('backend.drivers.vehicles.list', compact('id', 'vehicles'));
+    $vehicles = Vehicle::where("driver_id", $driver->id)->get();
+    return view('backend.drivers.vehicles.list', compact('vehicles'));
     }
+
+    public function dIssue ($id){
+        $driver = Driver::where('user_id', $id)->first();
+        $issues = Issue::where("driver_id", $driver->id)
+        ->orderBy('created_at', 'desc') // Sort by the latest date
+        ->paginate(5);
+        $vehicles = Vehicle::where("driver_id", $driver->id)->get();
+        return view('backend.drivers.issues.list', compact('issues', 'vehicles'));
+
+    }
+
+
+    public function dIssueStore(Request $request)
+    {
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+			'vehicle_id' => 'required|max:50',
+			'driver_id' => 'required',
+		]);
+        if ($validator->fails()) {
+			if($request->ajax()){ 
+			    return response()->json(['result'=>'error','message'=>$validator->errors()->all()]);
+			}else{
+				return redirect('chart_of_accounts/create')
+							->withErrors($validator)
+							->withInput();
+			}			
+		}
+
+        $attachment = "";
+        if ($request->hasfile('image')) {
+            $file       = $request->file('image');
+            $attachment = time() . $file->getClientOriginalName();
+            $file->move(public_path() . "/uploads/issue/", $attachment);
+        }
+         
+        $issue = New Issue();
+        $issue->vehicle_id = $request->vehicle_id;
+        $issue->driver_id = $request->driver_id;
+        $issue->summary = $request->summary;
+        $issue->description = $request->description;
+        $issue->priority = $request->priority;
+        $issue->due_date = $request->due_date;
+        $issue->report_date = now();
+        $issue->status = 1;
+        $issue->company_id = company_id();
+        $issue->image        = $attachment;
+        $issue->save();
+        return redirect()->back()->with('success', _lang('Issue Created Successfully'));
+
+    }
+
+    public function dIssueUpdate(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'vehicle_id' => 'required|exists:vehicles,id',
+            'driver_id' => 'required|exists:drivers,id',
+         
+        ]);
+    
+  
+
+        $issue = Issue::findOrfail($id);
+        if ($request->hasFile('image')) {
+            $oldImagePath = public_path("uploads/issue/{$issue->image}");
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+    
+            $file = $request->file('image');
+            $attachment = time() . $file->getClientOriginalName();
+            $file->move(public_path() . "/uploads/issue/", $attachment);
+            $issue->image = $attachment;
+        }
+        $issue->vehicle_id = $request->vehicle_id;
+        $issue->driver_id = $request->driver_id;
+        $issue->summary = $request->summary;
+        $issue->description = $request->description;
+        $issue->priority = $request->priority;
+        $issue->due_date = $request->due_date;
+        $issue->report_date = now();
+        $issue->status = 1;
+        $issue->save();
+        return redirect()->back()->with('success', _lang('Issue Updated Successfully'));
+    }
+
+    public function dIssueDelete($id){
+        $issue = Issue::find($id);
+        $issue->delete();
+        return back()->with('success', _lang('Removed Sucessfully'));
+    }
+    
 }
