@@ -21,7 +21,7 @@
           
           
               <a class="nav-link {{ request()->routeIs('vehicle_fuels') ? 'active' : '' }}"
-                href="">
+                href="{{route('driver_fuelhistory', $id)}}">
                 <div class="sb-nav-link-icon">  <i class="fas fa-gas-pump"></i> </div>{{ _lang('Fuel History') }}
               </a>
           

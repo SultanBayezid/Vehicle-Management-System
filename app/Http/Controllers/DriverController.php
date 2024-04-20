@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\User;
+use App\Models\Fuel;
 use App\Models\Issue;
 
 use Illuminate\Http\Request;
@@ -222,5 +223,23 @@ class DriverController extends Controller
         $issue->delete();
         return back()->with('success', _lang('Removed Sucessfully'));
     }
+
+
+    public function dFuelHistory($id) {
+        // Find the driver based on the user_id
+        $driver = Driver::where('user_id', $id)->first();
+    
+        // Find all vehicles associated with the driver
+        $vehicles = Vehicle::where('driver_id', $driver->id)->pluck('id');
+    
+        // Find all fuel entries where the vehicle_id is in the list of vehicles
+        $fuels = Fuel::whereIn('vehicle_id', $vehicles)
+            ->orderBy('created_at', 'desc') // Sort by the latest date
+            ->paginate(5);
+    
+        return view('backend.drivers.fuel_history.list', compact('fuels', 'vehicles'));
+    }
+    
+    
     
 }
