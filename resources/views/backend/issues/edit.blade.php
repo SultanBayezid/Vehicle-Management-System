@@ -51,7 +51,7 @@
                                                     <div class="form-group">
                                                     <select class="form-control " data-value="id" data-display="name" data-table="drivers" data-where="1" name="driver_id" id="driver_id" required>
                                             <option value="">{{ ('Select One') }}</option>
-                                            {{ create_option("drivers", "id", "name", $issue->driver_id) }}
+                                            {{ create_option("drivers", "id", "driver_name", $issue->driver_id) }}
                                         </select>
                                                     </div>
                                                 </div>
