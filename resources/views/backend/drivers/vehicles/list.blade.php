@@ -138,19 +138,23 @@ ul, li {
     position: relative;
     margin-bottom: 10px;
 }
+.center {
+    font-weight: 100;
+    text-align: center !important;
+
+}
 </style>
 <!-- jQuery -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
+<div class="row center">
+        <div class="col-md-6 text-md-left">
           <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Vehicles') }} </h1>
         </div>
     </div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Vehicles') }}</li>
+      
         </ol>
     </nav>
 

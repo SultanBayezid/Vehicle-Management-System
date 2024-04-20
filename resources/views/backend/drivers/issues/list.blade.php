@@ -10,7 +10,7 @@
 
 .center {
     font-weight: 100;
-    text-align: center;
+    text-align: center !important;
 
 }
 
@@ -18,23 +18,24 @@
 </style>
 <!-- jQuery -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row center">
+        <div class="col-md-6 text-md-left">
           <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Issues') }} </h1>
         </div>
         <div class="col-md-6 text-md-right mt-3">
 
-            <button class="btn btn-primary btn-sm" style="float: right;"  data-toggle="modal" data-target="#issue"><i class="fas fa-plus"></i> {{ _lang('Add New Issue') }} </button>
+            <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#issue"><i class="fas fa-plus"></i> {{ _lang('Add New Issue') }} </button>
         </div>
     </div>
     
 
-    <nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Issues') }}</li>
+ 
         </ol>
     </nav>
+
+
 
 
     <div class="row">
