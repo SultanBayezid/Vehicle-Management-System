@@ -2,144 +2,19 @@
 
 @section('content')
 <style>
-    .car-block-two {
-    position: relative;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #f0f0f0;
-    margin-bottom: 40px;
-}
-
-.car-block-two .inner-box .image-column {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.car-block-two .inner-box .image {
-    position: relative;
+    .card-title {
+    font-weight: 100;
     text-align: center;
-    border: 1px solid #f0f0f0;
+
 }
 
-.car-block-two .inner-box .content-column {
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.car-block-two .inner-box .content-column h3 {
-    position: relative;
-    font-size: 22px;
-    font-weight: 600;
-    text-transform: capitalize;
-    margin-top: -5px;
-}
-
-.car-block-two .inner-box .content-column .price {
-    position: relative;
-    display: inline-block;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 3px 15px;
-    line-height: 24px;
-    margin-top: 12px;
-    background-color: #ff5400;
-    font-family: 'Montserrat', sans-serif;
-    transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-}
-
-.car-block-two .inner-box .content-column .info-box {
-    position: relative;
-    padding: 20px 0px;
-}
-.car-block-two .inner-box .content-column .lower-box {
-    position: relative;
-    padding-top: 3px;
-}
-.car-block-two .inner-box .content-column .compare-check {
-    position: absolute;
-    right: 15px;
-    top: 0px;
-    z-index: 1;
-}
-.car-block-two .inner-box .info-box .car-info {
-    position: relative;
-    font-family: 'Montserrat', sans-serif;
-}
-ul, li {
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-}
-
-.car-block-two .inner-box .info-box .car-info li .info-title {
-    position: relative;
-    display: block;
-    font-weight: 400;
-    color: #848484;
-}
-
-.car-block-two .inner-box .info-box .car-info li {
-    position: relative;
-    color: #232527;
-    font-size: 14px;
-    line-height: 20px;
-    min-height: 40px;
-    padding-left: 24px;
-    font-weight: 600;
-    padding-right: 12px;
-    margin-right: 10px;
-    display: inline-block;
-    border-right: 1px solid #eaeaea;
-}
-.car-block-two .inner-box .info-box .car-info li .icon {
-    position: absolute;
-    line-height: 24px;
-    color: #848484;
-    font-size: 16px;
-    left: 0px;
-    top: 50%;
-    margin-top: -12px;
-}
-
-.btn-style-four {
-    position: relative;
-    padding: 8px 20px;
-    line-height: 24px;
-    color: #282328;
+.center {
+    font-weight: 100;
     text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    background: #f2f2f2;
-    letter-spacing: 0px;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
+
 }
 
-.car-block-two .inner-box .content-column .lower-box .btns-box {
-    position: relative;
-    float: left;
-}
 
-.car-block-two .inner-box .content-column h3 {
-    position: relative;
-    font-size: 22px;
-    font-weight: 600;
-    text-transform: capitalize;
-    margin-top: -5px;
-}
-.car-block-two .inner-box .content-column {
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.car-block-two .inner-box .content-column {
-    position: relative;
-    margin-bottom: 10px;
-}
 </style>
 <!-- jQuery -->
 <div class="container">
@@ -166,7 +41,7 @@ ul, li {
     @foreach($issues as $issue)
   <div class="col-sm-12">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body center">
         <h5 class="card-title">{{$issue->vehicle->brand->name ?? '' }} {{$issue->vehicle->model->name ?? '' }} {{$issue->vehicle->myear->year ?? '' }} </h5>
         @if($issue->priority == 'Low')
     <span class="badge badge-success badge-sm">{{ $issue->priority }}</span>
@@ -176,7 +51,7 @@ ul, li {
     <span class="badge badge-danger badge-sm">{{ $issue->priority }}</span>
 @endif
 
-        <p class="card-text h4">{{$issue->summary}}</p>
+        <p class="card-text h4 center">{{$issue->summary}}</p>
         <p class="card-text">{{$issue->description}}</p>
     <div class="btn-group">
     <button type="button" class="btn btn-warning btn-sm mr-2" data-toggle="modal" data-target="#editModal{{$issue->id}}">  <i class="fas fa-pen"></i> {{ _lang('Edit') }} </button>
