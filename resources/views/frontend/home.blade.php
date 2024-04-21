@@ -12,8 +12,8 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="home__content">
-							<h1 class="home__title">Manage, rent, sell <br> cars  all in one <br> convenient platform. </h1>
-							<p class="home__text">Omniverse not only streamlines vehicle management but also facilitates <br> car booking, rentals, and sales, providing a comprehensive solution <br> for your automotive needs. </p>
+							<h1 class="home__title">{!! _lang('Manage, rent, sell <br> cars all in one <br> convenient platform.') !!} </h1>
+							<p class="home__text">{!! _lang('Omniverse not only streamlines vehicle management but also facilitates <br> car booking, rentals, and sales, providing a comprehensive solution <br> for your automotive needs.') !!}</p>
 
 							<!-- <form class="home__search" action="#">
 								<div class="home__group">
@@ -47,7 +47,7 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title">
-						<h2>Get started with 4 simple steps </h2>
+						<h2>{{_lang('Driver')}}</h2>
 					</div>
 				</div>
 				<!-- end title -->
@@ -56,10 +56,10 @@
 					<div class="step1">
 						<span class="step1__icon step1__icon--pink">
 						<i class="fas fa-truck"></i></span>
-						<h3 class="step1__title">Manage Vehicle</h3>
-						<p class="step1__text">Streamline vehicle management effortlessly. Gain insights for efficient operations and cost savings.</p>
+						<h3 class="step1__title">{{_lang('Manage Vehicle')}}</h3>
+						<p class="step1__text">{{_lang('Streamline vehicle management effortlessly. Gain insights for efficient operations and cost savings.')}}</p>
 						<div class="car__footer">
-							<a href="{{ route('fleet-management') }}" class="car__home"><span> learn more</span></a>
+							<a href="{{ route('fleet-management') }}" class="car__home"><span> {{ _lang('learn more') }} </span></a>
 						</div>
 					</div>
 				</div>
@@ -68,10 +68,10 @@
 					<div class="step1">
 						<span class="step1__icon">
 							<i class="fas fa-map-marked-alt"></i></span>
-						<h3 class="step1__title">Trip Management</h3>
-						<p class="step1__text">Simplify trip planning and tracking. Manage expenses and streamline travel processes.</p>
+						<h3 class="step1__title">{{_lang('Trip Management')}} </h3>
+						<p class="step1__text">{!! _lang('Simplify trip planning and tracking. Manage expenses and streamline travel processes.') !!}</p>
 						<div class="car__footer">
-						<a href="{{ route('trip-management') }}" class="car__home"><span> learn more</span></a>
+						<a href="{{ route('trip-management') }}" class="car__home"><span> {{ _lang('learn more')}} </span></a>
 						</div></div>
 				</div>
 
@@ -79,10 +79,10 @@
 					<div class="step1">
 						<span class="step1__icon step1__icon--green">
 						<i class="fas fa-address-book"></i></span>
-						<h3 class="step1__title">Contact Management</h3>
-						<p class="step1__text">Stay connected effortlessly. Organize contacts and enhance collaboration seamlessly.</p>
+						<h3 class="step1__title">{{_lang('Contact Management')}} </h3>
+						<p class="step1__text">{{ _lang('Stay connected effortlessly. Organize contacts and enhance collaboration seamlessly.') }} </p>
 						<div class="car__footer">
-						<a href="{{ route('contact-management') }}" class="car__home"><span> learn more</span></a>
+						<a href="{{ route('contact-management') }}" class="car__home"><span>{{ _lang('learn more')}}  </span></a>
 						</div></div>
 				</div>
 
@@ -90,11 +90,11 @@
 					<div class="step1">
 						<span class="step1__icon step1__icon--purple">
 						<i class="fas fa-chart-line"></i></span>
-						<h3 class="step1__title">Financial Management</h3>
-						<p class="step1__text">Take control of finances easily. Manage income, expenses, and invoicing effectively.
+						<h3 class="step1__title">{{_lang('Financial Management')}} </h3>
+						<p class="step1__text">{!! _lang('Take control of finances easily. Manage income, expenses, and invoicing effectively.')!!}
 </p>
 <div class="car__footer">
-<a href="{{ route('financial-management') }}" class="car__home"><span> learn more</span></a>
+<a href="{{ route('financial-management') }}" class="car__home"><span>{{ _lang('learn more')}} </span></a>
 						</div></div>
 				</div>
 			</section>
@@ -104,9 +104,9 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title main__title--first">
-						<h2>Featured cars</h2>
+						<h2>{{ _lang('Rent A Car')}}</h2>
 
-						<a href="cars.html" class="main__link">View more <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"/></svg></a>
+						<a href="cars.html" class="main__link">{{ _lang('View All')}} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"/></svg></a>
 					</div>
 				</div>
 				<!-- end title -->

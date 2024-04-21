@@ -211,4 +211,4 @@ Route::resource('languages','App\Http\Controllers\LanguageController');
 
 
 
-       
+       Route::post('/set-language', 'App\Http\Controllers\LanguageController@setLanguage')->name('setLanguage');

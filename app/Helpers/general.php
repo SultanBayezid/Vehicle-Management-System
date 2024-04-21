@@ -1,17 +1,45 @@
 <?php
 
+// if (!function_exists('_lang')) {
+//     function _lang($string = '') {
+//         $target_lang = get_company_option('language'); // Get the language setting from company options
+
+//         if (file_exists(resource_path() . "/language/$target_lang.php")) {
+//             include resource_path() . "/language/$target_lang.php"; // Include language file based on company language setting
+//         } else {
+//             include resource_path() . "/language/language.php"; // Fallback to default language file 
+//         }
+
+//         if (array_key_exists($string, $language)) {
+//             return $language[$string];
+//         } else {
+//             return $string;
+//         }
+//     }
+// }
+
+
+
+
 if (!function_exists('_lang')) {
     function _lang($string = '') {
-
-        $user_language = get_company_option('language');
-
-      
-        if (file_exists(resource_path() . "/language/$user_language.php")) {
-            include resource_path() . "/language/$user_language.php";
+        // Check if the user is authenticated
+        if (auth()->check()) {
+            // Get the language setting from the company options
+            $target_lang = get_company_option('language');
         } else {
-            include resource_path() . "/language/language.php"; 
+            // Get the language setting from the session
+            $target_lang = session('language', config('app.locale'));
         }
 
+        // Include the language file based on the language setting
+        if (file_exists(resource_path("language/$target_lang.php"))) {
+            include resource_path("language/$target_lang.php");
+        } else {
+            include resource_path('/language/language.php'); // Fallback to default language file 
+        }
+
+        // Return the translation for the provided string
         if (array_key_exists($string, $language)) {
             return $language[$string];
         } else {
@@ -19,6 +47,10 @@ if (!function_exists('_lang')) {
         }
     }
 }
+
+
+
+
 
 
 if (!function_exists('_dlang')) {

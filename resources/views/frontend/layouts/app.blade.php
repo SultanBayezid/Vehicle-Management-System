@@ -47,21 +47,21 @@
 							<ul class="header__nav">
 					
 								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">FEATURES <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
+									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ _lang('FEATURES')}} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
 
 									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="/fleet-management">FLEET MANAGEMENT</a></li>
-										<li><a href="/trip-management">TRIP MANAGEMENT</a></li>
-										<li><a href="/financial-management">FINANCIAL MANAGEMENT</a></li>
-										<li><a href="/contact-management">CONTACT MANAGEMENT</a></li>
+										<li><a href="/fleet-management">{{_lang('FLEET MANAGEMENT')}}</a></li>
+										<li><a href="/trip-management">{{ _lang('TRIP MANAGEMENT') }}</a></li>
+										<li><a href="/financial-management">{{ _lang('FINANCIAL MANAGEMENT') }}</a></li>
+										<li><a href="/contact-management"> {{ _lang('CONTACT MANAGEMENT') }}</a></li>
 
 									</ul>
 								</li>
 								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SERVICES <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
+									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ _lang('SERVICES')}}  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
 
 									<ul class="dropdown-menu header__nav-menu">
-										<li><a href="{{route('rent')}}">RENT A CAR</a></li>
+										<li><a href="{{route('rent')}}">{{ _lang('RENT A CAR')}} </a></li>
 						
 
 									</ul>
@@ -70,15 +70,67 @@
 					
 					
 								<li class="header__nav-item">
-									<a href="faq.html" class="header__nav-link">HELP CENTER</a>
+									<a href="faq.html" class="header__nav-link"> {{ _lang('HELP CENTER')}} </a>
 								</li>
 							
 							</ul>
 						</div>
 
 						<div class="header__actions">
-					
+						@unless(auth()->check())
+						<div class="">
+						<div class="">
 
+
+						@php
+$currentLanguage = session('language');
+
+// If no session language is set, set it to a default language
+if (!$currentLanguage) {
+    $defaultLanguage = 'English'; // Change 'english' to your desired default language
+    session(['language' => $defaultLanguage]);
+    $currentLanguage = $defaultLanguage;
+}
+
+$languageDropdown = '<div class="dropdown">';
+$languageDropdown .= '<a class="footer__lang-btn dropdown-toggle" href="#" role="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">';
+$languageDropdown .= '<img width="20" id="selectedFlag" src="' . asset('frontend/img/flags/' . $currentLanguage . '.png') . '" alt="' . $currentLanguage . ' Flag">';
+$languageDropdown .= '<span id="selectedLanguage">' . ucfirst($currentLanguage) . '</span>';
+$languageDropdown .= '</a>';
+$languageDropdown .= '<ul class="dropdown-menu footer__lang-dropdown" aria-labelledby="languageDropdown">';
+
+foreach(glob(resource_path('language/*.php')) as $file) {
+    $langCode = basename($file, '.php');
+    
+    // Exclude language.php file
+    if ($langCode === 'language') {
+        continue;
+    }
+    
+    $flagPath = asset('frontend/img/flags/'.$langCode.'.png');
+    $languageDropdown .= '<li>';
+    $languageDropdown .= '<a class="' . ($langCode == $currentLanguage ? ' active' : '') . '" href="#" onclick="setLanguage(\'' . $langCode . '\')">';
+    $languageDropdown .= '<img width="30" src="' . $flagPath . '" alt="' . $langCode . ' Flag">';
+    $languageDropdown .= ucfirst($langCode);
+    $languageDropdown .= '</a>';
+    $languageDropdown .= '</li>';
+}
+
+$languageDropdown .= '</ul>';
+$languageDropdown .= '</div>';
+echo $languageDropdown;
+@endphp
+
+
+<form id="languageForm" action="{{ route('setLanguage') }}" method="POST" style="display: none;">
+@csrf
+<input type="hidden" name="language" id="languageInput">
+</form>
+
+
+</div>
+							</div>
+							@endunless
 							<div class="header__action">
 								<a class="header__profile-btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									<i class="fas fa-user"></i>
@@ -93,21 +145,24 @@
             <li>
                 <strong>{{ auth()->user()->name }}</strong>
             </li>
-            <li><a href="{{'dashboard'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">Dashboard</span></a></li>
+            <li><a href="{{'dashboard'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">{{ _lang('Dashboard')}}</span></a>
+		
+		</li>
 
         @elseif (auth()->user()->user_type == 'client')
             <!-- Display Client options -->
             <li>
                 <strong>{{ auth()->user()->name }}</strong>
             </li>
-            <li><a href="{{route('client.profile')}}"><i class="fas fa-user-alt fa-lg text-primary"></i> <span class="mr2">My Profile</span></a></li>
-            <li><a href="{{route('trip.list')}}"><i class="fas fa-fas fa-poll-h fa-lg text-primary"></i> <span class="mr2">My Trips</span></a></li>
-            <li><a href="#"><i class="fas fa-cogs fa-lg text-primary"></i> <span class="mr2">Settings</span></a></li>
+            <li><a href="{{route('client.profile')}}"><i class="fas fa-user-alt fa-lg text-primary"></i> <span class="mr2">{{ _lang('My Profile')}}</span></a></li>
+            <li><a href="{{route('trip.list')}}"><i class="fas fa-fas fa-poll-h fa-lg text-primary"></i> <span class="mr2"> {{ _lang('My Trips')}}</span></a></li>
+            <li><a href="#"><i class="fas fa-cogs fa-lg text-primary"></i> <span class="mr2"> {{ _lang('Settings')}}</span></a></li>
         @else
             <!-- Unknown user type, display default options -->
             <li>
                 <strong>{{ auth()->user()->name }}</strong>
             </li>
+			<li><a href="{{'dashboard'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">{{ _lang('Dashboard')}}</span></a>
         @endif
         <!-- Common logout option for all users -->
         <li>
@@ -115,14 +170,14 @@
                 @csrf
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-lg text-primary"></i>
-                    <span class="mr2">Sign out</span>
+                    <span class="mr2"> {{ _lang('Sign Out')}}</span>
                 </a>
             </form>
         </li>
     @else
         <!-- Display login and registration options for guests -->
-        <li><a href="{{ route('login') }}"><i class="fas fa-lock text-primary"></i> <span class="mr2">Sign In</span></a></li>
-        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus  text-primary"></i> <span class="mr2">Register</span></a></li>
+        <li><a href="{{ route('login') }}"><i class="fas fa-lock text-primary"></i> <span class="mr2">{{ _lang('Sign In')}}</span></a></li>
+        <li><a href="{{ route('register') }}"><i class="fas fa-user-plus  text-primary"></i> <span class="mr2"> {{ _lang('Register')}}</span></a></li>
     @endif
 </ul>
 
@@ -180,19 +235,7 @@
 
 					<p class="footer__tagline">Search for cheap rental cars in New York. <br>With a diverse fleet of 19,000 vehicles, Waydex <br>offers its consumers an attractive and fun selection.</p>
 
-					<div class="footer__lang">
-						<a class="footer__lang-btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="{{asset('frontend/img/flags/uk.svg')}}" alt="">
-							<span>English</span>
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg>
-						</a>
-
-						<ul class="dropdown-menu footer__lang-dropdown">
-							<li><a href="#"><img src="{{asset('frontend/img/flags/spain.svg')}}" alt=""><span>Spanish</span></a></li>
-							<li><a href="#"><img src="img/flags/france.svg" alt=""><span>French</span></a></li>
-							<li><a href="#"><img src="img/flags/china.svg" alt=""><span>Chinese</span></a></li>
-						</ul>
-					</div>
+					
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-2 order-xl-3 offset-md-2 offset-lg-0">
@@ -266,6 +309,12 @@
 		</div>
 	</footer>
 	<!-- end footer -->
+	<script>
+    function setLanguage(language) {
+        document.getElementById('languageInput').value = language;
+        document.getElementById('languageForm').submit();
+    }
+</script>
 
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('frontend/js/splide.min.js') }}"></script>

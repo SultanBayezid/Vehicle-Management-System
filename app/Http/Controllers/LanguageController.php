@@ -112,5 +112,14 @@ class LanguageController extends Controller {
             return redirect()->route('languages.index')->with('success', _lang('Removed Sucessfully'));
         }
     }
+
+
+    public function setLanguage(Request $request)
+    {
+        $language = $request->input('language');
+        session(['language' => $language]);
+
+        return redirect()->back();
+    }
 }
 
