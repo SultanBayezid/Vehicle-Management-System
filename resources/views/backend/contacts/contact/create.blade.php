@@ -63,7 +63,7 @@
                             <div class="form-group">
                                 <label class="control-label">{{ _lang('Contact Email') }}</label>
                                 <input type="text" class="form-control form-control @error('contact_email') is-invalid @enderror" name="contact_email"
-                                    value="{{ old('contact_email') }}" required>
+                                    value="{{ old('contact_email') }}" >
                                     @error('contact_email')
       <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <label class="control-label">{{ _lang('Contact Phone') }}</label>
                                 <input type="text" class="form-control" name="contact_phone"
-                                    value="{{ old('contact_phone') }}">
+                                    value="{{ old('contact_phone') }}" required>
                             </div>
                         </div>
 

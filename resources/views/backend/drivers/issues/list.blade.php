@@ -64,6 +64,15 @@
 
             <p class="h4 center">{{ $issue->summary }}</p>
             <p class="">{{ $issue->description }}</p>
+          <p>  @if($issue->image != "")
+                            <a href="{{ asset('uploads/issue/'.$issue->image) }}"
+                                target="_blank" class="btn btn-primary btn-sm">{{ _lang('View Attachment') }}</a>
+                            @else
+                            <label class="label label-warning">
+                                <strong>{{ _lang('No Atachment Available !') }}</strong>
+                            </label>
+                            @endif
+                            </p>
                 <div class="btn-group">
                     <button type="button" class="btn btn-warning btn-sm mr-2" data-toggle="modal" data-target="#editModal{{ $issue->id }}">
                     <i class="fas fa-pen"></i> {{ _lang('Edit') }}

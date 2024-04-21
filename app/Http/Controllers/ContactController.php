@@ -75,17 +75,17 @@ class ContactController extends Controller {
      */
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'profile_type'  => 'required|max:20',
+            'profile_type'  => 'nullable|max:20',
             'company_name'  => 'nullable|max:50',
             'contact_name'  => 'required|max:50',
-            'contact_email' => 'required|email|max:100',
-            'contact_phone' => 'nullable|max:20',
+            'contact_email' => 'nullable|email|max:100',
+            'contact_phone' => 'required|max:20',
             'country'       => 'nullable|max:50',
             'city'          => 'nullable|max:50',
             'state'         => 'nullable|max:50',
             'zip'           => 'nullable|max:20',
             'contact_image' => 'nullable|image||max:5120',
-            'group_id' 		=> 'required',
+            'group_id' 		=> 'nullable',
             'name'          => 'required_if:client_login,1|max:191', //User Login Attribute
             'email'         => 'required_if:client_login,1|email|unique:users|max:191', //User Login Attribute
             'password'      => 'required_if:client_login,1|max:20|min:6|confirmed', //User Login Attribute

@@ -21,8 +21,13 @@
 					</div>
 
 					<div class="sign__group">
-						<input type="text" class="sign__input form-control @error('email') is-invalid @enderror"  name="email" value="{{ old('email') }}" placeholder="Email">
-					</div>
+						
+					<input type="text" class="sign__input form-control @error('phone') is-invalid @enderror"  name="phone" value="{{ old('phone') }}" placeholder="Phone">
+					@error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror</div>
 
 					<div class="sign__group">
 						<input type="password" class="sign__input form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">

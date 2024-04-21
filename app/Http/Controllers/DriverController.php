@@ -7,7 +7,8 @@ use App\Models\Vehicle;
 use App\Models\User;
 use App\Models\Fuel;
 use App\Models\Issue;
-
+use App\Models\Contact;
+Use File;
 use Illuminate\Http\Request;
 use Hash;
 use Validator;
@@ -230,16 +231,100 @@ class DriverController extends Controller
         $driver = Driver::where('user_id', $id)->first();
     
         // Find all vehicles associated with the driver
-        $vehicles = Vehicle::where('driver_id', $driver->id)->pluck('id');
+        $vehicle = Vehicle::where('driver_id', $driver->id)->pluck('id');
+        $vehicles = Vehicle::where("driver_id", $driver->id)->get();
+
     
         // Find all fuel entries where the vehicle_id is in the list of vehicles
-        $fuels = Fuel::whereIn('vehicle_id', $vehicles)
+        $fuels = Fuel::whereIn('vehicle_id', $vehicle)
             ->orderBy('created_at', 'desc') // Sort by the latest date
             ->paginate(5);
     
         return view('backend.drivers.fuel_history.list', compact('fuels', 'vehicles'));
     }
+
+    public function dFuelHoistoryStore(Request $request){
+       //    dd($request->all());
+                
+            $validator = $request->validate([
+                'vehicle_id' => 'required|exists:car_brands,id',
+                'date' => 'required',
+        
+            
+            ]);
+        
+
+
+            $attachment = "";
+            if ($request->hasfile('attachment')) {
+                $file       = $request->file('attachment');
+                $attachment = time() . $file->getClientOriginalName();
+                $file->move(public_path() . "/uploads/fuel/", $attachment);
+            }
+            
+            $issue = New Fuel();
+            $issue->vehicle_id = $request->vehicle_id;
+            $issue->date = $request->date;
+            $issue->odometer = $request->odometer;
+            $issue->qty = $request->qty;
+            $issue->reference = $request->reference;
+            $issue->note = $request->note;
+            $issue->attachment  = $attachment;
+            $issue->company_id  = company_id();
+            $issue->save();
+            return redirect()->back()->with('success', 'Fuel History Recorded');
+    }
+
+    public function dFuelUpdate(Request $request, $id)
+    {
+        $validator = $request->validate([
+            'vehicle_id' => 'required|exists:car_brands,id',
+            'date' => 'required',
+     
+         
+        ]);
+       
+
+         
+        $issue = Fuel::findOrfail($id);
+        if ($request->hasFile('attachment')) {
+            $oldImagePath = public_path("uploads/fuel/{$issue->attachment}");
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+    
+            $file = $request->file('attachment');
+            $attachment = time() . $file->getClientOriginalName();
+            $file->move(public_path() . "/uploads/fuel/", $attachment);
+            $issue->attachment = $attachment;
+        }
+        $issue->vehicle_id = $request->vehicle_id;
+        $issue->date = $request->date;
+        $issue->odometer = $request->odometer;
+        $issue->qty = $request->qty;
+        $issue->reference = $request->reference;
+        $issue->note = $request->note;
+        $issue->company_id  = company_id();
+        $issue->save();
+        return redirect()->back()->with('success', 'Fuel History Recorded');
+    }
+
+    public function dFuelDelete($id){
+        $issue = Fuel::find($id);
+        $oldImagePath = public_path("uploads/fuel/{$issue->attachment}");
+        if (File::exists($oldImagePath)) {
+            File::delete($oldImagePath);
+        }
+        $issue->delete();
+        return back()->with('success', _lang('Removed Sucessfully'));
+    }
+
     
     
+    public function dCustomer($id){
+    
+        $customers = Contact::where('driver_id', $id)->get();
+        return view('backend.drivers.contacts.list', compact('customers'));
+        }
     
 }

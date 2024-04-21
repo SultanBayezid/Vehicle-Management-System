@@ -163,10 +163,18 @@ Route::post('/driver/login', 'App\Http\Controllers\DriverAuthController@login')-
 Route::middleware('driver')->group(function () {
     Route::get('driver/vehicles/{id?}', 'App\Http\Controllers\DriverController@dVehicle')->name('driver_vehicles');
     Route::get('driver/issue/{id?}', 'App\Http\Controllers\DriverController@dIssue')->name('driver_issue');
-    Route::get('driver/fuel_history/{id?}', 'App\Http\Controllers\DriverController@dFuelHistory')->name('driver_fuelhistory');
     Route::post('driver/issue/store', 'App\Http\Controllers\DriverController@dIssueStore')->name('driver_issue_store');
     Route::PATCH('driver/issue/update/{id}', 'App\Http\Controllers\DriverController@dIssueUpdate')->name('driver_issue_update');
     Route::delete('driver/issues/delete/{id}', 'App\Http\Controllers\DriverController@dIssueDelete')->name('driver_issue_delete');
+
+    Route::get('driver/fuel_history/{id?}', 'App\Http\Controllers\DriverController@dFuelHistory')->name('driver_fuelhistory');
+    Route::post('driver/fuel_history/store', 'App\Http\Controllers\DriverController@dFuelHoistoryStore')->name('driver_fuelhistory_store');
+    Route::PATCH('driver/fuel_history/update/{id}', 'App\Http\Controllers\DriverController@dFuelUpdate')->name('driver_fuel_update');
+    Route::delete('driver/fuel_history/delete/{id}', 'App\Http\Controllers\DriverController@dFuelDelete')->name('driver_fuel_delete');
+    Route::get('driver/customer/{id?}', 'App\Http\Controllers\DriverController@dCustomer')->name('driver_customers');
+
+
+
     
 });
 

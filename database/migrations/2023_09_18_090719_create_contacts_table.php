@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-			$table->string('profile_type',20);
-			$table->string('company_name',50)->nullable();
+            $table->string('profile_type', 20)->nullable()->default('Individual');
 			$table->string('contact_name',50);
-			$table->string('contact_email',100);
-			$table->string('contact_phone',20)->nullable();
+			$table->string('contact_email',100)->nullable();
+			$table->string('contact_phone',20);
 			$table->string('country',50)->nullable();
 			$table->string('city',50)->nullable();
 			$table->string('state',50)->nullable();
@@ -30,6 +29,7 @@ return new class extends Migration
 			$table->string('contact_image')->nullable();
             $table->bigInteger('group_id')->nullable();
             $table->bigInteger('user_id')->nullable();
+            $table->bigInteger('driver_id')->nullable();
             $table->bigInteger('company_id');
             $table->timestamps();
         });

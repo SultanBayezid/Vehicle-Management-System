@@ -86,27 +86,20 @@ class RegisterController extends Controller
 			
 		}else if($request->isMethod('post')){
 			
-			$validator = Validator::make($request->all(), [
-				'name' => 'required|max:191',
-				'email' => 'required|email|unique:users|max:191',
+	
+            $validatedData = $request->validate([
+                'name' => 'required|max:191',
+                'phone' => 'required|numeric|unique:users|digits:11|regex:/^01/',
 				'password' => 'required|max:20|min:6|confirmed',
-			]);
+            ]);
 			
-			if ($validator->fails()) {
-				if($request->ajax()){ 
-					return response()->json(['result'=>'error','message'=>$validator->errors()->all()]);
-				}else{
-					return back()->withErrors($validator)
-								 ->withInput();
-				}			
-			}
-			
+	
 			//Create User	
 			DB::beginTransaction();
 			
 			$user = new User();
 			$user->name = $request->name;
-			$user->email = $request->email;
+			$user->phone = $request->phone;
 			if( get_option('email_verification') == 'disabled' ){
 				$user->email_verified_at = now();
 			}

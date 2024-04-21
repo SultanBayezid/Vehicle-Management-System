@@ -70,11 +70,11 @@
                     <i class="fas fa-pen"></i> {{ _lang('Edit') }}
                     </button>
                  
-
-                    <form action="{{ route('driver_issue_delete', $fuel->id) }}" method="post">
+                    @include('backend.drivers.fuel_history.modal.edit')
+                    <form action="{{ route('driver_fuel_delete', $fuel->id) }}" method="post">
                     {{ csrf_field() }}
                     <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this Issue?')">
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this Fuel History?')">
                         <i class="fas fa-trash"></i> {{ _lang('Delete') }}
                     </button>
                     </form>
@@ -97,7 +97,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title mt-0"> {{ _lang('New Issue') }}</h5>
+      <h5 class="modal-title mt-0"> {{ _lang('Add New Fuel History') }}</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">×</span>
       </button>
@@ -105,25 +105,113 @@
     <div class="alert alert-danger d-none m-3"></div>
     <div class="alert alert-primary d-none m-3"></div>
     <div class="modal-body overflow-hidden">
-    <form method="POST" action="{{ route('driver_issue_store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('driver_fuelhistory_store') }}" enctype="multipart/form-data">
     @csrf
-    <div class="row mb-4 m-3">
-        <div class="col-md-12">
-       
+                                <div class="row mb-4 m-3">
+                                    <div class="col-md-12">
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="control-label">{{ _lang('Vehicle') }} <sup style="color:red">*</sup></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="vehicle_id" id="vehicle_id" required>
+                                                        <option value="">{{ _lang('Select One') }}</option>
+                                                        @foreach($vehicles as $vehicle)
+                                                        <option value="{{ $vehicle->id }}">{{ $vehicle->brand->name ?? '' }} {{ $vehicle->model->name ?? '' }} {{ $vehicle->myear->year ?? '' }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
-        
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="control-label">{{ _lang('Fuel Entry Date') }} *</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" required>
+                                                    @error('date')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="control-label">{{ _lang('Odometer') }} <sup style="color:red">*</sup></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="number" name="odometer" required="" placeholder="{{ _lang('Odometer') }}" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                        </div>
 
-   
-       
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="control-label">{{ _lang('Fuel Quantity') }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="number" name="qty" required="" placeholder="{{ _lang('Fuel Quantity') }}" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                        </div>
 
-        
-        </div>
-    </div>
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="control-label">{{ _lang('Reference') }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="text" name="reference" placeholder="{{ _lang('Reference') }}" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                        </div>
 
-    <!-- Buttons -->
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="control-label">{{ _lang('Attachment') }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <input type="file" class="form-control" name="attachment">
+                                                </div>
+                                            </div>
+                                        </div>
 
-</form>
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="control-label">{{ _lang('Note') }} <sup style="color:red">*</sup></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <textarea cols="3" rows="3" name="note" placeholder="{{ _lang('Note') }}" class="form-control" value=""></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-md-3">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                 
+                                            <button type="submit" class="btn btn-primary" >
+                                                <i class="fa fa-save"></i> {{ _lang('Save') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
 
     </div>
   </div>
