@@ -27,7 +27,7 @@
           
           
               <a class="nav-link {{ request()->routeIs('vehicle_trips') ? 'active' : '' }}"
-                href="">
+                href="{{route('driver_trips',$id)}}">
                 <div class="sb-nav-link-icon">  <i class="fas fa-car"></i> </div>{{ _lang('Trips') }}
               </a>
               <a class="nav-link {{ request()->routeIs('vehicle_trips') ? 'active' : '' }}"

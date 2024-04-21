@@ -177,6 +177,13 @@ Route::middleware('driver')->group(function () {
     Route::delete('driver/customer/delete/{id}', 'App\Http\Controllers\DriverController@dCutomerDelete')->name('driver_customer_delete');
 
 
+    Route::get('driver/trips/{id?}', 'App\Http\Controllers\DriverController@dTrip')->name('driver_trips');
+    Route::post('driver/trips/store', 'App\Http\Controllers\DriverController@dTripStore')->name('driver_trip_store');
+    Route::PATCH('driver/trips/update/{id}', 'App\Http\Controllers\DriverController@dTripUpdate')->name('driver_trip_update');
+    Route::delete('driver/trips/delete/{id}', 'App\Http\Controllers\DriverController@dTripDelete')->name('driver_trip_delete');
+
+
+
 
 
 
