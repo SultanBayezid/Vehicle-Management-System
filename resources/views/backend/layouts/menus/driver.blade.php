@@ -44,7 +44,4 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             {{ _lang('My Profile') }}
                         </a>
-                        <a class="nav-link" href="{{ route('company.change_settings') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                            {{ _lang('Company Settings') }}
-                        </a>
+                  
