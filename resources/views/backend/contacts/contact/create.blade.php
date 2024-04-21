@@ -52,10 +52,10 @@
                                 <input type="text" class="form-control form-control @error('contact_name') is-invalid @enderror" name="contact_name"
                                     value="{{ old('contact_name') }}" required>
                                     @error('contact_name')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-      </span>
-  @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                         </div>
 
@@ -65,11 +65,11 @@
                                 <input type="text" class="form-control form-control @error('contact_email') is-invalid @enderror" name="contact_email"
                                     value="{{ old('contact_email') }}" >
                                     @error('contact_email')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-      </span>
-  @enderror
-                            </div>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                                                </div>
                         </div>
 
                         <div class="col-md-6">
@@ -97,11 +97,11 @@
                                     {{ create_option("contact_groups", "id", "name", old('group_id'), array("company_id="=>company_id())) }}
 
                                 </select>
-                                @error('group_id')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-      </span>
-  @enderror
+                                                                @error('group_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

@@ -11,6 +11,7 @@ use App\Models\Contact;
 Use File;
 use Illuminate\Http\Request;
 use Hash;
+use Auth;
 use Validator;
 class DriverController extends Controller
 {
@@ -322,9 +323,66 @@ class DriverController extends Controller
     
     
     public function dCustomer($id){
-    
-        $customers = Contact::where('driver_id', $id)->get();
-        return view('backend.drivers.contacts.list', compact('customers'));
+        $contacts = Contact::where('ref_user_id', $id)->get();
+        return view('backend.drivers.contacts.list', compact('contacts'));
         }
+
+
+        public function dCustomerStore(Request $request) {
+
+        
+            $validator = $request->validate([
+                'contact_name'  => 'required|max:50',
+                'contact_phone' => 'required|max:20',
+         
+             
+            ]);
+           
+        
+            $contact_image = "avatar.png";
+     
+            $contact = new Contact();
+        
+            $contact->contact_name  = $request->input('contact_name');
+            $contact->contact_phone = $request->input('contact_phone');
+            $contact->city          = $request->input('city');
+            $contact->address       = $request->input('address');
+            $contact->company_id    = company_id();
+            $contact->ref_user_id   = Auth::user()->id;
+            $contact_image = "avatar.png";
+
+        
+            $contact->save();
+        return back()->with('success', _lang('Removed Sucessfully'));
+
+        }
+
+
+        public function dCutomerUpdate(Request $request, $id) {
+
+            $contact = Contact::findOrfail($id);
+            $contact->contact_name  = $request->input('contact_name');
+            $contact->contact_phone = $request->input('contact_phone');
+            $contact->city          = $request->input('city');
+            $contact->address       = $request->input('address');
+            $contact->company_id    = company_id();
+            $contact->ref_user_id   = Auth::user()->id;
+            $contact_image = "avatar.png";
+            $contact->save();
+
+        return back()->with('success', _lang('Removed Sucessfully'));
+
+    
+        }
+        
+        public function dCutomerDelete($id){
+            $contact = Contact::findOrfail($id);
+            $contact->ref_user_id   = NULL;
+
+            $contact->save();
+            return back()->with('success', _lang('Removed Sucessfully'));
+
+            }
+        
     
 }

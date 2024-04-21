@@ -172,6 +172,12 @@ Route::middleware('driver')->group(function () {
     Route::PATCH('driver/fuel_history/update/{id}', 'App\Http\Controllers\DriverController@dFuelUpdate')->name('driver_fuel_update');
     Route::delete('driver/fuel_history/delete/{id}', 'App\Http\Controllers\DriverController@dFuelDelete')->name('driver_fuel_delete');
     Route::get('driver/customer/{id?}', 'App\Http\Controllers\DriverController@dCustomer')->name('driver_customers');
+    Route::post('driver/customer/store', 'App\Http\Controllers\DriverController@dCustomerStore')->name('driver_customer_store');
+    Route::PATCH('driver/customer/update/{id}', 'App\Http\Controllers\DriverController@dCutomerUpdate')->name('driver_customer_update');
+    Route::delete('driver/customer/delete/{id}', 'App\Http\Controllers\DriverController@dCutomerDelete')->name('driver_customer_delete');
+
+
+
 
 
 
