@@ -52,6 +52,10 @@ Route::get('/pricing', function () {
     return view('frontend.pricing');
 })->name('pricing');
 
+Route::get('/contact-us', function () {
+    return view('frontend.contact-us');
+})->name('contactus');
+
     Route::get('/rent', 'App\Http\Controllers\FrontendController@rent')->name('rent');
 
     Route::get('/book/{vehicle_id}/{user_id}', 'App\Http\Controllers\FrontendController@bookingStep1')->name('book');

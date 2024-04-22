@@ -36,10 +36,9 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="header__content">
-						<div class="header__logo">
-                            
-							<a href="/">
-							<span> <i class="fas fa-car"></i> </span> Ominiverse Dynamaics
+					<div class="header__logo">
+							<a href="{{route('home')}}">
+								<img src="{{asset('frontend/img/logo.png')}}" alt="">
 							</a>
 						</div>
 
@@ -72,7 +71,7 @@
 								</li>
 					
 								<li class="header__nav-item">
-									<a href="faq.html" class="header__nav-link"> {{ _lang('HELP CENTER')}} </a>
+									<a href="{{route('contactus')}}" class="header__nav-link"> {{ _lang('CONTACT')}} </a>
 								</li>
 							
 							</ul>
@@ -230,59 +229,23 @@ echo $languageDropdown;
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4 order-4 order-md-1 order-lg-4 order-xl-1">
+				<div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
 					<div class="footer__logo">
-						<img src="img/logo.svg" alt="">
+						<img src="{{asset('frontend/img/logo_light.png')}}" alt="">
 					</div>
 
-					<p class="footer__tagline">Search for cheap rental cars in New York. <br>With a diverse fleet of 19,000 vehicles, Waydex <br>offers its consumers an attractive and fun selection.</p>
+					<p class="footer__tagline"> {!! _lang('Omniverse Dynamics are specialize in simplifying business operations. Think of us as the wizards behind the scenes, making sure everything runs smoothly. From managing vehicles to organizing trips, staying connected with contacts, and handling finances wisely, we have got it covered. Our goal is to make complex tasks feel effortless, like magic! So, whether its managing fleets, planning trips, keeping in touch, or staying financially savvy, businesses trust us to handle it all with professionalism and ease.') !!} </p>
 
 					
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-2 order-xl-3 offset-md-2 offset-lg-0">
-					<h6 class="footer__title">Company</h6>
+					<h6 class="footer__title">{{ _lang('Company')}}</h6>
 					<div class="footer__nav">
-						<a href="about.html">About us</a>
-						<a href="pricing.html">Pricing plans</a>
-						<a href="blog.html">Our blog</a>
-						<a href="contacts.html">Contacts</a>
-					</div>
-				</div>
-
-				<div class="col-12 col-md-8 col-lg-6 col-xl-4 order-3 order-md-3 order-lg-1 order-xl-2">
-					<div class="row">
-						<div class="col-12">
-							<h6 class="footer__title">Neighborhoods in New York</h6>
-						</div>
-
-						<div class="col-6">
-							<div class="footer__nav">
-								<a href="cars.html">Manhattan</a>
-								<a href="cars.html">Central New York City</a>
-								<a href="cars.html">Upper East Side</a>
-								<a href="cars.html">Queens</a>
-							</div>
-						</div>
-
-						<div class="col-6">
-							<div class="footer__nav">
-								<a href="cars.html">Theater District</a>
-								<a href="cars.html">Midtown</a>
-								<a href="cars.html">SoHo</a>
-								<a href="cars.html">Chelsea</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-6 col-md-4 col-lg-3 col-xl-2 order-2 order-md-4 order-lg-3 order-xl-4">
-					<h6 class="footer__title">Support</h6>
-					<div class="footer__nav">
-						<a href="faq.html">Help center</a>
-						<a href="contacts.html">Ask a question</a>
-						<a href="privacy.html">Privacy policy</a>
-						<a href="privacy.html">Terms & conditions</a>
+						<a href="#">{{ _lang('About Us')}}</a>
+						<a href="#">{{ _lang('Pricing Plan')}}</a>
+						<a href="#">{{ _lang('Blogs')}}</a>
+						<a href="#">{{ _lang('Contacts')}}</a>
 					</div>
 				</div>
 			</div>
@@ -304,7 +267,7 @@ echo $languageDropdown;
 							<a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm-.41,2-5.88,5.88a1,1,0,0,1-1.42,0L5.41,6ZM20,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7.41l5.88,5.88a3,3,0,0,0,4.24,0L20,7.41Z"/></svg></a>
 						</div>
 
-						<small class="footer__copyright">© Omniverse Dynamics, 2024. </small>
+						<small class="footer__copyright">© {{ _lang('Omniverse Dynamics, 2024.')}} </small>
 					</div>
 				</div>
 			</div>

@@ -20,10 +20,8 @@
 					<div class="main__title main__title--page">
 						<h1>{{ _lang('Rent A Car')}}</h1>
                         <p>
-						{!! _lang('Discover the perfect vehicle for your journey from our extensive collection of available cars. Whether you\'re planning a weekend getaway or a business trip, we have a range of options to suit your needs. Browse our selection below and find your ideal ride for your next adventure.') !!}	
+						{!! _lang('Discover the perfect vehicle for your journey from our extensive collection of available cars. Whether you re planning a weekend getaway or a business trip, we have a range of options to suit your needs. Browse our selection below and find your ideal ride for your next adventure.') !!}	
                         </p>
-
-						{{  _lang('')}}
 
 						 
 					</div>
@@ -184,7 +182,7 @@
 						<div class="car__footer">
 							<span class="car__price">{{currency()}} {{$vehicle->price_per_km ?? ''}} <sub>/ km</sub></span>
 						
-							<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>View Details</span></a>
+							<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>{{ _lang('View Details')}}</span></a>
 						</div>
 					</div>
 				</div>
