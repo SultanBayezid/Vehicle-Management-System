@@ -7,9 +7,10 @@
 				<!-- breadcrumb -->
 				<div class="col-12">
 					<ul class="breadcrumbs">
-						<li class="breadcrumbs__item"><a href="/">Home</a></li>
-						<li class="breadcrumbs__item breadcrumbs__item">Services</li>
-						<li class="breadcrumbs__item breadcrumbs__item--active">Rent A Car</li>
+					<li class="breadcrumbs__item"><a href="/">{{ _lang('Home')}} </a></li>
+						<li class="breadcrumbs__item breadcrumbs__item"> {{ _lang('Features')}}</li>
+						<li class="breadcrumbs__item breadcrumbs__item--active">{{ _lang('Rent A Car')}} </li>
+
 					</ul>
 				</div>
 				<!-- end breadcrumb -->
@@ -17,10 +18,12 @@
 				<!-- title -->
 				<div class="col-12 col-xl-11">
 					<div class="main__title main__title--page">
-						<h1>Rent A Car</h1>
+						<h1>{{ _lang('Rent A Car')}}</h1>
                         <p>
-						Discover the perfect vehicle for your journey from our extensive collection of available cars. Whether you're planning a weekend getaway or a business trip, we have a range of options to suit your needs. Browse our selection below and find your ideal ride for your next adventure.
+						{!! _lang('Discover the perfect vehicle for your journey from our extensive collection of available cars. Whether you\'re planning a weekend getaway or a business trip, we have a range of options to suit your needs. Browse our selection below and find your ideal ride for your next adventure.') !!}	
                         </p>
+
+						{{  _lang('')}}
 
 						 
 					</div>

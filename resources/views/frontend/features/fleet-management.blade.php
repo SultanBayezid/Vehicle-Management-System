@@ -59,7 +59,7 @@
 					<div class="feature">
 						<span class="feature__icon">
 							<i class="fas fa-car fa-lg text-primary"></i></span>
-						<h3 class="feature__title">Vehicle Details</h3>
+						<h3 class="feature__title">{{ _lang('Vehicle Details')}}</h3>
 						<p class="feature__text"> {!! _lang('Maintain comprehensive records of each vehicle in your fleet, including make, model, year, registration information, and specifications. Easily access important vehicle details for informed decision-making and resource allocation.') !!}</p>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 					<div class="feature">
 						<span class="feature__icon feature__icon--pink">
 						<i class="fas fa-wrench"></i>	</span>
-						<h3 class="feature__title">Service History</h3>
+						<h3 class="feature__title">{{ _lang('Service History')}}</h3>
 						<p class="feature__text"> {!! _lang('Keep track of maintenance and service records for every vehicle. Schedule routine maintenance, track service intervals, and receive alerts for upcoming maintenance tasks to ensure the longevity and reliability of your fleet.') !!}</p>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 					<div class="feature">
 						<span class="feature__icon feature__icon--purple">
 						<i class="fas fa-exclamation-triangle"></i>	</span>
-						<h3 class="feature__title">Issues Tracking</h3>
+						<h3 class="feature__title">{{ _lang('Issues Tracking')}}</h3>
 						<p class="feature__text"> {!! _lang('Streamline the process of reporting and resolving vehicle issues. Capture and document any issues or defects encountered during operation, assign tasks to designated team members, and track the status of resolution efforts to minimize downtime and maintain operational efficiency.') !!} </p>
 					</div>
 				</div>
@@ -86,7 +86,7 @@
 					<div class="feature feature--last">
 						<span class="feature__icon feature__icon--green">
 						<i class="fas fa-route"></i></span>
-						<h3 class="feature__title">Trip Management</h3>
+						<h3 class="feature__title">{{ _lang('Trip Management')}}</h3>
 						<p class="feature__text">{!! _lang('Monitor and analyze the trips undertaken by each vehicle in your fleet. Track trip details such as distance traveled, duration, route taken, and fuel consumption to optimize route planning, identify inefficiencies, and improve overall fleet performance.') !!} </p>
 					</div>
 				</div>
@@ -94,7 +94,7 @@
 					<div class="feature feature--last">
 						<span class="feature__icon feature__icon--green">
 						<i class="fas fa-map-marker-alt"></i>	</span>
-						<h3 class="feature__title">Real-Time Vehicle Monitoring</h3>
+						<h3 class="feature__title">{{ _lang('Real-Time Vehicle Monitoring')}}</h3>
 						<p class="feature__text"> {!! _lang('Keep track of your fleet\'s whereabouts at all times with real-time GPS tracking. Monitor each vehicle\'s location on a map, allowing you to efficiently dispatch vehicles, optimize routes, and respond promptly to unexpected events.') !!} </p>
 					</div>
 				</div>
@@ -104,7 +104,7 @@
 						<span class="feature__icon feature__icon--green">
 							<i class="fas fa-car"></i>
 							</span>
-						<h3 class="feature__title">Fuel History</h3>
+						<h3 class="feature__title">{{ _lang('Fuel History')}}</h3>
 						<p class="feature__text">{!! _lang('Track fuel consumption and expenses over time to gain insights into fuel usage patterns and trends. Monitor fuel efficiency, identify anomalies, and make informed decisions to optimize fuel consumption and reduce operational costs.') !!} </p>
 					</div>
 				</div>

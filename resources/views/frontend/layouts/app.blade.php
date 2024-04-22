@@ -18,10 +18,10 @@
 	<link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
 	<link rel="apple-touch-icon" href="icon/favicon-32x32.png">
 
-	<meta name="description" content=" Ominiverse Dynamaics">
+	<meta name="description" content="Ominiverse Dynamaics">
 	<meta name="keywords" content="">
 	<meta name="author" content="Ominiverse Dynamaics">
-	<title> Ominiverse Dynamaics</title>
+	<title> {{ get_option('site_title', config('app.name')) }}</title>
 	<style>
 		.mr2 {
     margin-left: 10px;
@@ -67,7 +67,9 @@
 									</ul>
 								</li>
 							
-					
+								<li class="header__nav-item">
+									<a href="{{route('pricing')}}" class="header__nav-link"> {{ _lang('PRICING')}} </a>
+								</li>
 					
 								<li class="header__nav-item">
 									<a href="faq.html" class="header__nav-link"> {{ _lang('HELP CENTER')}} </a>

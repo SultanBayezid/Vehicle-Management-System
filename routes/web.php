@@ -48,6 +48,10 @@ Route::get('/fetch-models/{brand_id}', 'App\Http\Controllers\VehicleController@f
     return view('frontend.features.contact-management');
 })->name('contact-management');
 
+Route::get('/pricing', function () {
+    return view('frontend.pricing');
+})->name('pricing');
+
     Route::get('/rent', 'App\Http\Controllers\FrontendController@rent')->name('rent');
 
     Route::get('/book/{vehicle_id}/{user_id}', 'App\Http\Controllers\FrontendController@bookingStep1')->name('book');
