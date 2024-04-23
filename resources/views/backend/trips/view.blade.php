@@ -145,7 +145,7 @@
             <div class="invoice-from">
                <small>VEHICLE</small>
                <address class="m-t-5 m-b-5">
-                  <strong class="text-inverse">{{$trip->vehicle->make}} {{$trip->vehicle->model}} {{$trip->vehicle->year}} {{$trip->vehicle->color}}</strong><br>
+                  <strong class="text-inverse">{{$trip->vehicle->brand->name ?? '' }} {{$trip->vehicle->model->name ?? ''}} {{$trip->vehicle->myear->year ?? ''}} {{$trip->vehicle->color}}</strong><br>
                   Seat Capacity : {{$trip->vehicle->seating_capacity}}<br>
                   License Plate : {{$trip->vehicle->license_plate}}<br>
                   Engine CC : {{$trip->vehicle->horsepower}}<br>
@@ -155,11 +155,11 @@
             <div class="invoice-to">
                <small>DRIVER</small>
                <address class="m-t-5 m-b-5">
-                  <strong class="text-inverse">{{$trip->driver->name}} </strong><br>
-                  License Number: {{$trip->driver->license_number}}<br>
-                  Phone No : {{$trip->driver->phone_number}}<br>
-                 Blood Group : {{$trip->driver->blood_group}}<br>
-                  Address: {{$trip->driver->address}}
+                  <strong class="text-inverse">{{$trip->driver->driver_name ?? ''}} </strong><br>
+                  License Number: {{$trip->driver->license_number ?? ''}}<br>
+                  Phone No : {{$trip->driver->phone_number ??''}}<br>
+                 Blood Group : {{$trip->driver->blood_group ?? ''}}<br>
+                  Address: {{$trip->driver->address ??''}}
                </address>
             </div>
             <div class="invoice-date">

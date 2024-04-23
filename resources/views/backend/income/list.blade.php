@@ -30,7 +30,7 @@
        
 
             <div class="card-body">
-                <table id="datatablesSimple" class="table table-bordered">
+            <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>{{ ('Date') }}</th>

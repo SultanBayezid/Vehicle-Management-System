@@ -25,7 +25,7 @@
 <div class="row">
     <div class="col-md-12">
             <div class="card-body">
-            <table id="datatablesSimple" width="100%">
+            <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>{{ ('Name') }}</th>

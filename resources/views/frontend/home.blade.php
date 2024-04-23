@@ -13,26 +13,8 @@
 					<div class="col-12">
 						<div class="home__content">
 							<h1 class="home__title">{!! _lang('Manage, rent, sell <br> cars all in one <br> convenient platform.') !!} </h1>
-							<p class="home__text">{!! _lang('Omniverse not only streamlines vehicle management but also facilitates <br> car booking, rentals, and sales, providing a comprehensive solution <br> for your automotive needs.') !!}</p>
+							<p class="home__text">{!! _lang('Omniverse Dynamics goes beyond simplifying vehicle management, <br> it serves as a  one-stop solution for car owners, dealers, and customers. Whether you are <br> looking to rent out your own vehicle searching for a car to purchase, <br> or managing a fleet for your business,  Omniverse Dynamics streamlines it all') !!}</p>
 
-							<!-- <form class="home__search" action="#">
-								<div class="home__group">
-									<label for="search1">Car, model, or brand</label>
-									<input type="text" name="search1" id="search1" placeholder="What car are you looking for?">
-								</div>
-
-								<div class="home__group">
-									<label for="search2">Max. monthly payment</label>
-									<input type="text" name="search2" id="search2" placeholder="Add an amount in $">
-								</div>
-
-								<div class="home__group">
-									<label for="search3">Make Year</label>
-									<input type="text" name="search3" id="search3" placeholder="Add a minimal make year">
-								</div>
-								
-								<button type="button"><span>Search</span></button>
-							</form> -->
 						</div>
 					</div>
 				</div>
@@ -47,7 +29,7 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title">
-						<h2>{{_lang('Driver')}}</h2>
+						<h2>{{_lang('Learn What Omniverse Dynamics Can Do')}}</h2>
 					</div>
 				</div>
 				<!-- end title -->
@@ -169,7 +151,7 @@
 						<div class="car__footer">
 							<span class="car__price">{{currency()}} {{$vehicle->price_per_km ?? ''}} <sub>/ km</sub></span>
 						
-							<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>View Details</span></a>
+							<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>{{ _lang('View Details')}}</span></a>
 						</div>
 					</div>
 				</div>

@@ -23,7 +23,8 @@ class TripController extends Controller
     }
 
     public function store(Request $request){
-        $validator = Validator::make($request->all(), [
+
+        $validatedData = $request->validate([
             'customer_id'      => 'required',
             'driver_id'        => 'required',
             'pickup_location'  => 'required',
@@ -34,18 +35,9 @@ class TripController extends Controller
             'arrival_time'     => 'nullable|date_format:H:i',
             'distance_km'      => 'nullable|numeric',
             'trip_notes'       => 'nullable|max:255',
-            // Add any other validation rules you need here
+            // Add other validation rules for service fields as needed
         ]);
-        
-        if ($validator->fails()) {
-            if ($request->ajax()) {
-                return response()->json(['result' => 'error', 'message' => $validator->errors()->all()]);
-            } else {
-                return redirect()->route('trips.create')
-                    ->withErrors($validator)
-                    ->withInput();
-            }
-        }
+    
 
         $trip = new Trip();
         $trip->customer_id = $request->input('customer_id');
@@ -86,32 +78,20 @@ class TripController extends Controller
 
 
     public function update(Request $request, $id) {
-        
-        // dd($request->all());
-        // $validator = Validator::make($request->all(), [
-        //     'customer_id'      => 'required',
-        //     'driver_id'        => 'required',
-        //     'pickup_location'  => 'required',
-        //     'dropoff_location' => 'nullable',
-        //     'fare_amount'      => 'nullable|numeric',
-        //     'trip_date'        => 'nullable|date',
-        //     'departure_time'   => 'nullable|date_format:H:i',
-        //     'arrival_time'     => 'nullable|date_format:H:i',
-        //     'distance_km'      => 'nullable|numeric',
-        //     'trip_notes'       => 'nullable|max:2355',
-        //     // Add any other validation rules you need here
-        // ]);
-        
-        // if ($validator->fails()) {
-        //     if ($request->ajax()) {
-        //         return response()->json(['result' => 'error', 'message' => $validator->errors()->all()]);
-        //     } else {
-        //         return redirect()->route('trips.create')
-        //             ->withErrors($validator)
-        //             ->withInput();
-        //     }
-        // }
-   
+
+         $validatedData = $request->validate([
+            'customer_id'      => 'required',
+            'driver_id'        => 'required',
+            'pickup_location'  => 'required',
+            'dropoff_location' => 'nullable',
+            'fare_amount'      => 'nullable|numeric',
+            'trip_date'        => 'nullable|date',
+            'departure_time'   => 'nullable|date_format:H:i',
+            'arrival_time'     => 'nullable|date_format:H:i',
+            'distance_km'      => 'nullable|numeric',
+            'trip_notes'       => 'nullable|max:255',
+            // Add other validation rules for service fields as needed
+        ]);
 
         $trip =  Trip::find($id);
 

@@ -63,7 +63,7 @@
 
 				<div class="col-12 col-lg-4 order-md-1 order-lg-2">
 					<div class="plan">
-						<h3 class="plan__title">{{ _lang('Regular')}} </h3>
+						<h3 class="plan__title">{{ _lang('Regular Plan')}} </h3>
                         <p class="footer__copyright"> {{ _lang('The Regular Plan provides comprehensive contact, financial, vehicle, and trip management features. Its ideal for small to medium-sized businesses seeking enhanced operational control and efficiency.') }} </p>
 
 						<span class="plan__price">৳ 2200<span> / {{ _lang('month')}}</span></span>
@@ -90,7 +90,7 @@
 
 				<div class="col-12 col-md-6 col-lg-4 order-md-3 order-lg-3">
 					<div class="plan">
-						<h3 class="plan__title">{{ _lang('Premium')}}</h3>
+						<h3 class="plan__title">{{ _lang('Premium Plan')}}</h3>
                         <p class="footer__copyright">{{ _lang('Designed for businesses with advanced fleet management needs, the Premium Plan offers comprehensive features across all areas. It enables users to efficiently manage contacts, finances, vehicles, trips, and services for optimized fleet performance and cost control.') }}</p>
 						<span class="plan__price">৳ 4400<span> / {{ _lang('month')}}</span></span>
 						<ul class="plan__list">
