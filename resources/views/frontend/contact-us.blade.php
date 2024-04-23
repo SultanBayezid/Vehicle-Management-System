@@ -40,13 +40,13 @@
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<div class="sign__group">
-									<input type="text" name="name" class="sign__input" placeholder="{{ _lang('Name')}}">
+									<input type="text" name="name" value="{{Auth()->user()->name ?? ''}}" class="sign__input" placeholder="{{ _lang('Name')}}">
 								</div>
 							</div>
 
 							<div class="col-12 col-md-6">
 								<div class="sign__group">
-									<input type="text" name="phone" class="sign__input" placeholder="{{ _lang('Phone')}}">
+									<input type="text" value="{{Auth()->user()->phone ?? ''}}" name="phone" class="sign__input" placeholder="{{ _lang('Phone')}}">
 								</div>
 							</div>
 

@@ -88,7 +88,7 @@
 					<div class="main__title main__title--first">
 						<h2>{{ _lang('Rent A Car')}}</h2>
 
-						<a href="cars.html" class="main__link">{{ _lang('View All')}} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"/></svg></a>
+						<a href="{{route('rent')}}" class="main__link">{{ _lang('View All')}} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"/></svg></a>
 					</div>
 				</div>
 				<!-- end title -->
@@ -170,7 +170,7 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title">
-						<h2>Our Blog</h2>
+						<h2>{{ _lang('Our Blog')}}</h2>
 					</div>
 				</div>
 				<!-- end title -->

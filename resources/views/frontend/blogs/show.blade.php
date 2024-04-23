@@ -7,8 +7,8 @@
 				<!-- breadcrumb -->
 				<div class="col-12 col-xl-10 offset-xl-1">
 					<ul class="breadcrumbs">
-						<li class="breadcrumbs__item"><a href="/">Home</a></li>
-						<li class="breadcrumbs__item"><a href="#">Blog</a></li>
+						<li class="breadcrumbs__item"><a href="/">{{ _lang('Home')}}</a></li>
+						<li class="breadcrumbs__item"><a href="#">{{ _lang('Blog')}}</a></li>
 						<li class="breadcrumbs__item breadcrumbs__item--active">{{$blog->title}}</li>
 					</ul>
 				</div>
