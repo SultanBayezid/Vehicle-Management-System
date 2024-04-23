@@ -72,11 +72,11 @@
 				<div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-xl-1">
 					<div class="main__title main__title--sidebar">
 						<h2>{{ _lang('General Inquiries')}}</h2>
-						<p>{{ _lang('For general inquiries or questions about our services, please email us at contact@omniversedynamics.com or call us at +123-456-7890') }} </p>
+						<p>{{ _lang('For general inquiries or questions about our services, please email us at contact@omniversedynamics.com or call us at +88+1 555 123 4567') }} </p>
 					</div>
                     <div class="main__title main__title--sidebar">
                     <h2>{{ _lang('Customer Support')}}</h2>
-						<p>{{ _lang('If you need assistance with our products or services, our dedicated customer support team is here to help. You can reach them via email at support@omniversedynamics.com or by phone at +123-456-7890.') }} </p>
+						<p>{{ _lang('If you need assistance with our products or services, our dedicated customer support team is here to help. You can reach them via email at support@omniversedynamics.com or by phone at +88+1 555 123 4567.') }} </p>
 					</div>
 					<div class="contacts__social">
 						<a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.9,2H3.1A1.1,1.1,0,0,0,2,3.1V20.9A1.1,1.1,0,0,0,3.1,22h9.58V14.25h-2.6v-3h2.6V9a3.64,3.64,0,0,1,3.88-4,20.26,20.26,0,0,1,2.33.12v2.7H17.3c-1.26,0-1.5.6-1.5,1.47v1.93h3l-.39,3H15.8V22h5.1A1.1,1.1,0,0,0,22,20.9V3.1A1.1,1.1,0,0,0,20.9,2Z"/></svg></a>

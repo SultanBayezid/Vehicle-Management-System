@@ -149,7 +149,7 @@
 							</li>
 						</ul>
 						<div class="car__footer">
-							<span class="car__price">{{currency()}} {{$vehicle->price_per_km ?? ''}} <sub>/ km</sub></span>
+							<span class="car__price">{{currency()}} {{$vehicle->price_per_day ?? ''}} <sub>/ {{ _lang('Day')}}</sub></span>
 						
 							<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>{{ _lang('View Details')}}</span></a>
 						</div>

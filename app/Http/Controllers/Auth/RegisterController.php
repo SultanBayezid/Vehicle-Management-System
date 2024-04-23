@@ -117,7 +117,7 @@ class RegisterController extends Controller
 			DB::commit();
 			
 			if($user->id > 0){ 
-			   return redirect('login')->with('registration_success', _lang('Registration Sucessfully. You May Login to your account.'));
+			   return redirect('login')->with('success', _lang('Registration Sucessfully. You May Login to your account.'));
 			}
 		
 		}

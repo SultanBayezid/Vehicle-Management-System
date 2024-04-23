@@ -9,10 +9,10 @@
 
         <form class="sign__form" method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="sign__logo"><span> <i class="fas fa-user fa-lg text-black"></i></span> Log In to Your Account </div>
+        <div class="sign__logo"><span> <i class="fas fa-user fa-lg text-black"></i></span> {{ _lang('Log In to Your Account')}} </div>
 
 					<div class="sign__group">
-						<input type="text"  id="email" class="sign__input form-control @error('email') is-invalid @enderror"  name="email" value="{{ old('email') }}" placeholder="Email">
+						<input type="text"  id="email" class="sign__input form-control @error('email') is-invalid @enderror"  name="email" value="{{ old('email') }}" placeholder="{{ _lang('Phone')}}">
             @error('email')
       <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
           </div>
 
 					<div class="sign__group">
-						<input type="password" class="sign__input form-control @error('password') is-invalid @enderror" name="password"  placeholder="Password">
+						<input type="password" class="sign__input form-control @error('password') is-invalid @enderror" name="password"  placeholder="{{ _lang('Password')}}">
             @error('password')
       <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -31,12 +31,12 @@
 
 					<div class="sign__group sign__group--checkbox">
 						<input id="remember" name="remember" type="checkbox">
-						<label for="remember">Remember Me</label>
+						<label for="remember">{{ _lang('Remember Me')}}</label>
 					</div>
 					
-					<button class="sign__btn" type="submit"><span>Sign in</span></button>
+					<button class="sign__btn" type="submit"><span> {{ _lang('Sign in')}}</span></button>
 
-					<span class="sign__delimiter">or</span>
+					<span class="sign__delimiter">{{ _lang('or')}}</span>
 
 					<div class="sign__social">
 						<a class="fb" href="#"><svg viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.56341 16.8197V8.65888H7.81615L8.11468 5.84663H5.56341L5.56724 4.43907C5.56724 3.70559 5.63693 3.31257 6.69042 3.31257H8.09873V0.5H5.84568C3.1394 0.5 2.18686 1.86425 2.18686 4.15848V5.84695H0.499939V8.6592H2.18686V16.8197H5.56341Z"/></svg></a>
@@ -44,9 +44,9 @@
 						<a class="gl" href="#"><svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M473.16 221.48l-2.26-9.59H262.46v88.22H387c-12.93 61.4-72.93 93.72-121.94 93.72-35.66 0-73.25-15-98.13-39.11a140.08 140.08 0 01-41.8-98.88c0-37.16 16.7-74.33 41-98.78s61-38.13 97.49-38.13c41.79 0 71.74 22.19 82.94 32.31l62.69-62.36C390.86 72.72 340.34 32 261.6 32c-60.75 0-119 23.27-161.58 65.71C58 139.5 36.25 199.93 36.25 256s20.58 113.48 61.3 155.6c43.51 44.92 105.13 68.4 168.58 68.4 57.73 0 112.45-22.62 151.45-63.66 38.34-40.4 58.17-96.3 58.17-154.9 0-24.67-2.48-39.32-2.59-39.96z'/></svg></a>
 					</div>
 
-					<span class="sign__text">Don't have an account? <a href="{{route('register')}}">Sign up!</a></span>
+					<span class="sign__text">{{ _lang('Do not have an account?')}} <a href="{{route('register')}}">{{ _lang('Sign up!')}}</a></span>
 
-					<span class="sign__text"><a href="{{route('password.request')}}">Forgot password?</a></span>
+					<span class="sign__text"><a href="{{route('password.request')}}">{{ _lang('Forgot password?')}}</a></span>
 				</form>
 				<!-- end authorization form -->
 			</div>
