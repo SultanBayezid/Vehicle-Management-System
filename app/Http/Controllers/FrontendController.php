@@ -20,8 +20,9 @@ class FrontendController extends Controller
     {
 
 
-        $data['vehicles'] = Vehicle::lastest(10);
-        $data['blogs'] = Blog::lastest(10);
+        $data['vehicles'] = Vehicle::latest()->take(10)->get();
+
+        $data['blogs'] = Blog::latest()->take(10)->get();
         return view('frontend.home', $data);
     }
 
