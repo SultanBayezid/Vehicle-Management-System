@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('profile_type', 20)->nullable()->default('Individual');
 			$table->string('contact_name',50);
+			$table->string('company_name')->nullable();
 			$table->string('contact_email',100)->nullable();
 			$table->string('contact_phone',20);
 			$table->string('country',50)->nullable();

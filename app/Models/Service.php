@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Service extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
     public function issues()
     {
         return $this->belongsToMany(Issue::class);

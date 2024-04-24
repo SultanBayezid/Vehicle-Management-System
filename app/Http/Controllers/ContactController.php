@@ -297,6 +297,12 @@ class ContactController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
+
+        if (Transaction::where('payer_payee_id', $id)->exists() ||
+        Trip::where('customer_id', $id)->exists()) {
+        // If related records exist, redirect back with an error message
+        return back()->with('error', _lang('Cannot delete vehicle. Related records exist.'));
+    }
         $contact = Contact::find($id);
 		$user = User::find($contact->user_id);
         $user->delete();

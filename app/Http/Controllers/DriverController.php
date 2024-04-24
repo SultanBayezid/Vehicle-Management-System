@@ -123,6 +123,13 @@ class DriverController extends Controller
 
     public function destroy(Driver $driver)
     {
+
+        if (Vehicle::where('driver_id', $id)->exists() ||
+        Issue::where('driver_id', $id)->exists() ||
+        Trip::where('driver_id', $id)->exists()) {
+        // If related records exist, redirect back with an error message
+        return redirect()->route('drivers.index')->with('error', 'Cannot delete vehicle. Related records exist.');
+    }
         $driver->delete();
         return redirect()->route('drivers.index')
             ->with('success', 'Driver deleted successfully');

@@ -216,4 +216,12 @@ class TripController extends Controller
       
         
     }
+
+
+    public function destroy($id) {
+        $user =  Trip::findOrfail($id);
+        $user->delete();
+        return redirect()->route('trips.index')->with('success', 'Deleted Sucessfully');
+    }
+
 }

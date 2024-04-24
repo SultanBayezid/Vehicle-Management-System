@@ -202,6 +202,16 @@ class VehicleController extends Controller
     public function destroy($id)
     {
         // Find the vehicle by its ID and delete it
+
+
+        if (Service::where('vehicle_id', $id)->exists() ||
+        Issue::where('vehicle_id', $id)->exists() ||
+        Fuel::where('vehicle_id', $id)->exists() ||
+        Trip::where('vehicle_id', $id)->exists()) {
+        // If related records exist, redirect back with an error message
+        return redirect()->route('vehicles.index')->with('error', 'Cannot delete vehicle. Related records exist.');
+    }
+
         $vehicle = Vehicle::findOrFail($id);
         $vehicle->delete();
 

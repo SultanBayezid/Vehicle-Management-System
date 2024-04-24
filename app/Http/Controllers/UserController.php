@@ -7,6 +7,12 @@ use App\Models\User;
 use Hash;
 use Illuminate\Validation\Rule;
 use Validator;
+use App\Models\Vehicle;
+use App\Models\Service;
+use App\Models\Issue;
+use App\Models\Fuel;
+use App\Models\Trip;
+use App\Models\Contact;
 class UserController extends Controller {
 
     /**
@@ -219,6 +225,17 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
+
+        if (Service::where('company_id', $id)->exists() ||
+        Issue::where('company_id', $id)->exists() ||
+        Fuel::where('company_id', $id)->exists() ||
+        Vehicle::where('company_id', $id)->exists() ||
+        Contact::where('company_id', $id)->exists() ||
+        Trip::where('company_id', $id)->exists()) {
+        // If related records exist, redirect back with an error message
+        return redirect()->route('users.index')->with('error', 'Cannot delete vehicle. Related records exist.');
+    }
+
         $user = User::find($id);
         User::where('company_id',$user->id)->delete();
         $user->delete();
