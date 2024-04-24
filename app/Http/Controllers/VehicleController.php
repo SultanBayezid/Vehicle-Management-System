@@ -6,7 +6,7 @@ use App\Models\Vehicle;
 use App\Models\Service;
 use App\Models\Issue;
 use App\Models\Fuel;
-use App\Models\Image;
+use App\Models\VehicleImage;
 use App\Models\CarBrand;
 use App\Models\CarModel;
 use App\Models\FuelType;
@@ -90,7 +90,7 @@ class VehicleController extends Controller
                 $file->move(public_path('uploads/vehicle'), $fileName);
     
                 // Create a new image record and associate it with the vehicle
-                $image = new Image();
+                $image = new VehicleImage();
                 $image->path = 'uploads/vehicle/' . $fileName;
                 $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
                 $image->save();
@@ -188,7 +188,7 @@ class VehicleController extends Controller
                 $file->move(public_path('uploads/vehicle'), $fileName);
     
                 // Create a new image record and associate it with the vehicle
-                $image = new Image();
+                $image = new VehicleImage();
                 $image->path = 'uploads/vehicle/' . $fileName;
                 $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
                 $image->save();

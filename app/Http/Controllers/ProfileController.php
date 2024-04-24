@@ -99,4 +99,3 @@ class ProfileController extends Controller {
     }
 
 }
-

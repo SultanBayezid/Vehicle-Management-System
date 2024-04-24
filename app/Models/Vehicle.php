@@ -40,7 +40,7 @@ class Vehicle extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(VehicleImage::class);
     }
 
     public function brand()
