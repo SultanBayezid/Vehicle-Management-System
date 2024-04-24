@@ -8,6 +8,8 @@ use App\Models\User;
 use Auth;
 use DB;
 use Hash;
+use Image;
+
 
 use Illuminate\Validation\Rule;
 
@@ -42,17 +44,24 @@ class ProfileController extends Controller {
         $profile = Auth::user();
         $profile->name = $request->name;
         $profile->email = $request->email;
+        
         if ($request->hasFile('profile_picture')) {
             $image = $request->file('profile_picture');
             $file_name = "profile_" . time() . '.' . $image->getClientOriginalExtension();
-        
-            // Move the uploaded file to the desired location
-            $image->move(public_path('uploads/profile/'), $file_name);
-        
+            
+            // Resize the image to have a fixed height of 220px while maintaining the aspect ratio
+            Image::make($image)->resize(null, 220, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save(base_path('public/uploads/profile/') . $file_name);
+            
             $profile->profile_picture = $file_name;
         }
         
         $profile->save();
+        
+        
+        
 
         //Update Contact
         if ($profile->user_type == 'client') {

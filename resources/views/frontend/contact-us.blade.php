@@ -36,34 +36,56 @@
 			<div class="row">
 				<div class="col-12 col-lg-7 col-xl-7">
                     <p class="main__title main__title--page"> {{ _lang('Please fill out the form below and we will get back to you as soon as possible')}} </p>
-					<form action="#" class="sign__form sign__form--contacts">
+					<form action="{{route('enquirySend')}}" class="sign__form sign__form--contacts" method="POST">
+						@csrf
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<div class="sign__group">
-									<input type="text" name="name" value="{{Auth()->user()->name ?? ''}}" class="sign__input" placeholder="{{ _lang('Name')}}">
-								</div>
+									<input type="text" name="name" value="{{Auth()->user()->name ?? ''}}" class="sign__input  @error('name') is-invalid @enderror" placeholder="{{ _lang('Name')}}">
+									@error('name')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								   @enderror
+</div>
 							</div>
 
 							<div class="col-12 col-md-6">
 								<div class="sign__group">
-									<input type="text" value="{{Auth()->user()->phone ?? ''}}" name="phone" class="sign__input" placeholder="{{ _lang('Phone')}}">
+									<input type="number" value="{{Auth()->user()->phone ?? ''}}" name="phone" class="sign__input @error('phone') is-invalid @enderror" placeholder="{{ _lang('Phone')}}">
+									@error('phone')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								   @enderror</div>
+							</div>
+
+							<div class="col-12">
+								<div class="sign__group">
+								<input type="text" name="subject" class="sign__input @error('subject') is-invalid @enderror" placeholder="{{ _lang('Subject') }}" value="{{ isset($subject) ? $subject : '' }}">
+								@error('subject')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								   @enderror
 								</div>
 							</div>
 
 							<div class="col-12">
 								<div class="sign__group">
-									<input type="text" name="subject" class="sign__input" placeholder="{{ _lang('Subject')}}">
-								</div>
-							</div>
+								<textarea name="message" class="sign__textarea @error('message') is-invalid @enderror" placeholder="{{ _lang('Type Your Message') }}">{!! isset($message) ? $message : '' !!}</textarea>
 
-							<div class="col-12">
-								<div class="sign__group">
-									<textarea name="text" class="sign__textarea" placeholder="{{ _lang('Type Your Message')}}"></textarea>
+								@error('message')
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $message }}</strong>
+									</span>
+								   @enderror
+
 								</div>
 							</div>
 
 							<div class="col-12 col-xl-3">
-								<button type="button" class="sign__btn"><span>{{ _lang('Send')}}</span></button>
+								<button type="submit" class="sign__btn"><span>{{ _lang('Send')}}</span></button>
 							</div>
 						</div>
 					</form>	

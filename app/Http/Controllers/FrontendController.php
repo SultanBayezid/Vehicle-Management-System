@@ -139,5 +139,44 @@ public function bookingStep3()
     return redirect()->route('trip.list')->with('success', 'Your booking has been submitted and is waiting for approval.');
 }
 
+
+public function enquiry($id) {
+    $vehicle = Vehicle::findOrFail($id);
+
+    $subject = "Vehicle Inquiry - {$vehicle->brand->name}, {$vehicle->model->name}, {$vehicle->myear->year}";
+    $message = "I am writing to inquire about the availability and details of the following vehicle:" . PHP_EOL .
+    "- Make: {$vehicle->brand->name}" . PHP_EOL .
+    "- Model: {$vehicle->model->name}" . PHP_EOL .
+    "- Year: {$vehicle->myear->year}" . PHP_EOL . PHP_EOL .
+    "Thanks," . PHP_EOL .
+    Auth::user()->name;
+
+
+    $data = [
+        'subject' => $subject,
+        'message' => $message
+    ];
+
+    return view('frontend.contact-us', $data);
+}
+
+
+
+public function enquirySend(Request $request) {
+
+
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'phone' => 'required',
+        'subject' => 'required',
+        'message' => 'required',
+        
+        // Add other validation rules for service fields as needed
+    ]);
+
+    return redirect()->route('home')->with('success', 'Your Message has been sent !');
+}
+
+
     
 }

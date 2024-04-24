@@ -62,7 +62,7 @@
 						<span class="offer__title">Fare</span>
 						<div class="offer__wrap">
 							<span class="offer__price"> {{currency()}} {{$vehicle->price_per_day}}<sub>/ day</sub></span>
-							<a class="offer__rent" href="{{ route('contactus') }}">{{ _lang('Enquiry')}}</a>
+							<a class="offer__rent" href="{{ route('enquiry', $vehicle->id) }}">{{ _lang('Enquiry')}}</a>
 
 							
 						</div>

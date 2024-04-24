@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\Issue;
 use App\Models\Fuel;
 use App\Models\VehicleImage;
+use Image;
 use App\Models\CarBrand;
 use App\Models\CarModel;
 use App\Models\FuelType;
@@ -80,22 +81,45 @@ class VehicleController extends Controller
         $vehicle->fuelTypes()->attach($request->input('fuel_types'));
     }
     
-        if ($request->hasFile('files')) {
-            $files = $request->file('files');
-            foreach ($files as $file) {
-                // Generate a unique file name to prevent conflicts
-                $fileName = uniqid() . '_' . $file->getClientOriginalName();
+    if ($request->hasFile('files')) {
+        $files = $request->file('files');
+        foreach ($files as $file) {
+            // Generate a unique file name to prevent conflicts
+            $fileName = uniqid() . '_' . $file->getClientOriginalName();
     
-                // Store each file in the public/uploads/vehicle folder
-                $file->move(public_path('uploads/vehicle'), $fileName);
+            // Determine the vehicle's folder path
+            $vehicleFolderPath = public_path('uploads/vehicle/') . $vehicle->id;
+            $thumbnailFolderPath = $vehicleFolderPath . '/thumbnails';
     
-                // Create a new image record and associate it with the vehicle
-                $image = new VehicleImage();
-                $image->path = 'uploads/vehicle/' . $fileName;
-                $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
-                $image->save();
+            // Create the vehicle's folder if it doesn't exist
+            if (!file_exists($vehicleFolderPath)) {
+                mkdir($vehicleFolderPath, 0777, true);
+                mkdir($thumbnailFolderPath, 0777, true);
             }
+    
+            // Store the original file in the vehicle's folder
+            $file->move($vehicleFolderPath, $fileName);
+    
+            // Create a copy of the image with fixed height for thumbnail
+            $thumbnailFileName = 'thumb_' . $fileName;
+            $thumbnailPath = $thumbnailFolderPath . '/' . $thumbnailFileName;
+    
+            // Resize the image to have a fixed height of 220px while maintaining the aspect ratio
+            Image::make($vehicleFolderPath . '/' . $fileName)
+                ->resize(null, 220, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->save($thumbnailPath);
+    
+            // Create a new image record and associate it with the vehicle
+            $image = new VehicleImage();
+            $image->path = 'uploads/vehicle/' . $vehicle->id . '/' . $fileName; // Original image path
+            $image->thumbnail_path = 'uploads/vehicle/' . $vehicle->id . '/thumbnails/' . $thumbnailFileName; // Thumbnail path
+            $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
+            $image->save();
         }
+    }
             // Redirect to the index page with a success message
             return redirect()->route('vehicles.index')->with('success', 'Vehicle added successfully');
     }
@@ -183,13 +207,36 @@ class VehicleController extends Controller
             foreach ($files as $file) {
                 // Generate a unique file name to prevent conflicts
                 $fileName = uniqid() . '_' . $file->getClientOriginalName();
-    
-                // Store each file in the public/uploads/vehicle folder
-                $file->move(public_path('uploads/vehicle'), $fileName);
-    
+        
+                // Determine the vehicle's folder path
+                $vehicleFolderPath = public_path('uploads/vehicle/') . $vehicle->id;
+                $thumbnailFolderPath = $vehicleFolderPath . '/thumbnails';
+        
+                // Create the vehicle's folder if it doesn't exist
+                if (!file_exists($vehicleFolderPath)) {
+                    mkdir($vehicleFolderPath, 0777, true);
+                    mkdir($thumbnailFolderPath, 0777, true);
+                }
+        
+                // Store the original file in the vehicle's folder
+                $file->move($vehicleFolderPath, $fileName);
+        
+                // Create a copy of the image with fixed height for thumbnail
+                $thumbnailFileName = 'thumb_' . $fileName;
+                $thumbnailPath = $thumbnailFolderPath . '/' . $thumbnailFileName;
+        
+                // Resize the image to have a fixed height of 220px while maintaining the aspect ratio
+                Image::make($vehicleFolderPath . '/' . $fileName)
+                    ->resize(null, 220, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    })
+                    ->save($thumbnailPath);
+        
                 // Create a new image record and associate it with the vehicle
                 $image = new VehicleImage();
-                $image->path = 'uploads/vehicle/' . $fileName;
+                $image->path = 'uploads/vehicle/' . $vehicle->id . '/' . $fileName; // Original image path
+                $image->thumbnail_path = 'uploads/vehicle/' . $vehicle->id . '/thumbnails/' . $thumbnailFileName; // Thumbnail path
                 $image->vehicle_id = $vehicle->id; // Assuming 'vehicle_id' is passed in the request
                 $image->save();
             }
@@ -265,11 +312,11 @@ class VehicleController extends Controller
 
   
 public function imageDelete($id){
+    $image = VehicleImage::findOrFail($id);
 
-    $image = Image::findOrFail($id);
-
-    // Get the image path before deleting the record
+    // Get the image path and thumbnail path before deleting the record
     $imagePath = $image->path;
+    $thumbnailPath = $image->thumbnail_path;
 
     // Delete the image from the database
     $image->delete();
@@ -282,9 +329,16 @@ public function imageDelete($id){
         }
     }
 
+    // Remove the thumbnail file from the storage
+    if ($thumbnailPath) {
+        $thumbnailFilePath = public_path($thumbnailPath); // Assuming the path is relative to the public directory
+        if(file_exists($thumbnailFilePath)) {
+            unlink($thumbnailFilePath); // Delete the file from the filesystem
+        }
+    }
 
     return redirect()->back();
-
 }
+
     
 }
