@@ -33,6 +33,7 @@ return new class extends Migration
         $table->bigInteger('company_id');
         $table->bigInteger('user_id')->nullable();
         $table->timestamps();
+        $table->softDeletes();
         });
     }
 

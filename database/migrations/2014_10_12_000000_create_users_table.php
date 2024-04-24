@@ -26,6 +26,7 @@ return new class extends Migration
             $table->date('valid_to')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

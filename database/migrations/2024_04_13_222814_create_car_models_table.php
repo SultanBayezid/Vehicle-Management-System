@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->string('name')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
         
 

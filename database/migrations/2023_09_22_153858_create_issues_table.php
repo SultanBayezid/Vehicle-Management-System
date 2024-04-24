@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('status')->nullable();
             $table->bigInteger('company_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

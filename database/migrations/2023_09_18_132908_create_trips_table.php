@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text('trip_notes')->nullable();
             $table->bigInteger('company_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

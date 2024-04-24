@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->bigInteger('company_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

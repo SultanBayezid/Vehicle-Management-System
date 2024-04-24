@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('type', 10);
             $table->bigInteger('company_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

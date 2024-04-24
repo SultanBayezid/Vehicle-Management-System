@@ -18,9 +18,10 @@ class UsersSeeder extends Seeder
             [
                 'name' => 'John Doe',
                 'email' => 'admin@example.com',
+                'phone' => '+1 555 123 4567',
                 'email_verified_at' => now(),
                 'password' => bcrypt('password'),
-                'user_type' => 'user',
+                'user_type' => 'admin',
                 'status' => 1,
                 'language' => 'en',
                 'company_id' => null,

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('attachment')->nullable();
             $table->text('note')->nullable();
             $table->bigInteger('company_id');
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

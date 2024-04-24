@@ -41,6 +41,7 @@ return new class extends Migration
             $table->unsignedDecimal('price_per_day', 8, 2)->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
     
