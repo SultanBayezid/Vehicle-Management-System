@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Image;
 use App\Models\Contact;
 use App\Models\User;
 use Auth;
 use DB;
 use Hash;
+
 use Illuminate\Validation\Rule;
 
 
@@ -39,16 +39,19 @@ class ProfileController extends Controller {
 
         DB::beginTransaction();
 
-        $profile        = Auth::user();
-        $profile->name  = $request->name;
+        $profile = Auth::user();
+        $profile->name = $request->name;
         $profile->email = $request->email;
         if ($request->hasFile('profile_picture')) {
-            $image     = $request->file('profile_picture');
+            $image = $request->file('profile_picture');
             $file_name = "profile_" . time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->crop(300, 300)->save(base_path('public/uploads/profile/') . $file_name);
+        
+            // Move the uploaded file to the desired location
+            $image->move(public_path('uploads/profile/'), $file_name);
+        
             $profile->profile_picture = $file_name;
         }
-
+        
         $profile->save();
 
         //Update Contact
