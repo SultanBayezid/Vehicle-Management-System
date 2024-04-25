@@ -35,16 +35,18 @@
             </div>
         </div>
         <div class="col-md-4">
-            <label for="model_id" class="form-label">{{ _lang('Model') }}</label>
-            <select class="form-control select2-ajax" name="model_id" id="model_id" required>
-                {{-- Models will be populated dynamically based on the selected brand --}}
-            </select>
+                 <label for="model_id" class="form-label">{{ _lang('Model') }}</label>
+                <select class="form-control select2-ajax" name="model_id" id="model_id" required>
+                    {{-- Placeholder option --}}
+                    <option value="">{{ _lang('Select Model') }}</option>
+                </select>
         </div>
+
 
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">{{ _lang('Manufacture Year') }}</label>
-                <select class="form-control" name="manufacture_year" id="manufacture_year" required>
+                <select class="form-control select2-ajax" name="manufacture_year" id="manufacture_year" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
                     {{ create_option("years", "id", "year", old('manufacture_year')) }}
@@ -74,7 +76,7 @@
            <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">{{ _lang('Register Year') }}</label>
-                <select class="form-control" name="register_year" id="register_year">
+                <select class="form-control select2-ajax" name="register_year" id="register_year">
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
                     {{ create_option("years", "id", "year", old('register_year')) }}
@@ -309,7 +311,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label class="control-label">{{ _lang('Status') }}</label>
-                <select class="form-control select2" name="status" required>
+                <select class="form-control select2-ajax" name="status" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
                     <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>Inactive</option>
@@ -339,42 +341,30 @@
 
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 <script>
-    // Wait for the document to be ready
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get the brand select element
-        const brandSelect = document.getElementById('brand_id');
-        // Get the model select element
-        const modelSelect = document.getElementById('model_id');
-
-        // Add event listener to brand select element
-        brandSelect.addEventListener('change', function() {
-            // Clear existing options
-            modelSelect.innerHTML = '';
-
-            // Get the selected brand ID
-            const brandId = this.value;
-
-            // If no brand is selected, do nothing
-            if (!brandId) return;
-
-            // Make an AJAX request to get models of the selected brand
-            fetch(`{{ route('fetch_models', ['brand_id' => ':brand_id']) }}`.replace(':brand_id', brandId))
-                .then(response => response.json())
-                .then(data => {
-                    // Iterate over the models and add them as options to the model select element
-                    data.forEach(model => {
-                        const option = document.createElement('option');
-                        option.value = model.id;
-                        option.textContent = model.name;
-                        modelSelect.appendChild(option);
+$(document).ready(function() {
+    $('#brand_id').change(function() {
+        var brandId = $(this).val();
+        if (brandId !== '') {
+            $.ajax({
+                url: "{{ route('fetch_models', ':brand_id') }}".replace(':brand_id', brandId),
+                type: 'GET',
+                success: function(response) {
+                    $('#model_id').empty();
+                    response.forEach(function(model) {
+                        $('#model_id').append('<option value="' + model.id + '">' + model.name + '</option>');
                     });
-                })
-                .catch(error => {
-                    console.error('Error fetching models:', error);
-                });
-        });
+                }
+            });
+        }
     });
+});
+
 </script>
+
+
 
 @endsection

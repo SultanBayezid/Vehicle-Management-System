@@ -329,7 +329,7 @@
         <div class="col-md-5">
             <div class="form-group">
                 <label class="control-label">{{ _lang('Assign Driver') }}</label>
-                <select class="form-control select2" name="driver_id" required>
+                <select class="form-control select2-ajax" name="driver_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
               
                     {{ create_option("drivers", "id", "driver_name", $vehicle->driver_id, array("company_id="=>company_id())) }}
@@ -339,7 +339,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label class="control-label">{{ _lang('Status') }}</label>
-                <select class="form-control select2" name="status" required>
+                <select class="form-control select2-ajax" name="status" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     <option value="1" {{ $vehicle->status == 1 ? 'selected' : '' }}>Active</option>
                     <option value="0" {{ $vehicle->status == 0 ? 'selected' : '' }}>Inactive</option>
@@ -369,42 +369,29 @@
                         </div>
                    
 
-                        <script>
-    // Wait for the document to be ready
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get the brand select element
-        const brandSelect = document.getElementById('brand_id');
-        // Get the model select element
-        const modelSelect = document.getElementById('model_id');
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-        // Add event listener to brand select element
-        brandSelect.addEventListener('change', function() {
-            // Clear existing options
-            modelSelect.innerHTML = '';
 
-            // Get the selected brand ID
-            const brandId = this.value;
-
-            // If no brand is selected, do nothing
-            if (!brandId) return;
-
-            // Make an AJAX request to get models of the selected brand
-            fetch(`{{ route('fetch_models', ['brand_id' => ':brand_id']) }}`.replace(':brand_id', brandId))
-                .then(response => response.json())
-                .then(data => {
-                    // Iterate over the models and add them as options to the model select element
-                    data.forEach(model => {
-                        const option = document.createElement('option');
-                        option.value = model.id;
-                        option.textContent = model.name;
-                        modelSelect.appendChild(option);
+<script>
+$(document).ready(function() {
+    $('#brand_id').change(function() {
+        var brandId = $(this).val();
+        if (brandId !== '') {
+            $.ajax({
+                url: "{{ route('fetch_models', ':brand_id') }}".replace(':brand_id', brandId),
+                type: 'GET',
+                success: function(response) {
+                    $('#model_id').empty();
+                    response.forEach(function(model) {
+                        $('#model_id').append('<option value="' + model.id + '">' + model.name + '</option>');
                     });
-                })
-                .catch(error => {
-                    console.error('Error fetching models:', error);
-                });
-        });
+                }
+            });
+        }
     });
+});
+
 </script>
+
 
 @endsection
