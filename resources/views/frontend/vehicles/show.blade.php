@@ -206,7 +206,7 @@
 							</div>
 						</div>
 						<div class="car__title">
-							<h3 class="car__name"><a href="{{route('single.vehicle', $vehicle->id)}}">{{$vehicle->brand->name ?? '' }} {{$vehicle->model->name ?? '' }}</a></h3>
+							<h3 class="car__name"><a href="{{ route('single.vehicle', ['id' => $encryptedId]) }}">{{$vehicle->brand->name ?? '' }} {{$vehicle->model->name ?? '' }}</a></h3>
 							<span class="car__year">{{$vehicle->myear->year ?? '' }}</span>
 						</div>
 						<ul class="car__list">
