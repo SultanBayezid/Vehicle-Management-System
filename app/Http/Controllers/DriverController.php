@@ -52,6 +52,13 @@ class DriverController extends Controller
             $user->company_id = company_id(); // Assuming company_id() function exists and returns the company ID
             $user->save();
         }
+
+        $profile_picture = "";
+        if ($request->hasfile('photo')) {
+            $file            = $request->file('photo');
+            $profile_picture = time() . $file->getClientOriginalName();
+            $file->move(public_path() . "/uploads/driver/", $profile_picture);
+        }
     
     $driver = new Driver();
     $driver->driver_name = $request->input('driver_name');
@@ -70,6 +77,7 @@ class DriverController extends Controller
     $driver->blood_group = $request->input('blood_group');
     $driver->nid = $request->input('nid');
     $driver->passport = $request->input('passport');
+    $driver->photo = $profile_picture;
     $driver->company_id = company_id(); 
     if ($request->client_login == 1) {
         $driver->user_id = $user->id;
@@ -85,40 +93,56 @@ class DriverController extends Controller
         return view('drivers.show', compact('driver'));
     }
 
-    public function edit(Driver $driver)
+    public function edit($id)
     {
-        return view('drivers.edit', compact('driver'));
+       $driver = Driver::findOrfail($id);
+        return view('backend.drivers.edit', compact('driver'));
     }
 
-    public function update(Request $request, Driver $driver)
+    public function update(Request $request, $id)
     {
-        // Validation
+    
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'license_number' => 'required|string|max:255',
-            'license_expiry_date' => 'required|date',
-            'address' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:255',
-            'state' => 'nullable|string|max:255',
-            'postal_code' => 'nullable|string|max:255',
-            'phone_number' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'date_of_birth' => 'nullable|date',
-            'nationality' => 'nullable|string|max:255',
-            'emergency_contact' => 'nullable|string|max:255',
-            'emergency_phone' => 'nullable|string|max:255',
-            'blood_group' => 'nullable|string|max:255',
-            'nid' => 'nullable|string|max:255',
-            'passport' => 'nullable|string|max:255',
-            // Add photo validation rules here if needed
+            'driver_name' => 'required',
+            // Add other validation rules for service fields as needed
         ]);
 
-        // Handle photo update if necessary
 
-        $driver->update($validatedData);
+    
+    $driver = Driver::findOrfail($id);
+
+    if ($request->hasfile('photo')) {
+        $profile_picture = "";
+        $file            = $request->file('photo');
+        $profile_picture = time() . $file->getClientOriginalName();
+        $file->move(public_path() . "/uploads/driver/", $profile_picture);
+        $driver->photo = $profile_picture;
+    }
+    $driver->driver_name = $request->input('driver_name');
+    $driver->license_number = $request->input('license_number');
+    $driver->license_expiry_date = $request->input('license_expiry_date');
+    $driver->address = $request->input('address');
+    $driver->city = $request->input('city');
+    $driver->state = $request->input('state');
+    $driver->postal_code = $request->input('postal_code');
+    $driver->driver_phone_number = $request->input('driver_phone_number');
+    $driver->driver_email = $request->input('driver_email');
+    $driver->date_of_birth = $request->input('date_of_birth');
+    $driver->nationality = $request->input('nationality');
+    $driver->emergency_contact = $request->input('emergency_contact');
+    $driver->emergency_phone = $request->input('emergency_phone');
+    $driver->blood_group = $request->input('blood_group');
+    $driver->nid = $request->input('nid');
+    $driver->passport = $request->input('passport');
+   
+    $driver->company_id = company_id(); 
+    if ($request->client_login == 1) {
+        $driver->user_id = $user->id;
+    }
+    $driver->save();
 
         return redirect()->route('drivers.index')
-            ->with('success', 'Driver updated successfully');
+            ->with('success', 'Driver created successfully');
     }
 
     public function destroy(Driver $driver)

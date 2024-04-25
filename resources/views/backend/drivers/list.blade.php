@@ -51,7 +51,7 @@
                                             <td>{{$driver->name }}</td>
                                             <td>{{$driver->license_number }}</td>
                                             <td>{{$driver->license_expiry_date }}</td>
-                                            <td>{{$driver->phone_number }}</td>
+                                            <td>{{$driver->driver_phone_number }}</td>
                                             <td>{{$driver->blood_group }}</td>
                                      
                                             <td>
