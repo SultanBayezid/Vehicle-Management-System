@@ -14,6 +14,7 @@
         </div>
         <script src="{{ asset('backend/assets/js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="{{asset('template/js/scripts.js')}}"></script>
         <!-- jQuery -->
 
