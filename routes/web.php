@@ -63,6 +63,7 @@ Route::get('/contact-us', function () {
     Route::get('/book/step3', 'App\Http\Controllers\FrontendController@bookingStep3')->name('book.step3');
     Route::get('/enquiry/{id}', 'App\Http\Controllers\FrontendController@enquiry')->name('enquiry');
     Route::post('/enquiry', 'App\Http\Controllers\FrontendController@enquirySend')->name('enquirySend');
+    Route::get('/search', 'App\Http\Controllers\FrontendController@search')->name('search');
 
     Route::group(['prefix' => 'clients', 'middleware' => ['client']], function(){
         route::get('trip/list', [ClientController::class, 'triplist'])->name('trip.list');

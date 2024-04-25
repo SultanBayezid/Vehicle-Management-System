@@ -33,90 +33,40 @@
 			<div class="row">
 				<!-- sidebar -->
 				<div class="col-12 col-xl-3 order-xl-1">
+				<form action="{{ route('search') }}" method="GET">
 					<div class="filter-wrap">
-						<button class="filter-wrap__btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><span>Open filter</span></button>
+						<button class="filter-wrap__btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><span>{{ _lang('Open filter')}}</span></button>
 
 						<div class="collapse filter-wrap__content" id="collapseFilter">
 							<!-- filter -->
 							<div class="filter filter--left filter--sticky">
-								<h4 class="filter__title">Filters <button type="button">Clear all</button></h4>
+								<h4 class="filter__title">{{ _lang('Filters')}} <button type="button"> {{ _lang('Clear all')}}</button></h4>
 
 								<div class="filter__group">
-									<label class="filter__label">Keyword:</label>
-									<input type="text" class="filter__input" placeholder="Keyword">
+									<label class="filter__label">{{ _lang('Keyword:')}}</label>
+									<input type="text" name="keyword" class="filter__input" placeholder="Keyword">
 								</div>
 
 								<div class="filter__group">
-									<label for="filter__category" class="filter__label">Brands:</label>
+									<label for="filter__category" class="filter__label">{{ _lang('Brands:')}}</label>
 
 									<div class="filter__select-wrap">
-										<select name="filter__category" id="filter__category" class="filter__select">
-											<option value="All categories">All brands</option>
-											<option value="1">Audi</option>
-											<option value="2">BMW</option>
-											<option value="3">Cadillac</option>
-											<option value="4">Chevrolet</option>
-											<option value="5">Dodge</option>
-											<option value="6">Ferrari</option>
-											<option value="7">Ford</option>
-											<option value="8">Honda</option>
-											<option value="9">Hyundai</option>
-											<option value="10">Jaguar</option>
-											<option value="11">Jeep</option>
-											<option value="12">Lexus</option>
-											<option value="13">Mitsubishi</option>
-											<option value="14">Porsche</option>
-											<option value="15">Subaru</option>
-											<option value="16">Tesla</option>
-											<option value="17">Toyota</option>
-											<option value="18">Volkswagen</option>
+										<select name="brand_id" id="filter__category" class="filter__select" required>
+											<option value="">{{ _lang('Select One')}}</option>
+											{{ create_option("car_brands", "id", "name", old('brand_id')) }}
 										</select>
+									
 									</div>
 								</div>
 
 								<div class="filter__group">
-									<label class="filter__label">Transmission:</label>
-									<ul class="filter__checkboxes">
-										<li>
-											<input id="type5" type="checkbox" name="type5" checked="">
-											<label for="type5">Automatic</label>
-										</li>
-										<li>
-											<input id="type6" type="checkbox" name="type6">
-											<label for="type6">Manual</label>
-										</li>
-									</ul>
-								</div>
-
-								<div class="filter__group">
-									<label class="filter__label">Fuel:</label>
-									<ul class="filter__checkboxes">
-										<li>
-											<input id="type8" type="checkbox" name="type8">
-											<label for="type8">Diesel</label>
-										</li>
-										<li>
-											<input id="type9" type="checkbox" name="type9">
-											<label for="type9">Hybrid</label>
-										</li>
-										<li>
-											<input id="type10" type="checkbox" name="type10">
-											<label for="type10">Gas</label>
-										</li>
-										<li>
-											<input id="type11" type="checkbox" name="type11">
-											<label for="type11">Eletric</label>
-										</li>
-									</ul>
-								</div>
-
-								<div class="filter__group">
-									<button class="filter__btn" type="button"><span>APPLY FILTER</span></button>
+									<button class="filter__btn" type="submit"><span>{{ _lang('APPLY FILTER')}}</span></button>
 								</div>
 							</div>
 							<!-- end filter -->
 						</div>
 					</div>
+					</form>
 				</div>
 				<!-- end sidebar -->
 
@@ -138,15 +88,15 @@
 									@foreach($vehicle->images as $image)
 									<li class="splide__slide">
 										<img src="{{ asset($image->thumbnail_path) }}" alt="Vehicle Image" style=" width: 100%;
-    margin: 0 auto;
-    display: flex;
-    height: 250px;
-    border-radius: 6px 6px 0 0;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: center;
-    object-position: center;
-    transition: .3s linear;">
+										margin: 0 auto;
+										display: flex;
+										height: 250px;
+										border-radius: 6px 6px 0 0;
+										-o-object-fit: cover;
+										object-fit: cover;
+										-o-object-position: center;
+										object-position: center;
+										transition: .3s linear;">
 									</li>
 									@endforeach
 								
@@ -191,6 +141,9 @@
                 @endforeach
 
 					</div>
+					<div class="pagination justify-content-center mt-5">
+     {{ $vehicles->links('vendor.pagination.bootstrap-5') }}
+</div>
 				</div>
 				<!-- end content -->
 			</div>

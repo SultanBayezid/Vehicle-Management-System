@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\CarBrand;
 use App\Models\User;
 use App\Models\Driver;
 use App\Models\Blog;
@@ -12,6 +13,9 @@ use App\Models\Contact;
 use App\Models\CarBodyType;
 use App\Models\Trip;
 use App\Models\Transaction;
+use App\Models\Transmission;
+use App\Models\FuelType;
+
 use Validator;
 use Session;
 class FrontendController extends Controller
@@ -29,13 +33,19 @@ class FrontendController extends Controller
 
     public function rent()
     {
-        $data['vehicles'] = Vehicle::All();
+        $data['vehicles'] = Vehicle::orderBy('created_at', 'desc')->paginate(10);
+        $data['transmissions'] = Transmission::All();
+        $data['fuelTypes'] = FuelType::All();
         return view('frontend.vehicles.list', $data);
     }
     public function singleCar($id){
 
         $data['vehicle'] = Vehicle::findOrfail($id);
-        $data['vehicles'] = Vehicle::All();
+        $data['vehicles'] = Vehicle::whereNotIn('id', [$id])
+        ->orderBy('created_at', 'desc')
+        ->take(6)
+        ->get();
+
         return view('frontend.vehicles.show', $data);
 
 
@@ -177,6 +187,38 @@ public function enquirySend(Request $request) {
     return redirect()->route('home')->with('success', 'Your Message has been sent !');
 }
 
+
+public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $brandId = $request->input('brand_id');
+
+        // Query car_brands table for keyword search
+        $brandQuery = CarBrand::query();
+        if ($keyword) {
+            $brandQuery->where('name', 'like', "%$keyword%");
+        }
+        $brandIds = $brandQuery->pluck('id');
+
+        // Query vehicles table with brand filter
+        $vehicleQuery = Vehicle::query();
+        if ($brandId && $brandId !== 'All categories') {
+            $vehicleQuery->where('brand_id', $brandId);
+        }
+        if ($brandIds->isNotEmpty()) {
+            $vehicleQuery->whereIn('brand_id', $brandIds);
+        }
+
+        // Get the results
+        $results = $vehicleQuery->paginate(10);
+        $data['transmissions'] = Transmission::All();
+        $data['fuelTypes'] = FuelType::All();
+        $data['vehicles'] = $results;
+    
+
+        // You can return the results to a view for display
+        return view('frontend.vehicles.search-results', $data);
+    }
 
     
 }
