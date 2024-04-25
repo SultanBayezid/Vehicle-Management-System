@@ -146,7 +146,7 @@ echo $languageDropdown;
             <li>
                 <strong>{{ auth()->user()->name }}</strong>
             </li>
-            <li><a href="{{'dashboard'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">{{ _lang('Dashboard')}}</span></a>
+            <li><a href="{{route('dashboard')}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">{{ _lang('Dashboard')}}</span></a>
 		
 		</li>
 
@@ -162,7 +162,7 @@ echo $languageDropdown;
             <li>
                 <strong>{{ auth()->user()->name }}</strong>
             </li>
-			<li><a href="{{'dashboard'}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">{{ _lang('Dashboard')}}</span></a>
+			<li><a href="{{route('dashboard')}}"><i class="far fa-paper-plane fa-lg text-primary"></i> <span class="mr2">{{ _lang('Dashboard')}}</span></a>
         @endif
         <!-- Common logout option for all users -->
         <li>
