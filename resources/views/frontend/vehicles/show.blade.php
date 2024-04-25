@@ -175,6 +175,7 @@
 
 				<!-- car -->
 				@foreach($vehicles as $vehicle )
+				<?php $encryptedId = Crypt::encrypt($vehicle->id); ?>
 				<!-- car -->
 				<div class="col-12 col-md-6 col-xl-4">
 					<div class="car">
@@ -233,7 +234,7 @@
 						<div class="car__footer">
 							<span class="car__price">{{currency()}} {{$vehicle->price_per_km ?? ''}} <sub>/ km</sub></span>
 						
-							<a href="{{route('single.vehicle', $vehicle->id)}}" class="car__more"><span>View Details</span></a>
+							<a href="{{ route('single.vehicle', ['id' => $encryptedId]) }}" class="car__more"><span>View Details</span></a>
 						</div>
 					</div>
 				</div>
