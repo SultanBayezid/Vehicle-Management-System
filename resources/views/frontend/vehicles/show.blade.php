@@ -9,8 +9,8 @@
 				<div class="col-12">
 					<ul class="breadcrumbs">
 						<li class="breadcrumbs__item"><a href="index-2.html">Home</a></li>
-						<li class="breadcrumbs__item"><a href="cars.html">Explore cars</a></li>
-						<li class="breadcrumbs__item breadcrumbs__item--active">Toyota RAV4</li>
+						<li class="breadcrumbs__item"><a href="{{route('rent')}}">{{ _lang('Explore cars')}}</a></li>
+						<li class="breadcrumbs__item breadcrumbs__item--active">{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}} </li>
 					</ul>
 				</div>
 				<!-- end breadcrumb -->
