@@ -1,50 +1,44 @@
-
-<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userManagement" aria-expanded="false"
-    aria-controls="collapseLayouts">
+<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#userManagement" aria-expanded="false" aria-controls="userManagement">
     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-    {{ _lang('User Management') }}
+    User Management
     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 </a>
-<div class="collapse" id="userManagement" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+<div class="collapse" id="userManagement">
     <nav class="sb-sidenav-menu-nested nav">
-        <a class="nav-link" href="{{ route('users.index') }}">{{ _lang('All Users') }}</a>
-        <a class="nav-link" href="{{ route('users.create') }}">{{ _lang('Add New User') }}</a>
+        <a class="nav-link" href="{{ route('users.index') }}">All Users</a>
+        <a class="nav-link" href="{{ route('users.create') }}">Add New User</a>
     </nav>
 </div>
 
 <a class="nav-link" href="{{ route('blogs.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-car-side"></i></div>
-                            Blogs
-                        </a>
-<div class="sb-sidenav-menu-heading">{{ _lang('System Settings') }}</div>
+    <div class="sb-nav-link-icon"><i class="fas fa-car-side"></i></div>
+    Blogs
+</a>
+<div class="sb-sidenav-menu-heading">System Settings</div>
 
-<a class="nav-link" href="{{route('settings.update_settings')}}">
+<a class="nav-link" href="{{ route('settings.update_settings') }}">
     <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
-    {{ _lang('General Settings') }}
+    General Settings
 </a>
 
-<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#languages" aria-expanded="false"
-    aria-controls="collapseLayouts">
+<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#languages" aria-expanded="false" aria-controls="languages">
     <div class="sb-nav-link-icon"><i class="fas fa-globe"></i></div>
-    {{ _lang('Languages') }}
+    Languages
     <div class="sb-sidenav-collapse-arrow"><i class="ti-angle-down"></i></div>
 </a>
-<div class="collapse" id="languages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+<div class="collapse" id="languages">
     <nav class="sb-sidenav-menu-nested nav">
-        <a class="nav-link" href="{{route('languages.index')}}">{{ _lang('All Language') }}</a>
-        <a class="nav-link" href="{{route('languages.create')}}">{{ _lang('Add New') }}</a>
+        <a class="nav-link" href="{{ route('languages.index') }}">All Language</a>
+        <a class="nav-link" href="{{ route('languages.create') }}">Add New</a>
     </nav>
 </div>
 
-<a class="nav-link" href="">
-    <div class="sb-nav-link-icon"><i class="fas fa-email"></i></div>
-    {{ _lang('Email Template') }}
+<a class="nav-link" href="#">
+    <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
+    Email Template
 </a>
 
-<a class="nav-link" href="{{route('database_backups.list')}}">
-    <div class="sb-nav-link-icon"><i class="fas fa-harddrives"></i></div>
-    {{ _lang('Database Backup') }}
+<a class="nav-link" href="{{ route('database_backups.list') }}">
+    <div class="sb-nav-link-icon"><i class="fas fa-hdd"></i></div>
+    Database Backup
 </a>
-                      
-                       
-                    

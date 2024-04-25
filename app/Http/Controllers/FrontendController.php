@@ -15,7 +15,7 @@ use App\Models\Trip;
 use App\Models\Transaction;
 use App\Models\Transmission;
 use App\Models\FuelType;
-
+use Illuminate\Support\Facades\Crypt;
 use Validator;
 use Session;
 class FrontendController extends Controller
@@ -38,8 +38,9 @@ class FrontendController extends Controller
         $data['fuelTypes'] = FuelType::All();
         return view('frontend.vehicles.list', $data);
     }
-    public function singleCar($id){
-
+    public function singleCar($encryptedId){
+       
+        $id = Crypt::decrypt($encryptedId);
         $data['vehicle'] = Vehicle::findOrfail($id);
         $data['vehicles'] = Vehicle::whereNotIn('id', [$id])
         ->orderBy('created_at', 'desc')
@@ -150,7 +151,8 @@ public function bookingStep3()
 }
 
 
-public function enquiry($id) {
+public function enquiry($encryptedId) {
+    $id = Crypt::decrypt($encryptedId);
     $vehicle = Vehicle::findOrFail($id);
 
     $subject = "Vehicle Inquiry - {$vehicle->brand->name}, {$vehicle->model->name}, {$vehicle->myear->year}";

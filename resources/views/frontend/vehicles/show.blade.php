@@ -61,8 +61,9 @@
 					<div class="offer">
 						<span class="offer__title">Fare</span>
 						<div class="offer__wrap">
+						@php $encryptedId = Crypt::encrypt($vehicle->id); @endphp
 							<span class="offer__price"> {{currency()}} {{$vehicle->price_per_day}}<sub>/ day</sub></span>
-							<a class="offer__rent" href="{{ route('enquiry', $vehicle->id) }}">{{ _lang('Enquiry')}}</a>
+							<a class="offer__rent" href="{{ route('enquiry', ['id' => $encryptedId]) }}">{{ _lang('Enquiry')}}</a>
 
 							
 						</div>

@@ -943,3 +943,12 @@ $language["Clients interested in exploring our range of services can create an a
 $language["Blog"]="ব্লগ";
 $language["Our Blog"]="আমাদের ব্লগ";
 $language["Notifications"]="বিজ্ঞপ্তি";
+$language["Cannot delete vehicle. Related records exist."]="গাড়িটি মুছতে পারা যায়নি। সম্পর্কিত রেকর্ডগুলি বিদ্যমান।";
+$language["Select Model"]="মডেল নির্বাচন করুন";
+$language["Open filter"]="ফিল্টার খুলুন";
+$language["Filters"]="ফিল্টারসমূহ";
+$language["Clear all"]="সব মুছে ফেলুন";
+$language["Keyword:"]="কীওয়ার্ড:)";
+$language["Brands:"]="ব্র্যান্ডগুলি:";
+$language["APPLY FILTER"]="ফিল্টার প্রয়োগ করুন";
+$language["Explore cars"]="গাড়িগুলি এক্সপ্লোর করুন";
