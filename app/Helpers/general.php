@@ -948,7 +948,7 @@ if (!function_exists('currency')) {
     function currency($currency = '') {
 
         if ($currency == '') {
-            $currency = get_company_option('currency', get_option('currency', 'USD'));
+            $currency = get_company_option('currency', get_option('currency', 'BDT'));
         }
 
         return html_entity_decode(get_currency_symbol($currency), ENT_QUOTES, 'UTF-8');
