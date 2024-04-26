@@ -28,7 +28,7 @@
                 <select class="form-control select2-ajax @error('customer_id') is-invalid @enderror" data-value="id" data-display="contact_name"
                     data-table="contacts" data-where="1" name="customer_id">
                     <option value="">{{ _lang('Select One') }}</option>
-                    {{ create_option("contacts", "id", "contact_name", old('customer_id')) }}
+                    {{ create_option("contacts","id","contact_name",old('customer_id'),array("company_id="=>company_id())) }}
                 </select>
                 @error('customer_id')
                 <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                 <select class="form-control select2-ajax @error('driver_id') is-invalid @enderror" data-value="id" data-display="name"
                     data-table="drivers" data-where="1" name="driver_id">
                     <option value="">{{ _lang('Select One') }}</option>
-                    {{ create_option("drivers", "id", "driver_name", old('driver_id')) }}
+                    {{ create_option("drivers","id","driver_name",old('driver_id'),array("company_id="=>company_id())) }}
                 </select>
                 @error('driver_id')
                 <span class="invalid-feedback" role="alert">

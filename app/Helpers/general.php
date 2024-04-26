@@ -140,43 +140,64 @@ if (!function_exists('get_initials')) {
     }
 }
 
-if ( ! function_exists('create_option')){
-	function create_option($table,$value,$display,$selected="",$where=NULL){
-		$options = '';
-		$condition = '';
-		if($where != NULL){
-			$condition .= "WHERE ";
-			foreach( $where as $key => $v ){
-				$condition.=$key."'".$v."' ";
-			}
-		}
+if (!function_exists('create_option')) {
+    function create_option($table, $value, $display, $selected = "", $where = NULL)
+    {
+        $options = '';
+        $condition = '';
         
-		if (is_array($display)){
-		   $display_array =  $display;
-		   $display =  $display_array[0];
-		   $display1 =  $display_array[1];
-		}
-		
-		$query = DB::select("SELECT * FROM $table $condition");
-		foreach($query as $d){
-			if( $selected!="" && $selected == $d->$value ){   
-				if(! isset($display_array)){
-					$options.="<option value='".$d->$value."' selected='true'>".ucwords($d->$display)."</option>";
-			    }else{
-					$options.="<option value='".$d->$value."' selected='true'>".ucwords($d->$display.' - '.$d->$display1)."</option>";
-				}
-			}else{
-				if(! isset($display_array)){
-					$options.="<option value='".$d->$value."'>".ucwords($d->$display)."</option>";
-			    }else{
-					$options.="<option value='".$d->$value."'>".ucwords($d->$display.' - '.$d->$display1)."</option>";
-				}
-			} 
-		}
-		
-		echo $options;
-	}
+        // Check if $where is provided and construct the WHERE clause accordingly
+        if ($where !== NULL) {
+            $condition .= "WHERE ";
+            foreach ($where as $key => $v) {
+                $condition .= $key . "'" . $v . "' ";
+            }
+        }
+        
+        // Check if $display is an array to handle multiple display columns
+        if (is_array($display)) {
+            $display_array = $display;
+            $display = $display_array[0];
+            $display1 = $display_array[1];
+        }
+        
+        // Check if the column `deleted_at` exists in the table
+        $deletedAtColumnExists = Schema::hasColumn($table, 'deleted_at');
+        
+        // Modify the query based on the existence of the `deleted_at` column
+        if ($deletedAtColumnExists) {
+            // If $condition already contains a WHERE clause, append the condition with AND
+            $condition .= ($condition ? ' AND ' : 'WHERE ') . "deleted_at IS NULL";
+        }
+        
+        // Construct the final SQL query
+        $query = DB::select("SELECT * FROM $table $condition");
+        
+        // Loop through the query results
+        foreach ($query as $d) {
+            // Check if the current option is selected
+            if ($selected !== "" && $selected == $d->$value) {
+                // If selected, format the option accordingly
+                if (!isset($display_array)) {
+                    $options .= "<option value='" . $d->$value . "' selected='true'>" . ucwords($d->$display) . "</option>";
+                } else {
+                    $options .= "<option value='" . $d->$value . "' selected='true'>" . ucwords($d->$display . ' - ' . $d->$display1) . "</option>";
+                }
+            } else {
+                // If not selected, format the option accordingly
+                if (!isset($display_array)) {
+                    $options .= "<option value='" . $d->$value . "'>" . ucwords($d->$display) . "</option>";
+                } else {
+                    $options .= "<option value='" . $d->$value . "'>" . ucwords($d->$display . ' - ' . $d->$display1) . "</option>";
+                }
+            }
+        }
+        
+        // Output the options
+        echo $options;
+    }
 }
+
 
 if (!function_exists('object_to_string')) {
     function object_to_string($object, $col, $quote = false) {

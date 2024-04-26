@@ -188,9 +188,9 @@
                   <tbody>
                      <tr>
                         <td>
-                           <span class="text-inverse">Name: {{$trip->customer->contact_name}}</span><br>
-                           <small>Phone:  {{$trip->customer->contact_phone}} </small> <br>
-                           <small>Address: {{$trip->customer->address}}</small></td>
+                           <span class="text-inverse">Name: {{$trip->customer->contact_name ?? ''}}</span><br>
+                           <small>Phone:  {{$trip->customer->contact_phone  ?? ''}} </small> <br>
+                           <small>Address: {{$trip->customer->address  ?? ''}}</small></td>
                         <td class="text-center">{{$trip->pickup_location}}</td>
                         <td class="text-center">{{$trip->dropoff_location}}</td>
                         <!-- <td class="text-right">$2,500.00</td> -->
@@ -294,6 +294,13 @@
          </div>
    
       </div>
+
+  
+                                        <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')"><i class="fas fa-trash"></i></button>
+                                        </form>
    </div>
 </div>
                     </div>
