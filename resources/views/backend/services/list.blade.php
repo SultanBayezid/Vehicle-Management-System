@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-          <h1 class="h3 mb-2 pt-3 text-gray-800">Services</h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Service')}}</h1>
         </div>
         <div class="col-md-6 text-md-right mt-3">
             <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
@@ -18,8 +18,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Services</li>
+            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">{{ _lang('Vehicles')}}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('services.index')}}">{{ _lang('Service')}}</a></li>
         </ol>
     </nav>
 
@@ -47,18 +47,14 @@
                             @endforeach</td>
                         
                             <td class="text-center">
-                                <form action="{{ action('App\Http\Controllers\ServiceController@destroy', $service->id) }}" method="post">
+                           
                                     <a href="{{ action('App\Http\Controllers\ServiceController@edit', $service->id) }}"
                                         data-title="{{ _lang('Update service') }}"
-                                        class="btn btn-warning btn-sm ajax-modal"><i class="fas fa-pen"></i></a>
+                                        class="btn btn-link"><i class="fas fa-pen"></i></a>
                                     <a href="{{ action('App\Http\Controllers\ServiceController@show', $service->id) }}"
                                         data-title="{{ _lang('View service') }}"
-                                        class="btn btn-primary btn-sm ajax-modal"><i class="fas fa-eye"></i></a>
-                                    {{ csrf_field() }}
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger btn-sm btn-remove"
-                                        type="submit" onclick="return confirm('Are you sure you want to delete this Service?')"><i class="fas fa-trash"></i></button>
-                                </form>
+                                        class="btn btn-link"><i class="fas fa-eye"></i></a>
+                          
                             </td>
                         </tr>
                         @endforeach

@@ -10,7 +10,7 @@
         <a href="{{route('dashboard')}}">Home</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="{{route('vehicles.index')}}">Vehicles</a>
+        <a href="{{route('vehicles.index')}}">{{ _lang('Vehicles') }}</a>
       </li>
       <li class="breadcrumb-item " aria-current="page">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</li>
       <li class="breadcrumb-item active">{{ _lang('Issue') }}</li>
@@ -25,8 +25,8 @@
       </div>
       <div class="col-md-10 col-sm-8">
       <span>
-    <h1 class="display-6" style="display: inline-block;">Issues</h1>
-    <button class="btn btn-primary btn-sm" style="float: right;"  data-toggle="modal" data-target="#issue"><i class="fas fa-plus"></i> Add New Issue</button>
+    <h1 class="display-6" style="display: inline-block;">{{ _lang('Issue') }}</h1>
+    <button class="btn btn-primary btn-sm" style="float: right;"  data-toggle="modal" data-target="#issue"><i class="fas fa-plus"></i> {{ _lang('Add New Issue') }}</button>
 </span>
 <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
           <thead>
@@ -57,20 +57,9 @@
               <td>@if ($issue->status == 1) <div class="badge badge-danger">Pending</div> @elseif ($issue->status == 2) <div class="badge badge-warning">Closed</div> @elseif ($issue->status == 3) <div class="badge badge-success">Resolved</div> @else Status: Unknown @endif </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal{{$issue->id}}">  <i class="fas fa-pen"></i> </button>
-            @include('backend.vehicles.issues.modal.edit') 
-
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#showModal{{$issue->id}}">
-                <i class="fas fa-eye"></i></button>
-
-            @include('backend.vehicles.issues.modal.view') 
-
-
-                  <form method="POST" action="{{ route('issues.destroy', $issue->id) }}"> @csrf @method('DELETE') <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this vehicle?')">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                </form>
+                <a target="_blank" href="{{ route('issues.show', $issue->id) }}" class="btn btn-link"><i class="fas fa-eye"></i></a>
+                <a target="_blank" href="{{ route('issues.edit', $issue->id) }}" class="btn btn-link"><i class="fas fa-pen"></i></a>
+              </div>
               </td>
             </tr> 
             @endforeach </tbody>

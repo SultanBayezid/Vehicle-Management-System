@@ -54,7 +54,7 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                       <p> Select any issues that were resolved as part of this service:</p>
+                                       <p> {{ _lang('Select any issues that were resolved as part of this service') }}</p>
                                             @foreach($issues as $issue)
     <label>
     <div class="form-check">

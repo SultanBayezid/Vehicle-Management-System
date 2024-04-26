@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container">
-      <h1 class="h3 mb-2 pt-3 text-gray-800">Service Details</h1>
+      <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Service Details')}}</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-                <li class="breadcrumb-item"><a href="{{route('services.index')}}">Services</a></li>
-                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $service->vehicle_id)}}">{{$service->vehicle->brand->name}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Service Details</li>
+                <li class="breadcrumb-item"><a href="{{route('services.index')}}">{{ _lang('Service')}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $service->vehicle_id)}}">{{$service->vehicle->brand->name}} {{$service->vehicle->model->name}} {{$service->vehicle->myear->year}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ _lang('Service Details')}}</li>
             </ol>
         </nav>
 <div class="row">
@@ -62,6 +62,12 @@
                     </tr>
                 </table>
             </div>
+            <form action="{{ action('App\Http\Controllers\ServiceController@destroy', $service->id) }}" method="post">
+            {{ csrf_field() }}
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="btn btn-danger btn-sm btn-remove"
+                                        type="submit" onclick="return confirm('Are you sure you want to delete this Service?')"><i class="fas fa-trash"></i> {{ _lang('Delete')}}</button>
+                                </form>
        
     </div>
 </div>

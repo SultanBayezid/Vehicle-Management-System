@@ -17,7 +17,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item active" aria-current="page">People</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('People')}}</li>
             <li class="breadcrumb-item active" aria-current="page">{{ _lang('Contact List') }}</li>
         </ol>
     </nav>
@@ -44,13 +44,13 @@
                                     method="post">
                                     <a href="{{route('contact_groups.edit', $contactgroup['id'])}}"
                                         data-title="{{ _lang('Update Contact Group') }}"
-                                        class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                        class="btn btn-link "><i class="fas fa-pencil-alt"></i></a>
                                     <a href="{{route('contact_groups.show', $contactgroup['id'])}}"
                                         data-title="{{ _lang('View Contact Group') }}"
-                                        class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                        class="btn btn-link "><i class="fas fa-eye"></i></a>
                                     {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger btn-sm btn-remove"
+                                    <button class="btn btn-link btn-sm btn-remove"
                                         type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>

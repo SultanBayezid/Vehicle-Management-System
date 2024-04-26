@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container">
-      <h1 class="h3 mb-2 pt-3 text-gray-800">Fuel  Details</h1>
+      <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Fuel Details') }}</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-                <li class="breadcrumb-item"><a href="{{route('services.index')}}">Fuel</a></li>
-                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $fuel->vehicle_id)}}">{{$fuel->vehicle->brand->name}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Fuel Details</li>
+                <li class="breadcrumb-item"><a href="{{route('fuels.index')}}">{{ _lang('Fuel') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('vehicles.show', $fuel->vehicle_id)}}">{{$fuel->vehicle->brand->name}} {{$fuel->vehicle->model->name}} {{$fuel->vehicle->myear->year}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ _lang('Fuel Details') }}</li>
             </ol>
         </nav>
 <div class="row">

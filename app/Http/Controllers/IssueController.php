@@ -140,6 +140,6 @@ class IssueController extends Controller
     {
         $issue = Issue::find($id);
         $issue->delete();
-        return back()->with('success', _lang('Removed Sucessfully'));
+        return redirect()->route('issues.index')->with('success', _lang('Issue Removed Sucessfully'));
     }
 }

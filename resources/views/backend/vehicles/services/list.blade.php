@@ -5,10 +5,10 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{route('dashboard')}}">Home</a>
+        <a href="{{route('dashboard')}}">{{ _lang('Home') }}</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="{{route('vehicles.index')}}">Vehicles</a>
+        <a href="{{route('vehicles.index')}}">{{ _lang('Vehicles') }}</a>
       </li>
       <li class="breadcrumb-item " aria-current="page">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</li>
       <li class="breadcrumb-item active">{{ _lang('Service History') }}</li>
@@ -20,9 +20,9 @@
         <div class="col-md-2 col-sm-4 borderright"> @include('backend.vehicles.menu') </div>
         <div class="col-md-10 col-sm-8">
           <span>
-            <h1 class="display-6" style="display: inline-block;">Service History</h1>
+            <h1 class="display-6" style="display: inline-block;">{{ _lang('Service History') }}</h1>
             <button class="btn btn-primary btn-sm" style="float: right;" data-toggle="modal" data-target="#service">
-              <i class="fas fa-plus"></i> Add Service Entry </button>
+              <i class="fas fa-plus"></i> {{ _lang('Add Service History') }} </button>
           </span>
           <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
@@ -48,20 +48,14 @@
                   </td>
                 <td class="text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal{{$service->id}}">  <i class="fas fa-pen"></i> </button>
-                  @include('backend.vehicles.services.modal.edit') 
-                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#showModal{{$service->id}}">
-                  <i class="fas fa-eye"></i>
-    </button>
-                  @include('backend.vehicles.services.modal.view') 
-                  <form action="{{ action('App\Http\Controllers\ServiceController@destroy', $service->id) }}" method="post">
+                <a target="_blank" href="{{ action('App\Http\Controllers\ServiceController@edit', $service->id) }}"
+                                        data-title="{{ _lang('Update service') }}"
+                                        class="btn btn-link"><i class="fas fa-pen"></i></a>
+                                    <a target="_blank" href="{{ action('App\Http\Controllers\ServiceController@show', $service->id) }}"
+                                        data-title="{{ _lang('View service') }}"
+                                        class="btn btn-link"><i class="fas fa-eye"></i></a>
+           
           
-                    {{ csrf_field() }}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-danger btn-sm btn-remove" type="submit">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </form>
       </div>
 
                 </td>

@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title mt-0">New Service Entry</h5>
+      <h5 class="modal-title mt-0">{{ _lang('New Service Entry')}}</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">×</span>
       </button>
@@ -17,7 +17,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Vehicle') }}</label>
-                                            <input type="text" class="form-control"  value="{{ $vehicle->name}}" readonly>
+                                            <input type="text" class="form-control"  value="{{ $vehicle->brand->name}} {{ $vehicle->model->name}} {{ $vehicle->myear->year}}" readonly>
                                             <input type="hidden"  name="vehicle_id" value="{{ $vehicle->id}}">
                                         </div>
                                     </div>
@@ -31,7 +31,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Odometer') }}</label>
-                                            <input type="text" class="form-control" name="odometer" value="{{ old('odometer') }}" >
+                                            <input type="number" class="form-control" name="odometer" value="{{ old('odometer') }}" >
                                         </div>
                                     </div>
                                 </div>

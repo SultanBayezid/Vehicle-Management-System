@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactGroup;
+use App\Models\Contact;
+
 use Illuminate\Http\Request;
 use Validator;
 
@@ -106,8 +108,15 @@ return view('backend.contacts.contact_group.list',compact('contactgroups'));
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ContactGroup $contactGroup)
-    {
-        //
+    public function destroy($id) {
+       
+
+        if (Contact::where('group_id', $id)->exists() ) {
+        // If related records exist, redirect back with an error message
+        return redirect('contact_groups')->with('error', _lang('Cannot delete conatct group. Related records exist.'));
+    }
+        $contactgroup = ContactGroup::find($id);
+        $contactgroup->delete();
+        return back()->with('success', _lang('Information has been deleted sucessfully'));
     }
 }

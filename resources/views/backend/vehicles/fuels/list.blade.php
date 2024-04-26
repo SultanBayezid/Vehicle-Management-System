@@ -54,39 +54,14 @@
               <td>{{$fuel->reference }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <button class="btn btn-primary btn-sm edit-fuel" 
-data-toggle="modal" 
-data-target="#fueledit" 
-data-date="{{$fuel->date}}"
-data-vehicle-id="{{$fuel->vehicle_id}}"
-data-vehicle-name="{{$fuel->vehicle->brand->name ?? ''}} {{$fuel->vehicle->model->name ?? '' }} {{$fuel->vehicle->myear->year ?? ''}}"
-data-odometer="{{$fuel->odometer}}"
-data-qty="{{$fuel->qty}}"
-data-reference="{{$fuel->reference}}"
-data-form-action="{{ route('fuels.update', $fuel->id) }}"
-data-note="{{$fuel->note}}">
-<i class="fas fa-pen"></i>
-</button>
-
-<button class="btn btn-success btn-sm view-fuel" 
-data-toggle="modal" 
-data-target="#viewedit" 
-data-date="{{$fuel->date}}"
-data-vehicle-id="{{$fuel->vehicle_id}}"
-data-vehicle-name="{{$fuel->vehicle->brand->name ?? ''}} {{$fuel->vehicle->model->name ?? '' }} {{$fuel->vehicle->myear->year ?? ''}}"
-data-odometer="{{$fuel->odometer}}"
-data-qty="{{$fuel->qty}}"
-data-reference="{{$fuel->reference}}"
-data-attachment-url="{{ asset('uploads/fuel/'.$fuel->attachment) }}"
-data-note="{{$fuel->note}}">
-<i class="fas fa-eye"></i>
-</button>
-          
-                  <form method="POST" action="{{ route('fuels.destroy', $fuel->id) }}"> @csrf @method('DELETE') <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this vehicle?')">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                </form>
+                <a target="_blank" href="{{ action('App\Http\Controllers\FuelController@edit', $fuel->id) }}"
+                                        data-title="{{ _lang('Update service') }}"
+                                        class="btn btn-link"><i class="fas fa-pen"></i></a>
+                                    <a target="_blank" href="{{ action('App\Http\Controllers\FuelController@show', $fuel->id) }}"
+                                        data-title="{{ _lang('View service') }}"
+                                        class="btn btn-link"><i class="fas fa-eye"></i></a>
+                
+              </div>
               </td>
             </tr> 
             @endforeach </tbody>
@@ -99,9 +74,6 @@ data-note="{{$fuel->note}}">
 
 </div>
 @include('backend.vehicles.fuels.modal.create') 
-@include('backend.vehicles.fuels.modal.edit') 
-@include('backend.vehicles.fuels.modal.view') 
-
 
 
 @endsection
