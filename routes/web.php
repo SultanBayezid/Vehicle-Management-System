@@ -150,7 +150,11 @@ Route::group(['middleware' => ['auth','verified']], function () {
 			Route::match(['get', 'post'],'reports/income_vs_expense/{view?}', 'App\Http\Controllers\ReportController@income_vs_expense')->name('reports.income_vs_expense');
 			Route::match(['get', 'post'],'reports/report_by_payer/{view?}', 'App\Http\Controllers\ReportController@report_by_payer')->name('reports.report_by_payer');
 			Route::match(['get', 'post'],'reports/report_by_payee/{view?}', 'App\Http\Controllers\ReportController@report_by_payee')->name('reports.report_by_payee');
-    
+            Route::post('/driver/user/{id}/update', 'App\Http\Controllers\DriverController@DriverUserUpdate')->name('driver_user.update');
+            Route::post('/driver/user/{id}/create', 'App\Http\Controllers\DriverController@DriverUserCreate')->name('driver_user.create');
+            Route::get('/driver/user/{id}', 'App\Http\Controllers\DriverController@DriverUserId')->name('driver_user.id');
+
+
 });
 
 

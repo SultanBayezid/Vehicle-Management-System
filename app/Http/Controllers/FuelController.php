@@ -126,8 +126,10 @@ class FuelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fuel $fuel)
+    public function destroy($id)
     {
-        //
+        $fuel = Fuel::findOrfail($id);
+        $fuel->delete();
+        return redirect()->route('fuels.index')->with('success', _lang('Fuel History Removed !'));
     }
 }

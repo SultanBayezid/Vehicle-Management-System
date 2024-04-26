@@ -233,7 +233,7 @@ class UserController extends Controller {
         Contact::where('company_id', $id)->exists() ||
         Trip::where('company_id', $id)->exists()) {
         // If related records exist, redirect back with an error message
-        return redirect()->route('users.index')->with('error', 'Cannot delete vehicle. Related records exist.');
+        return redirect()->route('users.index')->with('error', _lang('Cannot delete user. Related records exist.'));
     }
 
         $user = User::find($id);

@@ -305,7 +305,10 @@ class ContactController extends Controller {
     }
         $contact = Contact::find($id);
 		$user = User::find($contact->user_id);
-        $user->delete();
+        if($user){
+            $user->delete();
+
+        }
         $contact->delete();
         return back()->with('success', _lang('Information has been deleted sucessfully'));
     }

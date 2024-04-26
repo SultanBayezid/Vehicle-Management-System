@@ -49,18 +49,14 @@
                          <td> {{$contact->address}}</td>
 
                          <td class="text-center">
-                                <form action="{{ action('App\Http\Controllers\ContactController@destroy', $contact->id) }}" method="post">
+                         <a href="{{ action('App\Http\Controllers\ContactController@show', $contact->id) }}"
+                                        data-title="{{ _lang('View contact') }}"
+                                        class="btn btn-link"><i class="fas fa-eye"></i></a>
                                     <a href="{{ action('App\Http\Controllers\ContactController@edit', $contact->id) }}"
                                         data-title="{{ _lang('Update contact') }}"
-                                        class="btn btn-warning btn-sm ajax-modal"><i class="fas fa-pen"></i></a>
-                                    <a href="{{ action('App\Http\Controllers\ContactController@show', $contact->id) }}"
-                                        data-title="{{ _lang('View contact') }}"
-                                        class="btn btn-primary btn-sm ajax-modal"><i class="fas fa-eye"></i></a>
-                                    {{ csrf_field() }}
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger btn-sm btn-remove"
-                                        type="submit"><i class="fas fa-trash"></i></button>
-                                </form>
+                                        class="btn btn-link"><i class="fas fa-pen"></i></a>
+                    
+                          
                             </td>
                         </tr>
                         @endforeach

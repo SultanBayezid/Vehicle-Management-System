@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Rules\UniquePhoneExceptSelf;
 use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Models\User;
@@ -88,9 +88,10 @@ class DriverController extends Controller
             ->with('success', 'Driver created successfully');
     }
 
-    public function show(Driver $driver)
+    public function show($id)
     {
-        return view('drivers.show', compact('driver'));
+        $driver = Driver::findOrfail($id);
+        return view('backend.drivers.view', compact('driver'));
     }
 
     public function edit($id)
@@ -145,19 +146,28 @@ class DriverController extends Controller
             ->with('success', 'Driver created successfully');
     }
 
-    public function destroy(Driver $driver)
+    public function destroy($id)
     {
-
         if (Vehicle::where('driver_id', $id)->exists() ||
-        Issue::where('driver_id', $id)->exists() ||
-        Trip::where('driver_id', $id)->exists()) {
-        // If related records exist, redirect back with an error message
-        return redirect()->route('drivers.index')->with('error', 'Cannot delete vehicle. Related records exist.');
-    }
+            Issue::where('driver_id', $id)->exists() ||
+            Trip::where('driver_id', $id)->exists()) {
+            // If related records exist, redirect back with an error message
+            return redirect()->route('drivers.index')->with('error',  _lang('Cannot delete driver. Related records exist.'));
+          
+        }
+    
+        $driver = Driver::findOrFail($id);
+        $user = User::find($driver->user_id);
+        
+        if($user) {
+            $user->delete();
+        }
+        
         $driver->delete();
-        return redirect()->route('drivers.index')
-            ->with('success', 'Driver deleted successfully');
+        
+        return redirect()->route('drivers.index')->with('success', 'Driver deleted successfully');
     }
+    
 
     public function dVehicle($id){
     
@@ -510,4 +520,61 @@ class DriverController extends Controller
             return back()->with('success', _lang('Removed Sucessfully'));
 
         }
+
+        public function DriverUserUpdate(Request $request, $id)
+    {
+                $validatedUpdateData = $request->validate([
+                    'name' => 'required',
+                    'phone' => ['required', new UniquePhoneExceptSelf($id)],
+                    // Add other validation rules for fields to be updated as needed
+                ]);
+
+                $user = User::findOrFail($id);
+                $user->name = $validatedUpdateData['name'];
+                $user->phone = $validatedUpdateData['phone'];
+                // Assuming you also want to update the password
+                if ($request->has('password')) {
+                    $user->password = Hash::make($request->input('password'));
+                }
+                // Assuming you want to update the status if it's present in the request
+                if ($request->has('status')) {
+                    $user->status = $request->input('status');
+                }
+                // Assuming you want to update other fields as needed
+                // $user->other_field = $request->input('other_field');
+
+                $user->save();
+                return redirect()->back()->with('success', 'User Information Updated');
+        }
+
+
+        public function DriverUserId($id){
+
+            $driver = Driver::findOrfail($id);
+             return view('backend.drivers.user', compact('driver'));
+
+        }
+        public function DriverUserCreate(Request $request, $id)
+        {
+                    $validatedLoginData = $request->validate([
+                        'name' => 'required',
+                        'phone' => 'required|unique:users',
+                        'password' => 'required',
+                        // Add other validation rules for fields to be updated as needed
+                    ]);
+    
+                    $user = new User();
+                    $user->name = $validatedLoginData['name'];
+                    $user->phone = $validatedLoginData['phone'];
+                    $user->password = Hash::make($validatedLoginData['password']);
+                    $user->user_type = 'driver';
+                    $user->status = $request->input('status'); // Assuming status is present in the request
+                    $user->company_id = company_id(); // Assuming company_id() function exists and returns the company ID
+                    $user->save();
+                    $driver = Driver::findOrfail($id);
+                    $driver->user_id = $user->id;
+                    $driver->save();
+                    return redirect()->back()->with('success', 'User Information Updated');
+            }
+        
 }

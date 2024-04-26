@@ -18,8 +18,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item active" aria-current="page">People</li>
-            <li class="breadcrumb-item active" aria-current="page">Drivers</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('People')}}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Drivers')}}</li>
         </ol>
     </nav>
     <div class="card"> <div class="card-body">
@@ -48,20 +48,16 @@
                                     <tbody>
                                         @foreach($drivers as $driver)
                                         <tr>
-                                            <td>{{$driver->name }}</td>
+                                            <td>{{$driver->driver_name }}</td>
                                             <td>{{$driver->license_number }}</td>
                                             <td>{{$driver->license_expiry_date }}</td>
                                             <td>{{$driver->driver_phone_number }}</td>
                                             <td>{{$driver->blood_group }}</td>
                                      
                                             <td>
-                <a href="{{ route('drivers.show', $driver->id) }}" class="btn btn-info btn-sm">View</a>
-                <a href="{{ route('drivers.edit', $driver->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                <form method="POST" action="{{ route('drivers.destroy', $driver->id) }}" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')">Delete</button>
-                </form>
+                <a href="{{ route('drivers.show', $driver->id) }}" class="btn btn-link"> <i class="fas fa-eye"></i></a>
+                <a href="{{ route('drivers.edit', $driver->id) }}" class="btn btn-link"> <i class="fas fa-pen"></i></a>
+          
             </td>
                                         </tr>
                                         @endforeach

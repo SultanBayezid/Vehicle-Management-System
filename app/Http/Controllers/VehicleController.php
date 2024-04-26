@@ -256,7 +256,7 @@ class VehicleController extends Controller
         Fuel::where('vehicle_id', $id)->exists() ||
         Trip::where('vehicle_id', $id)->exists()) {
         // If related records exist, redirect back with an error message
-        return redirect()->route('vehicles.index')->with('error', 'Cannot delete vehicle. Related records exist.');
+        return redirect()->route('vehicles.index')->with('error', _lang('Cannot delete Vehicle. Related records exist.'));
     }
 
         $vehicle = Vehicle::findOrFail($id);

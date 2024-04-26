@@ -68,14 +68,9 @@
                                                 @endif</td>
                                             <td>
                                             <div class="btn-group" role="group" aria-label="Basic example"> 
-                <a href="{{ route('issues.show', $issue->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
-                <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
-                <form method="POST" action="{{ route('issues.destroy', $issue->id) }}" >
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{_lang('Are you sure you want to delete this vehicle?')}}')"><i class="fas fa-trash"></i></button>
-
-                    </div> </form>
+                <a href="{{ route('issues.show', $issue->id) }}" class="btn btn-link"><i class="fas fa-eye"></i></a>
+                <a href="{{ route('issues.edit', $issue->id) }}" class="btn btn-link"><i class="fas fa-pen"></i></a>
+          
             </td>
                                         </tr>
                                         @endforeach

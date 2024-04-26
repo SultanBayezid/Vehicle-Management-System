@@ -197,8 +197,12 @@
                         </table>
                     </div>
 
-             
-
+                    <form action="{{ action('App\Http\Controllers\ContactController@destroy', $contact->id) }}" method="post">
+                    {{ csrf_field() }}
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="btn btn-danger btn-sm btn-remove"
+                                        type="submit"><i class="fas fa-trash"></i> {{ _lang('Delete')}}</button>
+                                </form>
                 </div>
                 <!--End TAB-->
             </div>

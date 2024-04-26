@@ -32,4 +32,9 @@ class Driver extends Model
         // Add any other fields here
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

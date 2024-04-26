@@ -170,104 +170,19 @@
       
     
             
-                    <div class="card">
-                <div class="card-header">
-                    <div class="togglebutton">
-                        <h4 class="header-title d-flex align-items-center">{{ _lang('Login Details') }}&nbsp;&nbsp;
-                            <input type="checkbox" id="client_login" value="1" name="client_login">
-                        </h4>
-                    </div>
-                </div>
-
-                <div class="card-body" id="client_login_card">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label">{{ _lang('Name') }}</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
-                                @error('name')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-      </span>
-  @enderror</div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label">{{ _lang('Phone Number') }}</label>
-                                <input type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
-                                @error('phone')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-      </span>
-  @enderror </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label">{{ _lang('Password') }}</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
-                                @error('password')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-      </span>
-  @enderror </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label">{{ _lang('Confirm Password') }}</label>
-                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation">
-                                @error('password_confirmation')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-      </span>
-  @enderror </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label">{{ _lang('Status') }}</label>
-                                <select class="form-control @error('status') is-invalid @enderror" name="status">
-                                    <option value="1">{{ _lang('Active') }}</option>
-                                    <option value="0">{{ _lang('Inactive') }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
                   
                  
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">{{ _lang('Create Driver') }}</button>
+           <div class="">
+           <button type="submit" class="btn btn-primary">{{ _lang('Update Driver') }}</button>
+           </div>
         </form>
     </div>
 </div>
-<!-- Include jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-@push('js-script')
-<script src="{{asset('backend/assets/js/jquery.min.js')}}"></script>
-@endpush
-<script>
-    $(document).ready(function() {
-        // Initial check on page load
-        if (!$('#client_login').is(':checked')) {
-            $("#client_login_card input, #client_login_card select").prop("disabled", true);
-        }
 
-        // Listen for change on the checkbox
-        $(document).on('change', '#client_login', function () {
-            if (!$(this).is(':checked')) {
-                $("#client_login_card input, #client_login_card select").prop("disabled", true);
-            } else {
-                $("#client_login_card input, #client_login_card select").prop("disabled", false);
-            }
-        });
-    });
-</script>
 
 
 @endsection

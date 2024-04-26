@@ -48,18 +48,14 @@
                           
                         
                             <td class="text-center">
-                                <form action="{{ action('App\Http\Controllers\FuelController@destroy', $fuel->id) }}" method="post">
+                             
                                     <a href="{{ action('App\Http\Controllers\FuelController@edit', $fuel->id) }}"
                                         data-title="{{ _lang('Update service') }}"
-                                        class="btn btn-warning btn-sm ajax-modal"><i class="fas fa-pen"></i></a>
+                                        class="btn btn-link"><i class="fas fa-pen"></i></a>
                                     <a href="{{ action('App\Http\Controllers\FuelController@show', $fuel->id) }}"
                                         data-title="{{ _lang('View service') }}"
-                                        class="btn btn-primary btn-sm ajax-modal"><i class="fas fa-eye"></i></a>
-                                    {{ csrf_field() }}
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger btn-sm btn-remove"
-                                        type="submit" onclick="return confirm('Are you sure you want to delete this Fuel History?')"><i class="fas fa-trash"></i></button>
-                                </form>
+                                        class="btn btn-link"><i class="fas fa-eye"></i></a>
+                         
                             </td>
                         </tr>
                         @endforeach

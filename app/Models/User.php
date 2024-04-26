@@ -67,4 +67,9 @@ class User extends Authenticatable
 		$date_format = get_date_format();
         return \Carbon\Carbon::parse($this->valid_to)->format("$date_format");
     }
+
+    public function drivers()
+    {
+        return $this->hasMany(Driver::class);
+    }
 }

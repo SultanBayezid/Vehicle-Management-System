@@ -66,6 +66,12 @@
                     </tr>
                 </table>
             </div>
+            <form action="{{ action('App\Http\Controllers\FuelController@destroy', $fuel->id) }}" method="post">
+            {{ csrf_field() }}
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="btn btn-danger btn-sm btn-remove"
+                                        type="submit" onclick="return confirm('Are you sure you want to delete this Fuel History?')"><i class="fas fa-trash"></i> {{ _lang('Delete')}}</button>
+                                </form>
        
     </div>
 </div>
