@@ -7,7 +7,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{route('dashboard')}}">Home</a>
+        <a href="{{route('dashboard')}}">{{ _lang('Home') }}</a>
       </li>
       <li class="breadcrumb-item">
         <a href="{{route('vehicles.index')}}">{{ _lang('Vehicles') }}</a>
