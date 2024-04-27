@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-          <h1 class="h3 mb-2 pt-3 text-gray-800">Issues</h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Issues')}}</h1>
         </div>
         <div class="col-md-6 text-md-right mt-3">
             <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
@@ -18,8 +18,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Issues</li>
+            <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">{{ _lang('Vehicles')}}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Issues')}}</li>
         </ol>
     </nav>
 

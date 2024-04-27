@@ -40,7 +40,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="driver_id">Driver</label>
-                <select class="form-control select2-ajax @error('driver_id') is-invalid @enderror" data-value="id" data-display="name"
+                <select class="getv form-control select2-ajax @error('driver_id') is-invalid @enderror" data-value="id" data-display="name"
                     data-table="drivers" data-where="1" name="driver_id">
                     <option value="">{{ _lang('Select One') }}</option>
                     {{ create_option("drivers","id","driver_name",old('driver_id'),array("company_id="=>company_id())) }}
@@ -54,12 +54,10 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="vehicle_id">Vehicle</label>
-                <select class="form-control @error('vehicle_id') is-invalid @enderror" name="vehicle_id" id="vehicle_id" required>
-                    <option value="">{{ __('Select One') }}</option>
-                    @foreach($vehicles as $vehicle)
-                    <option value="{{$vehicle->id}}">{{$vehicle->brand->name}} {{$vehicle->model->name}} {{$vehicle->myear->year}}</option>
-                    @endforeach
+                <label for="vehicle_id"> {{ _lang('Vehicle') }}</label>
+                <select class="form-control select2-ajax @error('vehicle_id') is-invalid @enderror" name="vehicle_id" id="vehicle_id" required>
+                    <option value="">{{ _lang('Select One') }}</option>
+              
                 </select>
                 @error('vehicle_id')
                 <span class="invalid-feedback" role="alert">
@@ -74,7 +72,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="pickup_location">Pickup Location:</label>
+                <label for="pickup_location">{{ _lang('Pickup Location') }}</label>
                 <input type="text" name="pickup_location" class="form-control @error('pickup_location') is-invalid @enderror" required>
                 @error('pickup_location')
                 <span class="invalid-feedback" role="alert">
@@ -85,7 +83,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="dropoff_location">Dropoff Location:</label>
+                <label for="dropoff_location"> {{ _lang('Dropoff Location') }}</label>
                 <input type="text" name="dropoff_location" class="form-control @error('dropoff_location') is-invalid @enderror">
                 @error('dropoff_location')
                 <span class="invalid-feedback" role="alert">
@@ -100,7 +98,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="fare_amount">Fare Amount:</label>
+                <label for="fare_amount"> {{ _lang('Fare Amount') }}</label>
                 <input type="number" name="fare_amount" class="form-control @error('fare_amount') is-invalid @enderror">
                 @error('fare_amount')
                 <span class="invalid-feedback" role="alert">
@@ -111,7 +109,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="distance_km">Distance (in kilometers):</label>
+                <label for="distance_km">{{ _lang('Distance (in kilometers)') }}</label>
                 <input type="number" name="distance_km" class="form-control @error('distance_km') is-invalid @enderror">
                 @error('distance_km')
                 <span class="invalid-feedback" role="alert">
@@ -126,7 +124,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="trip_date">Trip Date:</label>
+                <label for="trip_date">{{ _lang('Trip Date') }}</label>
                 <input type="date" name="trip_date" class="form-control @error('trip_date') is-invalid @enderror" required>
                 @error('trip_date')
                 <span class="invalid-feedback" role="alert">
@@ -137,7 +135,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="departure_time">Departure Time:</label>
+                <label for="departure_time">{{ _lang('Departure Time') }}</label>
                 <input type="time" name="departure_time" class="form-control @error('departure_time') is-invalid @enderror">
                 @error('departure_time')
                 <span class="invalid-feedback" role="alert">
@@ -148,7 +146,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="arrival_time">Arrival Time:</label>
+                <label for="arrival_time">{{ _lang('Arrival Time') }}</label>
                 <input type="time" name="arrival_time" class="form-control @error('arrival_time') is-invalid @enderror">
                 @error('arrival_time')
                 <span class="invalid-feedback" role="alert">
@@ -162,7 +160,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="trip_notes">Trip Notes:</label>
+                <label for="trip_notes">{{ _lang('Trip Notes') }}</label>
                 <textarea name="trip_notes" class="form-control @error('trip_notes') is-invalid @enderror" rows="4"></textarea>
                 @error('trip_notes')
                 <span class="invalid-feedback" role="alert">
@@ -181,4 +179,32 @@
     </div>
 </div>
 </div>
+<script src="{{ asset('backend/assets/js/jquery-3.6.0.min.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+    $('.getv').change(function() {
+        var driver_id = $(this).val();
+        if (driver_id !== '') {
+            $.ajax({
+                url: "{{ route('get-vehicles', ':driver_id') }}".replace(':driver_id', driver_id),
+                type: 'GET',
+                success: function(response) {
+                    var options = '<option value="">{{ _lang('Select One') }}</option>';
+                    $.each(response, function(index, vehicle) {
+                        options += '<option value="' + vehicle.id + '">' + vehicle.brand.name + ' ' + vehicle.model.name + ' ' + vehicle.myear.year + '</option>';
+                    });
+                    $('#vehicle_id').html(options).select2(); // Initialize Select2 after updating options
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        } else {
+            $('#vehicle_id').html('<option value="">{{ _lang('Select One') }}</option>').select2(); // Initialize Select2 after updating options
+        }
+    });
+});
+</script>
+
 @endsection

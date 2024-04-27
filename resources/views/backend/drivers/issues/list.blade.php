@@ -136,7 +136,7 @@
 
             <!-- Assignee -->
  
-            <input type="hidden" class="form-control" value="{{$issue->driver->id}}" name="driver_id" >
+            <input type="hidden" class="form-control" value="{{$vehicle->driver->id}}" name="driver_id" >
 
             <!-- Summary -->
             <div class="row mb-2">

@@ -5,16 +5,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-          <h1 class="h3 mb-2 pt-3 text-gray-800">Services</h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Service') }}</h1>
         </div>
     </div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item"><a href="{{route('services.index')}}">Services</a></li>
+            <li class="breadcrumb-item"><a href="{{route('services.index')}}">{{ _lang('Services') }} </a></li>
+            <li class="breadcrumb-item"><a href="{{route('vehicles.show', $service->vehicle_id)}}">{{$service->vehicle->brand->name ?? ''}} {{$service->vehicle->model->name ?? ''}} {{$service->vehicle->myear->year ?? ''}} </a></li>
 
-            <li class="breadcrumb-item active"  aria-current="page">Service Edit</li>
+            <li class="breadcrumb-item active"  aria-current="page">{{ _lang('Service Edit') }} </li>
         </ol>
     </nav>
                       

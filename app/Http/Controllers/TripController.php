@@ -224,4 +224,13 @@ class TripController extends Controller
         return redirect()->route('trips.index')->with('success', 'Deleted Sucessfully');
     }
 
+    public function getVehicles($driver_id)
+{
+    $vehicles = Vehicle::with('brand', 'model', 'myear')
+    ->where('company_id', company_id())
+    ->where('driver_id', $driver_id)
+    ->get();
+    return response()->json($vehicles);
+}
+
 }

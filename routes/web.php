@@ -97,6 +97,7 @@ Route::group(['middleware' => ['auth','verified']], function () {
     Route::group(['middleware' => ['company']], function () {
 			Route::resource('staffs','App\Http\Controllers\StaffController');
 
+            Route::get('get-vehicles/{driver_id}', 'App\Http\Controllers\TripController@getVehicles')->name('get-vehicles');
 
     Route::get('vehicle/services/list/{id}', 'App\Http\Controllers\VehicleController@VehicleService')->name('vehicle_services');
     Route::get('vehicle/issues/list/{id}', 'App\Http\Controllers\VehicleController@VehicleIssue')->name('vehicle_issues');

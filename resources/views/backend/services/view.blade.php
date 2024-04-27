@@ -47,8 +47,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>{{ _lang('Description') }}</td>
-                        <td>{{$service->description}}</td>
+                        <td>{{ _lang('Note') }}</td>
+                        <td>{{$service->note}}</td>
                     </tr>
                     <tr>
                         <td>

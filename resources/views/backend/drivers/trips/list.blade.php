@@ -20,11 +20,11 @@
 <div class="container">
     <div class="row center">
         <div class="col-md-6 text-md-left">
-          <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Contacts') }} </h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Trips') }} </h1>
         </div>
         <div class="col-md-6 text-md-right mt-3">
 
-            <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#issue"><i class="fas fa-plus"></i> {{ _lang('Add New Contact') }} </button>
+            <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#issue"><i class="fas fa-plus"></i> {{ _lang('Add New Trip') }} </button>
         </div>
     </div>
     
@@ -100,7 +100,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label">{{ _lang('Vehicle') }}</label>
-                        <select class="form-control select2-ajax"  name="vehicle_id">
+                        <select class="form-control "  name="vehicle_id">
                 <option value="">{{ ('Select One') }}</option>
                 @foreach($vehicles as $vehicle)
                 <option value="{{$vehicle->id}}">{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}</option>
@@ -112,7 +112,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label">{{ _lang('Passenger') }}</label>
-                        <select class="form-control select2-ajax" data-value="id" data-display="contact_name" data-table="contacts" data-where="1" name="customer_id">
+                        <select class="form-control " name="customer_id">
                 <option value="">{{ ('Select One') }}</option>
                 {{ create_option("contacts","id","contact_name",old('contact_name'),array("ref_user_id="=>auth()->user()->id)) }}
             </select>
@@ -129,14 +129,14 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label">{{ _lang('Dropoff Location') }}</label>
-                        <input type="text" name="dropoff_location" class="form-control sign__input">
+                        <input type="text" name="dropoff_location" class="form-control sign__input" required>
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label">{{ _lang('Fare') }}</label>
-                        <input type="number" name="fare_amount" class="form-control sign__input">
+                        <input type="number" name="fare_amount" class="form-control sign__input" required>
                     </div>
                 </div>
 

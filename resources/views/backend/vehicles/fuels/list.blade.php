@@ -7,10 +7,10 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{route('dashboard')}}">Home</a>
+        <a href="{{route('dashboard')}}">{{ _lang('Home') }}</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="{{route('vehicles.index')}}">Vehicles</a>
+        <a href="{{route('vehicles.index')}}">{{ _lang('Vehicles') }}</a>
       </li>
       <li class="breadcrumb-item " aria-current="page">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</li>
       <li class="breadcrumb-item active">{{ _lang('Fuels') }}</li>
@@ -25,26 +25,27 @@
       </div>
       <div class="col-md-10 col-sm-8">
       <span>
-    <h1 class="display-6" style="display: inline-block;">Fuels</h1>
+    <h1 class="display-6" style="display: inline-block;">{{ _lang('Fuel History') }}</h1>
     <button class="btn btn-primary btn-sm" style="float: right;"  data-toggle="modal" data-target="#fuel"><i class="fas fa-plus"></i> Add Fuel Entry</button>
 </span>
 <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Odometer</th>
-              <th>Qty</th>
-              <th>reference</th>
-              <th>Action</th>
+            <th>{{ _lang('Date') }}</th>
+              <th>{{ _lang('Qty') }}</th>
+              <th>{{ _lang('Odometer')}}</th>
+              <th>{{ _lang('Refference') }}</th>
+              <th class="action-col">{{ _lang('Action') }}</th>
+              
             </tr>
           </thead>
           <tfoot>
             <tr>
-            <th>Date</th>
-              <th>Odometer</th>
-              <th>Qty</th>
-              <th>reference</th>
-              <th>Action</th>
+            <th>{{ _lang('Date') }}</th>
+            <th>{{ _lang('Qty') }}</th>
+            <th>{{ _lang('Odometer')}}</th>
+            <th>{{ _lang('Refference') }}</th>
+            <th class="action-col">{{ _lang('Action') }}</th>
             </tr>
           </tfoot>
           <tbody> @foreach($fuels as $fuel) <tr>

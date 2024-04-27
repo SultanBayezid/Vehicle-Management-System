@@ -12,7 +12,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item"><a href="{{route('services.index')}}">{{ _lang('Fuel History') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('fuels.index')}}">{{ _lang('Fuel History') }}</a></li>
 
             <li class="breadcrumb-item active"  aria-current="page">{{ _lang('Fuel History Create') }} </li>
         </ol>
@@ -31,8 +31,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
-                                                    <select class="form-control" name="vehicle_id" id="vehicle_id" required>
-                                                        <option value="">{{ _lang('Select One') }}</option>
+                                                    <select class="form-control select2-ajax" name="vehicle_id" id="vehicle_id" required>
+                                                        <option >{{ _lang('Select One') }}</option>
                                                         @foreach($vehicles as $vehicle)
                                                         <option value="{{ $vehicle->id }}">{{ $vehicle->brand->name ?? '' }} {{ $vehicle->model->name ?? '' }} {{ $vehicle->myear->year ?? '' }}</option>
                                                         @endforeach
@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
-                                                    <input type="number" name="odometer" required="" placeholder="{{ _lang('Odometer') }}" class="form-control" value="">
+                                                    <input type="number" name="odometer" placeholder="{{ _lang('Odometer') }}" class="form-control" required >
                                                 </div>
                                             </div>
                                         </div>
@@ -74,7 +74,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
-                                                    <input type="number" name="qty" required="" placeholder="{{ _lang('Fuel Quantity') }}" class="form-control" value="">
+                                                    <input type="number" name="qty" placeholder="{{ _lang('Fuel Quantity') }}" class="form-control" required >
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
-                                                    <input type="text" name="reference" placeholder="{{ _lang('Reference') }}" class="form-control" value="">
+                                                    <input type="text" name="reference" placeholder="{{ _lang('Reference') }}" class="form-control" >
                                                 </div>
                                             </div>
                                         </div>
@@ -107,7 +107,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
-                                                    <textarea cols="3" rows="3" name="note" placeholder="{{ _lang('Note') }}" class="form-control" value=""></textarea>
+                                                    <textarea cols="3" rows="3" name="note" placeholder="{{ _lang('Note') }}" class="form-control" ></textarea>
                                                 </div>
                                             </div>
                                         </div>

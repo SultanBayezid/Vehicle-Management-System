@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="container">
-      <h1 class="h3 mb-2 pt-3 text-gray-800">Issue Details</h1>
+      <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Issue Details')}}</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-                <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">Vehicles</a></li>
-                <li class="breadcrumb-item"><a href="{{route('issues.index')}}">Issues</a></li>
+                <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">{{ _lang('Vehicles')}}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('issues.index')}}">{{ _lang('Issues')}} </a></li>
                 <li class="breadcrumb-item"><a href="{{route('vehicles.show', $issue->vehicle_id)}}">{{$issue->vehicle->brand->name}} {{$issue->vehicle->model->name}} {{$issue->vehicle->myear->year}}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
+                <li class="breadcrumb-item active" aria-current="page"> {{ _lang('Issue Details')}}</li>
             </ol>
         </nav>
 <div class="row">
@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <td>{{ _lang('Assignee') }}</td>
-                        <td>{{$issue->driver->name}}</td>
+                        <td>{{$issue->driver->driver_name}}</td>
                     </tr>
                     <tr>
                         <td>{{ _lang('Summary') }}</td>

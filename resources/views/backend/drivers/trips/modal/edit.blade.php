@@ -52,14 +52,14 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label">{{ _lang('Dropoff Location') }}</label>
-                        <input type="text" name="dropoff_location" value="{{$trip->dropoff_location}}" class="form-control sign__input">
+                        <input type="text" name="dropoff_location" value="{{$trip->dropoff_location}}" class="form-control sign__input" required>
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label">{{ _lang('Fare') }}</label>
-                        <input type="number" name="fare_amount" value="{{$trip->fare_amount}}" class="form-control sign__input">
+                        <input type="number" name="fare_amount" value="{{$trip->fare_amount}}" class="form-control sign__input" required>
                     </div>
                 </div>
 
