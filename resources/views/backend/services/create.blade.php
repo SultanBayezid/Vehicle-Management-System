@@ -31,7 +31,7 @@
                                             <select class="form-control" data-value="id" data-display="vehicle_id" data-table="vehicles" data-where="1" name="vehicle_id" id="vehicle_id" required>
                                                 <option value="">{{ __('Select One') }}</option>
                                                 @foreach($vehicles as $vehicle)
-                                                <option value="{{$vehicle->id}}">{{$vehicle->brand->name}} {{$vehicle->model->name}} {{$vehicle->myear->year}}</option>
+                                                <option value="{{$vehicle->id}}">{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

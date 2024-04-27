@@ -71,8 +71,8 @@
                                     </tbody>
                                 </table>
                                 <div class="pagination justify-content-center">
-     {{ $vehicles->links('vendor.pagination.bootstrap-5') }}
-</div>
+                                    {{ $vehicles->links('vendor.pagination.bootstrap-5') }}
+                                </div>
                             </div>
                  
  </div>

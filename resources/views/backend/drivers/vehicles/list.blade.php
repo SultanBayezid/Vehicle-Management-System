@@ -178,7 +178,7 @@ ul, li {
                                     </div>
                                 </div>
                                 <div class="content-column col-md-8 col-sm-8 col-xs-12">
-                                    <h3>{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</h3>
+                                    <h3>{{$vehicle->brand->name  ??  ' '}} {{$vehicle->model->name ?? ' ' }} {{$vehicle->myear->year ?? ' ' }}</h3>
                                     <div class="price">{{currency()}}{{ $vehicle->price_per_km }}/{{ _lang('KM') }}  |  {{currency()}}{{ $vehicle->price_per_day }}/{{ _lang('Day') }}</div>
                                     <div class="info-box">
                                         <ul class="car-info">

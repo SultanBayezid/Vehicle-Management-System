@@ -17,7 +17,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">{{ _lang('Vehicle') }}</label>
-                                            <input type="text" class="form-control"  value="{{ $vehicle->brand->name}} {{ $vehicle->model->name}} {{ $vehicle->myear->year}}" readonly>
+                                            <input type="text" class="form-control"  value="{{ $vehicle->brand->name ?? ''}} {{ $vehicle->model->name ?? ''}} {{ $vehicle->myear->year ?? ''}}" readonly>
                                             <input type="hidden"  name="vehicle_id" value="{{ $vehicle->id}}">
                                         </div>
                                     </div>

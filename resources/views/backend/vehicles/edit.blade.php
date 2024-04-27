@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-          <h1 class="h3 mb-2 pt-3 text-gray-800">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">{{$vehicle->brand->name  ??  ' '}} {{$vehicle->model->name ?? ' ' }} {{$vehicle->myear->year ?? ' ' }}</h1>
         </div>
     </div>
 
@@ -14,7 +14,7 @@
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
             <li class="breadcrumb-item"><a href="{{route('vehicles.index')}}">{{ _lang('Vehicles') }}</a></li>
 
-            <li class="breadcrumb-item active"  aria-current="page">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</li>
+            <li class="breadcrumb-item active"  aria-current="page">{{$vehicle->brand->name  ??  ' '}} {{$vehicle->model->name ?? ' ' }} {{$vehicle->myear->year ?? ' ' }}</li>
         </ol>
     </nav>
                       

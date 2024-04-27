@@ -19,24 +19,34 @@ class VehicleFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'make' => $this->faker->word,
-            'model' => $this->faker->word,
-            'year' => $this->faker->numberBetween(2000, 2022),
-            'vin' => $this->faker->ean13,
-            'color' => $this->faker->colorName,
+        'brand_id' => 103,
+            'model_id' => 1366,
+            'manufacture_year' => $this->faker->numberBetween(1990, 2022),
+            'register_year' => $this->faker->numberBetween(1990, 2022),
+            'transmission_id' => 3,
+            'body_type_id' => 4,
+            'drive_type_id' => 3,
+            'driver_id' => null,
+            'company_id' => 1, // Assuming you have a default company ID
             'mileage' => $this->faker->numberBetween(1000, 100000),
-            'license_plate' => $this->faker->bothify('?? ####'),
+            'in_color' => $this->faker->colorName,
+            'ex_color' => $this->faker->colorName,
+            'license_plate' => $this->faker->unique()->bothify('??####'),
             'engine_number' => $this->faker->word,
             'chassis_number' => $this->faker->word,
             'seating_capacity' => $this->faker->numberBetween(2, 8),
-            'weight' => $this->faker->randomFloat(2, 1000, 5000),
-            'horsepower' => $this->faker->numberBetween(100, 500),
+            'weight' => $this->faker->numberBetween(1000, 5000),
+            'engine_capacity' => null, // Add logic if required
             'purchase_date' => $this->faker->date,
             'purchase_price' => $this->faker->randomFloat(2, 10000, 50000),
-            'last_service_date' => $this->faker->date,
-            'odometer_reading' => $this->faker->numberBetween(1000, 50000),
-            'company_id' => 1, // Assuming you have 10 companies
+            'supplier_name' => $this->faker->name,
+            'supplier_phone' => $this->faker->phoneNumber,
+            'purchase_note' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
+            'price_per_km' => $this->faker->randomFloat(2, 10, 100),
+            'price_per_day' => $this->faker->randomFloat(2, 50, 200),
+            'status' => $this->faker->randomElement([0, 1]), // Random status
+            'company_id' => 2, // Assuming you have 10 companies
         ];
     }
 }

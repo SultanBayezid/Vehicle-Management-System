@@ -3,7 +3,7 @@
 
 
 <div class="container">
-<h1 class="h3 mb-2 pt-3 text-gray-800">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</h1>
+<h1 class="h3 mb-2 pt-3 text-gray-800">{{$vehicle->brand->name  ??  ' '}} {{$vehicle->model->name ?? ' ' }} {{$vehicle->myear->year ?? ' ' }}</h1>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
@@ -12,7 +12,7 @@
       <li class="breadcrumb-item">
         <a href="{{route('vehicles.index')}}">{{ _lang('Vehicles') }}</a>
       </li>
-      <li class="breadcrumb-item " aria-current="page">{{$vehicle->brand->name }} {{$vehicle->model->name }} {{$vehicle->myear->year }}</li>
+      <li class="breadcrumb-item " aria-current="page">{{$vehicle->brand->name  ??  ' '}} {{$vehicle->model->name ?? ' ' }} {{$vehicle->myear->year ?? ' ' }}</li>
       <li class="breadcrumb-item active">{{ _lang('Fuels') }}</li>
     </ol>
   </nav>

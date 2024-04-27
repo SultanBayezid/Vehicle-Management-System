@@ -60,7 +60,7 @@
                 <select class="form-control @error('vehicle_id') is-invalid @enderror" name="vehicle_id" id="vehicle_id" required>
                     <option value="">{{ __('Select One') }}</option>
                     @foreach($vehicles as $vehicle)
-                    <option value="{{$vehicle->id}}"{{$vehicle->id == $trip->vehicle_id ? 'selected' : ''}}>{{$vehicle->brand->name}} {{$vehicle->model->name}} {{$vehicle->myear->year}}</option>
+                    <option value="{{$vehicle->id}}"{{$vehicle->id == $trip->vehicle_id ? 'selected' : ''}}>{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}</option>
                     @endforeach
                 </select>
                 @error('vehicle_id')

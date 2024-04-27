@@ -21,7 +21,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                     <div class="form-group">
-                                                      <input type="text" value="{{$vehicle->brand->name}} {{$vehicle->model->name}} {{$vehicle->myear->year}}" class="form-control" readonly>
+                                                      <input type="text" value="{{$vehicle->brand->name ?? ''}} {{$vehicle->model->name ?? ''}} {{$vehicle->myear->year ?? ''}}" class="form-control" readonly>
                                                     <input type="hidden" name="vehicle_id" value="{{$vehicle->id}}">
                                                     </div>
                                                 </div>

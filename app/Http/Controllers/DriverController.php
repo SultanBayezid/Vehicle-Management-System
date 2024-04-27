@@ -18,7 +18,9 @@ class DriverController extends Controller
 {
     public function index()
     {
-        $drivers = Driver::where('company_id', company_id())->get();
+        $drivers = Driver::where('company_id', company_id())
+        ->orderBy('created_at', 'desc') // Sort by the latest date
+        ->paginate(10); // Paginate with 10 items per page
         return view('backend.drivers.list', compact('drivers'));
     }
 
