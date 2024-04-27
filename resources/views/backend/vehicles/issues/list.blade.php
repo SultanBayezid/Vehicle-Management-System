@@ -64,6 +64,9 @@
             </tr> 
             @endforeach </tbody>
         </table>
+        <div class="pagination justify-content-center">
+                                    {{ $issues->links('vendor.pagination.bootstrap-5') }}
+                                </div>
       </div>
       </div>
 

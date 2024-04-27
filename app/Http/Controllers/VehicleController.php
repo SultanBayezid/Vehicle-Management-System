@@ -277,7 +277,8 @@ class VehicleController extends Controller
     public function VehicleIssue($id){
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
-        $data['issues'] = Issue::where('vehicle_id', $id)->get();
+        $data['issues'] = Issue::where('vehicle_id', $id)->paginate(10);
+
         $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
 
         return view('backend.vehicles.issues.list', $data);

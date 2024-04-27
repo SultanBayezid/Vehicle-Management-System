@@ -76,7 +76,7 @@
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{_lang('Are you sure you want to delete this vehicle?')}}')"><i class="fas fa-trash"></i> {{ _lang('Delete')}}</button>
 
-                    </div> </form>
+                     </form>
             </div>
        
     </div>
