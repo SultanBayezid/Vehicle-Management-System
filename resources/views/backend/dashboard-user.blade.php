@@ -1,38 +1,52 @@
 @extends('backend.layouts.header')
 @section('content')
+<style>
+    .custom-right-align {
+        text-align: right; /* Align text to the right in the second column */
+        /* OR */
+        /* float: right; */ /* Float the second column to the right */
+    }
+</style>
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-10">
         <h1 class="h3 mb-2 pt-3 text-gray-800">	{{ _lang('Dashboard') }}</h1>
         </div>
-        <div class="col-sm-6">
-        <form class="validate" method="post" action="{{ route('dashboard.exex') }}">
-                        <div class="row">
-                            {{ csrf_field() }}
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">{{ _lang('Date From') }}</label>
-                                    <input type="date" class="form-control datepicker" name="date1" id="date1"
-                                        value="{{ isset($date1) ? $date1 : old('date1') }}" required>
-                                </div>
+        <div class="col-sm-2 ">
+        <form class="validate  pt-3 mb-3" method="post" action="{{ route('dashboard.exex') }}">
+            <div class="row">
+                {{ csrf_field() }}
+                    <div class="date-picker">
+                        <select id="date-range" class="form-select form-select-lg mb-3">
+                        <option value="today" {{ $selectedOption == 'today' ? 'selected' : '' }}>Today</option>
+                        <option value="yesterday" {{ $selectedOption == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
+                        <option value="this-week" {{ $selectedOption == 'this-week' ? 'selected' : '' }}>This Week</option>
+                        <option value="last-week" {{ $selectedOption == 'last-week' ? 'selected' : '' }}>Last Week</option>
+                        <option value="this-month" {{ $selectedOption == 'this-month' ? 'selected' : '' }}>This Month</option>
+                        <option value="last-month" {{ $selectedOption == 'last-month' ? 'selected' : '' }}>Last Month</option>
+                        <option value="custom" {{ $selectedOption == 'custom' ? 'selected' : '' }}>Custom</option>
+                        </select>
+                        <div id="custom-date-picker" style="display: none;">
+                            <div class="form-group">
+                                <label class="control-label">{{ _lang('Date From') }}</label>
+                                <input type="date" class="form-control datepicker" name="date1" id="date1"
+                                    value="{{ isset($date1) ? $date1 : old('date1') }}" required>
                             </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">{{ _lang('Date To') }}</label>
-                                    <input type="date" class="form-control datepicker" name="date2" id="date2"
-                                        value="{{ isset($date2) ? $date2 : old('date2') }}"  required>
-                                </div>
+                            <div class="form-group">
+                                <label class="control-label">{{ _lang('Date To') }}</label>
+                                <input type="date" class="form-control datepicker" name="date2" id="date2"
+                                    value="{{ isset($date2) ? $date2 : old('date2') }}"  required>
                             </div>
-
-
-                            <div class="col-md-4 mtop">
-                                <button type="submit" class="btn btn-primary btn-sm">{{ _lang('View Report') }}</button>
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">{{ _lang('View Report') }}</button>
                         </div>
-                    </form>
+                    </div>
+
+            </div>
+            <!-- Hidden input field to store the selected option value -->
+            <input type="hidden" id="selected-option" name="selected_option">
+        </form>
+
         </div>
     </div>
 
@@ -119,7 +133,9 @@
                               {{ _lang('Trips')}}
                             </div>
                             <canvas id="dayWiseTripsChart" height="300"></canvas>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                            <div class="card-footer small text-muted">Showing data From {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
+ - To {{ \Carbon\Carbon::parse($date2)->format('d F Y') }}
+</div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -129,7 +145,8 @@
                                        {{ _lang('INCOME VS EXPENSE')}}
                                     </div>
                                     <canvas id="incomeVsExpenseChart"  height="300"></canvas>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                                    <div class="card-footer small text-muted">Showing data From {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
+ - To {{ \Carbon\Carbon::parse($date2)->format('d F Y') }}</div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -140,7 +157,8 @@
                                     </div>
                                  
                                     <div class="card-body text-center"> <canvas id="expenseChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                                    <div class="card-footer small text-muted">Showing data From {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
+ - To {{ \Carbon\Carbon::parse($date2)->format('d F Y') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -300,6 +318,25 @@
             }
         });
     </script>
+
+<script>
+    document.getElementById('date-range').addEventListener('change', function() {
+        var selectedOption = this.value;
+        var customDatePicker = document.getElementById('custom-date-picker');
+        var selectedOptionInput = document.getElementById('selected-option');
+
+        if (selectedOption === 'custom') {
+            customDatePicker.style.display = 'block';
+        } else {
+            customDatePicker.style.display = 'none';
+            // Automatically set the selected option value in the hidden input field
+            selectedOptionInput.value = selectedOption;
+            // Automatically submit the form when an option other than "Custom" is selected
+            document.querySelector('form.validate').submit();
+        }
+    });
+</script>
+
 <script src="{{ asset('template/assets/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('template/assets/demo/chart-bar-demo.js') }}"></script>
 <script src="{{ asset('template/assets/demo/chart-pie-demo.js') }}"></script>

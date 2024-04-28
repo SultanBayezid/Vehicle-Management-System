@@ -44,9 +44,6 @@ class DashboardController extends Controller
 			$date2 = $datetwo->toDateString(); // Format: 'Y-m-d'
 	  
 			$type = Auth::user()->user_type;
-			$data['date1'] = $date1;
-			$data['date2'] = $date2;
-
 			// Expense by category
 			$account    = NULL;
 			$category   = NULL;
@@ -106,8 +103,9 @@ class DashboardController extends Controller
 		   ->groupBy('trip_date')
 		   ->orderBy('trip_date')
 		   ->get();
-			return view('backend/dashboard-'.$type,$data);
-
+		   $data['selectedOption'] = 'this-month';
+		   $data['date1'] = $date1;
+		   $data['date2'] = $date2;
 			return view('backend/dashboard-'.$type,$data);
 		}else if($type  == 'staff' ){
 			$company_id = company_id();
@@ -137,12 +135,56 @@ class DashboardController extends Controller
 
 
 	public function in_vs_ex(Request $request) {
+
+		// dd($request->all());
+		$selectedOption = $request->input('selected_option');
+
+		switch ($selectedOption) {
+			case 'today':
+				$date1 = Carbon::today()->toDateString();
+				$date2 = Carbon::today()->toDateString();
+				break;
+			case 'yesterday':
+				$date1 = Carbon::yesterday()->toDateString();
+				$date2 = Carbon::yesterday()->toDateString();
+				break;
+			case 'this-week':
+				$date1 = Carbon::now()->startOfWeek()->toDateString();
+				$date2 = Carbon::now()->endOfWeek()->toDateString();
+				break;
+			case 'last-week':
+				$date1 = Carbon::now()->startOfWeek()->subWeek()->toDateString();
+				$date2 = Carbon::now()->endOfWeek()->subWeek()->toDateString();
+				break;
+			case 'this-month':
+				$date1 = Carbon::now()->startOfMonth()->toDateString();
+				$date2 = Carbon::now()->endOfMonth()->toDateString();
+				break;
+			case 'last-month':
+				$date1 = Carbon::now()->subMonth()->startOfMonth()->toDateString();
+				$date2 = Carbon::now()->subMonth()->endOfMonth()->toDateString();
+				break;
+			case 'custom':
+				// Get the values of date1 and date2 inputs
+				$date1Input = $request->input('date1');
+				$date2Input = $request->input('date2');
+				
+				// Parse the dates and convert them to strings
+				$date1 = Carbon::parse($date1Input)->startOfDay()->toDateString();
+				$date2 = Carbon::parse($date2Input)->endOfDay()->toDateString();
+				break;
+			default:
+				// Default to today's date if selected_option is not provided or invalid
+				$date1 = $request->date1;
+				$date2 = $request->date2;
+				break;
+		}
+	
 		    
-			$date1      = $request->date1;
-			$date2      = $request->date2;
+			$date1      = $date1;
+			$date2      = $date2;
 			$type = Auth::user()->user_type;
-			$data['date1'] = $date1;
-			$data['date2'] = $date2;
+			
 
 			
 			
@@ -208,6 +250,14 @@ class DashboardController extends Controller
 		   ->groupBy('trip_date')
 		   ->orderBy('trip_date')
 		   ->get();
+		    if($request->input('selected_option')==NULL){
+				$data['selectedOption'] = 'custom';
+			}else{
+				$data['selectedOption'] = $request->input('selected_option');
+			}
+			$data['date1'] = $date1;
+			$data['date2'] = $date2;
+		
 			return view('backend/dashboard-'.$type,$data);
 		
 	}
