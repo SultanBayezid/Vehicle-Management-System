@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('reference', 50)->nullable();
             $table->text('attachment')->nullable();
             $table->text('note')->nullable();
+            $table->softDeletes();
             $table->bigInteger('company_id');
             $table->timestamps();
         });

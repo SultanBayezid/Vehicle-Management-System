@@ -26,7 +26,7 @@
 				<table class="table table-bordered" width="100%">
 					<tbody>
 						<tr class="text-center">
-							<td colspan="2"><img class="thumb-image-md" src="{{ profile_picture($profile->profile_picture) }}"></td>
+							<td colspan="2"><img class="thumb-image-md" src="{{ asset('uploads/profile/' . $profile->profile_picture) }}"></td>
 						</tr>
 							<tr>
 								<td>{{ _lang('Name') }}</td>

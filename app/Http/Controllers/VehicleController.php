@@ -267,7 +267,7 @@ class VehicleController extends Controller
     }
 
     public function VehicleService($id){
-        $data['services'] = Service::where('vehicle_id', $id)->get();
+        $data['services'] = Service::where('vehicle_id', $id)->paginate(10);
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
         $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
@@ -288,7 +288,7 @@ class VehicleController extends Controller
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
-        $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
+        $data['fuels'] = Fuel::where('vehicle_id', $id)->paginate(10);
         return view('backend.vehicles.fuels.list', $data);
     }
 
@@ -297,7 +297,7 @@ class VehicleController extends Controller
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
         $data['fuels'] = Fuel::where('vehicle_id', $id)->get();
-        $data['trips'] = Trip::where('vehicle_id', $id)->get();
+        $data['trips'] = Trip::where('vehicle_id', $id)->paginate(10);
         return view('backend.vehicles.trips.list', $data);
     }
 

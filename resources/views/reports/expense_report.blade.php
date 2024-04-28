@@ -48,7 +48,7 @@
                                     <select class="form-control auto-select" name="account"
                                         data-selected="{{ isset($account) ? $account : old('account') }}">
                                         <option value="">{{ _lang('All Account') }}</option>
-                                        {{ create_option('accounts', 'id', 'account_title', '', array()) }}
+                                        {{ create_option('accounts','id','account_title','',array('company_id=' => company_id())) }}
 
                                     </select>
                                 </div>
@@ -60,7 +60,7 @@
                                     <select class="form-control auto-select select2" name="category"
                                         data-selected="{{ isset($category) ? $category : old('category') }}">
                                         <option value="">{{ _lang('All Category') }}</option>
-                                        {{ create_option("chart_of_accounts", "id", "name", "", array("type=" => "expense")) }}
+                                        {{ create_option("chart_of_accounts","id","name","",array("type="=>"expense","AND company_id="=>company_id())) }}
 
                                     </select>
                                 </div>

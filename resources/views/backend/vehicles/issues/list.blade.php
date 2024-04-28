@@ -53,7 +53,8 @@
               <td>{{$issue->priority }}</td>
               <td>{{$issue->driver->driver_name }}</td>
               <td>{{$issue->summary }}</td>
-              <td>{{$issue->report_date }}</td>
+          <td>{{ \Carbon\Carbon::parse($issue->report_date)->format('d F Y') }}</td>
+              
               <td>@if ($issue->status == 1) <div class="badge badge-danger">Pending</div> @elseif ($issue->status == 2) <div class="badge badge-warning">Closed</div> @elseif ($issue->status == 3) <div class="badge badge-success">Resolved</div> @else Status: Unknown @endif </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

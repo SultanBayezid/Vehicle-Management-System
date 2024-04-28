@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-      <h1 class="h3 mb-2 pt-3 text-gray-800">Trip Create</h1>
+      <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Trips Create')}}</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-                <li class="breadcrumb-item"><a href="{{route('trips.index')}}">Trips</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Trip Create</li>
+                <li class="breadcrumb-item"><a href="{{route('trips.index')}}">{{ _lang('Trips')}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ _lang('Trips Create')}}</li>
             </ol>
         </nav>
 <div class="row">
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="customer_id">Customer</label>
+                <label for="customer_id">{{ _lang('Customer')}}</label>
                 <select class="form-control select2-ajax @error('customer_id') is-invalid @enderror" data-value="id" data-display="contact_name"
                     data-table="contacts" data-where="1" name="customer_id">
                     <option value="">{{ _lang('Select One') }}</option>
@@ -39,7 +39,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="driver_id">Driver</label>
+                <label for="driver_id">{{_lang('Driver')}}</label>
                 <select class="getv form-control select2-ajax @error('driver_id') is-invalid @enderror" data-value="id" data-display="name"
                     data-table="drivers" data-where="1" name="driver_id">
                     <option value="">{{ _lang('Select One') }}</option>

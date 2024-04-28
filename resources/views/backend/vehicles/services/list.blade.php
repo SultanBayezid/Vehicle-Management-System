@@ -34,7 +34,8 @@
               </tr>
             </thead>
             <tbody> @foreach($services as $service) <tr>
-                <td>{{ $service->completed_date }}</td>
+          <td>{{ \Carbon\Carbon::parse($service->completed_date)->format('d F Y') }}</td>
+
                 <td>{{ $service->note }}</td>
                 <td>
                 <ul  class="">
@@ -64,6 +65,9 @@
                @endforeach 
               </tbody>
           </table>
+          <div class="pagination justify-content-center">
+                                    {{ $services->links('vendor.pagination.bootstrap-5') }}
+                                </div>
         </div>
       </div>
     </div>

@@ -49,7 +49,8 @@
             </tr>
           </tfoot>
           <tbody> @foreach($fuels as $fuel) <tr>
-              <td>{{$fuel->date }}</td>
+          <td>{{ \Carbon\Carbon::parse($fuel->date)->format('d F Y') }}</td>
+
               <td>{{$fuel->odometer }}</td>
               <td>{{$fuel->qty }}</td>
               <td>{{$fuel->reference }}</td>
@@ -67,6 +68,9 @@
             </tr> 
             @endforeach </tbody>
         </table>
+        <div class="pagination justify-content-center">
+     {{ $fuels->links('vendor.pagination.bootstrap-5') }}
+</div>
       </div>
       </div>
 

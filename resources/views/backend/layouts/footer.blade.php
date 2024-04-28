@@ -26,6 +26,11 @@
       $('.select2-ajax').select2();
     });
   </script>
-        @yield('js-script')
+  <script>
+    $(document).ready(function() {
+      $('.s2').select2();
+    });
+  </script>
+       @stack('js-script')
     </body>
 </html>

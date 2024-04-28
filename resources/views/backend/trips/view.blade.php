@@ -329,7 +329,7 @@
                 <div class="form-group">
                  
                     <label class="control-label">{{ _lang('Account') }}</label>
-                    <select class="form-control select2-ajax" data-value="id" data-display="account_title"
+                    <select class="form-control " data-value="id" data-display="account_title"
                         data-table="accounts" data-where="1" name="account_id" id="account_id" required>
                         <option value="">{{ _lang('Select One') }}</option>
                         {{ create_option("accounts", "id", "account_title", old('account_id')) }}
@@ -342,7 +342,7 @@
                 <div class="form-group">
                   
                     <label class="control-label">{{ _lang('Expense Type') }}</label>
-                    <select class="form-control select2-ajax" data-value="id" data-display="name"
+                    <select class="form-control " data-value="id" data-display="name"
                         data-table="chart_of_accounts" data-where="4" name="chart_id" required>
                         <option value="">{{ _lang('Select One') }}</option>
                         {{ create_option("chart_of_accounts", "id", "name", old('chart_id'), array("type=" => "expense")) }}
@@ -372,7 +372,7 @@
                 <div class="form-group">
                    
                     <label class="control-label">{{ _lang('Payment Method') }}</label>
-                    <select class="form-control select2-ajax" data-value="id" data-display="name"
+                    <select class="form-control " data-value="id" data-display="name"
                         data-table="payment_methods" data-where="1" name="payment_method_id" required>
                         <option value="">{{ _lang('Select One') }}</option>
                         {{ create_option("payment_methods", "id", "name", old('payment_method_id')) }}
@@ -433,7 +433,7 @@ $pending = $trip->fare_amount - $totalpayment;
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title mt-0">Add Expense</h5>
+      <h5 class="modal-title mt-0">{{ _lang('Add Trip Payment')}}</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">×</span>
       </button>

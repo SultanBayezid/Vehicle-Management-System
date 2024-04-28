@@ -84,6 +84,7 @@ Route::get('/vehicle/show/{id}', [FrontendController::class, 'singleCar'])->name
 Auth::routes();
 Route::group(['middleware' => ['auth','verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('dashboard', 'App\Http\Controllers\DashboardController@in_vs_ex')->name('dashboard.exex');
 
            //Profile Controller
            Route::get('profile', 'App\Http\Controllers\ProfileController@index')->name('profile.index');

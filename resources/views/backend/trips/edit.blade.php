@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="customer_id">Customer</label>
+                <label for="customer_id">{{ _lang('Customer')}}</label>
                 <select class="form-control select2-ajax @error('customer_id') is-invalid @enderror" data-value="id" data-display="contact_name"
                     data-table="contacts" data-where="1" name="customer_id">
                     <option value="">{{ _lang('Select One') }}</option>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="driver_id">Driver</label>
+                <label for="driver_id">{{_lang('Driver')}}</label>
                 <select class="form-control select2-ajax @error('driver_id') is-invalid @enderror" data-value="id" data-display="name"
                     data-table="drivers" data-where="1" name="driver_id">
                     <option value="">{{ _lang('Select One') }}</option>
@@ -56,7 +56,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="vehicle_id">Vehicle</label>
+                <label for="vehicle_id">{{ _lang('Vehicle') }}</label>
                 <select class="form-control @error('vehicle_id') is-invalid @enderror" name="vehicle_id" id="vehicle_id" required>
                     <option value="">{{ __('Select One') }}</option>
                     @foreach($vehicles as $vehicle)
@@ -76,7 +76,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="pickup_location">Pickup Location:</label>
+                <label for="pickup_location">{{ _lang('Pickup Location') }}</label>
                 <input type="text" name="pickup_location" class="form-control @error('pickup_location') is-invalid @enderror" value="{{$trip->pickup_location}}" required >
                 @error('pickup_location')
                 <span class="invalid-feedback" role="alert">
@@ -87,7 +87,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="dropoff_location">Dropoff Location:</label>
+                <label for="dropoff_location">D{{ _lang('Dropoff Location') }}</label>
                 <input type="text" name="dropoff_location" class="form-control @error('dropoff_location') is-invalid @enderror" value="{{$trip->dropoff_location}}">
                 @error('dropoff_location')
                 <span class="invalid-feedback" role="alert">
@@ -102,7 +102,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="fare_amount">Fare Amount:</label>
+                <label for="fare_amount"> {{ _lang('Fare Amount') }}</label>
                 <input type="number" name="fare_amount" class="form-control @error('fare_amount') is-invalid @enderror" value="{{$trip->fare_amount}}">
                 @error('fare_amount')
                 <span class="invalid-feedback" role="alert">
@@ -113,7 +113,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="distance_km">Distance (in kilometers):</label>
+                <label for="distance_km">{{ _lang('Distance (in kilometers)') }}</label>
                 <input type="number" name="distance_km" class="form-control @error('distance_km') is-invalid @enderror" value="{{$trip->distance_km}}">
                 @error('distance_km')
                 <span class="invalid-feedback" role="alert">
@@ -128,7 +128,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="trip_date">Trip Date:</label>
+                <label for="trip_date">{{ _lang('Trip Date') }}</label>
                 <input type="date" name="trip_date" class="form-control @error('trip_date') is-invalid @enderror" required value="{{$trip->trip_date}}">
                 @error('trip_date')
                 <span class="invalid-feedback" role="alert">
@@ -139,8 +139,8 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="departure_time">Departure Time:</label>
-                <input type="time" name="departure_time" class="form-control @error('departure_time') is-invalid @enderror" value="{{$trip->departure_time}}">
+                <label for="departure_time">{{ _lang('Departure Time') }}</label>
+                <input type="time" name="departure_time" class="form-control @error('departure_time') is-invalid @enderror" value="{{ \Carbon\Carbon::parse($trip->departure_time)->format('H:i') }}">
                 @error('departure_time')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -150,8 +150,8 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label for="arrival_time">Arrival Time:</label>
-                <input type="time" name="arrival_time" class="form-control @error('arrival_time') is-invalid @enderror" value="{{$trip->arrival_time}}">
+                <label for="arrival_time">{{ _lang('Arrival Time') }}</label>
+                <input type="time" name="arrival_time" class="form-control @error('arrival_time') is-invalid @enderror" value="{{ \Carbon\Carbon::parse($trip->arrival_time)->format('H:i') }}">
                 @error('arrival_time')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -164,7 +164,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="trip_notes">Trip Notes:</label>
+                <label for="trip_notes">{{ _lang('Trip Notes') }}</label>
                 <textarea name="trip_notes" class="form-control @error('trip_notes') is-invalid @enderror" rows="4">{{$trip->trip_notes}}</textarea>
                 @error('trip_notes')
                 <span class="invalid-feedback" role="alert">
@@ -175,7 +175,7 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Create Trip</button>
+    <button type="submit" class="btn btn-primary">{{ _lang('Update') }}</button>
 </form>
             </div>
     

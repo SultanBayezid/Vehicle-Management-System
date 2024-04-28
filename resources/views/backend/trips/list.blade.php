@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-          <h1 class="h3 mb-2 pt-3 text-gray-800">Trips</h1>
+          <h1 class="h3 mb-2 pt-3 text-gray-800">{{ _lang('Trips')}}</h1>
         </div>
         <div class="col-md-6 text-md-right mt-3">
             <a class="btn btn-primary btn-sm" data-title="{{ ('Add Income') }}"
@@ -17,7 +17,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item active" aria-current="page">Trips</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ _lang('Trips')}}</li>
         </ol>
     </nav>
 
@@ -80,7 +80,10 @@
                              
                                     </tbody>
                                 </table>
-                            </div>
+                                <div class="pagination justify-content-center">
+                                    {{ $trips->links('vendor.pagination.bootstrap-5') }}
+                                </div>
+                                                            </div>
                     
                   
 </div>

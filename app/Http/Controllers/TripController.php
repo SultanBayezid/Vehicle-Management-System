@@ -12,7 +12,9 @@ class TripController extends Controller
 {
     public function index(){
 
-        $trips = Trip::where('company_id', company_id())->get();
+        $trips = Trip::where('company_id', company_id())
+        ->latest() // Order by the latest date
+        ->paginate(10); // Paginate with 10 items per page
         return view('backend.trips.list',compact('trips'));
     }
 

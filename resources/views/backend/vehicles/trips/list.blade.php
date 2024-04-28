@@ -58,7 +58,8 @@
           <tbody>
           @foreach($trips as $trip)
                                         <tr>
-                                        <td>{{$trip->trip_date }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($trip->trip_date)->format('d F Y') }}</td>
+
                                             <td>{{$trip->customer->contact_name ?? '' }}</td>
                                             <td>{{$trip->vehicle->driver->driver_name ?? '' }}</td>
                                             <td>{{$trip->vehicle->brand->name }} {{$trip->vehicle->model->name }} {{$trip->vehicle->myear->year }}</td>
@@ -75,6 +76,9 @@
             </tr> 
             @endforeach </tbody>
         </table>
+                                <div class="pagination justify-content-center">
+                                    {{ $trips->links('vendor.pagination.bootstrap-5') }}
+                                </div>
       </div>
       </div>
 
