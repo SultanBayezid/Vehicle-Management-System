@@ -29,7 +29,7 @@ class TripFactory extends Factory
             'vehicle_id' => $this->faker->numberBetween(1, 9), // Random vehicle ID between 1 and 10
             'pickup_location' => $this->faker->city,
             'dropoff_location' => $this->faker->city,
-            'fare_amount' => $this->faker-numberBetween(1200, 20000),
+            'fare_amount' => $this->faker->numberBetween(1200, 20000),
             'trip_date' => $this->faker->dateTimeBetween('2024-02-01', '2024-04-31')->format('Y-m-d'),
             'departure_time' => $this->faker->time(),
             'arrival_time' => $this->faker->time(),
