@@ -33,7 +33,7 @@ class FrontendController extends Controller
 
     public function rent()
     {
-        $data['vehicles'] = Vehicle::orderBy('created_at', 'desc')->paginate(10);
+        $data['vehicles'] = Vehicle::where('status', 1)->orderBy('created_at', 'desc')->paginate(10);
         $data['transmissions'] = Transmission::All();
         $data['fuelTypes'] = FuelType::All();
         return view('frontend.vehicles.list', $data);
@@ -42,7 +42,7 @@ class FrontendController extends Controller
        
         $id = Crypt::decrypt($encryptedId);
         $data['vehicle'] = Vehicle::findOrfail($id);
-        $data['vehicles'] = Vehicle::whereNotIn('id', [$id])
+        $data['vehicles'] = Vehicle::where('status', 1)->whereNotIn('id', [$id])
         ->orderBy('created_at', 'desc')
         ->take(6)
         ->get();
@@ -203,7 +203,7 @@ public function search(Request $request)
         $brandIds = $brandQuery->pluck('id');
 
         // Query vehicles table with brand filter
-        $vehicleQuery = Vehicle::query();
+        $vehicleQuery = Vehicle::where('status', 1)->query();
         if ($brandId && $brandId !== 'All categories') {
             $vehicleQuery->where('brand_id', $brandId);
         }
