@@ -49,12 +49,14 @@
                          <td> {{$contact->address}}</td>
 
                          <td class="text-center">
-                         <a href="{{ action('App\Http\Controllers\ContactController@show', $contact->id) }}"
+                       <div class="btn-group">
+                       <a href="{{ action('App\Http\Controllers\ContactController@show', $contact->id) }}"
                                         data-title="{{ _lang('View contact') }}"
                                         class="btn btn-link"><i class="fas fa-eye"></i></a>
                                     <a href="{{ action('App\Http\Controllers\ContactController@edit', $contact->id) }}"
                                         data-title="{{ _lang('Update contact') }}"
                                         class="btn btn-link"><i class="fas fa-pen"></i></a>
+                       </div>
                     
                           
                             </td>
