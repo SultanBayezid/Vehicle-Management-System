@@ -310,7 +310,7 @@ class ContactController extends Controller {
 
         }
         $contact->delete();
-        return back()->with('success', _lang('Information has been deleted sucessfully'));
+        return redirect()->route('contacts.index')->with('success', _lang('Information has been deleted sucessfully'));
     }
 
     public function send_email(Request $request, $id) {

@@ -18,7 +18,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-            <li class="breadcrumb-item active" aria-current="page">People</li>
+            <li class="breadcrumb-item active" aria-current="page">{{_lang('People')}}</li>
             <li class="breadcrumb-item active" aria-current="page">{{ _lang('Contact List') }}</li>
         </ol>
     </nav>

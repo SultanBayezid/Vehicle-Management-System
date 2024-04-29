@@ -3,9 +3,9 @@
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">{!! _lang('Copyright &copy; Omniverse Dynamics 2024') !!}</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a href="{{route('privacy')}}">{{ _lang('Privacy Policy')}}</a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="{{route('terms')}}">{!! _lang('Terms &amp; Conditions') !!}</a>
                             </div>
                         </div>
                     </div>

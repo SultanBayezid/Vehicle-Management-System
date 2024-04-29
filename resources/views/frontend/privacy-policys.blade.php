@@ -33,7 +33,7 @@
 
 			<div class="row">
 
-        {!! _lang('<h1>Omniverse Dynamics Privacy Policy</h1>
+      <h1>Omniverse Dynamics Privacy Policy</h1>
 
 <p><strong>Effective Date</strong>: April 29, 2024</p>
 
@@ -117,7 +117,7 @@
 <h4>10. Your Consent</h4>
 
 <p>By utilizing our website or services, you consent to the collection, use, and disclosure of your information in line with this Privacy Policy.</p>
-')!!}
+
 
 
 			</div>

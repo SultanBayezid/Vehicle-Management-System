@@ -33,7 +33,7 @@
 
 			<div class="row">
 
-        {!! _lang('<h1>Omniverse Dynamics Terms and Conditions</h1>
+      <h1>Omniverse Dynamics Terms and Conditions</h1>
 
 <p><strong>Effective Date</strong>: April 29, 2024</p>
 
@@ -91,7 +91,7 @@
 
 <p>If you have questions, send us an email or give us a call.</p>
 <p>Email: <a href="mailto:support@omnidyna.com">support@omnidyna.com</a></p>
-<p>Phone: <a href="tel:+8809192698633">+8809192698633</a></p>')!!}
+<p>Phone: <a href="tel:+8809192698633">+8809192698633</a></p>
 
 
 			</div>

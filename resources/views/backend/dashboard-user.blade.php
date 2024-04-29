@@ -61,7 +61,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-3">
-                    <i class="fas fa-road fa-2x text-primary"></i>
+                    <i class="fas fa-money-check-alt fa-2x text-primary"></i>
                 </div>
                 <div class="col-9 text-right">
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ _lang('Revenue') }}</div>
@@ -78,7 +78,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
-                            <i class="fas fa-chart-bar fa-2x text-success"></i>
+                            <i class="fas fa-calculator fa-2x text-success"></i>
                         </div>
                         <div class="col-9 text-right">
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ _lang('Expenses') }}</div>
@@ -94,7 +94,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
-                            <i class="fas fa-chart-pie fa-2x text-info"></i>
+                            <i class="fas fa-wrench fa-2x text-info"></i>
                         </div>
                         <div class="col-9 text-right">
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ _lang('Issues') }}</div>
@@ -111,7 +111,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
-                            <i class="fas fa-car fa-2x text-warning"></i>
+                            <i class="fas fa-tools fa-2x text-warning"></i>
                         </div>
                         <div class="col-9 text-right">
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ _lang('Services') }}</div>
@@ -133,7 +133,7 @@
                               {{ _lang('Trips')}}
                             </div>
                             <canvas id="dayWiseTripsChart" height="300"></canvas>
-                            <div class="card-footer small text-muted">Showing data From {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
+                            <div class="card-footer small text-muted">{{ _lang('Showing data From')}} {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
  - To {{ \Carbon\Carbon::parse($date2)->format('d F Y') }}
 </div>
                         </div>
@@ -145,7 +145,7 @@
                                        {{ _lang('INCOME VS EXPENSE')}}
                                     </div>
                                     <canvas id="incomeVsExpenseChart"  height="300"></canvas>
-                                    <div class="card-footer small text-muted">Showing data From {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
+                                    <div class="card-footer small text-muted">{{ _lang('Showing data From')}} {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
  - To {{ \Carbon\Carbon::parse($date2)->format('d F Y') }}</div>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                     </div>
                                  
                                     <div class="card-body text-center"> <canvas id="expenseChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Showing data From {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
+                                    <div class="card-footer small text-muted">{{ _lang('Showing data From')}} {{ \Carbon\Carbon::parse($date1)->format('d F Y') }}
  - To {{ \Carbon\Carbon::parse($date2)->format('d F Y') }}</div>
                                 </div>
                             </div>
@@ -193,13 +193,13 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Income',
+                    label: '{{_lang('Income')}}',
                     backgroundColor: '#8ee26b',
                     borderColor: '#8ee26b',
                     borderWidth: 1,
                     data: incomeData
                 }, {
-                    label: 'Expense',
+                    label: '{{_lang('Expense')}}',
                     backgroundColor: '#f4516c',
                     borderColor: '#f4516c',
                     borderWidth: 1,
@@ -300,7 +300,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Number of Trips',
+                    label: '{{_lang('Number of Trips')}}',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
