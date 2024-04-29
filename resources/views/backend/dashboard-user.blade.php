@@ -19,13 +19,13 @@
                 {{ csrf_field() }}
                     <div class="date-picker">
                         <select id="date-range" class="form-select form-select-lg mb-3">
-                        <option value="today" {{ $selectedOption == 'today' ? 'selected' : '' }}>Today</option>
-                        <option value="yesterday" {{ $selectedOption == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
-                        <option value="this-week" {{ $selectedOption == 'this-week' ? 'selected' : '' }}>This Week</option>
-                        <option value="last-week" {{ $selectedOption == 'last-week' ? 'selected' : '' }}>Last Week</option>
-                        <option value="this-month" {{ $selectedOption == 'this-month' ? 'selected' : '' }}>This Month</option>
-                        <option value="last-month" {{ $selectedOption == 'last-month' ? 'selected' : '' }}>Last Month</option>
-                        <option value="custom" {{ $selectedOption == 'custom' ? 'selected' : '' }}>Custom</option>
+                        <option value="today" {{ $selectedOption == 'today' ? 'selected' : '' }}>{{ _lang('Today')}}</option>
+                        <option value="yesterday" {{ $selectedOption == 'yesterday' ? 'selected' : '' }}>{{ _lang('Yesterday')}}</option>
+                        <option value="this-week" {{ $selectedOption == 'this-week' ? 'selected' : '' }}>{{ _lang('This Week')}}</option>
+                        <option value="last-week" {{ $selectedOption == 'last-week' ? 'selected' : '' }}>{{ _lang('Last Week')}}</option>
+                        <option value="this-month" {{ $selectedOption == 'this-month' ? 'selected' : '' }}>{{ _lang('This Month')}}</option>
+                        <option value="last-month" {{ $selectedOption == 'last-month' ? 'selected' : '' }}>{{ _lang('Last Month')}}</option>
+                        <option value="custom" {{ $selectedOption == 'custom' ? 'selected' : '' }}>{{ _lang('Custom')}}</option>
                         </select>
                         <div id="custom-date-picker" style="display: none;">
                             <div class="form-group">
@@ -250,20 +250,20 @@
                     label: 'Expense Report',
                     data: data,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.5)',
-                        'rgba(54, 162, 235, 0.5)',
-                        'rgba(255, 206, 86, 0.5)',
-                        'rgba(75, 192, 192, 0.5)',
-                        'rgba(153, 102, 255, 0.5)',
-                        'rgba(255, 159, 64, 0.5)'
+                        '#fde35a',
+                        '#6b8cef',
+                        '#c899f4',
+                        '#69b8f4',
+                        '#00af82',
+                        '#e7792f'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        '#fde35a',
+                        '#6b8cef',
+                        '#c899f4',
+                        '#69b8f4',
+                        '#00af82',
+                        '#e7792f'
                     ],
                     borderWidth: 1
                 }]

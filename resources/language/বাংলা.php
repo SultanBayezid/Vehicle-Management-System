@@ -979,3 +979,82 @@ $language["New Fuel Entry"]="নতুন জ্বালানি এন্ট�
 $language["Add Service History"]="সেবা ইতিহাস যোগ করুন";
 $language["New Service Entry"]="নতুন সেবা এন্ট্রি";
 $language["Distance (in kilometers"]="দূরত্ব (কিলোমিটারে)";
+$language["Today"]="আজ";
+$language["Yesterday"]="গতকাল";
+$language["This Week"]="এই সপ্তাহ";
+$language["Last Week"]="গত সপ্তাহ";
+$language["This Month"]="এই মাস";
+$language["Last Month"]="গত মাস";
+$language["Custom"]="কাস্টম";
+$language["Date From"]="তারিখ থেকে";
+$language["Date To"]="তারিখ পর্যন্ত";
+$language["INCOME VS EXPENSE"]="আয় বনাম ব্যয়";
+$language["EXPENSE BY CATEGORY"]="বিভাগ অনুসারে ব্যয়";
+$language["Trips Create"]="ট্রিপ তৈরি করুন";
+$language["Add Trip Payment"]="ট্রিপ পেমেন্ট যোগ করুন";
+$language["Copyright &copy; Omniverse Dynamics 2024"]="কপিরাইট  &copy; অমনিভার্স ডাইনামিক্স  ২০২৪";
+$language["Terms &amp; Conditions"]="শর্তাবলী";
+$language["<h1>Omniverse Dynamics Privacy Policy</h1>
+
+<p><strong>Effective Date</strong>: April 29, 2024</p>
+
+<p>Welcome to Omniverse Dynamics! This Privacy Policy explains how we handle your personal information when you use our website (omnidyna.com"]="<h1>Omniverse Dynamics Privacy Policy</h1><p><strong>Effective Date</strong>: April 29, 2024</p><p>Welcome to Omniverse Dynamics! This Privacy Policy explains how we handle your personal information when you use our website (omnidyna.com";
+$language["<h1>Omniverse Dynamics Terms and Conditions</h1>
+
+<p><strong>Effective Date</strong>: April 29, 2024</p>
+
+<p>Welcome to Omniverse Dynamics! These are the rules we follow. They are written in a way that is easy to understand.</p>
+
+<h4>1. Acceptance of Terms</h4>
+
+<p>If you want to use our website and services, you have to agree to these rules. If you do not agree, you cannot use them.</p>
+
+<h4>2. User Accounts</h4>
+
+<p>Some parts of our services need you to make an account. Keep your account details safe. If something happens with your account, it is your responsibility.</p>
+
+<h4>3. Use of Services</h4>
+
+<p>Our services are for personal and business use only. Do not use them for anything illegal.</p>
+
+<h4>4. Content</h4>
+
+<p>Whatever you share on our platform, you are responsible for it. We might use it to make our services better.</p>
+
+<h4>5. Third-Party Services</h4>
+
+<p>We might link to other websites or services. We are not in charge of what happens there.</p>
+
+<h4>6. Intellectual Property</h4>
+
+<p>Do not mess with our copyrights or trademarks. They are protected by law.</p>
+
+<h4>7. Disclaimer of Warranties</h4>
+
+<p>Our services might not always work perfectly. We cannot promise they will.</p>
+
+<h4>8. Limitation of Liability</h4>
+
+<p>We are not responsible for any problems our services might cause you.</p>
+
+<h4>9. Termination</h4>
+
+<p>We can stop you from using our services at any time, for any reason.</p>
+
+<h4>10. Governing Law</h4>
+
+<p>These rules follow the laws of Bangladesh.</p>
+
+<h4>11. Entire Agreement</h4>
+
+<p>These rules are everything between us. They cover everything we agree on.</p>
+
+<h4>12. Changes to Terms</h4>
+
+<p>If we change anything, we will tell you by updating our website.</p>
+
+<h4>13. Contact Us</h4>
+
+<p>If you have questions, send us an email or give us a call.</p>
+<p>Email: support@omnidyna.com</p>
+<p>Phone: +8809192698633</p>"]="<h1>Omniverse Dynamics Terms and Conditions</h1><p><strong>Effective Date</strong>: April 29, 2024</p><p>Welcome to Omniverse Dynamics! These are the rules we follow. They are written in a way that is easy to understand.</p><h4>1. Acceptance of Terms</h4><p>If you want to use our website and services, you have to agree to these rules. If you do not agree, you cannot use them.</p><h4>2. User Accounts</h4><p>Some parts of our services need you to make an account. Keep your account details safe. If something happens with your account, it is your responsibility.</p><h4>3. Use of Services</h4><p>Our services are for personal and business use only. Do not use them for anything illegal.</p><h4>4. Content</h4><p>Whatever you share on our platform, you are responsible for it. We might use it to make our services better.</p><h4>5. Third-Party Services</h4><p>We might link to other websites or services. We are not in charge of what happens there.</p><h4>6. Intellectual Property</h4><p>Do not mess with our copyrights or trademarks. They are protected by law.</p><h4>7. Disclaimer of Warranties</h4><p>Our services might not always work perfectly. We cannot promise they will.</p><h4>8. Limitation of Liability</h4><p>We are not responsible for any problems our services might cause you.</p><h4>9. Termination</h4><p>We can stop you from using our services at any time, for any reason.</p><h4>10. Governing Law</h4><p>These rules follow the laws of Bangladesh.</p><h4>11. Entire Agreement</h4><p>These rules are everything between us. They cover everything we agree on.</p><h4>12. Changes to Terms</h4><p>If we change anything, we will tell you by updating our website.</p><h4>13. Contact Us</h4><p>If you have questions, send us an email or give us a call.</p><p>Email: <a href=mailto:support@omnidyna.com>support@omnidyna.com</a></p><p>Phone: <a href=tel:+8809192698633>+8809192698633</a></p>";

@@ -242,9 +242,9 @@ echo $languageDropdown;
 					<h6 class="footer__title">{{ _lang('Company')}}</h6>
 					<div class="footer__nav">
 						<a href="#">{{ _lang('About Us')}}</a>
-						<a href="#">{{ _lang('Pricing Plan')}}</a>
-						<a href="#">{{ _lang('Blogs')}}</a>
-						<a href="#">{{ _lang('Contacts')}}</a>
+						<a href="{{route('privacy')}}">{{ _lang('Privacy Policy')}}</a>
+						<a href="{{route('terms')}}">{!! _lang('Terms &amp; Conditions') !!}</a>
+						<a href="{{route('contactus')}}">{{ _lang('Contacts')}}</a>
 					</div>
 				</div>
 			</div>
