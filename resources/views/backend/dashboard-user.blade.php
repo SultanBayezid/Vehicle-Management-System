@@ -197,7 +197,7 @@
                     backgroundColor: '#8ee26b',
                     borderColor: '#8ee26b',
                     borderWidth: 1,
-                    data: incomeData
+                    data: '{{_lang('incomeData')}}'
                 }, {
                     label: '{{_lang('Expense')}}',
                     backgroundColor: '#f4516c',
