@@ -38,6 +38,12 @@
                     </tr>
                 </table>
             </div>
+            <form action="{{ action('App\Http\Controllers\AccountController@destroy', $account->id) }}" method="post">
+            {{ csrf_field() }}
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="btn btn-danger btn-sm btn-remove"
+                                        type="submit"><i class="fas fa-trash"></i> Delete</button>
+                                </form>
     </div>
 </div>
 </div>

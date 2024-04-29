@@ -801,14 +801,24 @@ if (!function_exists('get_financial_balance')) {
 
     function get_financial_balance() {
         $company_id = company_id();
- 
-        $result = DB::select("SELECT b.*,((SELECT IFNULL(opening_balance,0) 
-        FROM accounts WHERE id = b.id)+(SELECT IFNULL(SUM(amount),0) 
-        FROM transactions WHERE dr_cr = 'cr' AND account_id = b.id))-(SELECT IFNULL(SUM(amount),0) 
-        FROM transactions WHERE dr_cr = 'dr' AND account_id = b.id) as balance 
-        FROM accounts as b WHERE b.company_id='$company_id'");
+    
+        $result = DB::select("
+            SELECT 
+                b.*,
+                (
+                    (SELECT IFNULL(opening_balance,0) FROM accounts WHERE id = b.id) +
+                    (SELECT IFNULL(SUM(amount),0) FROM transactions WHERE dr_cr = 'cr' AND account_id = b.id)
+                ) - 
+                (SELECT IFNULL(SUM(amount),0) FROM transactions WHERE dr_cr = 'dr' AND account_id = b.id) as balance 
+            FROM 
+                accounts as b 
+            WHERE 
+                b.company_id='$company_id' AND b.deleted_at IS NULL
+        ");
+    
         return $result;
     }
+    
 
 }
 

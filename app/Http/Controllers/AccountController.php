@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Transaction;
+
 use Illuminate\Http\Request;
 use Validator;
 
@@ -161,8 +163,12 @@ class AccountController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
+        if (Transaction::where('account_id', $id)->exists()) {
+        // If related records exist, redirect back with an error message
+        return redirect()->route('accounts.index')->with('error', _lang('Related records exist.'));
+    }
         $account = Account::find($id);
         $account->delete();
-        return back()->with('success', _lang('Removed Sucessfully'));
+        return redirect()->route('accounts.index')->with('success', _lang('Accounts Deleted Successfully'));
     }
 }

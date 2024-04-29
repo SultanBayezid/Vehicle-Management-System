@@ -49,18 +49,14 @@
                             <td class='opening_balance text-right'>
                                 {{ decimalPlace($account->opening_balance, $currency) }}</td>
                             <td class="text-center">
-                                <form action="{{ action('App\Http\Controllers\AccountController@destroy', $account->id) }}" method="post">
+                            
                                     <a href="{{ action('App\Http\Controllers\AccountController@edit', $account->id) }}"
                                         data-title="{{ _lang('Update Account') }}"
                                         class="btn btn-warning btn-sm ajax-modal"><i class="fas fa-pen"></i></a>
                                     <a href="{{ action('App\Http\Controllers\AccountController@show', $account->id) }}"
                                         data-title="{{ _lang('View Account') }}"
                                         class="btn btn-primary btn-sm ajax-modal"><i class="fas fa-eye"></i></a>
-                                    {{ csrf_field() }}
-                                    <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger btn-sm btn-remove"
-                                        type="submit"><i class="fas fa-trash"></i></button>
-                                </form>
+                            
                             </td>
                         </tr>
                         @endforeach
