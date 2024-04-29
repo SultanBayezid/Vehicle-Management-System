@@ -62,7 +62,7 @@ Route::get('/terms-and-conditions', function () {
 
 Route::get('/about-us', function () {
     return view('frontend.about-us');
-})->name('about');
+})->name('about-us');
 Route::get('/privacy-policys', function () {
     return view('frontend.privacy-policys');
 })->name('privacy');
