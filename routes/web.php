@@ -60,6 +60,9 @@ Route::get('/terms-and-conditions', function () {
     return view('frontend.terms-and-conditions');
 })->name('terms');
 
+Route::get('/about-us', function () {
+    return view('frontend.about-us');
+})->name('about');
 Route::get('/privacy-policys', function () {
     return view('frontend.privacy-policys');
 })->name('privacy');
