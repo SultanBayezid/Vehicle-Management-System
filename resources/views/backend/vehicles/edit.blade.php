@@ -73,7 +73,7 @@
             @foreach($vehicle->images as $image)
             <div class="col-md-2">
                 <div class="thumbnail">
-                <a href="{{route('vehicle_image_delete', $image->id)}}" class="float-right text-danger "><i class="fas fa-trash"></i></a>
+                <a href="{{route('vehicle_image_delete', Crypt::encrypt($image->id))}}" class="float-right text-danger "><i class="fas fa-trash"></i></a>
                 <a href="{{ asset($image->path) }}">
                     <img src="{{ asset($image->path) }}" alt="{{$vehicle->brand->name ?? ''}}" style="width:100%">
                     <div class="caption">
