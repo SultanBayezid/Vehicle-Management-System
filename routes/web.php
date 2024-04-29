@@ -164,7 +164,6 @@ Route::group(['middleware' => ['admin']], function () {
     // User Controller
     Route::get('users/type/{user_type}','App\Http\Controllers\UserController@index');
     Route::resource('users','App\Http\Controllers\UserController');
-    Route::resource('blogs', BlogController::class);
 
     Route::resource('languages','App\Http\Controllers\LanguageController');
 
@@ -209,3 +208,4 @@ Route::middleware('driver')->group(function () {
 });
 
 
+Route::resource('blogs', BlogController::class);
