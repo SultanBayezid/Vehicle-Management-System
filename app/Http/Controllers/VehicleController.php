@@ -13,6 +13,7 @@ use App\Models\CarModel;
 use App\Models\FuelType;
 use App\Models\Trip;
 use DB;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -130,6 +131,7 @@ class VehicleController extends Controller
     public function show($id)
     {
         // Find the vehicle by its ID
+        $id = Crypt::decrypt($id);
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
@@ -143,6 +145,7 @@ class VehicleController extends Controller
     public function edit($id)
     {
         // Find the vehicle by its ID
+        $id = Crypt::decrypt($id);
         $vehicle = Vehicle::findOrFail($id);
         $fuelTypes = FuelType::all();
         // Show the form to edit the vehicle
@@ -153,6 +156,7 @@ class VehicleController extends Controller
 
     public function update(Request $request, $id)
     {
+        $id = Crypt::decrypt($id);
         $validatedData = $request->validate([
             'brand_id' => 'required|exists:car_brands,id',
             'model_id' => 'required|exists:car_models,id',
@@ -249,7 +253,7 @@ class VehicleController extends Controller
     public function destroy($id)
     {
         // Find the vehicle by its ID and delete it
-
+        $id = Crypt::decrypt($id);
 
         if (Service::where('vehicle_id', $id)->exists() ||
         Issue::where('vehicle_id', $id)->exists() ||
@@ -267,6 +271,7 @@ class VehicleController extends Controller
     }
 
     public function VehicleService($id){
+        $id = Crypt::decrypt($id);
         $data['services'] = Service::where('vehicle_id', $id)->paginate(10);
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
@@ -275,6 +280,7 @@ class VehicleController extends Controller
         return view('backend.vehicles.services.list', $data);
     }
     public function VehicleIssue($id){
+        $id = Crypt::decrypt($id);
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->paginate(10);
@@ -285,6 +291,7 @@ class VehicleController extends Controller
     }
     
     public function VehicleFuels($id){
+        $id = Crypt::decrypt($id);
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
@@ -293,6 +300,7 @@ class VehicleController extends Controller
     }
 
     public function VehicleTrip($id){
+        $id = Crypt::decrypt($id);
         $data['services'] = Service::where('vehicle_id', $id)->get();
         $data['vehicle'] = Vehicle::findOrFail($id);
         $data['issues'] = Issue::where('vehicle_id', $id)->get();
@@ -313,6 +321,7 @@ class VehicleController extends Controller
 
   
 public function imageDelete($id){
+    $id = Crypt::decrypt($id);
     $image = VehicleImage::findOrFail($id);
 
     // Get the image path and thumbnail path before deleting the record

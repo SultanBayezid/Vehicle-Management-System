@@ -30,13 +30,13 @@ class TripFactory extends Factory
             'pickup_location' => $this->faker->city,
             'dropoff_location' => $this->faker->city,
             'fare_amount' => $this->faker->randomFloat(2, 10, 500),
-            'trip_date' => $this->faker->date(),
+            'trip_date' => $this->faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d'),
             'departure_time' => $this->faker->time(),
             'arrival_time' => $this->faker->time(),
             'distance_km' => $this->faker->numberBetween(5, 100),
             'status' => $this->faker->randomElement([0, 1, 2]), // Assuming status can be 0, 1, or 2
             'trip_notes' => $this->faker->paragraph,
-            'company_id' => 2, // Assuming you have a default company ID
+            'company_id' => 3, // Assuming you have a default company ID
         ];
     }
 }

@@ -20,7 +20,7 @@
                       
                       
                             <div class="card-body">
-                            <form method="POST" action="{{ route('vehicles.update', $vehicle->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('vehicles.update', Crypt::encrypt($vehicle->id)) }}" enctype="multipart/form-data">
                                 @csrf
                             @method('PUT')
                             @csrf

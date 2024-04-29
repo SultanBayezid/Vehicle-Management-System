@@ -59,9 +59,10 @@ class UserController extends Controller {
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'name'            => 'required|max:255',
-            'email'           => 'required|email|unique:users|max:255',
+            'email'           => 'nullable|email|unique:users|max:255',
             'user_type'       => 'required',
             'valid_to'        => 'required_if:user_type,user',
+            'phone'          => 'required',
             'status'          => 'required',
             'profile_picture' => 'nullable|image',
             'password'        => 'required|min:6',
@@ -87,10 +88,10 @@ class UserController extends Controller {
         $user                    = new User();
         $user->name              = $request->input('name');
         $user->email             = $request->input('email');
+        $user->phone             = $request->input('phone');
         $user->user_type         = $request->input('user_type');
         $user->valid_to          = $request->input('valid_to');
         $user->status            = $request->input('status');
-        $user->phone     = 2342334234234;
         $user->profile_picture   = $profile_picture;
         $user->email_verified_at = date('Y-m-d H:i:s');
         $user->password          = Hash::make($request->password);

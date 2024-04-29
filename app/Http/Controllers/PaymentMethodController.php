@@ -14,7 +14,7 @@ class PaymentMethodController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $paymentmethods = PaymentMethod::orderBy("id", "desc")->get();
+        $paymentmethods = PaymentMethod::where('company_id', company_id())->orderBy("id", "desc")->get();
         return view('backend.payment_method.list', compact('paymentmethods'));
     }
 

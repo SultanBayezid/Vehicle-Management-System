@@ -19,7 +19,7 @@
                                 <label class="col-xl-3 col-form-label">{{ _lang('Name') }}</label>
                                 <div class="col-xl-9">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}"
-                                        required>
+                                        >
                                 </div>
                             </div>
 
@@ -31,7 +31,13 @@
                                         required>
                                 </div>
                             </div>
-
+                            <div class="form-group row">
+                                <label class="col-xl-3 col-form-label">{{ _lang('Phone') }}</label>
+                                <div class="col-xl-9">
+                                    <input type="number" class="form-control" name="phone" value="{{ old('phone') }}"
+                                        required>
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label class="col-xl-3 col-form-label">{{ _lang('Password') }}</label>

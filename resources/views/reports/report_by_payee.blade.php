@@ -17,8 +17,10 @@
         </ol>
     </nav>
 <div class="row">
-    <div class="col-md-12">
+<div class="col-md-12">
         <div class="card panel-default">
+
+
             <div class="card-body">
 
                 <div class="report-params">
@@ -47,13 +49,12 @@
                                     <label class="control-label">{{ _lang('Payer') }}</label>
                                     <select class="form-control select2" name="payee_id">
                                         <option value="">{{ _lang('Select One') }}</option>
-                                        {{ create_option("contacts", "id", "contact_name", isset($payee_id) ? $payee_id : "") }}
-
+                                        {{ create_option("contacts","id","contact_name",isset($payer_id) ? $payer_id : "",array("company_id="=>company_id())) }}
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-md-3 mtop">
+                            <div class="col-md-3">
                                 <button type="submit"
                                     class="btn btn-primary btn-smk">{{ _lang('View Report') }}</button>
                             </div>

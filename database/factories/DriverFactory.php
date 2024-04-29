@@ -28,7 +28,7 @@ class DriverFactory extends Factory
             'license_expiry_date' => $this->faker->dateTimeBetween('+1 month', '+5 years')->format('Y-m-d'),
             'date_of_birth' => $this->faker->dateTimeBetween('-80 years', '-18 years')->format('Y-m-d'), // Assuming drivers are between 18 and 80 years old
             'address' => $this->faker->address,
-            'company_id' => 2, // Assuming you have 10 companies and want to assign this driver to the first company
+            'company_id' => 3, // Assuming you have 10 companies and want to assign this driver to the first company
         ];
     }
 }

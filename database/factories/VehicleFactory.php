@@ -21,13 +21,12 @@ class VehicleFactory extends Factory
         return [
         'brand_id' => 103,
             'model_id' => 1366,
-            'manufacture_year' => $this->faker->numberBetween(1990, 2022),
-            'register_year' => $this->faker->numberBetween(1990, 2022),
+            'manufacture_year' => $this->faker->numberBetween(2010, 2022),
+            'register_year' => $this->faker->numberBetween(2010, 2022),
             'transmission_id' => 3,
             'body_type_id' => 4,
             'drive_type_id' => 3,
-            'driver_id' => null,
-            'company_id' => 1, // Assuming you have a default company ID
+            'driver_id' =>$this->faker->numberBetween(100, 200),
             'mileage' => $this->faker->numberBetween(1000, 100000),
             'in_color' => $this->faker->colorName,
             'ex_color' => $this->faker->colorName,
@@ -46,7 +45,7 @@ class VehicleFactory extends Factory
             'price_per_km' => $this->faker->randomFloat(2, 10, 100),
             'price_per_day' => $this->faker->randomFloat(2, 50, 200),
             'status' => $this->faker->randomElement([0, 1]), // Random status
-            'company_id' => 2, // Assuming you have 10 companies
+            'company_id' => 3, // Assuming you have 10 companies
         ];
     }
 }

@@ -48,10 +48,10 @@
                         
                             <td class="text-center">
                            
-                                    <a href="{{ action('App\Http\Controllers\ServiceController@edit', $service->id) }}"
+                                    <a href="{{ action('App\Http\Controllers\ServiceController@edit', Crypt::encrypt($service->id)) }}"
                                         data-title="{{ _lang('Update service') }}"
                                         class="btn btn-link"><i class="fas fa-pen"></i></a>
-                                    <a href="{{ action('App\Http\Controllers\ServiceController@show', $service->id) }}"
+                                    <a href="{{ action('App\Http\Controllers\ServiceController@show', Crypt::encrypt($service->id)) }}"
                                         data-title="{{ _lang('View service') }}"
                                         class="btn btn-link"><i class="fas fa-eye"></i></a>
                           

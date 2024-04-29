@@ -25,13 +25,13 @@ class FuelFactory extends Factory
     {
         return [
             'vehicle_id' => $this->faker->numberBetween(1, 10), // Random vehicle ID between 1 and 10
-            'date' => $this->faker->date(),
+            'date' => $this->faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d'),
             'odometer' => $this->faker->randomNumber(5),
             'qty' => $this->faker->randomNumber(2),
             'reference' => $this->faker->word,
             'attachment' => $this->faker->word,
             'note' => $this->faker->paragraph,
-            'company_id' => 2, // Assuming you have a default company I
+            'company_id' => 3, // Assuming you have a default company I
         ];
     }
 }

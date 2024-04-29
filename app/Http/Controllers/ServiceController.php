@@ -7,6 +7,8 @@ use App\Models\Issue;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use File;
+use Illuminate\Support\Facades\Crypt;
+
 class ServiceController extends Controller
 {
     /**
@@ -73,7 +75,7 @@ class ServiceController extends Controller
      * Display the specified resource.
      */
     public function show(Request $request, $id) {
-
+        $id = Crypt::decrypt($id);
         $service = Service::find($id);
         return view('backend.services.view', compact('service', 'id'));
  
@@ -86,6 +88,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
 
+        $id = Crypt::decrypt($id);
         $service = Service::findOrfail($id);
         $vehicleIssues = Issue::where('vehicle_id', $service->vehicle_id)->where('status', 1)->get();
         $issues = $vehicleIssues->merge($service->issues);
@@ -97,7 +100,8 @@ class ServiceController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
+    {  
+        $id = Crypt::decrypt($id);
         $validatedData = $request->validate([
             'vehicle_id' => 'required',
             // Add other validation rules for service fields as needed
@@ -147,6 +151,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
+
+        $id = Crypt::decrypt($id);
         $service = Service::findOrfail($id);
         $service->delete();
         return redirect()->route('services.index')->with('success', _lang('Service Removed'));
@@ -155,6 +161,7 @@ class ServiceController extends Controller
     public function getVehicleIssues($id)
     {
         // Find the vehicle by its ID
+        
         $vehicle = Vehicle::findOrFail($id);
 
         // Get the issues associated with the vehicle

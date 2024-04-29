@@ -16,6 +16,32 @@ use Auth;
 use Validator;
 class DriverController extends Controller
 {
+    public function __construct()
+    {
+        // Check if the authenticated user is a driver and has at least one assigned vehicle
+        $this->middleware(function ($request, $next) {
+            // Check if the user is authenticated
+            if (Auth::check()) {
+                // Get the authenticated user
+                $user = Auth::user();
+                
+                // Check if the authenticated user is of type 'driver'
+                if ($user->user_type == 'driver') {
+                    // Find the driver associated with the user
+                    $driver = Driver::where('user_id', $user->id)->first(); 
+                    
+                    // Check if the driver exists and has at least one assigned vehicle
+                    if (!$driver || !$driver->vehicles()->exists()) {
+                        // Redirect back with an error message
+                        return redirect()->back()->with('error', _lang('You do not have any assigned vehicles yet!'));
+                    }
+                }
+            }
+            // If the user is not a driver or not authenticated, proceed to the next middleware
+            return $next($request);
+        });
+    }
+    
     public function index()
     {
         $drivers = Driver::where('company_id', company_id())

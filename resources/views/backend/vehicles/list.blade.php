@@ -57,11 +57,11 @@
                                                     <span class="badge badge-success">Active</span>
                                                 @endif
                                             </td>
-
+                                       
                                             <td>
                                             <div class="btn-group" role="group" aria-label="Basic example"> 
-                <a href="{{ route('vehicles.show', $vehicle->id) }}" class="btn btn-link "><i class="fas fa-eye"></i></a>
-                <a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn btn-link "><i class="fas fa-pen"></i></a>
+                <a href="{{ route('vehicles.show', Crypt::encrypt($vehicle->id)) }}" class="btn btn-link "><i class="fas fa-eye"></i></a>
+                <a href="{{ route('vehicles.edit', Crypt::encrypt($vehicle->id)) }}" class="btn btn-link "><i class="fas fa-pen"></i></a>
                 
             </td>
                                         </tr>

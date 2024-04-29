@@ -30,10 +30,10 @@ class IssueFactory extends Factory
             'description' => $this->faker->paragraph,
             'priority' => $this->faker->randomElement(['high', 'medium', 'low']),
             'image' => $this->faker->imageUrl(),
-            'due_date' => $this->faker->date(),
-            'report_date' => $this->faker->date(),
+            'due_date' => $this->faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d'),
+            'report_date' => $this->faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d'),
             'status' => $this->faker->randomElement([0, 1, 2]), // Assuming status can be 0, 1, or 2
-            'company_id' => 2, // Assuming you have a default company ID
+            'company_id' => 3, // Assuming you have a default company ID
         ];
     }
 }

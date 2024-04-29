@@ -85,8 +85,8 @@ class DashboardController extends Controller
 
 			// Expense by categorty 
 			$data['day_wise_data'] = $this->getDayWiseIncomeExpense($date1, $date2);
-			$data['issue'] = Issue::whereBetween('report_date', [$date1, $date2])->count();
-			$data['service'] = Service::whereBetween('completed_date', [$date1, $date2])->count();
+			$data['issue'] = Issue::where('company_id', company_id())->whereBetween('report_date', [$date1, $date2])->count();
+			$data['service'] = Service::where('company_id', company_id())->whereBetween('completed_date', [$date1, $date2])->count();
 
 			$data['tincome'] =  Transaction::where('type', 'income')
 			->where('company_id', company_id())
@@ -98,7 +98,7 @@ class DashboardController extends Controller
 			->whereBetween('trans_date', [$date1, $date2])
 			->sum('amount');
 
-		   $data['day_wise_trip_data'] = Trip::whereBetween('trip_date', [$date1, $date2])
+		   $data['day_wise_trip_data'] = Trip::where('company_id', company_id())->whereBetween('trip_date', [$date1, $date2])
 		   ->select('trip_date', DB::raw('COUNT(*) as trip_count'))
 		   ->groupBy('trip_date')
 		   ->orderBy('trip_date')
@@ -232,8 +232,8 @@ class DashboardController extends Controller
 
 			// Expense by categorty 
 			$data['day_wise_data'] = $this->getDayWiseIncomeExpense($date1, $date2);
-			$data['issue'] = Issue::whereBetween('report_date', [$date1, $date2])->count();
-			$data['service'] = Service::whereBetween('completed_date', [$date1, $date2])->count();
+			$data['issue'] = Issue::where('company_id', company_id())->whereBetween('report_date', [$date1, $date2])->count();
+			$data['service'] = Service::where('company_id', company_id())->whereBetween('completed_date', [$date1, $date2])->count();
 
 			$data['tincome'] =  Transaction::where('type', 'income')
 			->where('company_id', company_id())
@@ -245,7 +245,7 @@ class DashboardController extends Controller
 			->whereBetween('trans_date', [$date1, $date2])
 			->sum('amount');
 
-		   $data['day_wise_trip_data'] = Trip::whereBetween('trip_date', [$date1, $date2])
+		   $data['day_wise_trip_data'] = Trip::where('company_id', company_id())->whereBetween('trip_date', [$date1, $date2])
 		   ->select('trip_date', DB::raw('COUNT(*) as trip_count'))
 		   ->groupBy('trip_date')
 		   ->orderBy('trip_date')
@@ -271,6 +271,7 @@ class DashboardController extends Controller
 				DB::raw('SUM(CASE WHEN dr_cr = "cr" THEN amount ELSE 0 END) as income'),
 				DB::raw('SUM(CASE WHEN dr_cr = "dr" THEN amount ELSE 0 END) as expense')
 			)
+			->where('company_id', company_id())
 			->whereBetween('trans_date', [$date1, $date2])
 			->groupBy('trans_date')
 			->orderBy('trans_date')

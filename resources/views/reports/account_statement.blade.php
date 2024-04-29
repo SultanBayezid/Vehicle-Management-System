@@ -29,7 +29,7 @@
                                     <label class="control-label">{{ _lang('Select Account') }}</label>
                                     <select class="form-control select2" name="account" required>
                                         <option value="">{{ _lang('Select One') }}</option>
-                                      {{ create_option("accounts", "id", "account_title", isset($account) ? $account : old('account')) }}
+                                      {{ create_option("accounts", "id", "account_title", isset($account) ? $account : old('account'),array("company_id="=>company_id())) }}
 
                                     </select>
                                 </div>

@@ -24,7 +24,8 @@
                                 <label class="control-label">{{ _lang('Account From') }}</label>
                                 <select class="form-control select2" name="account_from" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("accounts", "id", "account_title", old('account_from')) }}
+                                    {{ create_option("accounts", "id", "account_title", old('account_from'),array("company_id="=>company_id())) }}
+                               
 
                                 </select>
                             </div>
@@ -35,7 +36,7 @@
                                 <label class="control-label">{{ _lang('Account To') }}</label>
                                 <select class="form-control select2" name="account_to" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("accounts", "id", "account_title", old('account_to')) }}
+                                    {{ create_option("accounts", "id", "account_title", old('account_to'),array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>
@@ -62,7 +63,7 @@
                                 <label class="control-label">{{ _lang('Payment Method') }}</label>
                                 <select class="form-control select2" name="payment_method_id" required>
                                     <option value="">{{ _lang('Select One') }}</option>
-                                    {{ create_option("payment_methods", "id", "name", old('payment_method_id')) }}
+                                    {{ create_option("payment_methods", "id", "name", old('payment_method_id'),array("company_id="=>company_id())) }}
 
                                 </select>
                             </div>

@@ -35,16 +35,16 @@ class FuelController extends Controller
      */
     public function store(Request $request)
     {
-            //    dd($request->all());
         
             $validator = $request->validate([
-                'vehicle_id' => 'required|exists:car_brands,id',
+                'vehicle_id' => 'required|exists:vehicles,id',
                 'date' => 'required',
          
              
             ]);
            
-
+            // dd($request->all());
+            
 
             $attachment = "";
             if ($request->hasfile('attachment')) {

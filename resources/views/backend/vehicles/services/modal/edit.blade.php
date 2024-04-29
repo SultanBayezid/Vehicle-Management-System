@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <!-- Include your edit form here -->
                 {{-- Example form --}}
-                <form action="{{ route('services.update', $service->id) }}" method="POST">
+                <form action="{{ route('services.update',  Crypt::encrypt($service->id)) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="row">

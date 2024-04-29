@@ -40,7 +40,7 @@
                 <td>
                 <ul  class="">
                 @foreach($service->issues as $issue) 
-                <li class="list-group-item"><a target="_blank" href="{{route('issues.show', $issue->id)}}">{{ $issue->summary }}</a></li>
+                <li class="list-group-item"><a target="_blank" href="{{route('issues.show', Crypt::encrypt($issue->id))}}">{{ $issue->summary }}</a></li>
 
                   
 @endforeach 
@@ -49,10 +49,10 @@
                   </td>
                 <td class="text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <a target="_blank" href="{{ action('App\Http\Controllers\ServiceController@edit', $service->id) }}"
+                <a target="_blank" href="{{ action('App\Http\Controllers\ServiceController@edit', Crypt::encrypt($service->id)) }}"
                                         data-title="{{ _lang('Update service') }}"
                                         class="btn btn-link"><i class="fas fa-pen"></i></a>
-                                    <a target="_blank" href="{{ action('App\Http\Controllers\ServiceController@show', $service->id) }}"
+                                    <a target="_blank" href="{{ action('App\Http\Controllers\ServiceController@show', Crypt::encrypt($service->id)) }}"
                                         data-title="{{ _lang('View service') }}"
                                         class="btn btn-link"><i class="fas fa-eye"></i></a>
            

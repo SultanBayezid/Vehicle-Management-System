@@ -19,7 +19,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-body">
+        <div class="card-body">
                 <div class="report-params">
                     <form class="validate" method="post" action="{{ route('reports.income_report','view') }}">
                         {{ csrf_field() }}
@@ -47,8 +47,7 @@
                                     <select class="form-control auto-select" name="account"
                                         data-selected="{{ isset($account) ? $account : old('account') }}">
                                         <option value="">{{ _lang('All Account') }}</option>
-                                        {{ create_option('accounts', 'id', 'account_title', '') }}
-
+                                        {{ create_option('accounts','id','account_title','',array('company_id=' => company_id())) }}
                                     </select>
                                 </div>
                             </div>
@@ -59,8 +58,7 @@
                                     <select class="form-control auto-select select2" name="customer"
                                         data-selected="{{ isset($customer) ? $customer : old('customer') }}">
                                         <option value="">{{ _lang('All Customer') }}</option>
-                                        {{ create_option('contacts', 'id', 'contact_name', '') }}
-
+                                        {{ create_option('contacts','id','contact_name','',array('company_id=' => company_id())) }}
                                     </select>
                                 </div>
                             </div>
@@ -71,13 +69,12 @@
                                     <select class="form-control auto-select select2" name="category"
                                         data-selected="{{ isset($category) ? $category : old('category') }}">
                                         <option value="">{{ _lang('All Category') }}</option>
-                                        {{ create_option("chart_of_accounts", "id", "name", "", array("type=" => "income")) }}
-
+                                        {{ create_option("chart_of_accounts","id","name","",array("type="=>"income","AND company_id="=>company_id())) }}
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-md-2 mtop">
+                            <div class="col-md-2">
                                 <button type="submit" class="btn btn-primary btn-sm">{{ _lang('View Report') }}</button>
                             </div>
                         </div>

@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <select class="form-control select2-ajax" data-value="id" data-display="name" data-table="drivers" data-where="1" name="driver_id" id="driver_id" required>
                             <option value="">{{ _lang('Select One') }}</option>
-                            {{ create_option("drivers", "id", "driver_name", old('driver_id')) }}
+                            {{ create_option("drivers", "id", "driver_name", old('driver_id'),array("company_id="=>company_id())) }}
                         </select>
                     </div>
                 </div>
