@@ -240,7 +240,7 @@
         var chartData = @json($chart_data);
 
         var labels = Object.keys(chartData);
-        var data = Object.values(chartData);
+        var data = Object.values(_lang('chartData'));
 
         var chart = new Chart(ctx, {
             type: 'pie',
