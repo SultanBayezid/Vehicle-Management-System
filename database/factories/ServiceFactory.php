@@ -27,7 +27,7 @@ class ServiceFactory extends Factory
             'odometer' => $this->faker->randomNumber(5),
             'document' => $this->faker->sentence,
             'note' => $this->faker->paragraph,
-            'company_id' => 3, // Assuming you have a default company ID
+            'company_id' => 7, // Assuming you have a default company ID
         ];
     }
 }
