@@ -63,14 +63,10 @@
                                             <td>{{$trip->fare_amount }}</td>
                                      
                                         <td>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('trips.show', $trip->id) }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
-                                        <a href="{{ route('trips.edit', $trip->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
-                                        <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')"><i class="fas fa-trash"></i></button>
-                                        </form>
+                                        <div class="btn-group">
+                                            <a href="{{ route('trips.show', $trip->id) }}" class="btn btn-link"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('trips.edit', $trip->id) }}" class="btn btn-link"><i class="fas fa-pen"></i></a>
+                                  
                                             </div>
                                     
                                           </td>

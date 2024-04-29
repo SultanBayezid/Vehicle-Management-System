@@ -57,7 +57,7 @@
               
               <td>@if ($issue->status == 1) <div class="badge badge-danger">Pending</div> @elseif ($issue->status == 2) <div class="badge badge-warning">Closed</div> @elseif ($issue->status == 3) <div class="badge badge-success">Resolved</div> @else Status: Unknown @endif </td>
               <td>
-                <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="btn-group">
                 <a target="_blank" href="{{ route('issues.show', $issue->id) }}" class="btn btn-link"><i class="fas fa-eye"></i></a>
                 <a target="_blank" href="{{ route('issues.edit', $issue->id) }}" class="btn btn-link"><i class="fas fa-pen"></i></a>
               </div>
