@@ -244,48 +244,66 @@
 
 <script>
 
-        var ctx = document.getElementById('expenseChart').getContext('2d');
-        var chartData = @json($chart_data);
+    // Get the data passed from the controller
+    var chartData = @json($chart_data);
 
-        var labels = Object.keys(chartData);
-        var data = Object.values(chartData);
+    // Extract labels and data from chartData
+    var labels = Object.keys(chartData);
+    var data = Object.values(chartData);
 
-        var chart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Expense Report',
-                    data: data,
-                    backgroundColor: [
-                        '#fde35a',
-                        '#6b8cef',
-                        '#c899f4',
-                        '#69b8f4',
-                        '#00af82',
-                        '#e7792f'
-                    ],
-                    borderColor: [
-                        '#fde35a',
-                        '#6b8cef',
-                        '#c899f4',
-                        '#69b8f4',
-                        '#00af82',
-                        '#e7792f'
-                    ],
-                    borderWidth: 1
-                }]
+    // Currency symbol
+    var currencySymbol = '{{ currency() }}';
+
+    // Create a new Chart instance
+    var ctx = document.getElementById('expenseChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Expense Report',
+                data: data,
+                backgroundColor: [
+                    '#fde35a',
+                    '#6b8cef',
+                    '#c899f4',
+                    '#69b8f4',
+                    '#00af82',
+                    '#e7792f'
+                ],
+                borderColor: [
+                    '#fde35a',
+                    '#6b8cef',
+                    '#c899f4',
+                    '#69b8f4',
+                    '#00af82',
+                    '#e7792f'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            title: {
+                display: false,
+                text: 'Expense Report by Expense Type'
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                title: {
-                    display: false,
-                    text: 'Expense Report by Expense Type'
+            plugins: {
+                datalabels: {
+                    formatter: (value, context) => {
+                        // Display value with currency symbol
+                        return currencySymbol + value.toLocaleString(); // Format number with commas and include currency symbol
+                    },
+                    color: '#fff', // Set text color of labels
+                    font: {
+                        weight: 'bold' // Set font weight of labels
+                    }
                 }
             }
-        });
-    </script>
+        }
+    });
+</script>
 
 <script>
         // Get the data passed from the controller
