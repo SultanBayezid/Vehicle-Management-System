@@ -178,61 +178,69 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
 <script>
-        // Get the data passed from the controller
-        var dayWiseData = @json($day_wise_data);
+    // Get the data passed from the controller
+    var dayWiseData = @json($day_wise_data);
 
-        // Extract labels, income, and expense amounts from dayWiseData
-        var labels = dayWiseData.map(item => formatDate(item.trans_date));
-        var incomeData = dayWiseData.map(item => item.income);
-        var expenseData = dayWiseData.map(item => item.expense);
+    // Extract labels, income, and expense amounts from dayWiseData
+    var labels = dayWiseData.map(item => formatDate(item.trans_date));
+    var incomeData = dayWiseData.map(item => item.income);
+    var expenseData = dayWiseData.map(item => item.expense);
 
-        // Create a new Chart instance
-        var ctx = document.getElementById('incomeVsExpenseChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: '{{_lang('Income')}}',
-                    backgroundColor: '#8ee26b',
-                    borderColor: '#8ee26b',
-                    borderWidth: 1,
-                    data: incomeData
-                }, {
-                    label: '{{_lang('Expense')}}',
-                    backgroundColor: '#f4516c',
-                    borderColor: '#f4516c',
-                    borderWidth: 1,
-                    data: expenseData
+    // Currency symbol
+    var currencySymbol = '{{ currency() }}';
+
+    // Create a new Chart instance
+    var ctx = document.getElementById('incomeVsExpenseChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '{{ _lang('Income') }}',
+                backgroundColor: '#8ee26b',
+                borderColor: '#8ee26b',
+                borderWidth: 1,
+                data: incomeData
+            }, {
+                label: '{{ _lang('Expense') }}',
+                backgroundColor: '#f4516c',
+                borderColor: '#f4516c',
+                borderWidth: 1,
+                data: expenseData
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function(value, index, values) {
+                            // Include currency symbol with the value
+                            return currencySymbol + value.toLocaleString();
+                        }
+                    }
                 }]
             },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                plugins: {
-                    datalabels: {
-                        formatter: (value, context) => {
-                            // Display value on top of each bar
-                            return value.toLocaleString(); // Format number with commas
-                        },
-                        align: 'end', // Align data labels at the end of bars
-                        anchor: 'end' // Anchor data labels at the end of bars
-                    }
+            plugins: {
+                datalabels: {
+                    formatter: (value, context) => {
+                        // Display value on top of each bar with currency symbol
+                        return currencySymbol + value.toLocaleString(); // Format number with commas and include currency symbol
+                    },
+                    align: 'end', // Align data labels at the end of bars
+                    anchor: 'end' // Anchor data labels at the end of bars
                 }
             }
-        });
-
-        // Function to format date as "dd month year"
-        function formatDate(date) {
-            var options = { day: 'numeric', month: 'short', year: 'numeric' };
-            return new Date(date).toLocaleDateString('en-US', options);
         }
-    </script>
+    });
+
+    // Function to format date as "dd month year"
+    function formatDate(date) {
+        var options = { day: 'numeric', month: 'short', year: 'numeric' };
+        return new Date(date).toLocaleDateString('en-US', options);
+    }
+</script>
+
 
 <script>
 
