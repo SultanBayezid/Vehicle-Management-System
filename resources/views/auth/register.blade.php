@@ -89,7 +89,7 @@
 	
 						<div class="sign__group sign__group--checkbox">
 							<input id="privacy" name="privacy" type="checkbox">
-							<label for="privacy"> {{ _lang('I agree to the')}}<a href="privacy.html"> {{ _lang('Privacy Policy')}}</a></label>
+							<label for="privacy"> {{ _lang('I agree to the')}}<a href="{{route('privacy')}}"> {{ _lang('Privacy Policy')}}</a></label>
 						</div>
 						
 						<button class="sign__btn" type="submit"><span>{{ _lang('Sign up')}}</span></button>
