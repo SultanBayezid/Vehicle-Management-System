@@ -36,7 +36,7 @@ class ContactFactory extends Factory
             'group_id' => null, // You may adjust this according to your requirements
             'user_id' => null, // You may adjust this according to your requirements
             'ref_user_id' => null, // You may adjust this according to your requirements
-            'company_id' => 3, // You may adjust this according to your requirements
+            'company_id' => 7, // You may adjust this according to your requirements
         ];
     }
 }

@@ -25,18 +25,18 @@ class TripFactory extends Factory
     {
         return [
             'customer_id' => $this->faker->numberBetween(1, 10), // Random customer ID between 1 and 10
-            'driver_id' => $this->faker->numberBetween(1, 5), // Random driver ID between 1 and 5
-            'vehicle_id' => $this->faker->numberBetween(1, 10), // Random vehicle ID between 1 and 10
+            'driver_id' => $this->faker->numberBetween(1, 2), // Random driver ID between 1 and 5
+            'vehicle_id' => $this->faker->numberBetween(1, 9), // Random vehicle ID between 1 and 10
             'pickup_location' => $this->faker->city,
             'dropoff_location' => $this->faker->city,
-            'fare_amount' => $this->faker->randomFloat(2, 10, 500),
-            'trip_date' => $this->faker->dateTimeBetween('2024-01-01', '2024-12-31')->format('Y-m-d'),
+            'fare_amount' => $this->faker-numberBetween(1200, 20000),
+            'trip_date' => $this->faker->dateTimeBetween('2024-02-01', '2024-04-31')->format('Y-m-d'),
             'departure_time' => $this->faker->time(),
             'arrival_time' => $this->faker->time(),
             'distance_km' => $this->faker->numberBetween(5, 100),
             'status' => $this->faker->randomElement([0, 1, 2]), // Assuming status can be 0, 1, or 2
             'trip_notes' => $this->faker->paragraph,
-            'company_id' => 3, // Assuming you have a default company ID
+            'company_id' => 7, // Assuming you have a default company ID
         ];
     }
 }
