@@ -22,7 +22,7 @@
 	<!-- title -->
     <div class="col-12 col-xl-11">
 					<div class="main__title main__title--page">
-						<h1>{{ _lang('Rent A Car')}}</h1>
+						<h1>{{ _lang('Contacts')}}</h1>
                         <p>
 						{!! _lang('Thank you for your interest in Omniverse Dynamics. We appreciate your inquiries, feedback, and potential collaboration opportunities. Please do not hesitate to reach out to us using the contact information provided below, and we will be delighted to assist you.') !!}	
                         </p>
