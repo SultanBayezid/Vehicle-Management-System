@@ -203,7 +203,7 @@ public function search(Request $request)
         $brandIds = $brandQuery->pluck('id');
 
         // Query vehicles table with brand filter
-        $vehicleQuery = Vehicle::where('status', 1)->query();
+        $vehicleQuery = Vehicle::query();
         if ($brandId && $brandId !== 'All categories') {
             $vehicleQuery->where('brand_id', $brandId);
         }
@@ -212,7 +212,7 @@ public function search(Request $request)
         }
 
         // Get the results
-        $results = $vehicleQuery->paginate(10);
+        $results = $vehicleQuery->where('status', 1)->paginate(10);
         $data['transmissions'] = Transmission::All();
         $data['fuelTypes'] = FuelType::All();
         $data['vehicles'] = $results;
