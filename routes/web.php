@@ -85,6 +85,8 @@ Route::post('upload/images', 'App\Http\Controllers\ClientController@upload')->na
 Route::post('/client_signup', 'App\Http\Controllers\Auth\RegisterController@client_signup')->name('client_signup');
 
 Route::get('/vehicle/show/{id}', [FrontendController::class, 'singleCar'])->name('single.vehicle');
+Route::post('/set-language', 'App\Http\Controllers\LanguageController@setLanguage')->name('setLanguage');
+
 
 Auth::routes();
 
@@ -180,7 +182,6 @@ Route::group(['middleware' => ['admin']], function () {
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy',
     ]);
 
-    Route::post('/set-language', 'App\Http\Controllers\LanguageController@setLanguage')->name('setLanguage');
 
 });
 
