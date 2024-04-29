@@ -292,15 +292,15 @@
            NOTE <br>
            {{$trip->note}}
          </div>
-   
+         <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')"><i class="fas fa-trash"></i> Delete</button>
+                                        </form>
       </div>
 
   
-                                        <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')"><i class="fas fa-trash"></i></button>
-                                        </form>
+                                
    </div>
 </div>
                     </div>
