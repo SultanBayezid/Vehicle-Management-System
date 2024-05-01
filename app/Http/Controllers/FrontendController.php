@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\Enquiry;
 use App\Models\CarBrand;
 use App\Models\User;
 use App\Models\Driver;
@@ -152,25 +153,42 @@ public function bookingStep3()
 
 
 public function enquiry($encryptedId) {
-    $id = Crypt::decrypt($encryptedId);
-    $vehicle = Vehicle::findOrFail($id);
+    if ($encryptedId == 'basic') {
+        $subject = _('Inquiry About Basic Plan');
+        $message = "I'm interested in your Basic plan and would like to learn more about its features." . PHP_EOL .
+                   "Could you please provide me with information on the features included in the Basic plan and how they can benefit my business?" . PHP_EOL . PHP_EOL .
+                   "Thank you for your assistance.";
+    } elseif ($encryptedId == 'regular') {
+        $subject = _('Inquiry About Regular Plan');
+        $message = "I'm interested in your Regular plan and would like to learn more about its features." . PHP_EOL .
+                   "Could you please provide me with information on the features included in the Regular plan and how they can benefit my business?" . PHP_EOL . PHP_EOL .
+                   "Thank you for your assistance.";
+    } elseif ($encryptedId == 'premium') {
+        $subject = _('Inquiry About Premium Plan');
+        $message = "I'm interested in your Premium plan and would like to learn more about its features." . PHP_EOL .
+                   "Could you please provide me with information on the features included in the Premium plan and how they can benefit my business?" . PHP_EOL . PHP_EOL .
+                   "Thank you for your assistance.";
+    } else {
+        $id = Crypt::decrypt($encryptedId);
+        $vehicle = Vehicle::findOrFail($id);
 
-    $subject = "Vehicle Inquiry - {$vehicle->brand->name}, {$vehicle->model->name}, {$vehicle->myear->year}";
-    $message = "I am writing to inquire about the availability and details of the following vehicle:" . PHP_EOL .
-    "- Make: {$vehicle->brand->name}" . PHP_EOL .
-    "- Model: {$vehicle->model->name}" . PHP_EOL .
-    "- Year: {$vehicle->myear->year}" . PHP_EOL . PHP_EOL .
-    "Thanks," . PHP_EOL .
-    Auth::user()->name;
-
-
+        $subject = "Vehicle Inquiry - {$vehicle->brand->name}, {$vehicle->model->name}, {$vehicle->myear->year}";
+        $message = "I am writing to inquire about the availability and details of the following vehicle:" . PHP_EOL .
+                   "- Make: {$vehicle->brand->name}" . PHP_EOL .
+                   "- Model: {$vehicle->model->name}" . PHP_EOL .
+                   "- Year: {$vehicle->myear->year}" . PHP_EOL . PHP_EOL .
+                   "Thanks," . PHP_EOL .
+                   Auth::user()->name;
+    }
+    
     $data = [
         'subject' => $subject,
         'message' => $message
     ];
-
+    
     return view('frontend.contact-us', $data);
 }
+
 
 
 
@@ -186,7 +204,15 @@ public function enquirySend(Request $request) {
         // Add other validation rules for service fields as needed
     ]);
 
-    return redirect()->route('home')->with('success', 'Your Message has been sent !');
+     $enq = new Enquiry();
+     $enq->name = $request->name;
+     $enq->phone = $request->phone;
+     $enq->subject = $request->subject;
+     $enq->message = $request->message;
+     $enq->user_id = Auth::user()->id ?? 0;
+     $enq->save();
+
+    return redirect()->route('home')->with('success', 'Your request has been sent, we will contact you soon !');
 }
 
 

@@ -57,7 +57,7 @@
 						<li ><span class="mr-2" ><i class="fa fa-times text-danger " aria-hidden="true"></i> </span>{{ _lang('Gross Profit and Net Profit Calculation')}}</li>
 						<li ><span class="mr-2" ><i class="fa fa-times text-danger " aria-hidden="true"></i> </span>{{ _lang('Trip History')}}</li>
 						</ul>
-						<a href="" class="plan__btn"> {{ _lang('Get Started') }}</a>
+						<a href="{{ route('enquiry', ['id' => 'basic']) }}" class="plan__btn">{{ _lang('Get Started') }}</a>
 					</div>
 				</div>
 
@@ -84,7 +84,7 @@
 						<li ><span class="mr-2" ><i class="fa fa-times text-danger " aria-hidden="true"></i> </span>{{ _lang('Trip History')}}</li>
 
 					</ul>
-					<a href="" class="plan__btn"> {{ _lang('Get Started') }}</a>
+					<a href="{{ route('enquiry', ['id' => 'regular']) }}" class="plan__btn">{{ _lang('Get Started') }}</a>
 					</div>
 				</div>
 
@@ -110,7 +110,7 @@
 						<li ><span class="mr-2" ><i class="fa fa-check text-success " aria-hidden="true"></i> </span>{{ _lang('Trip History')}}</li>
 						</ul>
 						
-                        <a href="" class="plan__btn"> {{ _lang('Get Started') }}</a>
+						<a href="{{ route('enquiry', ['id' => 'premium']) }}" class="plan__btn">{{ _lang('Get Started') }}</a>
 					</div>
 				</div>
 			</div>
