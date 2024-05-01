@@ -212,7 +212,7 @@ public function enquirySend(Request $request) {
      $enq->user_id = Auth::user()->id ?? 0;
      $enq->save();
 
-    return redirect()->route('home')->with('success', 'Your request has been sent, we will contact you soon !');
+    return redirect()->route('home')->with('success', _lang('Your request has been sent, we will contact you soon'));
 }
 
 

@@ -83,6 +83,8 @@ class LanguageController extends Controller {
     public function update(Request $request, $id) {
         @ini_set('max_execution_time', 0);
         @set_time_limit(0);
+       
+
 
         $contents = "<?php \n\n";
         $contents .= '$language=array();' . "\n\n";

@@ -1001,3 +1001,5 @@ $language["Accounts Deleted Successfully"]="অ্যাকাউন্ট স�
 $language["You do not have any assigned vehicles yet!"]="আপনি এখনও কোনো নির্ধারিত যানবাহন নেই!";
 $language["km"]=" কিমি";
 $language["View more"]="আরো দেখুন";
+$language["Your request has been sent, we will contact you soon"]="আপনার অনুরোধটি পাঠানো হয়েছে , আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব !";
+$language["day"]="day";
