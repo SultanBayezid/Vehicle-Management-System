@@ -120,13 +120,13 @@
 }
 </style>
 <div class="container">
-      <h1 class="h3 mb-2 pt-3 text-gray-800">Trip Details</h1>
+      <h1 class="h3 mb-2 pt-3 text-gray-800">{{_lang('Trip Details')}}</h1>
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ _lang('Home') }} </a></li>
-                <li class="breadcrumb-item"><a href="{{route('trips.index')}}">Trips</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Trip Details</li>
+                <li class="breadcrumb-item"><a href="{{route('trips.index')}}">{{_lang('Trips')}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{_lang('Trip Details')}}</li>
             </ol>
         </nav>
    <div class="col-md-12">
@@ -146,9 +146,9 @@
                <small>VEHICLE</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">{{$trip->vehicle->brand->name ?? '' }} {{$trip->vehicle->model->name ?? ''}} {{$trip->vehicle->myear->year ?? ''}} {{$trip->vehicle->color}}</strong><br>
-                  Seat Capacity : {{$trip->vehicle->seating_capacity}}<br>
-                  License Plate : {{$trip->vehicle->license_plate}}<br>
-                  Engine CC : {{$trip->vehicle->horsepower}}<br>
+                  {{_lang('Seat Capacity')}} : {{$trip->vehicle->seating_capacity}}<br>
+                  {{_lang('License Plate')}} : {{$trip->vehicle->license_plate}}<br>
+                  {{_lang('Engine CC')}} : {{$trip->vehicle->engine_capacity}}<br>
                   Fax: (123) 456-7890
                </address>
             </div>
@@ -156,18 +156,18 @@
                <small>DRIVER</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">{{$trip->driver->driver_name ?? ''}} </strong><br>
-                  License Number: {{$trip->driver->license_number ?? ''}}<br>
-                  Phone No : {{$trip->driver->phone_number ??''}}<br>
-                 Blood Group : {{$trip->driver->blood_group ?? ''}}<br>
+                 {{ _lang('License Number')}}: {{$trip->driver->license_number ?? ''}}<br>
+                  {{ _lang('Phone No')}} : {{$trip->driver->phone_number ??''}}<br>
+                {{ _lang('Blood Group')}} : {{$trip->driver->blood_group ?? ''}}<br>
                   Address: {{$trip->driver->address ??''}}
                </address>
             </div>
             <div class="invoice-date">
-               <small>Date and Time</small>
+               <small>{{ _lang('Date and Time')}}</small>
                <div class="date text-inverse m-t-5">{{$trip->trip_date}}</div>
                <div class="invoice-detail">
-               Departure time : {{$trip->departure_time}}<br>
-               Arival time : {{$trip->arrival_time}}
+              {{ _lang('Departure time')}} : {{$trip->departure_time}}<br>
+               {{ _lang('Arival time')}} : {{$trip->arrival_time}}
                </div>
             </div>
          </div>
@@ -179,18 +179,18 @@
                <table class="table table-invoice">
                   <thead>
                      <tr>
-                        <th>CUSTOMER</th>
-                        <th class="text-center" width="30%">PICKUP LOCATION</th>
-                        <th class="text-center" width="30%">DROPOFF LOCATION</th>
+                        <th>{{_lang('CUSTOMER')}}</th>
+                        <th class="text-center" width="30%">{{ _lang('PICKUP LOCATION')}}</th>
+                        <th class="text-center" width="30%">{{ _lang('DROPOFF LOCATION')}}</th>
                         <!-- <th class="text-right" width="20%">DISTANCE</th> -->
                      </tr>
                   </thead>
                   <tbody>
                      <tr>
                         <td>
-                           <span class="text-inverse">Name: {{$trip->customer->contact_name ?? ''}}</span><br>
-                           <small>Phone:  {{$trip->customer->contact_phone  ?? ''}} </small> <br>
-                           <small>Address: {{$trip->customer->address  ?? ''}}</small></td>
+                           <span class="text-inverse">{{_lang('Name')}}: {{$trip->customer->contact_name ?? ''}}</span><br>
+                           <small>{{_lang('Phone')}}:  {{$trip->customer->contact_phone  ?? ''}} </small> <br>
+                           <small>{{_lang('Address')}}: {{$trip->customer->address  ?? ''}}</small></td>
                         <td class="text-center">{{$trip->pickup_location}}</td>
                         <td class="text-center">{{$trip->dropoff_location}}</td>
                         <!-- <td class="text-right">$2,500.00</td> -->
@@ -206,14 +206,14 @@
                <div class="invoice-price-left">
                   <div class="invoice-price-row">
                      <div class="sub-price">
-                        <small>DISTANCE</small>
+                        <small>{{_lang('DISTANCE')}}</small>
                         <span class="text-inverse">{{$trip->distance_km}} KM</span>
                      </div>
                      <div class="sub-price">
                         <i class="fa fa-plus text-muted"></i>
                      </div>
                      <div class="sub-price">
-                        <small>FARE</small>
+                        <small>{{ _lang('FARE')}}</small>
                         <span class="text-inverse">{{$trip->fare_amount}} TK</span>
                      </div>
                      
@@ -251,7 +251,7 @@
                <small></small> <span class="f-w-600" style="float: right;margin-right:10px">{{ decimalPlace($totalpayment, $currency) }}</span>
                </div>
                <div class="invoice-price-right">
-                  <small>EXPENSE</small> <br>
+                  <small>{{ _lang('EXPENSE')}}</small> <br>
                <div style="font-size:14px;"> 
                <table id="expense-table" class="table table-bordered">
                <th>{{ _lang('Date') }}</th>
@@ -289,7 +289,7 @@
          <!-- end invoice-content -->
          <!-- begin invoice-note -->
          <div class="invoice-note">
-           NOTE <br>
+           {{_lang('NOTE')}} <br>
            {{$trip->note}}
          </div>
          <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
@@ -311,7 +311,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title mt-0">Add Expense</h5>
+      <h5 class="modal-title mt-0">{{_lang('Add Expense')}}</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">×</span>
       </button>
@@ -520,7 +520,7 @@ $pending = $trip->fare_amount - $totalpayment;
 
         <div class="col-md-12">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-file"></i> {{ _lang('Add Expense') }}</button>
+                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-file"></i> {{ _lang('Add Income') }}</button>
             </div>
         </div>
     </div>

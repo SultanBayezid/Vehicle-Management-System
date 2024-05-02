@@ -214,13 +214,19 @@ class TripController extends Controller
 
             $transaction->save();
 
-    return redirect()->back();
+    return redirect()->back()->with('success', 'Payment Added Successfuly');
       
         
     }
 
 
     public function destroy($id) {
+
+        if (Transaction::where('invoice_id', $id)->exists()) {
+        // If related records exist, redirect back with an error message
+        return redirect()->back()->with('error', _lang('Related records exist.'));
+    }
+
         $user =  Trip::findOrfail($id);
         $user->delete();
         return redirect()->route('trips.index')->with('success', 'Deleted Sucessfully');
