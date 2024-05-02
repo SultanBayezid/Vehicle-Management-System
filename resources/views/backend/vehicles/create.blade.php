@@ -26,7 +26,7 @@
     <div class="row mb-3">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">{{ _lang('Brand') }}</label>
+                <label class="control-label">{{ _lang('Brand') }} <span class="text-danger">*</span></label>
                 <select class="form-control select2-ajax" name="brand_id" id="brand_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col-md-4">
-                 <label for="model_id" class="form-label">{{ _lang('Model') }}</label>
+                 <label for="model_id" class="form-label">{{ _lang('Model') }} <span class="text-danger">*</span></label>
                 <select class="form-control select2-ajax" name="model_id" id="model_id" required>
                     {{-- Placeholder option --}}
                     <option value="">{{ _lang('Select Model') }}</option>
@@ -45,7 +45,7 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">{{ _lang('Manufacture Year') }}</label>
+                <label class="control-label">{{ _lang('Manufacture Year') }} <span class="text-danger">*</span></label>
                 <select class="form-control select2-ajax" name="manufacture_year" id="manufacture_year" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
@@ -86,7 +86,7 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">{{ _lang('Transmission') }}</label>
+                <label class="control-label">{{ _lang('Transmission') }} <span class="text-danger">*</span></label>
                 <select class="form-control select2-ajax" name="transmission_id" id="transmission_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
@@ -97,7 +97,7 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">{{ _lang('Body Type') }}</label>
+                <label class="control-label">{{ _lang('Body Type') }} <span class="text-danger">*</span></label>
                 <select class="form-control select2-ajax" name="body_type_id" id="body_type_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
@@ -136,7 +136,7 @@
         <div class="row mb-3">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">{{ _lang('Drive') }}</label>
+                <label class="control-label">{{ _lang('Drive') }} <span class="text-danger">*</span></label>
                 <select class="form-control select2-ajax" name="drive_type_id" id="drive_type_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     {{-- Assuming create_option is a helper function that generates options --}}
@@ -301,7 +301,7 @@
         </div>
         <div class="col-md-5">
             <div class="form-group">
-                <label class="control-label">{{ _lang('Assign Driver') }}</label>
+                <label class="control-label">{{ _lang('Assign Driver') }} <span class="text-danger">*</span></label>
                 <select class="form-control select2" name="driver_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
                     {{ create_option("drivers","id","driver_name",old('driver_id'),array("company_id="=>company_id())) }}
