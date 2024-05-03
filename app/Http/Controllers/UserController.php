@@ -30,9 +30,7 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $users = User::where('user_type','user')
-                    ->orWhere('user_type','admin')
-                    ->orderBy('id','desc')
+        $users = User::orderBy('id','desc')
                     ->get();
         return view('backend.user.list', compact('users'));
     }

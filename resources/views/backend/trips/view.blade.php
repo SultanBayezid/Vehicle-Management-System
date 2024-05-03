@@ -134,8 +134,8 @@
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
             <span class="pull-right hidden-print">
-            <a href="#" class="btn btn-sm btn-white m-b-10 p-l-5" data-toggle="modal" data-target="#exampleModal2"><i class="fas fa-money-check-alt text-success fa-fw fa-lg"></i> Add Trip Payment</a>
-            <a href="#" class="btn btn-sm btn-white m-b-10 p-l-5" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-money-check-alt text-danger fa-fw fa-lg"></i> Add Trip Expense</a>
+            <a href="#" class="btn btn-sm btn-white m-b-10 p-l-5" data-toggle="modal" data-target="#exampleModal2"><i class="fas fa-money-check-alt text-success fa-fw fa-lg"></i> {{ _lang('Add Trip Payment')}}</a>
+            <a href="#" class="btn btn-sm btn-white m-b-10 p-l-5" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-money-check-alt text-danger fa-fw fa-lg"></i> {{_lang('Add Trip Expense')}}</a>
       
          </div>
 
@@ -143,23 +143,23 @@
          <!-- begin invoice-header -->
          <div class="invoice-header">
             <div class="invoice-from">
-               <small>VEHICLE</small>
+               <small>{{ _lang('VEHICLE')}}</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">{{$trip->vehicle->brand->name ?? '' }} {{$trip->vehicle->model->name ?? ''}} {{$trip->vehicle->myear->year ?? ''}} {{$trip->vehicle->color}}</strong><br>
                   {{_lang('Seat Capacity')}} : {{$trip->vehicle->seating_capacity}}<br>
                   {{_lang('License Plate')}} : {{$trip->vehicle->license_plate}}<br>
                   {{_lang('Engine CC')}} : {{$trip->vehicle->engine_capacity}}<br>
-                  Fax: (123) 456-7890
+                 
                </address>
             </div>
             <div class="invoice-to">
-               <small>DRIVER</small>
+               <small>{{_lang('DRIVER')}}</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse">{{$trip->driver->driver_name ?? ''}} </strong><br>
                  {{ _lang('License Number')}}: {{$trip->driver->license_number ?? ''}}<br>
                   {{ _lang('Phone No')}} : {{$trip->driver->phone_number ??''}}<br>
                 {{ _lang('Blood Group')}} : {{$trip->driver->blood_group ?? ''}}<br>
-                  Address: {{$trip->driver->address ??''}}
+                  {{_lang('Address')}}: {{$trip->driver->address ??''}}
                </address>
             </div>
             <div class="invoice-date">
@@ -295,7 +295,7 @@
          <form method="POST" action="{{ route('trips.destroy', $trip->id) }}" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')"><i class="fas fa-trash"></i> Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Driver?')"><i class="fas fa-trash"></i> {{_lang('Delete')}}</button>
                                         </form>
       </div>
 
