@@ -22,7 +22,7 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title main__title--page">
-						<h1>Our Blog</h1>
+						<h1>Blogs</h1>
 					</div>
 				</div>
 				<!-- end title -->
