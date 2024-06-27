@@ -66,7 +66,9 @@ Route::get('/about-us', function () {
 Route::get('/privacy-policys', function () {
     return view('frontend.privacy-policys');
 })->name('privacy');
-
+Route::get('/faq', function () {
+    return view('frontend.faq');
+})->name('faq');
 Route::get('/rent', 'App\Http\Controllers\FrontendController@rent')->name('rent');
 
 Route::get('/book/{vehicle_id}/{user_id}', 'App\Http\Controllers\FrontendController@bookingStep1')->name('book');

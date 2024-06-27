@@ -190,7 +190,10 @@ public function enquiry($encryptedId) {
 }
 
 
-
+public function blogs(){
+    $blogs = Blog::all();
+    return view('backend.blogs.list', compact('blogs'));
+}
 
 public function enquirySend(Request $request) {
 
