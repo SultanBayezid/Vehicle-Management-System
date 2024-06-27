@@ -191,8 +191,9 @@ public function enquiry($encryptedId) {
 
 
 public function blogs(){
-    $blogs = Blog::all();
-    return view('backend.blogs.list', compact('blogs'));
+    $blogs = Blog::orderBy('created_at', 'desc') // Sort by the latest date
+    ->paginate(10); // Paginate with 10 items per page
+    return view('frontend.blogs.list', compact('blogs'));
 }
 
 public function enquirySend(Request $request) {

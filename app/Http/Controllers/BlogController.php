@@ -13,7 +13,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('created_at', 'desc') // Sort by the latest date
+        ->paginate(10); // Paginate with 10 items per page
         return view('backend.blogs.list', compact('blogs'));
     }
 

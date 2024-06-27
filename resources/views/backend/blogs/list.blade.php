@@ -22,7 +22,7 @@
         </ol>
     </nav>
     <div class="card"> <div class="card-body">
-                                <table id="datatablesSimple">
+    <table id="" class="table data-table">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -32,48 +32,43 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                            <th>Date</th>
-                                            <th>Title</th>
-                                            <th>Content</th>
-                                            <th>Image</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
+                            
                                     <tbody>
                                         @foreach($blogs as $blog)
                                         <tr>
-                                            <td>{{$blog->created_at }}</td>
+                                        <td>{{ $blog->created_at->format('d/m/Y') }}</td>
                                             <td>{{$blog->title }}</td>
-                                            <td>{{$blog->content }}</td>
+                                            <td>{{ Str::limit($blog->content, 50) }}</td>
                                             <td>
-    @if ($blog->image)
-        <img src="{{ asset('/uploads/blogs/' . $blog->image) }}" alt="Blog Image" width="100">
-    @else
-        No Image Available
-    @endif
-</td>
+                                        @if ($blog->image)
+                                            <img src="{{ asset('/uploads/blogs/' . $blog->image) }}" alt="Blog Image" width="100">
+                                        @else
+                                            No Image Available
+                                        @endif
+                                    </td>
 
-                                        
-                                     
-                                            <td>
-                <a href="{{ route('blogs.show', $blog->id) }}" class="btn btn-info btn-sm">View</a>
-                <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                <form method="POST" action="{{ route('blogs.destroy', $blog->id) }}" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this blog?')">Delete</button>
-                </form>
-            </td>
-                                        </tr>
-                                        @endforeach
-                                       
-                             
-                                    </tbody>
-                                </table>
+                                                                            
+                                                                        
+                                                                                <td>
+                                                    <a href="{{ route('blogs.show', $blog->id) }}" class="btn btn-info btn-sm">View</a>
+                                                    <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                    <form method="POST" action="{{ route('blogs.destroy', $blog->id) }}" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this blog?')">Delete</button>
+                                                    </form>
+                                                    </td>
+                                                                            </tr>
+                                                                            @endforeach
+                                                                        
+                                                                
+                                                                        </tbody>
+                                                                    </table>
                             </div>
                         </div>
+                        <div class="pagination justify-content-center mt-5">
+     {{ $blogs->links('vendor.pagination.bootstrap-5') }}
+</div>
                         </div>
             
 

@@ -67,7 +67,7 @@
 									</ul>
 								</li>
 								<li class="header__nav-item">
-									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ _lang('RESOURCES')}} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
+									<a class="header__nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ _lang('COMPANY')}} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"/></svg></a>
 
 									<ul class="dropdown-menu header__nav-menu">
 										<li>
@@ -75,7 +75,7 @@
 										
 										</li>
 										<li>
-									<a href="{{route('contactus')}}"> {{ _lang('BLOG')}} </a>
+									<a href="{{route('frontend-blogs')}}"> {{ _lang('BLOG')}} </a>
 										
 										</li>
 										<li>
