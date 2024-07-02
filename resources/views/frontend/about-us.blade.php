@@ -23,7 +23,17 @@
 				<div class="col-12 col-xl-11">
 					<div class="main__title main__title--page">
 						<h1>About Us</h1>
-						Launched in 2024, Omniverse Dynamics specializes in simplifying business operations. Our software expertly manages vehicles, organizes trips, maintains contact networks, and handles finances, making complex tasks feel effortless. Businesses trust our solutions to ensure everything runs smoothly, from fleet management and trip planning to staying connected and financially savvy. With professionalism and ease, we transform operations into seamless experiences.
+						Omniverse Dynamics is a pioneering vehicle technology startup dedicated to revolutionizing the way businesses manage their vehicle fleets. Established in Bangladesh, we specialize in providing cutting-edge vehicle management software designed to streamline and optimize all aspects of fleet operations. Our comprehensive solution integrates fleet management, fuel management, issue management, service management, GPRS tracking, and contact management into a single, user-friendly platform.
+						<br>
+						<br>
+						<h4>Our Vision</h4>
+At Omniverse Dynamics, our vision is to empower businesses with intelligent vehicle management solutions that enhance efficiency, reduce costs, and improve decision-making. We aim to be the leading provider of vehicle management technology, not only in Bangladesh but across Southeast Asia and beyond.
+<br>
+<br>
+
+<h4>Our Mission</h4>
+Our mission is to deliver innovative, reliable, and scalable vehicle management software that meets the evolving needs of our clients. By leveraging the latest technologies and industry best practices, we strive to provide exceptional value and support to our customers, helping them achieve their operational goals and drive business growth.
+
 					</div>
 				</div>
 				<!-- end title -->
@@ -31,21 +41,21 @@
 
 					<div class="row">
 			<div class="main__title main__title--page">
-			<h1>Our Values</h1>
+			<h4>Our Values</h4>
 			</div>
 				<div class="col-12 col-lg-3">
 					<div class="step">
 						<span class="step__number"><i class="fas fa-lightbulb"></i></span>
 						<h3 class="step__title">Innovation</h3>
-						<p class="step__text">We are committed to being at the forefront of our industry by constantly developing new and innovative products and services.</p>
+						<p class="step__text">We are committed to continuous innovation, constantly enhancing our software to meet the changing demands of the vehicle management industry.</p>
 					</div>
 				</div>
 				
 				<div class="col-12 col-lg-3">
 					<div class="step">
 						<span class="step__number"><i class="fas fa-star"></i></span>
-						<h3 class="step__title">Quality</h3>
-						<p class="step__text">We are committed to providing our customers with the highest quality products and services.</p>
+						<h3 class="step__title">Customer Focus</h3>
+						<p class="step__text">Our clients are at the heart of everything we do. We prioritize their needs and work tirelessly to ensure their satisfaction.</p>
 					</div>
 				</div>
 
@@ -53,14 +63,14 @@
 					<div class="step">
 						<span class="step__number"><i class="fas fa-shield-alt"></i></span>
 						<h3 class="step__title">Integrity</h3>
-						<p class="step__text">We are committed to conducting our business with honesty and ethical standards.</p>
+						<p class="step__text">We conduct our business with the highest standards of ethics and transparency, building trust with our clients and partners.</p>
 					</div>
 				</div>
 				<div class="col-12 col-lg-3">
 					<div class="step">
 						<span class="step__number"><i class="fas fa-headset"></i></span>
-						<h3 class="step__title">Customer Service</h3>
-						<p class="step__text">We are committed to providing our customers with the best possible service.</p>
+						<h3 class="step__title">Excellence</h3>
+						<p class="step__text">We strive for excellence in all aspects of our operations, from product development to customer support.</p>
 					</div>
 				</div>
 			</div>
@@ -74,7 +84,7 @@
 				<!-- title -->
 				<div class="col-12 col-xl-11">
 					<div class="main__title">
-						<h2>Our Leadership</h2>
+						<h4>Our Leadership</h4>
 						
 					</div>
 				</div>
