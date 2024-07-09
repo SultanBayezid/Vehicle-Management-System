@@ -451,7 +451,7 @@ $pending = $trip->fare_amount - $totalpayment;
                 <label class="control-label">{{ _lang('Credit Account') }}</label>
                 <select class="form-control select2" name="account_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
-                    {{ create_option("accounts", "id", "account_title", old('account_id')) }}
+                    {{ create_option("accounts", "id", "account_title", old('account_id'),array("company_id="=>company_id())) }}
 
                 </select>
             </div>
