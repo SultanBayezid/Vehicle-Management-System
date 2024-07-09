@@ -36,7 +36,7 @@ class TripFactory extends Factory
             'distance_km' => $this->faker->numberBetween(5, 100),
             'status' => $this->faker->randomElement([0, 1, 2]), // Assuming status can be 0, 1, or 2
             'trip_notes' => $this->faker->paragraph,
-            'company_id' => 7, // Assuming you have a default company ID
+            'company_id' => 10, // Assuming you have a default company ID
         ];
     }
 }

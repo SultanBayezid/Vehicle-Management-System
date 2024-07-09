@@ -53,7 +53,7 @@
                                         @foreach($issues as $issue)
                                         <tr>
                                             <td>{{$issue->priority }}</td>
-                                            <td><a href="{{route('vehicles.show', $issue->vehicle_id)}}">{{$issue->vehicle->brand->name ?? '' }} {{$issue->vehicle->model->name ?? '' }} {{$issue->vehicle->myear->year ?? '' }}</a></td>
+                                            <td><a href="{{ route('vehicles.show', Crypt::encrypt($issue->vehicle_id)) }}">{{$issue->vehicle->brand->name ?? '' }} {{$issue->vehicle->model->name ?? '' }} {{$issue->vehicle->myear->year ?? '' }}</a></td>
                                             <td>{{$issue->driver->name }}</td>
                                             <td>{{$issue->summary }}</td>
                                             <td>{{$issue->report_date }}</td>
