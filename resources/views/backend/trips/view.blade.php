@@ -462,7 +462,7 @@ $pending = $trip->fare_amount - $totalpayment;
                 <label class="control-label">{{ _lang('Income Type') }}</label>
                 <select class="form-control select2" name="chart_id" required>
                     <option value="">{{ _lang('Select One') }}</option>
-                    {{ create_option("chart_of_accounts", "id", "name", old('chart_id'), array("type=" => "income")) }}
+                    {{ create_option("chart_of_accounts","id","name",old('chart_id'),array("type="=>"income","AND company_id="=>company_id())) }}
 
                 </select>
             </div>
