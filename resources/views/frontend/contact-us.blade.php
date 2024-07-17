@@ -94,7 +94,7 @@
 				<div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-xl-1">
     <div class="">
         <h2>{{ _lang('Office') }}</h2>
-		<strong>Omniverse Dynamics</strong> <br>Porgona bazar, Sylhet - 3103
+		<strong>Omniverse Dynamics</strong> <br>Porgona bazar, Sylhet City - 3103, Sylhet, Bangladesh
 		<br>
 		<br>
         
