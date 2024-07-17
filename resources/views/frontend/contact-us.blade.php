@@ -95,8 +95,8 @@
     <div class="">
         <h2>{{ _lang('Office') }}</h2>
 		<strong>Omniverse Dynamics</strong> <br>Porgona bazar, Sylhet - 3103
-   
-        <br>
+		<br>
+		<br>
         
         <h4>{{ _lang('General Inquiries') }}</h4>
         <p>{{ _lang('For general inquiries or questions about our services, please email us at contact@omniversedynamics.com or call us at +8801736374073') }}</p>
