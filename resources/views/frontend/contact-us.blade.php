@@ -94,8 +94,8 @@
 				<div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-xl-1">
     <div class="main__title main__title--sidebar">
         <h2>{{ _lang('Office') }}</h2>
-        
-        <p>{{ _lang('<strong>Omniverse Dynamics</strong> <br>Porgona bazar, Sylhet - 3103') }}</p>
+		<strong>Omniverse Dynamics</strong> <br>Porgona bazar, Sylhet - 3103
+   
         <br>
         
         <h4>{{ _lang('General Inquiries') }}</h4>
