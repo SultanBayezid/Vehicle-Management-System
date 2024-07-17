@@ -102,6 +102,7 @@
 					</div>
 
 					<h2>{{ _lang('Office')}}</h2>
+					<strong>Omniverse Dynamics</strong>
 						<p>{{ _lang('Porgona bazar, Sylhet - 3103') }} </p>
 					</div>
 					<div class="contacts__social">
