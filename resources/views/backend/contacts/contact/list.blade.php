@@ -55,7 +55,7 @@
                                         class="btn btn-link"><i class="fas fa-eye"></i></a>
                                     <a href="{{ action('App\Http\Controllers\ContactController@edit', $contact->id) }}"
                                         data-title="{{ _lang('Update contact') }}"
-                                        class="btn btn-link"><i class="fas fa-pen"></i></a>
+                                        class="btn btn-primary btn-sm ajax-modal"><i class="fas fa-pen"></i></a>
                        </div>
                     
                           
