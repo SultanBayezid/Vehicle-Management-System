@@ -23,11 +23,11 @@
 				<div class="col-12 col-xl-11">
 					<div class="main__title main__title--page">
 						<h1>About Us</h1>
-						Omniverse Dynamics is a pioneering vehicle technology startup dedicated to revolutionizing the way businesses manage their vehicle fleets. Established in Bangladesh, we specialize in providing cutting-edge vehicle management software designed to streamline and optimize all aspects of fleet operations. Our comprehensive solution integrates fleet management, fuel management, issue management, service management, GPRS tracking, and contact management into a single, user-friendly platform.
+						Vehicle Management System is a pioneering vehicle technology startup dedicated to revolutionizing the way businesses manage their vehicle fleets. Established in Bangladesh, we specialize in providing cutting-edge vehicle management software designed to streamline and optimize all aspects of fleet operations. Our comprehensive solution integrates fleet management, fuel management, issue management, service management, GPRS tracking, and contact management into a single, user-friendly platform.
 						<br>
 						<br>
 						<h4>Our Vision</h4>
-At Omniverse Dynamics, our vision is to empower businesses with intelligent vehicle management solutions that enhance efficiency, reduce costs, and improve decision-making. We aim to be the leading provider of vehicle management technology, not only in Bangladesh but across Southeast Asia and beyond.
+At Vehicle Management System, our vision is to empower businesses with intelligent vehicle management solutions that enhance efficiency, reduce costs, and improve decision-making. We aim to be the leading provider of vehicle management technology, not only in Bangladesh but across Southeast Asia and beyond.
 <br>
 <br>
 
@@ -191,12 +191,12 @@ Our mission is to deliver innovative, reliable, and scalable vehicle management 
 					<li class="splide__slide">
 						<div class="testimonial testimonial--carousel">
 							<div class="testimonial__text">
-								<p>"The Omniverse Dynamics Vehicle Management System has transformed how we handle fleet management. With all our data in one place, decision-making is faster and more informed. This tool has become essential to our daily operations."</p>
+								<p>"The Vehicle Management System has transformed how we handle fleet management. With all our data in one place, decision-making is faster and more informed. This tool has become essential to our daily operations."</p>
 							</div>
 
 							<div class="testimonial__client">
-								<img src="{{asset('frontend/img/partners/Rent_A_Car_Sylhet_Travel.jpg')}}" alt="">
-								<p>Rent A Car Sylhet Travel</p>
+								<img src="{{asset('frontend/img/avatar-placeholder.png')}}" alt="">
+								<p>City Fleet Rentals</p>
 								<span>Sylhet, Bangladesh</span>
 							</div>
 						</div>
@@ -205,12 +205,12 @@ Our mission is to deliver innovative, reliable, and scalable vehicle management 
 					<li class="splide__slide">
 						<div class="testimonial testimonial--carousel">
 							<div class="testimonial__text">
-								<p>"We've seen a significant improvement in our efficiency since using the Omniverse Dynamics Vehicle Management System. It centralizes all our data, making it easy to monitor and manage our fleet. Highly recommend it for any organization looking to streamline their processes."</p>
+								<p>"We've seen a significant improvement in our efficiency since using the Vehicle Management System. It centralizes all our data, making it easy to monitor and manage our fleet. Highly recommend it for any organization looking to streamline their processes."</p>
 							</div>
 
 							<div class="testimonial__client">
-								<img src="{{asset('frontend/img/partners/mahmud_rent_a_car.jpg')}}" alt="">
-								<p>Mahmud Rent A Car</p>
+								<img src="{{asset('frontend/img/avatar-placeholder.png')}}" alt="">
+								<p>Metro Car Hire</p>
 								<span>Dhaka, Bangladesh</span>
 							</div>
 						</div>
@@ -219,12 +219,12 @@ Our mission is to deliver innovative, reliable, and scalable vehicle management 
 					<li class="splide__slide">
 						<div class="testimonial testimonial--carousel">
 							<div class="testimonial__text">
-								<p>"The comprehensive data provided by the Omniverse Dynamics Vehicle Management System has been a game-changer. It helps us make better decisions and keeps our Rent A Car business running smoothly. This system is a must-have for any business managing multiple vehicles."</p>
+								<p>"The comprehensive data provided by the Vehicle Management System has been a game-changer. It helps us make better decisions and keeps our Rent A Car business running smoothly. This system is a must-have for any business managing multiple vehicles."</p>
 							</div>
 
 							<div class="testimonial__client">
-								<img src="{{asset('frontend/img/partners/rent_noah.jpg')}}" alt="">
-								<p>Rent Noah Sylhet</p>
+								<img src="{{asset('frontend/img/avatar-placeholder.png')}}" alt="">
+								<p>Highway Travels</p>
 								<span>Sylhet, Bangladesh</span>
 							</div>
 						</div>
@@ -233,13 +233,13 @@ Our mission is to deliver innovative, reliable, and scalable vehicle management 
 					<li class="splide__slide">
 						<div class="testimonial testimonial--carousel">
 							<div class="testimonial__text">
-								<p>"Omniverse Dynamics has simplified our fleet management like never before. All the data we need is now in one place, enabling us to make smart, informed decisions quickly. It’s a critical tool for guiding our business."</p>
+								<p>"Vehicle Management System has simplified our fleet management like never before. All the data we need is now in one place, enabling us to make smart, informed decisions quickly. It’s a critical tool for guiding our business."</p>
 							</div>
 
 							<div class="testimonial__client">
-								<img src="{{asset('frontend/img/partners/moulvibazar.jpg')}}" alt="">
-								<p>Rent Car Moulvibazar</p>
-								<span>Moulvibazar, Sylhet</span>
+								<img src="{{asset('frontend/img/avatar-placeholder.png')}}" alt="">
+								<p>Green Ride Rentals</p>
+								<span>Khulna, Bangladesh</span>
 							</div>
 						</div>
 					</li>
@@ -247,13 +247,13 @@ Our mission is to deliver innovative, reliable, and scalable vehicle management 
 					<li class="splide__slide">
 						<div class="testimonial testimonial--carousel">
 							<div class="testimonial__text">
-								<p>"Since implementing the Omniverse Dynamics Vehicle Management System, our Rent A Car operations have become much more efficient. The centralized data helps us stay on top of everything and make decisions that positively impact our business. We couldn't be happier with this system."</p>
+								<p>"Since implementing the Vehicle Management System, our Rent A Car operations have become much more efficient. The centralized data helps us stay on top of everything and make decisions that positively impact our business. We couldn't be happier with this system."</p>
 							</div>
 
 							<div class="testimonial__client">
-								<img src="{{asset('frontend/img/partners/bd_travel.jpg')}}" alt="">
-								<p>BD Travel Rent A Car Service</p>
-								<span>Banani, Dhaka</span>
+								<img src="{{asset('frontend/img/avatar-placeholder.png')}}" alt="">
+								<p>Urban Drive Service</p>
+								<span>Gulshan, Dhaka</span>
 							</div>
 						</div>
 					</li>

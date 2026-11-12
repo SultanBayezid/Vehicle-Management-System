@@ -24,7 +24,7 @@
 				<div class="col-12 col-xl-11">
 					<div class="main__title main__title--page">
 						<h1>Frequently Asked Questions (FAQ)</h1>
-						<p>At Omniverse Dynamics, we understand that our clients may have various questions about our vehicle management software and services. To help you get a better understanding of what we offer and how we can benefit your business, we've compiled a list of the most frequently asked questions. If you have any additional questions, please don't hesitate to contact our support team..</p>
+						<p>At Vehicle Management System, we understand that our clients may have various questions about our vehicle management software and services. To help you get a better understanding of what we offer and how we can benefit your business, we've compiled a list of the most frequently asked questions. If you have any additional questions, please don't hesitate to contact our support team..</p>
 					</div>
 				</div>
 				<!-- end title -->
@@ -36,7 +36,7 @@
 							<div class="col-12 col-lg-6">
 								<div class="accordion__card">
 									<button class="collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-									What is Omniverse Dynamics and what services do you offer?
+									What is Vehicle Management System and what services do you offer?
 										<span>
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H5a1,1,0,0,0,0,2H19a1,1,0,0,0,0-2Z"/></svg>
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H5a1,1,0,0,0,0,2H19a1,1,0,0,0,0-2Z"/></svg>
@@ -44,7 +44,7 @@
 									</button>
 
 									<div id="collapse1" class="collapse" data-bs-parent="#accordion">
-										<p>Omniverse Dynamics is a vehicle technology startup that provides comprehensive vehicle management software. Our services include fleet management, fuel management, issue management, service management, GPRS tracking, and contact management. Our goal is to streamline and optimize vehicle operations for businesses.</p>
+										<p>Vehicle Management System is a vehicle technology startup that provides comprehensive vehicle management software. Our services include fleet management, fuel management, issue management, service management, GPRS tracking, and contact management. Our goal is to streamline and optimize vehicle operations for businesses.</p>
 									</div>
 								</div>
 

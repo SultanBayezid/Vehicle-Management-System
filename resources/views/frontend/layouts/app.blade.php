@@ -38,7 +38,7 @@
 					<div class="header__content">
 					<div class="header__logo">
 							<a href="{{route('home')}}">
-								<img src="{{asset('frontend/img/logo.png')}}" alt="">
+								<img src="{{asset('frontend/img/logo.svg')}}" alt="">
 							</a>
 						</div>
 
@@ -252,10 +252,10 @@ echo $languageDropdown;
 			<div class="row">
 				<div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
 					<div class="footer__logo">
-						<img src="{{asset('frontend/img/logo_light.png')}}" alt="">
+						<img src="{{asset('frontend/img/logo_light.svg')}}" alt="">
 					</div>
 
-					<p class="footer__tagline"> {!! _lang('Omniverse Dynamics are specialize in simplifying business operations. Think of us as the wizards behind the scenes, making sure everything runs smoothly. From managing vehicles to organizing trips, staying connected with contacts, and handling finances wisely, we have got it covered. Our goal is to make complex tasks feel effortless, like magic! So, whether its managing fleets, planning trips, keeping in touch, or staying financially savvy, businesses trust us to handle it all with professionalism and ease.') !!} </p>
+					<p class="footer__tagline"> {!! _lang('Vehicle Management System are specialize in simplifying business operations. Think of us as the wizards behind the scenes, making sure everything runs smoothly. From managing vehicles to organizing trips, staying connected with contacts, and handling finances wisely, we have got it covered. Our goal is to make complex tasks feel effortless, like magic! So, whether its managing fleets, planning trips, keeping in touch, or staying financially savvy, businesses trust us to handle it all with professionalism and ease.') !!} </p>
 
 					
 				</div>
@@ -288,7 +288,7 @@ echo $languageDropdown;
 							<a href="#" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,4H5A3,3,0,0,0,2,7V17a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm-.41,2-5.88,5.88a1,1,0,0,1-1.42,0L5.41,6ZM20,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V7.41l5.88,5.88a3,3,0,0,0,4.24,0L20,7.41Z"/></svg></a> -->
 						</div>
 
-						<small class="footer__copyright">© {{ _lang('Omniverse Dynamics, 2024.')}} </small>
+						<small class="footer__copyright">© {{ _lang('Vehicle Management System, 2026.')}} </small>
 					</div>
 				</div>
 			</div>

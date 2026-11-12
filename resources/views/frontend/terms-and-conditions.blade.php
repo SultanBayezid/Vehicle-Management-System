@@ -33,11 +33,11 @@
 
 			<div class="row">
 
-      <h1>Omniverse Dynamics Terms and Conditions</h1>
+      <h1>Vehicle Management System Terms and Conditions</h1>
 
 <p><strong>Effective Date</strong>: April 29, 2024</p>
 
-<p>Welcome to Omniverse Dynamics! These are the rules we follow. They are written in a way that is easy to understand.</p>
+<p>Welcome to Vehicle Management System! These are the rules we follow. They are written in a way that is easy to understand.</p>
 
 <h4>1. Acceptance of Terms</h4>
 

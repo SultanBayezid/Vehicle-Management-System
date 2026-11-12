@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
         // Seed data for users table
         $data = [
             [
-                'name' => 'John Doe',
+                'name' => 'Admin',
                 'email' => 'admin@example.com',
                 'phone' => '+1 555 123 4567',
                 'email_verified_at' => now(),

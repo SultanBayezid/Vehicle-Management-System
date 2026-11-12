@@ -18,7 +18,7 @@
 					<div class="main__title main__title--page">
 						<h1> {{ _lang('Trip Management')}} </h1>
                         <p>
-						{!! _lang('At Omniverse Dynamics, we understand the importance of seamless trip management for businesses and individuals. Our Trip Management module offers a comprehensive solution that covers every aspect of the trip lifecycle, ensuring a smooth and efficient journey from booking to profit calculation.') !!} 
+						{!! _lang('At Vehicle Management System, we understand the importance of seamless trip management for businesses and individuals. Our Trip Management module offers a comprehensive solution that covers every aspect of the trip lifecycle, ensuring a smooth and efficient journey from booking to profit calculation.') !!} 
                         </p>
 
 						 
@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center">
-                <img src="{{ asset('frontend/img/features/trips.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('frontend/img/features/trips.svg') }}" alt="" class="img-fluid">
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title">
-						<h2> {!! _lang('Experience the convenience and efficiency of Omniverse Dynamics\'s Trip Management feature.') !!}</h2>
+						<h2> {!! _lang('Experience the convenience and efficiency of Vehicle Management System\'s Trip Management feature.') !!}</h2>
 
 						<div class="row">
 							<div class="col-12 col-xl-9">

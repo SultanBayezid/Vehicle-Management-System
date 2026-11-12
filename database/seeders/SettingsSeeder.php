@@ -46,13 +46,13 @@ class SettingsSeeder extends Seeder
             ],
             [
                 'name' => 'company_name',
-                'value' => 'qwe',
+                'value' => 'Vehicle Management System',
                 'created_at' => '2023-09-24 00:11:02',
                 'updated_at' => '2023-09-24 01:12:21',
             ],
             [
                 'name' => 'site_title',
-                'value' => '2023-09-24 01:12:21',
+                'value' => 'Vehicle Management System',
                 'created_at' => '2023-09-24 01:12:21',
                 'updated_at' => '2023-09-24 01:12:21',
             ],

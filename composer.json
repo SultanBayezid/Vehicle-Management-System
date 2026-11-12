@@ -1,9 +1,28 @@
 {
-    "name": "laravel/laravel",
+    "name": "sultanbayezid/vehicle-management-system",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "A complete vehicle and fleet management system built with Laravel 10 - vehicles, drivers, trips, fuel, services, maintenance issues, contacts, accounting, reports, multi-step booking, multilingual UI and a full admin panel.",
+    "keywords": [
+        "laravel",
+        "php",
+        "vehicle-management",
+        "fleet-management",
+        "fleet",
+        "rent-a-car",
+        "trips",
+        "accounting",
+        "admin-panel",
+        "bootstrap"
+    ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Sultan Bayezid",
+            "email": "sultanbayezidai@gmail.com",
+            "homepage": "https://lastlineweb.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",

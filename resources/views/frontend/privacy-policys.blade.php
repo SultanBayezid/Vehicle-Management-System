@@ -33,11 +33,11 @@
 
 			<div class="row">
 
-      <h1>Omniverse Dynamics Privacy Policy</h1>
+      <h1>Vehicle Management System Privacy Policy</h1>
 
 <p><strong>Effective Date</strong>: April 29, 2024</p>
 
-<p>Welcome to Omniverse Dynamics! This Privacy Policy explains how we handle your personal information when you use our website (omnidyna.com) or engage with our services.</p>
+<p>Welcome to Vehicle Management System! This Privacy Policy explains how we handle your personal information when you use our website (omnidyna.com) or engage with our services.</p>
 
 <h4>1. Information We Collect</h4>
 

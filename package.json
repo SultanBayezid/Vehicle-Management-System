@@ -1,4 +1,9 @@
 {
+    "name": "vehicle-management-system",
+    "version": "1.0.0",
+    "description": "A complete vehicle and fleet management system built with Laravel 10 and Bootstrap 5.",
+    "license": "MIT",
+    "author": "Sultan Bayezid <sultanbayezidai@gmail.com> (https://lastlineweb.com)",
     "private": true,
     "type": "module",
     "scripts": {

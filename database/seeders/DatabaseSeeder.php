@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TransmissionSeeder::class);
         $this->call(DriveTypesTableSeeder::class);
         $this->call(YearsTableSeeder::class);
+        $this->call(CarBrandsSeeder::class);
+        $this->call(CarModelsSeeder::class);
         
 
     }

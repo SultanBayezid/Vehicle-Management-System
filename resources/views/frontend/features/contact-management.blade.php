@@ -18,7 +18,7 @@
 					<div class="main__title main__title--page">
 						<h1>{{ _lang('Contact Management')}} </h1>
                         <p>
-						{!! _lang('Omniverse Dynamics\' Contact Management feature offers a comprehensive solution to streamline communication and collaboration with your drivers, clients, suppliers, and other stakeholders.') !!}  
+						{!! _lang('Vehicle Management System\' Contact Management feature offers a comprehensive solution to streamline communication and collaboration with your drivers, clients, suppliers, and other stakeholders.') !!}  
                         </p>
 
 						 
@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center">
-                <img src="{{ asset('frontend/img/features/contacts.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('frontend/img/features/contacts.svg') }}" alt="" class="img-fluid">
             </div>
         </div>
     </div>

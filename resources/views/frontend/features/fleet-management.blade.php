@@ -18,7 +18,7 @@
 					<div class="main__title main__title--page">
 						<h1>{{_lang('Manage Vehicle')}}</h1>
                         <p>
-						{!! _lang('In the modern business landscape, efficient management of vehicle fleets is paramount for maintaining competitiveness. Omniverse Dynamics provides state-of-the-art solutions designed to transform your vehicle management practices. Our comprehensive array of features enables you to streamline operations, optimize resource utilization, and enhance productivity significantly.') !!}
+						{!! _lang('In the modern business landscape, efficient management of vehicle fleets is paramount for maintaining competitiveness. Vehicle Management System provides state-of-the-art solutions designed to transform your vehicle management practices. Our comprehensive array of features enables you to streamline operations, optimize resource utilization, and enhance productivity significantly.') !!}
 						
                         </p>
 
@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center">
-                <img src="{{ asset('frontend/img/features/omniverse.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('frontend/img/features/fleet.svg') }}" alt="" class="img-fluid">
             </div>
         </div>
     </div>

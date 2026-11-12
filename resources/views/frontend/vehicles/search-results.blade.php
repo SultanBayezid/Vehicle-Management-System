@@ -141,7 +141,7 @@
 
                <div class="justify-content-center">
                <div class="">
-						<img width="200px" src="{{asset('frontend/img/logo_light.png')}}" alt="">
+						<img width="200px" src="{{asset('frontend/img/logo_light.svg')}}" alt="">
 					</div>
                     <div class="alert alert-warning" role="alert">
             <p>Sorry, no vehicles found matching your search criteria. Here are some suggestions:</p>

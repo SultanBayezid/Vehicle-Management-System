@@ -13,7 +13,7 @@
 					<div class="col-12">
 						<div class="home__content">
 							<h1 class="home__title">{!! _lang('Manage, rent, sell <br> cars all in one <br> convenient platform.') !!} </h1>
-							<p class="home__text">{!! _lang('Omniverse Dynamics goes beyond simplifying vehicle management, <br> it serves as a  one-stop solution for car owners, dealers, and customers. Whether you are <br> looking to rent out your own vehicle searching for a car to purchase, <br> or managing a fleet for your business,  Omniverse Dynamics streamlines it all') !!}</p>
+							<p class="home__text">{!! _lang('Vehicle Management System goes beyond simplifying vehicle management, <br> it serves as a  one-stop solution for car owners, dealers, and customers. Whether you are <br> looking to rent out your own vehicle searching for a car to purchase, <br> or managing a fleet for your business,  Vehicle Management System streamlines it all') !!}</p>
 
 						</div>
 					</div>
@@ -29,7 +29,7 @@
 				<!-- title -->
 				<div class="col-12">
 					<div class="main__title">
-						<h2>{{_lang('Learn What Omniverse Dynamics Can Do')}}</h2>
+						<h2>{{_lang('Learn What Vehicle Management System Can Do')}}</h2>
 					</div>
 				</div>
 				<!-- end title -->

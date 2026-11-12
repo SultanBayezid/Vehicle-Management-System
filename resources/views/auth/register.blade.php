@@ -24,7 +24,7 @@
 					<div class="main__title main__title--page">
 						<h1>{{ _lang('Register')}}</h1>
                         <p>
-						{!! _lang('Whether you are a driver, a vehicle owner, or a client looking to explore our services, we are here to simplify the process for you. Registration with Omniverse Dynamics is straightforward and hassle-free, ensuring a seamless experience for all users. Whether you are signing up to manage your vehicle, plan trips, or browse cars, our platform offers easy-to-follow steps to get you started on your journey.') !!}	
+						{!! _lang('Whether you are a driver, a vehicle owner, or a client looking to explore our services, we are here to simplify the process for you. Registration with Vehicle Management System is straightforward and hassle-free, ensuring a seamless experience for all users. Whether you are signing up to manage your vehicle, plan trips, or browse cars, our platform offers easy-to-follow steps to get you started on your journey.') !!}	
                         </p>
 
 						 
@@ -38,11 +38,11 @@
 			<div class="col-12 col-lg-7 col-xl-7">
 					<div class="main__title main__title--sidebar">
 						<h2>{{ _lang('Driver and Vehicle Owner Information')}}</h2>
-						<p>{{ _lang('For drivers interested in joining Omniverse Dynamics, registration is a breeze. Simply ensure you have a Bangladeshi phone number handy, and connect with your vehicle owner to begin the registration process. Vehicle owners can also register with Omniverse Dynamics effortlessly. Reach out to us directly to initiate the registration process, and our dedicated team will assist you every step of the way. We understand the importance of efficient vehicle management, and our platform is designed to streamline the registration process for vehicle owners, ensuring convenience and peace of mind.') }} </p>
+						<p>{{ _lang('For drivers interested in joining Vehicle Management System, registration is a breeze. Simply ensure you have a Bangladeshi phone number handy, and connect with your vehicle owner to begin the registration process. Vehicle owners can also register with Vehicle Management System effortlessly. Reach out to us directly to initiate the registration process, and our dedicated team will assist you every step of the way. We understand the importance of efficient vehicle management, and our platform is designed to streamline the registration process for vehicle owners, ensuring convenience and peace of mind.') }} </p>
 					</div>
                     <div class="main__title main__title--sidebar">
                     <h2>{{ _lang('Client Registration')}}</h2>
-						<p>{{ _lang('Clients interested in exploring our range of services can create an account with Omniverse Dynamics in just a few simple steps. After registration, clients gain access to our platforms full suite of features, enabling them to browse detailed car listings with ease. Our user-friendly interface ensures a seamless browsing experience, allowing clients to find the perfect vehicle for their needs quickly and efficiently.') }} </p>
+						<p>{{ _lang('Clients interested in exploring our range of services can create an account with Vehicle Management System in just a few simple steps. After registration, clients gain access to our platforms full suite of features, enabling them to browse detailed car listings with ease. Our user-friendly interface ensures a seamless browsing experience, allowing clients to find the perfect vehicle for their needs quickly and efficiently.') }} </p>
 					</div>
 					
 				</div>

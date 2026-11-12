@@ -18,7 +18,7 @@
 					<div class="main__title main__title--page">
 						<h1> {{ _lang('Financial Management')}} </h1>
                         <p>
-						{!! _lang('Simplify Your Finances with Omniverse Dynamics with  user-friendly Financial Management module designed to streamline your accounting tasks and optimize your financial operations.') !!}	
+						{!! _lang('Simplify Your Finances with Vehicle Management System with  user-friendly Financial Management module designed to streamline your accounting tasks and optimize your financial operations.') !!}	
                         </p>
 
 						 
@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center">
-                <img src="{{ asset('frontend/img/features/finance.png') }}" alt="" class="img-fluid">
+                <img src="{{ asset('frontend/img/features/finance.svg') }}" alt="" class="img-fluid">
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
 						<span class="feature__icon">
 						<i class="fas fa-money-check-alt"></i>	</span>
 						<h3 class="feature__title"> {{ _lang('Track Your Income and Expenses')}}</h3>
-						<p class="feature__text">{!! _lang('Keep track of your trip income and expenses effortlessly with Omniverse Dynamics. Record income from customer bookings and track expenses such as fuel costs, driver fees, and maintenance expenses. This helps you understand your profitability and make informed financial decisions.') !!} </p>
+						<p class="feature__text">{!! _lang('Keep track of your trip income and expenses effortlessly with Vehicle Management System. Record income from customer bookings and track expenses such as fuel costs, driver fees, and maintenance expenses. This helps you understand your profitability and make informed financial decisions.') !!} </p>
 					</div>
 				</div>
 				
@@ -68,7 +68,7 @@
 						<span class="feature__icon feature__icon--pink">
 						<i class="fas fa-wrench"></i>	</span>
 						<h3 class="feature__title">{{ _lang('Manage Service Costs')}} </h3>
-						<p class="feature__text"> {!! _lang('Efficiently manage service costs with Omniverse Dynamics\' tracking feature. Record expenses related to vehicle maintenance, repairs, and other services, and categorize them for easy tracking and analysis. This helps you manage your budget effectively and ensure the reliability of your fleet.') !!}</p>
+						<p class="feature__text"> {!! _lang('Efficiently manage service costs with Vehicle Management System\' tracking feature. Record expenses related to vehicle maintenance, repairs, and other services, and categorize them for easy tracking and analysis. This helps you manage your budget effectively and ensure the reliability of your fleet.') !!}</p>
 					</div>
 				</div>
 
@@ -77,7 +77,7 @@
 						<span class="feature__icon feature__icon--purple">
 						<i class="fas fa-file-invoice-dollar"></i>	</span>
 						<h3 class="feature__title">{{ _lang('Track Payments')}} </h3>
-						<p class="feature__text">{!! _lang('Stay on top of your payments with Omniverse Dynamics\' payment tracking tools. Track payments received from customers, manage outstanding invoices, and send payment reminders effortlessly. This helps you manage your cash flow effectively and improve your financial performance.') !!} </p>
+						<p class="feature__text">{!! _lang('Stay on top of your payments with Vehicle Management System\' payment tracking tools. Track payments received from customers, manage outstanding invoices, and send payment reminders effortlessly. This helps you manage your cash flow effectively and improve your financial performance.') !!} </p>
 					</div>
 				</div>
 
@@ -86,7 +86,7 @@
 						<span class="feature__icon feature__icon--green">
 						<i class="fas fa-chart-line"></i></span>
 						<h3 class="feature__title"> {{ _lang('Comprehensive Reporting')}} </h3>
-						<p class="feature__text">{!! _lang('Omniverse Dynamics empowers you with robust reporting tools that provide valuable insights into your financial performance. Our platform offers a comprehensive range of reporting features, allowing you to analyze your income, expenses, and overall financial health with ease.') !!} </p>
+						<p class="feature__text">{!! _lang('Vehicle Management System empowers you with robust reporting tools that provide valuable insights into your financial performance. Our platform offers a comprehensive range of reporting features, allowing you to analyze your income, expenses, and overall financial health with ease.') !!} </p>
 					</div>
 				</div>
 			</div>

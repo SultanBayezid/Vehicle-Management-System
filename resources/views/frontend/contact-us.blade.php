@@ -24,7 +24,7 @@
 					<div class="main__title main__title--page">
 						<h1>{{ _lang('Contacts')}}</h1>
                         <p>
-						{!! _lang('Thank you for your interest in Omniverse Dynamics. We appreciate your inquiries, feedback, and potential collaboration opportunities. Please do not hesitate to reach out to us using the contact information provided below, and we will be delighted to assist you.') !!}	
+						{!! _lang('Thank you for your interest in Vehicle Management System. We appreciate your inquiries, feedback, and potential collaboration opportunities. Please do not hesitate to reach out to us using the contact information provided below, and we will be delighted to assist you.') !!}	
                         </p>
 
 						 
@@ -94,16 +94,16 @@
 				<div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-xl-1">
     <div class="">
         <h2>{{ _lang('Office') }}</h2>
-		<strong>Omniverse Dynamics</strong> <br>Porgona bazar, Sylhet City - 3103, Sylhet, Bangladesh
+		<strong>Vehicle Management System</strong> <br>Porgona bazar, Sylhet City - 3103, Sylhet, Bangladesh
 		<br>
 		<br>
         
         <h4>{{ _lang('General Inquiries') }}</h4>
-        <p>{{ _lang('For general inquiries or questions about our services, please email us at contact@omniversedynamics.com or call us at +8801736374073') }}</p>
+        <p>{{ _lang('For general inquiries or questions about our services, please email us at contact@example.com or call us at +8801736374073') }}</p>
         <br>
         
         <h4>{{ _lang('Customer Support') }}</h4>
-        <p>{{ _lang('If you need assistance with our products or services, our dedicated customer support team is here to help. You can reach them via email at support@omniversedynamics.com or by phone at +88+1 555 123 4567.') }}</p>
+        <p>{{ _lang('If you need assistance with our products or services, our dedicated customer support team is here to help. You can reach them via email at support@example.com or by phone at +1 555 123 4567.') }}</p>
     </div>
 </div>
 

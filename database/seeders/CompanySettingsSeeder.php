@@ -16,7 +16,7 @@ class CompanySettingsSeeder extends Seeder
         $data = [
             [
                 'name' => 'company_name',
-                'value' => 'Omniverse Dynamics',
+                'value' => 'Vehicle Management System',
                 'company_id' => 1,
             ],
             [
